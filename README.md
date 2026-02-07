@@ -76,6 +76,48 @@ The primary inference model (`dolphin-2.9-llama3-8b-q4_K_M.gguf`) is stored as s
 
 Run `python assemble_model.py` to reconstruct the full model file.
 
+## Acknowledgments
+
+This project incorporates and builds upon the work of several amazing open-source projects and contributors:
+
+### Ollama
+Local LLM inference engine that powers Sarah's cognitive capabilities.  
+🔗 https://ollama.ai  
+📜 MIT License
+
+### OpenClaw
+AI agent orchestration framework integrated into the identity matrix.  
+🔗 https://github.com/openclaw  
+
+### Awesome Skills Tool
+Enhanced tooling capabilities for agent interactions.  
+🔗 https://github.com/evalstate/awesome-skills-tool  
+📜 MIT License
+
+### Sovereign Network Libraries (`lib-*`)
+The Rust-based networking and cryptography libraries included in this repository were developed by the **Sovereign Network Team**:
+
+| Contributor | Role |
+|-------------|------|
+| Seth Ramsay | Founder |
+| Peter Rutherford | Lead Developer |
+| Brad Eagle | Developer |
+| David Edwards | Developer |
+| David Scott | Developer |
+| Hugo Perez | Developer |
+| Stephen Casino | Developer |
+
+These libraries provide:
+- `lib-blockchain` - Blockchain data structures
+- `lib-crypto` - Post-quantum cryptographic primitives
+- `lib-network` - Mesh networking layer
+- `lib-dht` - Distributed hash table
+- `lib-proofs` - Zero-knowledge proof systems
+
+📜 MIT OR Apache-2.0 License
+
+---
+
 ## License
 
 Proprietary - All Rights Reserved  
@@ -83,7 +125,7 @@ Proprietary - All Rights Reserved
 
 ## Author
 
-**Joshua Petersen** - Sole creator and developer of the Genesis/SarahCore system.
+**Joshua Petersen** - Creator and lead developer of the Genesis/SarahCore AI system.
 
 ---
 
