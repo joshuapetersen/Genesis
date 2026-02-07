@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Genesis Prime // SARAH_OS</title>
+    <style>
+        :root {
+            --hud-primary: #0ea5e9;
+            --hud-glow: rgba(14, 165, 233, 0.25);
+            --neural-pulse: #8b5cf6;
+            --glitch-color: #fb7185;
+            --sarah-red: #f43f5e;
+            --sarah-cyan: #22d3ee;
+            --night-vision: #22c55e;
+            --perception-purple: #a855f7;
+            --pulse-intensity: 0;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #000;
+            color: var(--hud-primary);
+            margin: 0;
+            overflow: hidden;
+            cursor: auto !important;
+            -webkit-font-smoothing: antialiased;
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hud-scene">
+        <div id="root"></div>
+        <!-- Hand Tracker Cursor -->
+        <div id="hand-cursor" class="cursor-neural" style="opacity: 0;"></div>
+        <!-- Gaze Tracker Cursor -->
+        <div id="gaze-cursor" class="cursor-gaze"></div>
+    </div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
