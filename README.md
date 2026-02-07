@@ -85,6 +85,16 @@ Local LLM inference engine that powers Sarah's cognitive capabilities.
 🔗 https://ollama.ai  
 📜 MIT License
 
+### Google Antigravity
+AI coding assistant by Google DeepMind that assisted with development, debugging, and system integration.  
+🔗 Integrated via VS Code / Codium
+
+### Visual Studio Code & Codium
+Development environment used to build and maintain the codebase.  
+🔗 https://code.visualstudio.com  
+🔗 https://vscodium.com  
+📜 MIT License
+
 ### OpenClaw
 AI agent orchestration framework integrated into the identity matrix.  
 🔗 https://github.com/openclaw  
