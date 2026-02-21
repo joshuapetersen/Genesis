@@ -1,8 +1,0 @@
-{
-	"BuildId": "47537391",
-	"Modules": 
-	{
-		"CesiumEditor": "libUnrealEditor-CesiumEditor.so",
-		"CesiumRuntime": "libUnrealEditor-CesiumRuntime.so"
-	}
-}
