@@ -1,0 +1,10 @@
+{
+  "name": "Genesis Sovereign Launcher",
+  "description": "A high-tech spatial AI launcher powered by S.A.R.A.H. featuring real-time multimodal interaction.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "display-capture",
+    "geolocation"
+  ]
+}

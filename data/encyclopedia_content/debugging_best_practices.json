@@ -1,0 +1,83 @@
+[
+    {
+        "term": "AST Manipulation vs Regex",
+        "category": "Best Practices",
+        "subcategory": "Code Modification",
+        "description": "Using Abstract Syntax Trees (AST) instead of Regular Expressions for code transformation ensures syntactic validity and handles nested structures correctly.",
+        "implementation": "import ast\n\ntree = ast.parse(code)\nclass Transformer(ast.NodeTransformer):\n    def visit_FunctionDef(self, node):\n        # Safe modification\n        return node\n\nnew_tree = Transformer().visit(tree)",
+        "complexity": "O(n) - Single pass parse",
+        "use_cases": [
+            "Refactoring",
+            "Linting",
+            "Automated fixes"
+        ],
+        "related": [
+            "Parser Generators",
+            "Tokenization"
+        ]
+    },
+    {
+        "term": "BOM Handling",
+        "category": "Debugging",
+        "subcategory": "Encoding",
+        "description": "Byte Order Marks (BOM), specifically UTF-8-SIG (\\ufeff), can cause SyntaxErrors in Python if not handled. Always decode with 'utf-8-sig' when reading potentially BOM-prefixed files.",
+        "implementation": "with open('file.py', 'r', encoding='utf-8-sig') as f:\n    content = f.read()",
+        "complexity": "O(1) - encoding flag",
+        "use_cases": [
+            "File I/O",
+            "Cross-platform compatibility"
+        ],
+        "related": [
+            "Unicode",
+            "Encoding"
+        ]
+    },
+    {
+        "term": "Atomic File Writes",
+        "category": "Best Practices",
+        "subcategory": "I/O",
+        "description": "To prevent data corruption during crashes, write to a temporary file first, then rename/move it to the target location.",
+        "implementation": "import os\nimport shutil\n\ntemp_path = target_path + '.tmp'\nwith open(temp_path, 'w') as f:\n    f.write(data)\nshutil.move(temp_path, target_path)",
+        "complexity": "O(1) - Rename is atomic on POSIX/Windows",
+        "use_cases": [
+            "Config saving",
+            "Database commits"
+        ],
+        "related": [
+            "transaction_logs",
+            "journaling"
+        ]
+    },
+    {
+        "term": "Graceful Degradation",
+        "category": "Architecture",
+        "subcategory": "Resilience",
+        "description": "Designing systems to maintain limited functionality even when some components fail, rather than crashing entirely.",
+        "implementation": "try:\n    gpu_acceleration()\nexcept ImportError:\n    cpu_fallback()\n    log.warning('GPU not found, using CPU')",
+        "complexity": "N/A",
+        "use_cases": [
+            "Hardware dependency",
+            "Network services"
+        ],
+        "related": [
+            "Circuit Breaker",
+            "Fallback Patterns"
+        ]
+    },
+    {
+        "term": "Circular Import Prevention",
+        "category": "Architecture",
+        "subcategory": "Modularity",
+        "description": "Avoid circular dependencies by using dependency injection, postponing imports to function scope, or restructuring modules.",
+        "implementation": "def method(self):\n    from .other_module import helper\n    helper()",
+        "complexity": "N/A",
+        "use_cases": [
+            "Large codebases",
+            "Framework design"
+        ],
+        "related": [
+            "Dependency Injection",
+            "Lazy Loading"
+        ]
+    }
+]

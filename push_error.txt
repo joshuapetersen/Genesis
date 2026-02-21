@@ -1,0 +1,19 @@
+﻿git : Pushing to https://github.com/joshuapetersen/Genesis.git
+At line:1 char:1
++ git push github main --force --verbose 2>&1 | Out-File -FilePath C:\S ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Pushing to http...sen/Genesis.git:String) [], RemoteE 
+   xception
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Uploading LFS objects: 100% (17/17), 5.2 GB | 0 B/s, done.
+POST git-receive-pack (chunked)
+remote: error: Trace: def67a998f5f14089a644f299b83f186ef46ce14ac17ea29db8660e1ef068f94        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File blobs/sha256-27d438e34ebae3b1c7aa2f43bb1ce1b053a0c039fa1dee927abd147ff4e55c55 
+is 420.66 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - 
+https://git-lfs.github.com.        
+To https://github.com/joshuapetersen/Genesis.git
+ ! [remote rejected]   main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/joshuapetersen/Genesis.git'

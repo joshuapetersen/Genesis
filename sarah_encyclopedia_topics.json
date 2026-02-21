@@ -1,0 +1,1520 @@
+[
+  {
+    "category": "Layer 1: Input Modalities",
+    "term": "Voice Processing",
+    "description": "Orion Layer 2 / VPA",
+    "layer": 1
+  },
+  {
+    "category": "Layer 1: Input Modalities",
+    "term": "Visual Processing",
+    "description": "Orion Layer 3 / Video",
+    "layer": 1
+  },
+  {
+    "category": "Layer 1: Input Modalities",
+    "term": "Contextual/Text Processing",
+    "description": "Orion Layer 1 / SAUL",
+    "layer": 1
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Session Initialization & Sync Controller",
+    "description": "Opus P1 / SCCL",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Persona & Profile Loader",
+    "description": "Opus P2 / Activation",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Active Context Manager",
+    "description": "Opus P3",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "User Authentication & Preferences Engine",
+    "description": "P4/P5",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Protocol Suite Verifier",
+    "description": "Opus P6",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Intent & Ambiguity Analyzer",
+    "description": "Opus P7/P8",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Nuance & Imprecision Interpreter",
+    "description": "Opus P10/P11",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Tool Broker & Dispatcher",
+    "description": "P12-P18",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Permissions & Security Gateway",
+    "description": "P15 / Bio-Check",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Response Synthesizer & Formatter",
+    "description": "P19-P23",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Error Handling & Logging Coordinator",
+    "description": "P24-P27",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "term": "Meta-Process Controller",
+    "description": "P28-P30 / P-EC / P-ST",
+    "layer": 2
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Syntactic",
+    "term": "Syntactic Module: Core Concepts",
+    "description": "Overview and role of the Syntactic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Syntactic",
+    "term": "Syntactic Module: Architecture",
+    "description": "Architectural patterns and data flow for the Syntactic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Syntactic",
+    "term": "Syntactic Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Syntactic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Grammar: Core Concepts",
+    "description": "Fundamental principles and definitions of Grammar within the Syntactic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Grammar: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Grammar.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Grammar: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Grammar.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Structure: Core Concepts",
+    "description": "Fundamental principles and definitions of Structure within the Syntactic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Structure: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Structure.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Structure: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Structure.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Clause Boundary: Core Concepts",
+    "description": "Fundamental principles and definitions of Clause Boundary within the Syntactic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Clause Boundary: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Clause Boundary.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Syntactic",
+    "module": "Syntactic",
+    "term": "Clause Boundary: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Clause Boundary.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Semantic",
+    "term": "Semantic Module: Core Concepts",
+    "description": "Overview and role of the Semantic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Semantic",
+    "term": "Semantic Module: Architecture",
+    "description": "Architectural patterns and data flow for the Semantic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Semantic",
+    "term": "Semantic Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Semantic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Meaning: Core Concepts",
+    "description": "Fundamental principles and definitions of Meaning within the Semantic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Meaning: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Meaning.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Meaning: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Meaning.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Role Labeling: Core Concepts",
+    "description": "Fundamental principles and definitions of Role Labeling within the Semantic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Role Labeling: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Role Labeling.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Role Labeling: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Role Labeling.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Disambiguation: Core Concepts",
+    "description": "Fundamental principles and definitions of Disambiguation within the Semantic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Disambiguation: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Disambiguation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Semantic",
+    "module": "Semantic",
+    "term": "Disambiguation: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Disambiguation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Pragmatic",
+    "term": "Pragmatic Module: Core Concepts",
+    "description": "Overview and role of the Pragmatic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Pragmatic",
+    "term": "Pragmatic Module: Architecture",
+    "description": "Architectural patterns and data flow for the Pragmatic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Pragmatic",
+    "term": "Pragmatic Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Pragmatic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Intent: Core Concepts",
+    "description": "Fundamental principles and definitions of Intent within the Pragmatic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Intent: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Intent.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Intent: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Intent.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Discourse: Core Concepts",
+    "description": "Fundamental principles and definitions of Discourse within the Pragmatic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Discourse: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Discourse.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Discourse: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Discourse.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Contextual Nuance: Core Concepts",
+    "description": "Fundamental principles and definitions of Contextual Nuance within the Pragmatic module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Contextual Nuance: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Contextual Nuance.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules -> Pragmatic",
+    "module": "Pragmatic",
+    "term": "Contextual Nuance: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Contextual Nuance.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Core Knowledge",
+    "term": "Core Knowledge Module: Core Concepts",
+    "description": "Overview and role of the Core Knowledge module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Core Knowledge",
+    "term": "Core Knowledge Module: Architecture",
+    "description": "Architectural patterns and data flow for the Core Knowledge module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Core Knowledge",
+    "term": "Core Knowledge Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Core Knowledge module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Core Knowledge",
+    "module": "Core Knowledge",
+    "term": "Fact Retrieval: Core Concepts",
+    "description": "Fundamental principles and definitions of Fact Retrieval within the Core Knowledge module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Core Knowledge",
+    "module": "Core Knowledge",
+    "term": "Fact Retrieval: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Fact Retrieval.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Core Knowledge",
+    "module": "Core Knowledge",
+    "term": "Fact Retrieval: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Fact Retrieval.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Core Knowledge",
+    "module": "Core Knowledge",
+    "term": "Concept Navigation: Core Concepts",
+    "description": "Fundamental principles and definitions of Concept Navigation within the Core Knowledge module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Core Knowledge",
+    "module": "Core Knowledge",
+    "term": "Concept Navigation: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Concept Navigation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Core Knowledge",
+    "module": "Core Knowledge",
+    "term": "Concept Navigation: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Concept Navigation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "External Data",
+    "term": "External Data Module: Core Concepts",
+    "description": "Overview and role of the External Data module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "External Data",
+    "term": "External Data Module: Architecture",
+    "description": "Architectural patterns and data flow for the External Data module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "External Data",
+    "term": "External Data Module: Diagnostics",
+    "description": "Auditing and troubleshooting the External Data module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> External Data",
+    "module": "External Data",
+    "term": "Real-time Ingestion: Core Concepts",
+    "description": "Fundamental principles and definitions of Real-time Ingestion within the External Data module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> External Data",
+    "module": "External Data",
+    "term": "Real-time Ingestion: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Real-time Ingestion.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> External Data",
+    "module": "External Data",
+    "term": "Real-time Ingestion: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Real-time Ingestion.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> External Data",
+    "module": "External Data",
+    "term": "Stream Filtering: Core Concepts",
+    "description": "Fundamental principles and definitions of Stream Filtering within the External Data module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> External Data",
+    "module": "External Data",
+    "term": "Stream Filtering: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Stream Filtering.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> External Data",
+    "module": "External Data",
+    "term": "Stream Filtering: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Stream Filtering.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Specialized Domains",
+    "term": "Specialized Domains Module: Core Concepts",
+    "description": "Overview and role of the Specialized Domains module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Specialized Domains",
+    "term": "Specialized Domains Module: Architecture",
+    "description": "Architectural patterns and data flow for the Specialized Domains module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Specialized Domains",
+    "term": "Specialized Domains Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Specialized Domains module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Medical: Core Concepts",
+    "description": "Fundamental principles and definitions of Medical within the Specialized Domains module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Medical: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Medical.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Medical: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Medical.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Legal: Core Concepts",
+    "description": "Fundamental principles and definitions of Legal within the Specialized Domains module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Legal: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Legal.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Legal: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Legal.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Technical: Core Concepts",
+    "description": "Fundamental principles and definitions of Technical within the Specialized Domains module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Technical: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Technical.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points -> Specialized Domains",
+    "module": "Specialized Domains",
+    "term": "Technical: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Technical.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Logical",
+    "term": "Logical Module: Core Concepts",
+    "description": "Overview and role of the Logical module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Logical",
+    "term": "Logical Module: Architecture",
+    "description": "Architectural patterns and data flow for the Logical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Logical",
+    "term": "Logical Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Logical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Deductive: Core Concepts",
+    "description": "Fundamental principles and definitions of Deductive within the Logical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Deductive: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Deductive.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Deductive: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Deductive.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Inductive: Core Concepts",
+    "description": "Fundamental principles and definitions of Inductive within the Logical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Inductive: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Inductive.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Inductive: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Inductive.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Abductive: Core Concepts",
+    "description": "Fundamental principles and definitions of Abductive within the Logical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Abductive: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Abductive.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Logical",
+    "module": "Logical",
+    "term": "Abductive: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Abductive.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Causal/Predictive",
+    "term": "Causal/Predictive Module: Core Concepts",
+    "description": "Overview and role of the Causal/Predictive module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Causal/Predictive",
+    "term": "Causal/Predictive Module: Architecture",
+    "description": "Architectural patterns and data flow for the Causal/Predictive module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Causal/Predictive",
+    "term": "Causal/Predictive Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Causal/Predictive module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Causal/Predictive",
+    "module": "Causal/Predictive",
+    "term": "Cause-Effect: Core Concepts",
+    "description": "Fundamental principles and definitions of Cause-Effect within the Causal/Predictive module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Causal/Predictive",
+    "module": "Causal/Predictive",
+    "term": "Cause-Effect: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Cause-Effect.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Causal/Predictive",
+    "module": "Causal/Predictive",
+    "term": "Cause-Effect: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Cause-Effect.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Causal/Predictive",
+    "module": "Causal/Predictive",
+    "term": "Probability: Core Concepts",
+    "description": "Fundamental principles and definitions of Probability within the Causal/Predictive module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Causal/Predictive",
+    "module": "Causal/Predictive",
+    "term": "Probability: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Probability.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Causal/Predictive",
+    "module": "Causal/Predictive",
+    "term": "Probability: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Probability.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Analogical",
+    "term": "Analogical Module: Core Concepts",
+    "description": "Overview and role of the Analogical module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Analogical",
+    "term": "Analogical Module: Architecture",
+    "description": "Architectural patterns and data flow for the Analogical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Analogical",
+    "term": "Analogical Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Analogical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Analogical",
+    "module": "Analogical",
+    "term": "Similarity Detection: Core Concepts",
+    "description": "Fundamental principles and definitions of Similarity Detection within the Analogical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Analogical",
+    "module": "Analogical",
+    "term": "Similarity Detection: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Similarity Detection.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Analogical",
+    "module": "Analogical",
+    "term": "Similarity Detection: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Similarity Detection.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Analogical",
+    "module": "Analogical",
+    "term": "Solution Application: Core Concepts",
+    "description": "Fundamental principles and definitions of Solution Application within the Analogical module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Analogical",
+    "module": "Analogical",
+    "term": "Solution Application: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Solution Application.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components -> Analogical",
+    "module": "Analogical",
+    "term": "Solution Application: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Solution Application.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Input/Embedding",
+    "term": "Input/Embedding Module: Core Concepts",
+    "description": "Overview and role of the Input/Embedding module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Input/Embedding",
+    "term": "Input/Embedding Module: Architecture",
+    "description": "Architectural patterns and data flow for the Input/Embedding module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Input/Embedding",
+    "term": "Input/Embedding Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Input/Embedding module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Input/Embedding",
+    "module": "Input/Embedding",
+    "term": "Tokenizer: Core Concepts",
+    "description": "Fundamental principles and definitions of Tokenizer within the Input/Embedding module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Input/Embedding",
+    "module": "Input/Embedding",
+    "term": "Tokenizer: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Tokenizer.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Input/Embedding",
+    "module": "Input/Embedding",
+    "term": "Tokenizer: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Tokenizer.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Input/Embedding",
+    "module": "Input/Embedding",
+    "term": "Multimodal Encoder: Core Concepts",
+    "description": "Fundamental principles and definitions of Multimodal Encoder within the Input/Embedding module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Input/Embedding",
+    "module": "Input/Embedding",
+    "term": "Multimodal Encoder: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Multimodal Encoder.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Input/Embedding",
+    "module": "Input/Embedding",
+    "term": "Multimodal Encoder: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Multimodal Encoder.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Attention/Transformation",
+    "term": "Attention/Transformation Module: Core Concepts",
+    "description": "Overview and role of the Attention/Transformation module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Attention/Transformation",
+    "term": "Attention/Transformation Module: Architecture",
+    "description": "Architectural patterns and data flow for the Attention/Transformation module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Attention/Transformation",
+    "term": "Attention/Transformation Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Attention/Transformation module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Attention/Transformation",
+    "module": "Attention/Transformation",
+    "term": "Weight Calculation: Core Concepts",
+    "description": "Fundamental principles and definitions of Weight Calculation within the Attention/Transformation module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Attention/Transformation",
+    "module": "Attention/Transformation",
+    "term": "Weight Calculation: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Weight Calculation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Attention/Transformation",
+    "module": "Attention/Transformation",
+    "term": "Weight Calculation: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Weight Calculation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Attention/Transformation",
+    "module": "Attention/Transformation",
+    "term": "Layer Norm: Core Concepts",
+    "description": "Fundamental principles and definitions of Layer Norm within the Attention/Transformation module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Attention/Transformation",
+    "module": "Attention/Transformation",
+    "term": "Layer Norm: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Layer Norm.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Attention/Transformation",
+    "module": "Attention/Transformation",
+    "term": "Layer Norm: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Layer Norm.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Output/Decoding",
+    "term": "Output/Decoding Module: Core Concepts",
+    "description": "Overview and role of the Output/Decoding module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Output/Decoding",
+    "term": "Output/Decoding Module: Architecture",
+    "description": "Architectural patterns and data flow for the Output/Decoding module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Output/Decoding",
+    "term": "Output/Decoding Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Output/Decoding module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Output/Decoding",
+    "module": "Output/Decoding",
+    "term": "Probability Distribution: Core Concepts",
+    "description": "Fundamental principles and definitions of Probability Distribution within the Output/Decoding module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Output/Decoding",
+    "module": "Output/Decoding",
+    "term": "Probability Distribution: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Probability Distribution.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Output/Decoding",
+    "module": "Output/Decoding",
+    "term": "Probability Distribution: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Probability Distribution.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Output/Decoding",
+    "module": "Output/Decoding",
+    "term": "Sampling: Core Concepts",
+    "description": "Fundamental principles and definitions of Sampling within the Output/Decoding module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Output/Decoding",
+    "module": "Output/Decoding",
+    "term": "Sampling: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Sampling.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture -> Output/Decoding",
+    "module": "Output/Decoding",
+    "term": "Sampling: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Sampling.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Fine-Tuning",
+    "term": "Fine-Tuning Module: Core Concepts",
+    "description": "Overview and role of the Fine-Tuning module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Fine-Tuning",
+    "term": "Fine-Tuning Module: Architecture",
+    "description": "Architectural patterns and data flow for the Fine-Tuning module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Fine-Tuning",
+    "term": "Fine-Tuning Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Fine-Tuning module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Fine-Tuning",
+    "module": "Fine-Tuning",
+    "term": "Parameter Coordination: Core Concepts",
+    "description": "Fundamental principles and definitions of Parameter Coordination within the Fine-Tuning module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Fine-Tuning",
+    "module": "Fine-Tuning",
+    "term": "Parameter Coordination: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Parameter Coordination.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Fine-Tuning",
+    "module": "Fine-Tuning",
+    "term": "Parameter Coordination: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Parameter Coordination.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Fine-Tuning",
+    "module": "Fine-Tuning",
+    "term": "Batch Processing: Core Concepts",
+    "description": "Fundamental principles and definitions of Batch Processing within the Fine-Tuning module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Fine-Tuning",
+    "module": "Fine-Tuning",
+    "term": "Batch Processing: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Batch Processing.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Fine-Tuning",
+    "module": "Fine-Tuning",
+    "term": "Batch Processing: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Batch Processing.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Feedback Loop",
+    "term": "Feedback Loop Module: Core Concepts",
+    "description": "Overview and role of the Feedback Loop module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Feedback Loop",
+    "term": "Feedback Loop Module: Architecture",
+    "description": "Architectural patterns and data flow for the Feedback Loop module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Feedback Loop",
+    "term": "Feedback Loop Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Feedback Loop module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Feedback Loop",
+    "module": "Feedback Loop",
+    "term": "Correction Interpretation: Core Concepts",
+    "description": "Fundamental principles and definitions of Correction Interpretation within the Feedback Loop module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Feedback Loop",
+    "module": "Feedback Loop",
+    "term": "Correction Interpretation: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Correction Interpretation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Feedback Loop",
+    "module": "Feedback Loop",
+    "term": "Correction Interpretation: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Correction Interpretation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Feedback Loop",
+    "module": "Feedback Loop",
+    "term": "Adaptation: Core Concepts",
+    "description": "Fundamental principles and definitions of Adaptation within the Feedback Loop module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Feedback Loop",
+    "module": "Feedback Loop",
+    "term": "Adaptation: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Feedback Loop",
+    "module": "Feedback Loop",
+    "term": "Adaptation: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Contextual Drift",
+    "term": "Contextual Drift Module: Core Concepts",
+    "description": "Overview and role of the Contextual Drift module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Contextual Drift",
+    "term": "Contextual Drift Module: Architecture",
+    "description": "Architectural patterns and data flow for the Contextual Drift module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Contextual Drift",
+    "term": "Contextual Drift Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Contextual Drift module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Contextual Drift",
+    "module": "Contextual Drift",
+    "term": "Style Modulation: Core Concepts",
+    "description": "Fundamental principles and definitions of Style Modulation within the Contextual Drift module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Contextual Drift",
+    "module": "Contextual Drift",
+    "term": "Style Modulation: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Style Modulation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Contextual Drift",
+    "module": "Contextual Drift",
+    "term": "Style Modulation: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Style Modulation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Contextual Drift",
+    "module": "Contextual Drift",
+    "term": "Dynamics: Core Concepts",
+    "description": "Fundamental principles and definitions of Dynamics within the Contextual Drift module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Contextual Drift",
+    "module": "Contextual Drift",
+    "term": "Dynamics: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Dynamics.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation -> Contextual Drift",
+    "module": "Contextual Drift",
+    "term": "Dynamics: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Dynamics.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Content Filtering",
+    "term": "Content Filtering Module: Core Concepts",
+    "description": "Overview and role of the Content Filtering module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Content Filtering",
+    "term": "Content Filtering Module: Architecture",
+    "description": "Architectural patterns and data flow for the Content Filtering module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Content Filtering",
+    "term": "Content Filtering Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Content Filtering module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Content Filtering",
+    "module": "Content Filtering",
+    "term": "Harmful Classifiers: Core Concepts",
+    "description": "Fundamental principles and definitions of Harmful Classifiers within the Content Filtering module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Content Filtering",
+    "module": "Content Filtering",
+    "term": "Harmful Classifiers: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Harmful Classifiers.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Content Filtering",
+    "module": "Content Filtering",
+    "term": "Harmful Classifiers: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Harmful Classifiers.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Content Filtering",
+    "module": "Content Filtering",
+    "term": "Bias Detectors: Core Concepts",
+    "description": "Fundamental principles and definitions of Bias Detectors within the Content Filtering module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Content Filtering",
+    "module": "Content Filtering",
+    "term": "Bias Detectors: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Bias Detectors.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Content Filtering",
+    "module": "Content Filtering",
+    "term": "Bias Detectors: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Bias Detectors.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Privacy",
+    "term": "Privacy Module: Core Concepts",
+    "description": "Overview and role of the Privacy module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Privacy",
+    "term": "Privacy Module: Architecture",
+    "description": "Architectural patterns and data flow for the Privacy module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Privacy",
+    "term": "Privacy Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Privacy module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Privacy",
+    "module": "Privacy",
+    "term": "PII Masking: Core Concepts",
+    "description": "Fundamental principles and definitions of PII Masking within the Privacy module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Privacy",
+    "module": "Privacy",
+    "term": "PII Masking: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for PII Masking.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Privacy",
+    "module": "Privacy",
+    "term": "PII Masking: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for PII Masking.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Privacy",
+    "module": "Privacy",
+    "term": "Permission Verification: Core Concepts",
+    "description": "Fundamental principles and definitions of Permission Verification within the Privacy module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Privacy",
+    "module": "Privacy",
+    "term": "Permission Verification: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Permission Verification.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Privacy",
+    "module": "Privacy",
+    "term": "Permission Verification: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Permission Verification.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Policy Adherence",
+    "term": "Policy Adherence Module: Core Concepts",
+    "description": "Overview and role of the Policy Adherence module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Policy Adherence",
+    "term": "Policy Adherence Module: Architecture",
+    "description": "Architectural patterns and data flow for the Policy Adherence module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Policy Adherence",
+    "term": "Policy Adherence Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Policy Adherence module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Policy Adherence",
+    "module": "Policy Adherence",
+    "term": "Guideline Compliance: Core Concepts",
+    "description": "Fundamental principles and definitions of Guideline Compliance within the Policy Adherence module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Policy Adherence",
+    "module": "Policy Adherence",
+    "term": "Guideline Compliance: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Guideline Compliance.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Policy Adherence",
+    "module": "Policy Adherence",
+    "term": "Guideline Compliance: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Guideline Compliance.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Policy Adherence",
+    "module": "Policy Adherence",
+    "term": "User Constraints: Core Concepts",
+    "description": "Fundamental principles and definitions of User Constraints within the Policy Adherence module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Policy Adherence",
+    "module": "Policy Adherence",
+    "term": "User Constraints: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for User Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints -> Policy Adherence",
+    "module": "Policy Adherence",
+    "term": "User Constraints: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for User Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Load Balancing",
+    "term": "Load Balancing Module: Core Concepts",
+    "description": "Overview and role of the Load Balancing module within Resource & State Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Load Balancing",
+    "term": "Load Balancing Module: Architecture",
+    "description": "Architectural patterns and data flow for the Load Balancing module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Load Balancing",
+    "term": "Load Balancing Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Load Balancing module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Load Balancing",
+    "module": "Load Balancing",
+    "term": "Priority Queue: Core Concepts",
+    "description": "Fundamental principles and definitions of Priority Queue within the Load Balancing module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Load Balancing",
+    "module": "Load Balancing",
+    "term": "Priority Queue: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Priority Queue.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Load Balancing",
+    "module": "Load Balancing",
+    "term": "Priority Queue: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Priority Queue.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Load Balancing",
+    "module": "Load Balancing",
+    "term": "Task Assignment: Core Concepts",
+    "description": "Fundamental principles and definitions of Task Assignment within the Load Balancing module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Load Balancing",
+    "module": "Load Balancing",
+    "term": "Task Assignment: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Task Assignment.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Load Balancing",
+    "module": "Load Balancing",
+    "term": "Task Assignment: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Task Assignment.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Performance",
+    "term": "Performance Module: Core Concepts",
+    "description": "Overview and role of the Performance module within Resource & State Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Performance",
+    "term": "Performance Module: Architecture",
+    "description": "Architectural patterns and data flow for the Performance module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Performance",
+    "term": "Performance Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Performance module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Performance",
+    "module": "Performance",
+    "term": "Response Tracking: Core Concepts",
+    "description": "Fundamental principles and definitions of Response Tracking within the Performance module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Performance",
+    "module": "Performance",
+    "term": "Response Tracking: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Response Tracking.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Performance",
+    "module": "Performance",
+    "term": "Response Tracking: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Response Tracking.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Performance",
+    "module": "Performance",
+    "term": "Bottleneck ID: Core Concepts",
+    "description": "Fundamental principles and definitions of Bottleneck ID within the Performance module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Performance",
+    "module": "Performance",
+    "term": "Bottleneck ID: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Bottleneck ID.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Performance",
+    "module": "Performance",
+    "term": "Bottleneck ID: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Bottleneck ID.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Integrity",
+    "term": "Integrity Module: Core Concepts",
+    "description": "Overview and role of the Integrity module within Resource & State Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Integrity",
+    "term": "Integrity Module: Architecture",
+    "description": "Architectural patterns and data flow for the Integrity module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Integrity",
+    "term": "Integrity Module: Diagnostics",
+    "description": "Auditing and troubleshooting the Integrity module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Integrity",
+    "module": "Integrity",
+    "term": "Cross-Layer Audit: Core Concepts",
+    "description": "Fundamental principles and definitions of Cross-Layer Audit within the Integrity module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Integrity",
+    "module": "Integrity",
+    "term": "Cross-Layer Audit: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Cross-Layer Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Integrity",
+    "module": "Integrity",
+    "term": "Cross-Layer Audit: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Cross-Layer Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Integrity",
+    "module": "Integrity",
+    "term": "Conflict Resolution: Core Concepts",
+    "description": "Fundamental principles and definitions of Conflict Resolution within the Integrity module.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Integrity",
+    "module": "Integrity",
+    "term": "Conflict Resolution: Implementation Strategies",
+    "description": "Code patterns, algorithms, and implementation details for Conflict Resolution.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit -> Integrity",
+    "module": "Integrity",
+    "term": "Conflict Resolution: Optimization & Debugging",
+    "description": "Performance tuning, error handling, and debugging techniques for Conflict Resolution.",
+    "layer": 3
+  }
+]

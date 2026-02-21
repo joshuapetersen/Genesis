@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Linter Daemon",
+    "type": "Guardian",
+    "aggressive": true
+  },
+  {
+    "name": "Test Runner",
+    "type": "Golem",
+    "aggressive": false
+  }
+]

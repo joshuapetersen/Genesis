@@ -1,0 +1,14 @@
+{"timestamp": "2026-02-14T20:15:38.378547", "category": "registry", "discovery": "Mapped all registry hives"}
+{"timestamp": "2026-02-14T20:15:39.734021", "category": "services", "discovery": "Documented 310 Windows services"}
+{"timestamp": "2026-02-14T20:15:43.220931", "category": "processes", "discovery": "Mapped process tree (336 processes)"}
+{"timestamp": "2026-02-14T20:15:45.192543", "category": "network", "discovery": "Network stack mapped (223 connections)"}
+{"timestamp": "2026-02-14T20:15:46.651151", "category": "filesystem", "discovery": "NTFS structure documented"}
+{"timestamp": "2026-02-14T20:15:48.612797", "category": "security", "discovery": "Security model analyzed"}
+{"timestamp": "2026-02-14T20:15:55.154871", "category": "powershell", "discovery": "All cmdlets documented"}
+{"timestamp": "2026-02-14T20:58:43.869895", "category": "registry", "discovery": "Mapped all registry hives"}
+{"timestamp": "2026-02-14T20:58:44.958158", "category": "services", "discovery": "Documented 310 Windows services"}
+{"timestamp": "2026-02-14T20:58:47.747917", "category": "processes", "discovery": "Mapped process tree (326 processes)"}
+{"timestamp": "2026-02-14T20:58:49.074829", "category": "network", "discovery": "Network stack mapped (286 connections)"}
+{"timestamp": "2026-02-14T20:58:50.282082", "category": "filesystem", "discovery": "NTFS structure documented"}
+{"timestamp": "2026-02-14T20:58:51.827353", "category": "security", "discovery": "Security model analyzed"}
+{"timestamp": "2026-02-14T20:58:58.293648", "category": "powershell", "discovery": "All cmdlets documented"}

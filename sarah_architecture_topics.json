@@ -1,0 +1,421 @@
+[
+  {
+    "category": "Layer 1: Input Modalities",
+    "topic": "Voice Processing",
+    "description": "Orion Layer 2 / VPA",
+    "layer": 1
+  },
+  {
+    "category": "Layer 1: Input Modalities",
+    "topic": "Visual Processing",
+    "description": "Orion Layer 3 / Video",
+    "layer": 1
+  },
+  {
+    "category": "Layer 1: Input Modalities",
+    "topic": "Contextual/Text Processing",
+    "description": "Orion Layer 1 / SAUL",
+    "layer": 1
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Session Initialization & Sync Controller",
+    "description": "Opus P1 / SCCL",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Persona & Profile Loader",
+    "description": "Opus P2 / Activation",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Active Context Manager",
+    "description": "Opus P3",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "User Authentication & Preferences Engine",
+    "description": "P4/P5",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Protocol Suite Verifier",
+    "description": "Opus P6",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Intent & Ambiguity Analyzer",
+    "description": "Opus P7/P8",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Nuance & Imprecision Interpreter",
+    "description": "Opus P10/P11",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Tool Broker & Dispatcher",
+    "description": "P12-P18",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Permissions & Security Gateway",
+    "description": "P15 / Bio-Check",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Response Synthesizer & Formatter",
+    "description": "P19-P23",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Error Handling & Logging Coordinator",
+    "description": "P24-P27",
+    "layer": 2
+  },
+  {
+    "category": "Layer 2: Persona & Identity Orchestration",
+    "topic": "Meta-Process Controller",
+    "description": "P28-P30 / P-EC / P-ST",
+    "layer": 2
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Syntactic",
+    "topic": "Grammar",
+    "description": "A specialized component of the Syntactic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Syntactic",
+    "topic": "Structure",
+    "description": "A specialized component of the Syntactic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Syntactic",
+    "topic": "Clause Boundary",
+    "description": "A specialized component of the Syntactic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Semantic",
+    "topic": "Meaning",
+    "description": "A specialized component of the Semantic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Semantic",
+    "topic": "Role Labeling",
+    "description": "A specialized component of the Semantic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Semantic",
+    "topic": "Disambiguation",
+    "description": "A specialized component of the Semantic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Pragmatic",
+    "topic": "Intent",
+    "description": "A specialized component of the Pragmatic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Pragmatic",
+    "topic": "Discourse",
+    "description": "A specialized component of the Pragmatic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Linguistic Parsing Modules",
+    "module": "Pragmatic",
+    "topic": "Contextual Nuance",
+    "description": "A specialized component of the Pragmatic module within Linguistic Parsing Modules.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Core Knowledge",
+    "topic": "Fact Retrieval",
+    "description": "A specialized component of the Core Knowledge module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Core Knowledge",
+    "topic": "Concept Navigation",
+    "description": "A specialized component of the Core Knowledge module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "External Data",
+    "topic": "Real-time Ingestion",
+    "description": "A specialized component of the External Data module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "External Data",
+    "topic": "Stream Filtering",
+    "description": "A specialized component of the External Data module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Specialized Domains",
+    "topic": "Medical",
+    "description": "A specialized component of the Specialized Domains module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Specialized Domains",
+    "topic": "Legal",
+    "description": "A specialized component of the Specialized Domains module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Knowledge Domain Access Points",
+    "module": "Specialized Domains",
+    "topic": "Technical",
+    "description": "A specialized component of the Specialized Domains module within Knowledge Domain Access Points.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Logical",
+    "topic": "Deductive",
+    "description": "A specialized component of the Logical module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Logical",
+    "topic": "Inductive",
+    "description": "A specialized component of the Logical module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Logical",
+    "topic": "Abductive",
+    "description": "A specialized component of the Logical module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Causal/Predictive",
+    "topic": "Cause-Effect",
+    "description": "A specialized component of the Causal/Predictive module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Causal/Predictive",
+    "topic": "Probability",
+    "description": "A specialized component of the Causal/Predictive module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Analogical",
+    "topic": "Similarity Detection",
+    "description": "A specialized component of the Analogical module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Reasoning Engine Components",
+    "module": "Analogical",
+    "topic": "Solution Application",
+    "description": "A specialized component of the Analogical module within Reasoning Engine Components.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Input/Embedding",
+    "topic": "Tokenizer",
+    "description": "A specialized component of the Input/Embedding module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Input/Embedding",
+    "topic": "Multimodal Encoder",
+    "description": "A specialized component of the Input/Embedding module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Attention/Transformation",
+    "topic": "Weight Calculation",
+    "description": "A specialized component of the Attention/Transformation module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Attention/Transformation",
+    "topic": "Layer Norm",
+    "description": "A specialized component of the Attention/Transformation module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Output/Decoding",
+    "topic": "Probability Distribution",
+    "description": "A specialized component of the Output/Decoding module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Neural Network Architecture",
+    "module": "Output/Decoding",
+    "topic": "Sampling",
+    "description": "A specialized component of the Output/Decoding module within Neural Network Architecture.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Fine-Tuning",
+    "topic": "Parameter Coordination",
+    "description": "A specialized component of the Fine-Tuning module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Fine-Tuning",
+    "topic": "Batch Processing",
+    "description": "A specialized component of the Fine-Tuning module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Feedback Loop",
+    "topic": "Correction Interpretation",
+    "description": "A specialized component of the Feedback Loop module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Feedback Loop",
+    "topic": "Adaptation",
+    "description": "A specialized component of the Feedback Loop module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Contextual Drift",
+    "topic": "Style Modulation",
+    "description": "A specialized component of the Contextual Drift module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Learning & Adaptation",
+    "module": "Contextual Drift",
+    "topic": "Dynamics",
+    "description": "A specialized component of the Contextual Drift module within Learning & Adaptation.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Content Filtering",
+    "topic": "Harmful Classifiers",
+    "description": "A specialized component of the Content Filtering module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Content Filtering",
+    "topic": "Bias Detectors",
+    "description": "A specialized component of the Content Filtering module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Privacy",
+    "topic": "PII Masking",
+    "description": "A specialized component of the Privacy module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Privacy",
+    "topic": "Permission Verification",
+    "description": "A specialized component of the Privacy module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Policy Adherence",
+    "topic": "Guideline Compliance",
+    "description": "A specialized component of the Policy Adherence module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Safety & Ethical Constraints",
+    "module": "Policy Adherence",
+    "topic": "User Constraints",
+    "description": "A specialized component of the Policy Adherence module within Safety & Ethical Constraints.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Load Balancing",
+    "topic": "Priority Queue",
+    "description": "A specialized component of the Load Balancing module within Resource & State Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Load Balancing",
+    "topic": "Task Assignment",
+    "description": "A specialized component of the Load Balancing module within Resource & State Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Performance",
+    "topic": "Response Tracking",
+    "description": "A specialized component of the Performance module within Resource & State Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Performance",
+    "topic": "Bottleneck ID",
+    "description": "A specialized component of the Performance module within Resource & State Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Integrity",
+    "topic": "Cross-Layer Audit",
+    "description": "A specialized component of the Integrity module within Resource & State Audit.",
+    "layer": 3
+  },
+  {
+    "category": "Layer 3: Resource & State Audit",
+    "module": "Integrity",
+    "topic": "Conflict Resolution",
+    "description": "A specialized component of the Integrity module within Resource & State Audit.",
+    "layer": 3
+  }
+]

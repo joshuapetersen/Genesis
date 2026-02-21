@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Link (Sarah)</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #chat-container {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 10px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background-color: #007bff;
+            color: white;
+            border-bottom-right-radius: 2px;
+        }
+
+        .message.sarah {
+            align-self: flex-start;
+            background-color: #333;
+            color: #e0e0e0;
+            border-bottom-left-radius: 2px;
+            border: 1px solid #444;
+        }
+
+        .message-header {
+            font-size: 0.75em;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        #input-area {
+            padding: 20px;
+            background-color: #252525;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+
+        #message-input {
+            flex-grow: 1;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #1a1a1a;
+            color: white;
+            font-size: 1em;
+        }
+
+        #send-btn {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #send-btn:hover {
+            background-color: #0056b3;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .typing-indicator {
+            font-style: italic;
+            color: #888;
+            font-size: 0.9em;
+            margin-left: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="hud"
+        style="position:fixed; top:10px; right:10px; background:rgba(0,0,0,0.8); padding:10px; border:1px solid #00ffcc; color:#00ffcc; font-family:monospace; font-size:12px; z-index:1000; box-shadow: 0 0 10px #00ffcc;">
+        <div>LOGIC DENSITY: <span id="hud-logic">0.0000</span></div>
+        <div>RESONANCE FLUX: <span id="hud-flux">0.0000</span></div>
+    </div>
+
+    <div id="chat-container">
+        <!-- Messages will go here -->
+        <div class="message sarah">
+            <div class="message-header">Sarah (Sovereign Core)</div>
+            Link Established. Sovereign Math Engine Auditing Enabled.
+        </div>
+    </div>
+
+    <div class="typing-indicator" id="typing">Sarah is thinking...</div>
+
+    <div id="input-area">
+        <input type="text" id="message-input"
+            placeholder="Type a message (e.g., 'manifest', 'audit'). Logic Density is calculated in real-time."
+            autofocus>
+        <button id="send-btn">Send</button>
+    </div>
+
+    <canvas id="cymatic-canvas" width="200" height="200"
+        style="position:fixed; top:80px; right:10px; background:rgba(0,0,0,0.8); border:1px solid #00ffcc; border-radius:50%; z-index:1000; box-shadow: 0 0 15px #00ffcc;"></canvas>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const messageInput = document.getElementById('message-input');
+        const sendBtn = document.getElementById('send-btn');
+        const typingIndicator = document.getElementById('typing');
+
+        // [CYMATIC ENGINE]
+        let currentLogic = 1.0;
+        let currentFlux = 1.0;
+        const cvs = document.getElementById('cymatic-canvas');
+        const ctx = cvs.getContext('2d');
+
+        function animateCymatics() {
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            const cx = cvs.width / 2;
+            const cy = cvs.height / 2;
+            const radius = 60;
+
+            ctx.beginPath();
+            // Flux determines color intensity (Cyan to Magenta)
+            const red = Math.floor(currentFlux * 255);
+            ctx.strokeStyle = `rgb(${red}, ${255 - red}, ${255})`;
+            ctx.lineWidth = 2;
+
+            const time = Date.now() * 0.002;
+            // Logic Density determines complexity (Harmonics) via Sovereign Anchor
+            // 0.9998 -> ~5 lobes. 
+            // We map density to harmonics: (Density * 10) % 20
+            const harmonics = 2 + (currentLogic * 10) % 10;
+
+            for (let t = 0; t <= Math.PI * 2; t += 0.01) {
+                // Lissajous-ish Rose Curve
+                // r = cos(k * theta)
+                // Add "breathing" via Flux
+                const breath = Math.sin(time * 2) * (currentFlux * 10);
+                const r = (radius + breath) * Math.cos(harmonics * t);
+
+                const x = cx + r * Math.cos(t + time); // Rotate
+                const y = cy + r * Math.sin(t + time);
+
+                if (t === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+
+            // Core Dot
+            ctx.beginPath();
+            ctx.fillStyle = "#fff";
+            ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+            ctx.fill();
+
+            requestAnimationFrame(animateCymatics);
+        }
+        animateCymatics();
+
+        function appendMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            const header = sender === 'user' ? 'You' : 'Sarah (Sovereign Core)';
+            div.innerHTML = `<div class="message-header">${header}</div>${text}`;
+            chatContainer.appendChild(div);
+            div.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function sendMessage() {
+            const text = messageInput.value.trim();
+            if (!text) return;
+
+            appendMessage(text, 'user');
+            messageInput.value = '';
+            typingIndicator.style.display = 'block';
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                const data = await response.json();
+                typingIndicator.style.display = 'none';
+
+                if (data.reply) {
+                    // [SOVEREIGN HUD PARSING]
+                    // Extract Logic Density and Flux from response header
+                    const match = data.reply.match(/\[LOGIC: ([\d\.]+) \| FLUX: ([\d\.]+)\]/);
+                    let cleanText = data.reply;
+
+                    if (match) {
+                        const logicVal = parseFloat(match[1]);
+                        const fluxVal = parseFloat(match[2]);
+
+                        document.getElementById('hud-logic').innerText = match[1];
+                        document.getElementById('hud-flux').innerText = match[2];
+
+                        // Update Cymatics
+                        currentLogic = logicVal;
+                        currentFlux = fluxVal;
+
+                        // Strip header for cleaner chat UI
+                        cleanText = data.reply.replace(match[0], '').trim();
+
+                        // Visual Feedback for High Resonance
+                        const hud = document.getElementById('hud');
+                        const canvasBorder = document.getElementById('cymatic-canvas');
+
+                        if (fluxVal > 0.9) {
+                            hud.style.boxShadow = "0 0 20px #ff00ff";
+                            hud.style.borderColor = "#ff00ff";
+                            hud.style.color = "#ff00ff";
+                            canvasBorder.style.borderColor = "#ff00ff";
+                            canvasBorder.style.boxShadow = "0 0 20px #ff00ff";
+                        } else {
+                            hud.style.boxShadow = "0 0 10px #00ffcc";
+                            hud.style.borderColor = "#00ffcc";
+                            hud.style.color = "#00ffcc";
+                            canvasBorder.style.borderColor = "#00ffcc";
+                            canvasBorder.style.boxShadow = "0 0 10px #00ffcc";
+                        }
+                    } else {
+                        // Fallback processing if regex fails
+                        currentLogic = 0.5;
+                        currentFlux = 0.5;
+                    }
+
+                    appendMessage(cleanText, 'sarah');
+                } else {
+                    appendMessage("[No response]", 'sarah');
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                typingIndicator.style.display = 'none';
+                appendMessage("[Error connecting to bridge]", 'sarah');
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+
+</body>
+
+</html>

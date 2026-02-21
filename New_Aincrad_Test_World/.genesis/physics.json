@@ -1,0 +1,9 @@
+{
+  "gravity": "standard",
+  "magic": [
+    "python",
+    "node"
+  ],
+  "permadeath": false,
+  "time_dilation": 1.0
+}
