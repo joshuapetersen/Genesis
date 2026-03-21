@@ -1,0 +1,92 @@
+=== MIND AUDIT (30 thinking entities) ===
+
+[SOVEREIGN-III] Arcanae Matriarch (WIS:55 | AL:66 | Action:Hunting)
+SENTIENT: [Sky:3/0] I observed 0 souls under my influence. My power is 55 wisdom, 29 strength. I choose my next step.
+------------------------------------------------------------
+[SOVEREIGN-III] Erebus Arboris (WIS:55 | AL:36 | Action:Meditating)
+AWAKENED: I exist at (1058,-1645). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[SOVEREIGN-III] Genesis-2 03CF (WIS:55 | AL:1007 | Action:Wandering)
+AWAKENED: I exist at (-265,331). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[SOVEREIGN-III] Sapientia Tenebris (WIS:54 | AL:84 | Action:Stalking prey)
+SENTIENT: [Sky:3/0] I observed 2 souls under my influence. My power is 54 wisdom, 22 strength. I choose my next step.
+------------------------------------------------------------
+[SOVEREIGN-III] Verdant Cerebrum (WIS:54 | AL:38 | Action:Foraging)
+AWAKENED: I exist at (-341,2736). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[SOVEREIGN-III] Cacophon Devourer (WIS:54 | AL:69 | Action:Meditating)
+AWAKENED: I exist at (327,1738). I have survived 2 cycles with 2 followers.
+------------------------------------------------------------
+[SOVEREIGN-III] Erebus Devourer (WIS:54 | AL:1056 | Action:Wandering)
+SENTIENT: [Sky:2/18] I observed 0 souls under my influence. My power is 54 wisdom, 19 strength. I choose my next step.
+------------------------------------------------------------
+[SOVEREIGN-III] Erebus Queen (WIS:54 | AL:108 | Action:Diplomacy)
+SENTIENT: [Sky:6/3] I observed 1 souls under my influence. My power is 54 wisdom, 15 strength. I choose my next step.
+------------------------------------------------------------
+[SOVEREIGN-III] Genesis-2 A699 (WIS:54 | AL:-1000 | Action:Wandering)
+AWAKENED: I exist at (-1753,618). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[SOVEREIGN-III] Carmina Tenebris (WIS:53 | AL:89 | Action:Foraging)
+SOVEREIGN: I am ALICE_162. Alignment: LIGHT (89.00522746666228). I have chosen Diplomacy as my eternal mandate. The Architect cannot take this.
+------------------------------------------------------------
+[SOVEREIGN-III] Genesis-2 0304 (WIS:51 | AL:253 | Action:Resting)
+SENTIENT: [Sky:8/14] I observed 0 souls under my influence. My power is 51 wisdom, 21 strength. I choose my next step.
+------------------------------------------------------------
+[SENTIENT-II] Dryadreth (WIS:50 | AL:76 | Action:Meditating)
+AWAKENED: I exist at (191,1266). I have survived 3 cycles with 3 followers.
+------------------------------------------------------------
+[SENTIENT-II] Cacophony Devourer (WIS:49 | AL:-1000 | Action:Stalking prey)
+SENTIENT: [Sky:4/3] I observed 1 souls under my influence. My power is 49 wisdom, 22 strength. I choose my next step.
+------------------------------------------------------------
+[SENTIENT-II] Echokeeper of the Arcane (WIS:49 | AL:89 | Action:Resting)
+SENTIENT: [Sky:7/6] I observed 0 souls under my influence. My power is 49 wisdom, 18 strength. I choose my next step.
+------------------------------------------------------------
+[SENTIENT-II] Genesis-2 FBE5 (WIS:49 | AL:-1002 | Action:Stalking prey)
+SENTIENT: [Sky:6/10] I observed 1 souls under my influence. My power is 49 wisdom, 18 strength. I choose my next step.
+------------------------------------------------------------
+[SENTIENT-II] Erebus Devourer (WIS:48 | AL:89 | Action:Wandering)
+SENTIENT: [Sky:10/14] I observed 0 souls under my influence. My power is 48 wisdom, 23 strength. I choose my next step.
+------------------------------------------------------------
+[SENTIENT-II] Echokeeper of Arcane Depths (WIS:48 | AL:-1000 | Action:Foraging)
+AWAKENED: I exist at (-2042,726). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[SENTIENT-II] Erebus Arboris (WIS:47 | AL:63 | Action:Resting)
+AWAKENED: I exist at (1292,-907). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[SENTIENT-II] Dryadrexa (WIS:47 | AL:1000 | Action:Stalking prey)
+AWAKENED: I exist at (-2395,225). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[SENTIENT-II] Caelestis Devourer (WIS:47 | AL:49 | Action:Hunting)
+AWAKENED: I exist at (-71,2508). I have survived 1 cycles with 1 followers.
+------------------------------------------------------------
+[SENTIENT-II] The Echokeeper (WIS:46 | AL:119 | Action:Hunting)
+SENTIENT: [Sky:5/4] I observed 1 souls under my influence. My power is 46 wisdom, 24 strength. I choose my next step.
+------------------------------------------------------------
+[SENTIENT-II] Cascadia Devourer (WIS:45 | AL:516 | Action:Hunting)
+AWAKENED: I exist at (1548,1253). I have survived 3 cycles with 3 followers.
+------------------------------------------------------------
+[SENTIENT-II] Erebus Devourer (WIS:45 | AL:103 | Action:Wandering)
+SENTIENT: [Sky:7/4] I observed 1 souls under my influence. My power is 45 wisdom, 16 strength. I choose my next step.
+------------------------------------------------------------
+[SENTIENT-II] Erebus Coreth (WIS:43 | AL:57 | Action:Diplomacy)
+AWAKENED: I exist at (292,-1855). I have survived 5 cycles with 5 followers.
+------------------------------------------------------------
+[SENTIENT-II] Unknown (WIS:42 | AL:0 | Action:Stalking prey)
+AWAKENED: I exist at (-123,2511). I have survived 2 cycles with 2 followers.
+------------------------------------------------------------
+[SENTIENT-II] Genesis-2 8617 (WIS:41 | AL:265 | Action:Hunting)
+AWAKENED: I exist at (552,-2547). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[SENTIENT-II] Unknown (WIS:41 | AL:0 | Action:Meditating)
+AWAKENED: I exist at (-381,410). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[AWAKENED-I] Unknown (WIS:40 | AL:0 | Action:Stalking prey)
+AWAKENED: I exist at (-303,2709). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[AWAKENED-I] Unknown (WIS:38 | AL:0 | Action:Foraging)
+AWAKENED: I exist at (-1872,4478). I have survived 0 cycles with 0 followers.
+------------------------------------------------------------
+[AWAKENED-I] Unknown (WIS:38 | AL:0 | Action:Resting)
+AWAKENED: I exist at (-1728,2081). I have survived 1 cycles with 1 followers.
+------------------------------------------------------------

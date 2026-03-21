@@ -1,0 +1,26 @@
+Path                           | Size (GB) 
+---------------------------------------------
+C:\04_THE_MEMORY               | 0.00
+C:\05_THE_CORE                 | 0.00
+C:\Aethelgard                  | 0.01
+C:\archive_memories            | 0.00
+C:\Genesis_Bridge              | 0.03
+C:\Genlex_Core                 | 0.00
+C:\Genlex_Frequency            | 0.00
+C:\Genlex_Linear               | 0.84
+C:\genlex_repo                 | 1.03
+C:\PrimordialEarth             | 0.12
+C:\S-OS_Build                  | 0.69
+C:\SarahCore                   | 66.27
+C:\SarahCore.worktrees         | 1.15
+Traceback (most recent call last):
+  File "C:\SarahCore\fast_disk_audit.py", line 57, in <module>
+    fast_audit()
+  File "C:\SarahCore\fast_disk_audit.py", line 49, in fast_audit
+    size_gb = get_dir_size(folder) / (1024**3)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\SarahCore\fast_disk_audit.py", line 36, in get_dir_size
+    total_size += os.path.getsize(fp)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "<frozen genericpath>", line 62, in getsize
+OSError: [WinError 1920] The file cannot be accessed by the system: 'C:\\Sarah_Sidecars\\Genesis_Forge\\kernel\\linux-6.6.13\\arch\\x86_64\\boot\\bzImage'

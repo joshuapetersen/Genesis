@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  genesis-api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - CONFIG_PATH=/app/config.json
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./config:/app/config
+      - ./logs:/app/logs
+    depends_on:
+      - redis
+      - postgres
+
+  file-service:
+    build: ./file-service
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - redis
+
+  process-service:
+    build: ./process-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - file-service
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: sarahcore
+      POSTGRES_USER: sarah
+      POSTGRES_PASSWORD: securepassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  redis_data:
+  postgres_data:

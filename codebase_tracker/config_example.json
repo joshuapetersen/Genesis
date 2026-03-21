@@ -1,0 +1,95 @@
+{
+    "ignore_patterns": [
+        ".git",
+        ".svn",
+        ".hg",
+        "node_modules",
+        "__pycache__",
+        ".vscode",
+        ".idea",
+        "*.log",
+        "*.tmp",
+        "*.bak",
+        "*.swp",
+        "build",
+        "dist",
+        "target",
+        "out",
+        ".gitignore",
+        ".env",
+        "*.env",
+        "coverage",
+        ".coverage",
+        "*.pyc",
+        "*.pyo",
+        "*.egg-info",
+        ".pytest_cache",
+        ".tox",
+        "venv",
+        "env",
+        ".venv"
+    ],
+    "max_file_size": 2097152,
+    "scan_depth": 10,
+    "track_dependencies": true,
+    "track_complexity": true,
+    "file_type_mappings": {
+        ".py": "python",
+        ".js": "javascript",
+        ".ts": "typescript",
+        ".jsx": "react",
+        ".tsx": "react-typescript",
+        ".java": "java",
+        ".cpp": "c++",
+        ".c": "c",
+        ".cs": "csharp",
+        ".go": "go",
+        ".rust": "rust",
+        ".rb": "ruby",
+        ".php": "php",
+        ".swift": "swift",
+        ".kt": "kotlin",
+        ".html": "html",
+        ".css": "css",
+        ".scss": "scss",
+        ".less": "less",
+        ".json": "json",
+        ".yaml": "yaml",
+        ".yml": "yaml",
+        ".xml": "xml",
+        ".md": "markdown",
+        ".txt": "text",
+        ".sql": "sql",
+        ".sh": "shell",
+        ".bat": "batch",
+        ".ps1": "powershell"
+    },
+    "complexity_thresholds": {
+        "simple": [
+            1,
+            5
+        ],
+        "moderate": [
+            6,
+            15
+        ],
+        "complex": [
+            16,
+            30
+        ],
+        "very_complex": [
+            31,
+            999
+        ]
+    },
+    "search_settings": {
+        "max_results": 100,
+        "context_lines": 3,
+        "case_sensitive_default": false
+    },
+    "metrics": {
+        "complexity_weight": 1.0,
+        "lines_of_code_weight": 0.1,
+        "dependency_weight": 0.5
+    }
+}

@@ -1,0 +1,416 @@
+======================================================================
+  S.A.R.A.H. GENESIS — SURVIVOR CENSUS
+  Timestamp : 2026-02-25 10:41:52
+  Sim Year  : 5,368
+  Alive     : 34
+  Dead      : 252
+======================================================================
+
+[001] Erebus Devourer
+      Soul ID      : ALICE_101
+      Species      : BIO-001
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Stalking prey
+      Energy       : 338.56
+      Alignment    : 2
+      Age (years)  : 5960.4
+      Position     : (-263.3, 364.5)
+      Genome       : 03c44b0195b50d97
+
+[002] Abaddonix
+      Soul ID      : ALICE_120
+      Species      : BIO-008
+      Role         : Unknown
+      Personality  : Territorial
+      Action       : Hunting
+      Energy       : 330.12
+      Alignment    : -70
+      Age (years)  : 5960.4
+      Position     : (-1738.5, -686.4)
+      Genome       : 94115650210e0c8f
+
+[003] Cacophoria, Echo of the Abyssal Pool
+      Soul ID      : ALICE_168
+      Species      : BIO-001
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Hunting
+      Energy       : 328.05
+      Alignment    : -24
+      Age (years)  : 5960.4
+      Position     : (1878.4, -1663.5)
+      Genome       : c2a5160c9b717847
+
+[004] Echokeeper of Arcane Depths
+      Soul ID      : ALICE_261
+      Species      : BIO-001
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Raiding
+      Energy       : 318.03
+      Alignment    : -23
+      Age (years)  : 5960.4
+      Position     : (-2042.4, 726.7)
+      Genome       : 156946b902700d87
+
+[005] Aethonix, Umbra Forger
+      Soul ID      : ALICE_33
+      Species      : BIO-005
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Fleeing
+      Energy       : 309.08
+      Alignment    : -10
+      Age (years)  : 5960.4
+      Position     : (128.0, -29.2)
+      Genome       : 8b5e9b114adbe72f
+
+[006] Cataclysmic Sylphrena
+      Soul ID      : ALICE_117
+      Species      : BIO-002
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Stalking prey
+      Energy       : 290.14
+      Alignment    : 39
+      Age (years)  : 5960.4
+      Position     : (191.4, -1655.0)
+      Genome       : 6bec75961d4d7e16
+
+[007] Aetherspire
+      Soul ID      : ALICE_184
+      Species      : BIO-002
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Stalking prey
+      Energy       : 286.59
+      Alignment    : -125
+      Age (years)  : 5960.4
+      Position     : (-305.0, -3062.4)
+      Genome       : d3940b9ab6a18f0a
+
+[008] Luminari Devourer
+      Soul ID      : ALICE_74
+      Species      : BIO-005
+      Role         : Unknown
+      Personality  : Aggressive
+      Action       : Fleeing
+      Energy       : 259.16
+      Alignment    : 92
+      Age (years)  : 5960.4
+      Position     : (1969.2, 1138.6)
+      Genome       : 54a12eb68bbf36b9
+
+[009] Echoflux Devourer
+      Soul ID      : ALICE_127
+      Species      : BIO-002
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Stalking prey
+      Energy       : 221.51
+      Alignment    : 20
+      Age (years)  : 5960.4
+      Position     : (-2061.3, -1324.5)
+      Genome       : 901e65e9570f0dde
+
+[010] Khrognok, Devourer of Reflections
+      Soul ID      : ALICE_129
+      Species      : BIO-008
+      Role         : Unknown
+      Personality  : Curious
+      Action       : Raiding
+      Energy       : 207.22
+      Alignment    : -44
+      Age (years)  : 5960.4
+      Position     : (2390.0, 34.9)
+      Genome       : ac65799da4ddce26
+
+[011] Proto_820dad
+      Soul ID      : 820dad08
+      Species      : Primordial
+      Role         : Genesis Spawn
+      Personality  : Neutral
+      Action       : Trading
+      Energy       : 178.72
+      Alignment    : -2
+      Age (years)  : 5960.4
+      Position     : (1768.5, 2055.1)
+      Genome       : 0x73771fa9595ce2cb
+
+[012] Echokeeper of the Abyssal Hymn
+      Soul ID      : ALICE_28
+      Species      : BIO-009
+      Role         : Unknown
+      Personality  : Parasitic
+      Action       : Trading
+      Energy       : 177.00
+      Alignment    : 31
+      Age (years)  : 5960.4
+      Position     : (875.6, 1119.1)
+      Genome       : a75c25594901ed0e
+
+[013] Crepuscular Devourer
+      Soul ID      : ALICE_45
+      Species      : BIO-005
+      Role         : Unknown
+      Personality  : Symbiotic
+      Action       : Building territory
+      Energy       : 162.25
+      Alignment    : -3
+      Age (years)  : 5960.4
+      Position     : (36.1, -3107.2)
+      Genome       : f470446aa46c3402
+
+[014] Unknown
+      Soul ID      : ccf4a9e8
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Trading
+      Energy       : 155.91
+      Alignment    : -56
+      Age (years)  : 5960.4
+      Position     : (463.5, 541.4)
+      Genome       : 0x7627d904fa8a7004
+
+[015] Abaddonus Crawler
+      Soul ID      : ALICE_29
+      Species      : BIO-003
+      Role         : Unknown
+      Personality  : Aggressive
+      Action       : Building territory
+      Energy       : 152.32
+      Alignment    : 48
+      Age (years)  : 5960.4
+      Position     : (-96.0, 266.7)
+      Genome       : fbe5ecd8ccdc201c
+
+[016] Ophidian Matriarch of Ephemeral Luminance
+      Soul ID      : ALICE_124
+      Species      : BIO-002
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Trading
+      Energy       : 136.67
+      Alignment    : -119
+      Age (years)  : 5960.4
+      Position     : (-185.0, 28.6)
+      Genome       : 770a7938c0e80e6b
+
+[017] Aeropex Oblivion
+      Soul ID      : ALICE_245
+      Species      : BIO-007
+      Role         : Unknown
+      Personality  : Parasitic
+      Action       : Trading
+      Energy       : 125.39
+      Alignment    : -27
+      Age (years)  : 5960.4
+      Position     : (1106.3, -732.4)
+      Genome       : 1812b2aea9fb1598
+
+[018] Erebusia
+      Soul ID      : ALICE_160
+      Species      : BIO-001
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Building territory
+      Energy       : 107.59
+      Alignment    : 43
+      Age (years)  : 5960.4
+      Position     : (-629.6, -150.9)
+      Genome       : 583b74790262e453
+
+[019] Cacophorax
+      Soul ID      : ALICE_46
+      Species      : BIO-008
+      Role         : Unknown
+      Personality  : Parasitic
+      Action       : Building territory
+      Energy       : 107.39
+      Alignment    : 70
+      Age (years)  : 5960.4
+      Position     : (2719.8, -50.2)
+      Genome       : 8c6ba06d598afca2
+
+[020] Aeropex: Stormsurge
+      Soul ID      : ALICE_106
+      Species      : BIO-007
+      Role         : Unknown
+      Personality  : Nomadic
+      Action       : Building territory
+      Energy       : 81.75
+      Alignment    : 70
+      Age (years)  : 5960.4
+      Position     : (19.4, -1720.7)
+      Genome       : 99d7996ea22dd699
+
+[021] Proto_14dec5
+      Soul ID      : 14dec542
+      Species      : Primordial
+      Role         : Genesis Spawn
+      Personality  : Neutral
+      Action       : Resting
+      Energy       : 61.09
+      Alignment    : 2
+      Age (years)  : 5960.4
+      Position     : (1310.9, 811.6)
+      Genome       : 0xad55eab5c3f86e7d
+
+[022] Elderwood Wraith
+      Soul ID      : ALICE_183
+      Species      : BIO-001
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Patrolling
+      Energy       : 45.70
+      Alignment    : -33
+      Age (years)  : 5960.4
+      Position     : (-173.7, -1646.5)
+      Genome       : a52a16cd99d6c2ad
+
+[023] Abyssal Cacophony
+      Soul ID      : ALICE_1
+      Species      : BIO-005
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Wandering
+      Energy       : 38.89
+      Alignment    : -51
+      Age (years)  : 5960.4
+      Position     : (971.9, -3272.6)
+      Genome       : 58603aaf9bb42b57
+
+[024] Cerberus Scarabrix
+      Soul ID      : ALICE_141
+      Species      : BIO-003
+      Role         : Unknown
+      Personality  : Territorial
+      Action       : Resting
+      Energy       : 28.66
+      Alignment    : 22
+      Age (years)  : 5960.4
+      Position     : (2298.1, 1458.1)
+      Genome       : c2d8db6cf27368ce
+
+[025] Elysian Screamstress
+      Soul ID      : ALICE_69
+      Species      : BIO-005
+      Role         : Unknown
+      Personality  : Docile
+      Action       : Resting
+      Energy       : 26.23
+      Alignment    : 53
+      Age (years)  : 5960.4
+      Position     : (-1879.1, 1129.7)
+      Genome       : 0b660efc1e4eef47
+
+[026] Erebus Devourer
+      Soul ID      : ALICE_59
+      Species      : BIO-005
+      Role         : Unknown
+      Personality  : Nomadic
+      Action       : Foraging
+      Energy       : 18.43
+      Alignment    : 53
+      Age (years)  : 5960.4
+      Position     : (-3431.8, 1205.8)
+      Genome       : 4f13c75443f1d2e4
+
+[027] Unknown
+      Soul ID      : e9612f1c
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Patrolling
+      Energy       : 46.05
+      Alignment    : -50
+      Age (years)  : 5426.4
+      Position     : (756.4, 762.6)
+      Genome       : 0x7586bf0f7b3d73a5
+
+[028] Unknown
+      Soul ID      : 794520a9
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Diplomacy
+      Energy       : 103.70
+      Alignment    : 43
+      Age (years)  : 4197.3
+      Position     : (-767.6, 194.3)
+      Genome       : 0x5f4cc05dfe7b4ddf
+
+[029] Unknown
+      Soul ID      : 61037a59
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Trading
+      Energy       : 121.20
+      Alignment    : -71
+      Age (years)  : 3587.2
+      Position     : (89.2, 531.5)
+      Genome       : 0xe1dc9edba8ad6a7c
+
+[030] Unknown
+      Soul ID      : 4b226ba4
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Diplomacy
+      Energy       : 82.54
+      Alignment    : 31
+      Age (years)  : 2977.1
+      Position     : (-423.8, -324.3)
+      Genome       : 0x655cc8f23065d2cb
+
+[031] Unknown
+      Soul ID      : 290b46b8
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Building territory
+      Energy       : 166.99
+      Alignment    : -55
+      Age (years)  : 2367.1
+      Position     : (22.1, 272.2)
+      Genome       : 0x8709614a56503b81
+
+[032] Unknown
+      Soul ID      : 33ba3358
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Trading
+      Energy       : 150.61
+      Alignment    : -18
+      Age (years)  : 1757.0
+      Position     : (283.2, -241.2)
+      Genome       : 0x5ec0ea7fc0d38a79
+
+[033] Unknown
+      Soul ID      : 792136ef
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Resting
+      Energy       : 49.09
+      Alignment    : 0
+      Age (years)  : 1146.9
+      Position     : (699.7, -39.5)
+      Genome       : 0xd4a8b1374d28c66a
+
+[034] Unknown
+      Soul ID      : 6fa0c619
+      Species      : Unknown
+      Role         : Wanderer
+      Personality  : Neutral
+      Action       : Trading
+      Energy       : 114.06
+      Alignment    : 13
+      Age (years)  : 536.9
+      Position     : (-43.0, 231.3)
+      Genome       : 0x4cf2781f936b7d0e
+

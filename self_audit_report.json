@@ -1,0 +1,4197 @@
+{
+  "timestamp": 1770601832.6728795,
+  "total_files": 213,
+  "total_lines": 24190,
+  "total_issues": 448,
+  "average_score": 89.48,
+  "top_issues": [
+    {
+      "file": "autonomous_audit_loop.py",
+      "full_path": "c:\\SarahCore\\autonomous_audit_loop.py",
+      "type": "documentation",
+      "line": 35,
+      "message": "Missing docstring for \"main\"",
+      "best_practice": "docstrings"
+    },
+    {
+      "file": "simulate_deep_scan.py",
+      "full_path": "c:\\SarahCore\\simulate_deep_scan.py",
+      "type": "naming",
+      "line": 20,
+      "message": "Variable \"filter\" shadows a Python built-in",
+      "best_practice": "shadowing"
+    },
+    {
+      "file": "Ace.py",
+      "full_path": "c:\\SarahCore\\Ace.py",
+      "type": "magic_number",
+      "line": 4,
+      "message": "Magic number 10 detected",
+      "best_practice": "avoid_magic_numbers"
+    },
+    {
+      "file": "Ace.py",
+      "full_path": "c:\\SarahCore\\Ace.py",
+      "type": "magic_number",
+      "line": 5,
+      "message": "Magic number 45 detected",
+      "best_practice": "avoid_magic_numbers"
+    },
+    {
+      "file": "Ace_Token.py",
+      "full_path": "c:\\SarahCore\\Ace_Token.py",
+      "type": "magic_number",
+      "line": 9,
+      "message": "Magic number 1000 detected",
+      "best_practice": "avoid_magic_numbers"
+    },
+    {
+      "file": "Ace_Token.py",
+      "full_path": "c:\\SarahCore\\Ace_Token.py",
+      "type": "magic_number",
+      "line": 10,
+      "message": "Magic number 3 detected",
+      "best_practice": "avoid_magic_numbers"
+    },
+    {
+      "file": "Ace_Token.py",
+      "full_path": "c:\\SarahCore\\Ace_Token.py",
+      "type": "magic_number",
+      "line": 11,
+      "message": "Magic number 32 detected",
+      "best_practice": "avoid_magic_numbers"
+    },
+    {
+      "file": "Ace_Token.py",
+      "full_path": "c:\\SarahCore\\Ace_Token.py",
+      "type": "magic_number",
+      "line": 12,
+      "message": "Magic number 4 detected",
+      "best_practice": "avoid_magic_numbers"
+    },
+    {
+      "file": "Ace_Token.py",
+      "full_path": "c:\\SarahCore\\Ace_Token.py",
+      "type": "magic_number",
+      "line": 13,
+      "message": "Magic number 86400 detected",
+      "best_practice": "avoid_magic_numbers"
+    },
+    {
+      "file": "ACE_Token_Engine.py",
+      "full_path": "c:\\SarahCore\\ACE_Token_Engine.py",
+      "type": "magic_number",
+      "line": 5,
+      "message": "Magic number 1000 detected",
+      "best_practice": "avoid_magic_numbers"
+    }
+  ],
+  "scan_time_seconds": 27.21,
+  "gpu_accelerated": true,
+  "file_results": [
+    {
+      "file": "c:\\SarahCore\\Ace.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 45 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 96
+    },
+    {
+      "file": "c:\\SarahCore\\Ace_Token.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 32 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 86400 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 75,
+      "lines": 117
+    },
+    {
+      "file": "c:\\SarahCore\\ACE_Token_Engine.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 16 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 27 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 28 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 80,
+      "lines": 83
+    },
+    {
+      "file": "c:\\SarahCore\\ace_word_indexer.py",
+      "issues": [],
+      "score": 100,
+      "lines": 225
+    },
+    {
+      "file": "c:\\SarahCore\\ace_word_retrieval.py",
+      "issues": [],
+      "score": 100,
+      "lines": 99
+    },
+    {
+      "file": "c:\\SarahCore\\Admin_Actuator.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 134217728 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 91
+    },
+    {
+      "file": "c:\\SarahCore\\admin_bridge.py",
+      "issues": [],
+      "score": 100,
+      "lines": 80
+    },
+    {
+      "file": "c:\\SarahCore\\Anchor_Attention.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 2,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 5000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 80,
+      "lines": 74
+    },
+    {
+      "file": "c:\\SarahCore\\ask_sarah.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 5,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 41
+    },
+    {
+      "file": "c:\\SarahCore\\ask_sarah_improvement.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 200 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 6,
+          "message": "Potential hardcoded path or URL: \"http://localhost:3400/sarahStr\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 23
+    },
+    {
+      "file": "c:\\SarahCore\\assemble_model.py",
+      "issues": [],
+      "score": 100,
+      "lines": 25
+    },
+    {
+      "file": "c:\\SarahCore\\Audio_Core.py",
+      "issues": [],
+      "score": 100,
+      "lines": 132
+    },
+    {
+      "file": "c:\\SarahCore\\audit_codebase.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 46,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 47
+    },
+    {
+      "file": "c:\\SarahCore\\audit_memory.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 33
+    },
+    {
+      "file": "c:\\SarahCore\\autonomous_audit_loop.py",
+      "issues": [
+        {
+          "type": "documentation",
+          "line": 35,
+          "message": "Missing docstring for \"main\"",
+          "best_practice": "docstrings"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 80.0 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 14,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 36,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 38,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 67,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 63,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 65,
+      "lines": 71
+    },
+    {
+      "file": "c:\\SarahCore\\auto_patch_empty_blocks.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 7,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 122
+    },
+    {
+      "file": "c:\\SarahCore\\awesome_skills_tool.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 83
+    },
+    {
+      "file": "c:\\SarahCore\\Banshee_Shield.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 8 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 33
+    },
+    {
+      "file": "c:\\SarahCore\\BSD_Conjecture_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\build_world_class_encyclopedia.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 423,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\data\\encyclopedia\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 516
+    },
+    {
+      "file": "c:\\SarahCore\\Calendar_Registry.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 15 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 16,
+          "message": "Potential hardcoded path or URL: \"https://www.googleapis.com/aut\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 80,
+      "lines": 166
+    },
+    {
+      "file": "c:\\SarahCore\\Code_Chaos_Auditor.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\coding_encyclopedia_indexer.py",
+      "issues": [],
+      "score": 100,
+      "lines": 951
+    },
+    {
+      "file": "c:\\SarahCore\\coding_knowledge.py",
+      "issues": [],
+      "score": 100,
+      "lines": 97
+    },
+    {
+      "file": "c:\\SarahCore\\Collatz_Conjecture_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\Consensus_Voter.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 0.2 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 0.3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 0.4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 0.6 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 0.7 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 0.8 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 0.95 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 55,
+      "lines": 121
+    },
+    {
+      "file": "c:\\SarahCore\\Consolidation_Logic.py",
+      "issues": [],
+      "score": 100,
+      "lines": 62
+    },
+    {
+      "file": "c:\\SarahCore\\council_simulation.py",
+      "issues": [],
+      "score": 100,
+      "lines": 44
+    },
+    {
+      "file": "c:\\SarahCore\\debug_db_tables.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 40
+    },
+    {
+      "file": "c:\\SarahCore\\debug_harvester_response.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 0.3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 120 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 4096 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 9,
+          "message": "Potential hardcoded path or URL: \"http://localhost:11434/api/gen\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 80,
+      "lines": 70
+    },
+    {
+      "file": "c:\\SarahCore\\deconstruction_watchdog.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 120 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 45,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\audit_full.log\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 54,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\START.md\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 80,
+      "lines": 85
+    },
+    {
+      "file": "c:\\SarahCore\\Dialectical_Logic_Core.py",
+      "issues": [],
+      "score": 100,
+      "lines": 125
+    },
+    {
+      "file": "c:\\SarahCore\\dictionary_indexer.py",
+      "issues": [],
+      "score": 100,
+      "lines": 254
+    },
+    {
+      "file": "c:\\SarahCore\\dictionary_retrieval.py",
+      "issues": [],
+      "score": 100,
+      "lines": 74
+    },
+    {
+      "file": "c:\\SarahCore\\Disposable_Agency.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 0.3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 0.4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 2048 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 256 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 4096 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 32,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\models\\disposable\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 37,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\models\\disposable\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 60,
+      "lines": 162
+    },
+    {
+      "file": "c:\\SarahCore\\download_brain.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 8192 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 10,
+          "message": "Potential hardcoded path or URL: \"https://huggingface.co/dphn/do\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 11,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\models\\dolphin-2.\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 75,
+      "lines": 49
+    },
+    {
+      "file": "c:\\SarahCore\\download_hive.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 8192 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 25,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\models\\disposable\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 13,
+          "message": "Potential hardcoded path or URL: \"https://huggingface.co/lmstudi\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 19,
+          "message": "Potential hardcoded path or URL: \"https://huggingface.co/Qwen/Qw\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 70,
+      "lines": 71
+    },
+    {
+      "file": "c:\\SarahCore\\download_worker.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 8192 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 12,
+          "message": "Potential hardcoded path or URL: \"https://huggingface.co/bartows\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 13,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\models\\Llama-3.2-\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 75,
+      "lines": 55
+    },
+    {
+      "file": "c:\\SarahCore\\Drive_Downloader.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 8080 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 12,
+          "message": "Potential hardcoded path or URL: \"https://www.googleapis.com/aut\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 73
+    },
+    {
+      "file": "c:\\SarahCore\\expand_encyclopedia.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 62,
+          "message": "Potential hardcoded path or URL: \"import asyncio\nimport aiohttp\n\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 511
+    },
+    {
+      "file": "c:\\SarahCore\\extract_top_issues.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 40 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 99 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 8,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\self_audit_report\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 29,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 75,
+      "lines": 105
+    },
+    {
+      "file": "c:\\SarahCore\\Factual_Integrity_Analyzer.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 63
+    },
+    {
+      "file": "c:\\SarahCore\\Feedback_Integration.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 129
+    },
+    {
+      "file": "c:\\SarahCore\\find_blocked_file.py",
+      "issues": [],
+      "score": 100,
+      "lines": 20
+    },
+    {
+      "file": "c:\\SarahCore\\Force_Lock_Math_Engine.py",
+      "issues": [],
+      "score": 100,
+      "lines": 92
+    },
+    {
+      "file": "c:\\SarahCore\\Fractal_Convergence_Scanner.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 94
+    },
+    {
+      "file": "c:\\SarahCore\\Fractal_Logic_Gate.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 2,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 9 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 127
+    },
+    {
+      "file": "c:\\SarahCore\\Fractal_Math_Bridge.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 0.2 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 85,
+      "lines": 61
+    },
+    {
+      "file": "c:\\SarahCore\\full_dictionary_indexer.py",
+      "issues": [],
+      "score": 100,
+      "lines": 326
+    },
+    {
+      "file": "c:\\SarahCore\\Gap_Analysis.py",
+      "issues": [],
+      "score": 100,
+      "lines": 75
+    },
+    {
+      "file": "c:\\SarahCore\\Gemini_Genesis_Core.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 111
+    },
+    {
+      "file": "c:\\SarahCore\\genesis_core.py",
+      "issues": [],
+      "score": 100,
+      "lines": 27
+    },
+    {
+      "file": "c:\\SarahCore\\Genesis_Core_Rebuild.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 2,
+          "message": "Magic number 299792458.0 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 85,
+      "lines": 65
+    },
+    {
+      "file": "c:\\SarahCore\\Genesis_Kernel.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 0.05 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 1.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 16,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\system_heartbeat.\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 109,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\Sovereign_BlackBo\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 65,
+      "lines": 147
+    },
+    {
+      "file": "c:\\SarahCore\\Genesis_Protocol.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 600 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 125,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 126
+    },
+    {
+      "file": "c:\\SarahCore\\Geometric_Algebra_Core.py",
+      "issues": [],
+      "score": 100,
+      "lines": 242
+    },
+    {
+      "file": "c:\\SarahCore\\Goldbach_Conjecture_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\google_dev_knowledge_ingester.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 500 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 443,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\knowledge_ingesti\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 26,
+          "message": "Potential hardcoded path or URL: \"https://developerknowledge.goo\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 75,
+      "lines": 453
+    },
+    {
+      "file": "c:\\SarahCore\\google_tech_ingester.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 500 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 23,
+          "message": "Potential hardcoded path or URL: \"https://developerknowledge.goo\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 80,
+      "lines": 164
+    },
+    {
+      "file": "c:\\SarahCore\\gpis_indexer.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 82,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\drive_extracted\\S\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 83,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\archive_memories\\\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 84,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\04_THE_MEMORY\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 80,
+      "lines": 98
+    },
+    {
+      "file": "c:\\SarahCore\\gpu_performance_test.py",
+      "issues": [],
+      "score": 100,
+      "lines": 80
+    },
+    {
+      "file": "c:\\SarahCore\\G_Assist_Interface.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 4096 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 10,
+          "message": "Potential hardcoded path or URL: \"C:\\ProgramData\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 80,
+      "lines": 79
+    },
+    {
+      "file": "c:\\SarahCore\\Hardware_Abstraction_Layer.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 80 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 85 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 75,
+      "lines": 111
+    },
+    {
+      "file": "c:\\SarahCore\\Hive_Router.py",
+      "issues": [],
+      "score": 100,
+      "lines": 43
+    },
+    {
+      "file": "c:\\SarahCore\\Hodge_Conjecture_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\hyperbolic_utils.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 1.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 74
+    },
+    {
+      "file": "c:\\SarahCore\\ingest_memories.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 64 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 155,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\archive_memories\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 156,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\sarah-vscode-chat\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 157,
+          "message": "Potential hardcoded path or URL: \"C:\\Users\\drago\\.gemini\u0007ntigrav\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 65,
+      "lines": 164
+    },
+    {
+      "file": "c:\\SarahCore\\inject_genesis.py",
+      "issues": [],
+      "score": 100,
+      "lines": 1
+    },
+    {
+      "file": "c:\\SarahCore\\install_engine.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 500 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 47
+    },
+    {
+      "file": "c:\\SarahCore\\isolated_drive_test.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 6,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\04_THE_MEMORY\\ser\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 16
+    },
+    {
+      "file": "c:\\SarahCore\\Kernel_Override.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 110 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 80 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 80,
+      "lines": 137
+    },
+    {
+      "file": "c:\\SarahCore\\Knowledge_Harvester.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 0.3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 1500 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 180 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 2048 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 14,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 18,
+          "message": "Potential hardcoded path or URL: \"http://localhost:11434/api/gen\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 19,
+          "message": "Potential hardcoded path or URL: \"http://localhost:11434/api/cha\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 50,
+      "lines": 400
+    },
+    {
+      "file": "c:\\SarahCore\\Knowledge_Synthesis_Engine.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 0.9 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 0.95 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 14,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 70,
+      "lines": 156
+    },
+    {
+      "file": "c:\\SarahCore\\list_models.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 57
+    },
+    {
+      "file": "c:\\SarahCore\\local_file_tool.py",
+      "issues": [],
+      "score": 100,
+      "lines": 47
+    },
+    {
+      "file": "c:\\SarahCore\\loq_handshake.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 37,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\antigravity-aweso\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 38,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\skills_index\\clea\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 72
+    },
+    {
+      "file": "c:\\SarahCore\\Memory_Gatherer.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 35,
+          "message": "Potential hardcoded path or URL: \"C:\\Users\\drago\\.gemini\\antigra\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 59,
+          "message": "Potential hardcoded path or URL: \"C:\\Users\\drago\\AppData\\Roaming\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 90,
+          "message": "Potential hardcoded path or URL: \"C:\\Users\\drago\\AppData\\Roaming\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 119,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\archive_memories\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 80,
+      "lines": 157
+    },
+    {
+      "file": "c:\\SarahCore\\memory_surgeon.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 69
+    },
+    {
+      "file": "c:\\SarahCore\\meta_monitor.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 7,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\sovereign_logs.tx\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 81
+    },
+    {
+      "file": "c:\\SarahCore\\Navier_Stokes_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 8
+    },
+    {
+      "file": "c:\\SarahCore\\Neural_Memory_Core.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 0.6 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 80,
+      "lines": 214
+    },
+    {
+      "file": "c:\\SarahCore\\Neural_Orchestrator.py",
+      "issues": [],
+      "score": 100,
+      "lines": 678
+    },
+    {
+      "file": "c:\\SarahCore\\Neural_Worker.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 0.9 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 2048 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 512 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 19,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\models\\Llama-3.2-\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 75,
+      "lines": 88
+    },
+    {
+      "file": "c:\\SarahCore\\Ollama_Chat.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 0.4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 0.9 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 4096 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 15,
+          "message": "Potential hardcoded path or URL: \"http://localhost:11434\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 75,
+      "lines": 64
+    },
+    {
+      "file": "c:\\SarahCore\\parse_3_12_72.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 170,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\sarah_encyclopedi\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 177,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\extracted_topics.\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 178
+    },
+    {
+      "file": "c:\\SarahCore\\parse_cluster_topics.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 62,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\cluster_topics_ra\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 63,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\sarah_cluster_top\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 72
+    },
+    {
+      "file": "c:\\SarahCore\\patch_continuity.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 85
+    },
+    {
+      "file": "c:\\SarahCore\\Performance_Metrics.py",
+      "issues": [],
+      "score": 100,
+      "lines": 21
+    },
+    {
+      "file": "c:\\SarahCore\\Poincare_Conjecture_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\provide_sarah_answers.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 5,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 102,
+          "message": "Potential hardcoded path or URL: \"# Sovereign 5W1H Vector: Sarah\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 151
+    },
+    {
+      "file": "c:\\SarahCore\\P_vs_NP_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 6
+    },
+    {
+      "file": "c:\\SarahCore\\read_docx_content.py",
+      "issues": [],
+      "score": 100,
+      "lines": 76
+    },
+    {
+      "file": "c:\\SarahCore\\RealTime_Monitor.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 75
+    },
+    {
+      "file": "c:\\SarahCore\\recover_sarah_core.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 6,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 46
+    },
+    {
+      "file": "c:\\SarahCore\\Recursive_Research_Core.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 0.8 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 107
+    },
+    {
+      "file": "c:\\SarahCore\\Recursive_Truth_Finder.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 0.2 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 11 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 12 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 14,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 15,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 16,
+          "message": "Magic number 6 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 17,
+          "message": "Magic number 7 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 18,
+          "message": "Magic number 8 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 19,
+          "message": "Magic number 9 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 35,
+      "lines": 155
+    },
+    {
+      "file": "c:\\SarahCore\\remove_class_markers.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 3,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 39
+    },
+    {
+      "file": "c:\\SarahCore\\remove_function_markers.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 3,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 40
+    },
+    {
+      "file": "c:\\SarahCore\\REST_Drive_Downloader.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 200 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 34,
+          "message": "Potential hardcoded path or URL: \"https://www.googleapis.com/dri\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 64,
+          "message": "Potential hardcoded path or URL: \"https://www.googleapis.com/dri\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 71,
+          "message": "Potential hardcoded path or URL: \"https://www.googleapis.com/dri\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 70,
+      "lines": 98
+    },
+    {
+      "file": "c:\\SarahCore\\Riemann_Hypothesis_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_adk_auditor.py",
+      "issues": [],
+      "score": 100,
+      "lines": 123
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_adk_research.py",
+      "issues": [],
+      "score": 100,
+      "lines": 141
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Autonomy.py",
+      "issues": [],
+      "score": 100,
+      "lines": 246
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_auto_fixer.py",
+      "issues": [],
+      "score": 100,
+      "lines": 174
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Brain.py",
+      "issues": [],
+      "score": 100,
+      "lines": 864
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Chat.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 0.95 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 11 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 13 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 14,
+          "message": "Magic number 14 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 15,
+          "message": "Magic number 15 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 16,
+          "message": "Magic number 6 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 17,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 18,
+          "message": "Magic number 8000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 19,
+          "message": "Magic number 9 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 53,
+          "message": "Potential hardcoded path or URL: \"{\"role\": \"system\", \"content\": \"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 45,
+      "lines": 459
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Daemon.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 3600 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 85,
+      "lines": 57
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Dream.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 12,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\sovereign_logs.tx\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 133
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Drive.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 12,
+          "message": "Potential hardcoded path or URL: \"https://www.googleapis.com/aut\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 85
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Etymology.py",
+      "issues": [],
+      "score": 100,
+      "lines": 62
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_evolution_v1.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 0.999999999 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 1000000000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 8 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 85,
+      "lines": 70
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_factory.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 64
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_gateway.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 500 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 503 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 8001 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 231,
+          "message": "Potential hardcoded path or URL: \"start https://www.google.com\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 278,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 55,
+      "lines": 380
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_gpu_audit.py",
+      "issues": [],
+      "score": 100,
+      "lines": 130
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Hippocampus.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 20,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\sovereign_logs.tx\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 115
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_hypervisor.py",
+      "issues": [],
+      "score": 100,
+      "lines": 241
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Laws.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 2,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 85,
+      "lines": 37
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Loop.py",
+      "issues": [],
+      "score": 100,
+      "lines": 1
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Memory_Vault.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 17,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\sovereign_logs.tx\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 120
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_native.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 1200 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 800 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 8001 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 61,
+          "message": "Potential hardcoded path or URL: \"[Native] Launching PyWebview W\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 64,
+          "message": "Potential hardcoded path or URL: \"http://127.0.0.1:8001\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 75,
+      "lines": 77
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_OS.py",
+      "issues": [],
+      "score": 100,
+      "lines": 73
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Reasoning.py",
+      "issues": [],
+      "score": 100,
+      "lines": 1
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Reasoning_V3.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 0.8 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 3.0 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 75,
+      "lines": 304
+    },
+    {
+      "file": "c:\\SarahCore\\sarah_self_audit.py",
+      "issues": [],
+      "score": 100,
+      "lines": 275
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Self_Check.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 15 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 384 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 80,
+      "lines": 104
+    },
+    {
+      "file": "c:\\SarahCore\\Sarah_Sovereign_Core.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 85,
+      "lines": 66
+    },
+    {
+      "file": "c:\\SarahCore\\SAUL_Logistics.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 18,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 19,
+          "message": "Magic number 16 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 20,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 21,
+          "message": "Magic number 200 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 22,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 23,
+          "message": "Magic number 300 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 24,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 25,
+          "message": "Magic number 53 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 26,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 55,
+      "lines": 548
+    },
+    {
+      "file": "c:\\SarahCore\\SAUL_Log_System.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 1000.0 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 12,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 14,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 15,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 60,
+      "lines": 364
+    },
+    {
+      "file": "c:\\SarahCore\\SDNA_Protocol.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 0.001 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 14,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 15,
+          "message": "Magic number 0.8 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 16,
+          "message": "Magic number 0.9 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 17,
+          "message": "Magic number 0.999999998 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 18,
+          "message": "Magic number 0.999999999 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 19,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 65,
+      "lines": 181
+    },
+    {
+      "file": "c:\\SarahCore\\Security_Suite.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 15 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 72,
+          "message": "Potential hardcoded path or URL: \"C:\\Windows\\System32\\drivers\\et\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 174
+    },
+    {
+      "file": "c:\\SarahCore\\Self_Optimizer.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 0.2 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 130
+    },
+    {
+      "file": "c:\\SarahCore\\simulate_deep_scan.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 1000000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 200000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "naming",
+          "line": 20,
+          "message": "Variable \"filter\" shadows a Python built-in",
+          "best_practice": "shadowing"
+        },
+        {
+          "type": "portability",
+          "line": 38,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\archive_memories\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 47,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 70,
+      "lines": 53
+    },
+    {
+      "file": "c:\\SarahCore\\SOUL_PLIER_CORE.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 2,
+          "message": "Magic number 0.95 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 64
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Actuator.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 0.01 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 36,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 256
+    },
+    {
+      "file": "c:\\SarahCore\\sovereign_brain_tool.py",
+      "issues": [],
+      "score": 100,
+      "lines": 57
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Constants.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 114,
+          "message": "Potential hardcoded path or URL: \"https://sarah-john-genesis-def\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 144,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\system_heartbeat.\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 145,
+          "message": "Potential hardcoded path or URL: \"c:\\SarahCore\\antigravity-aweso\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 149
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Context_Blocker.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 100
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Governor.py",
+      "issues": [],
+      "score": 100,
+      "lines": 103
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Grant.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 16 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 39
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Hypervisor.py",
+      "issues": [],
+      "score": 100,
+      "lines": 301
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Identity.py",
+      "issues": [],
+      "score": 100,
+      "lines": 15
+    },
+    {
+      "file": "c:\\SarahCore\\sovereign_init.py",
+      "issues": [],
+      "score": 100,
+      "lines": 36
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Math.py",
+      "issues": [],
+      "score": 100,
+      "lines": 929
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Ontology.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 8 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 97
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Orchestrator.py",
+      "issues": [],
+      "score": 100,
+      "lines": 37
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Override.py",
+      "issues": [],
+      "score": 100,
+      "lines": 24
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Router.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 2,
+          "message": "Magic number 2000 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 49
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Supabase.py",
+      "issues": [],
+      "score": 100,
+      "lines": 61
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Voice.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 75
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_Web_Walker.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 200 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 2000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 66,
+          "message": "Potential hardcoded path or URL: \"https://html.duckduckgo.com/ht\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 29,
+          "message": "Potential hardcoded path or URL: \"https://docs.python.org/3/libr\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 30,
+          "message": "Potential hardcoded path or URL: \"https://numpy.org/doc/stable/r\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 31,
+          "message": "Potential hardcoded path or URL: \"https://pandas.pydata.org/docs\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 32,
+          "message": "Potential hardcoded path or URL: \"https://docs.scipy.org/doc/sci\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 33,
+          "message": "Potential hardcoded path or URL: \"https://requests.readthedocs.i\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 34,
+          "message": "Potential hardcoded path or URL: \"https://flask.palletsprojects.\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 35,
+          "message": "Potential hardcoded path or URL: \"https://docs.djangoproject.com\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 36,
+          "message": "Potential hardcoded path or URL: \"https://www.tensorflow.org/api\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 37,
+          "message": "Potential hardcoded path or URL: \"https://pytorch.org/docs/stabl\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 38,
+          "message": "Potential hardcoded path or URL: \"https://matplotlib.org/stable/\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 73,
+          "message": "Potential hardcoded path or URL: \"https://html.duckduckgo.com/\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 10,
+      "lines": 174
+    },
+    {
+      "file": "c:\\SarahCore\\Sovereign_WORM.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 97
+    },
+    {
+      "file": "c:\\SarahCore\\split_model.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 1900 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 36
+    },
+    {
+      "file": "c:\\SarahCore\\Strategic_Planner.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 21 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 80,
+      "lines": 92
+    },
+    {
+      "file": "c:\\SarahCore\\sync_saul_cache.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 43
+    },
+    {
+      "file": "c:\\SarahCore\\System_Admin_Core.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 134217728 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 4 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 13,
+          "message": "Magic number 134217728 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 70,
+      "lines": 218
+    },
+    {
+      "file": "c:\\SarahCore\\System_Evolution_Engine.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 17,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 18,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 19,
+          "message": "Magic number 200 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 20,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 21,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 22,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 23,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 24,
+          "message": "Magic number 500 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 67,
+          "message": "Potential hardcoded path or URL: \"http://localhost:3400/sarahStr\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 55,
+      "lines": 369
+    },
+    {
+      "file": "c:\\SarahCore\\test_adc_drive.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 10,
+          "message": "Potential hardcoded path or URL: \"https://www.googleapis.com/aut\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 34
+    },
+    {
+      "file": "c:\\SarahCore\\test_coding_knowledge.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 1000 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 80 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 28
+    },
+    {
+      "file": "c:\\SarahCore\\test_dictionary.py",
+      "issues": [],
+      "score": 100,
+      "lines": 14
+    },
+    {
+      "file": "c:\\SarahCore\\test_driver.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 6 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 7,
+          "message": "Potential hardcoded path or URL: \"http://localhost:8001/v1/chat/\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 45
+    },
+    {
+      "file": "c:\\SarahCore\\test_drive_access.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 23
+    },
+    {
+      "file": "c:\\SarahCore\\test_full_dictionary.py",
+      "issues": [],
+      "score": 100,
+      "lines": 50
+    },
+    {
+      "file": "c:\\SarahCore\\test_import_chain.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 3,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 29
+    },
+    {
+      "file": "c:\\SarahCore\\test_token.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 7,
+          "message": "Potential hardcoded path or URL: \"https://www.googleapis.com/dri\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 14
+    },
+    {
+      "file": "c:\\SarahCore\\ThermalGuardian.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 134217728 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 75 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 82 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 88 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 134217728 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 75,
+      "lines": 76
+    },
+    {
+      "file": "c:\\SarahCore\\Thread_Weaver.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 200 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 8 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 75,
+      "lines": 257
+    },
+    {
+      "file": "c:\\SarahCore\\Token_Bank_System.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 2,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 78
+    },
+    {
+      "file": "c:\\SarahCore\\Topos_Truth_Oracle.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 2,
+          "message": "Magic number 0.5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 111
+    },
+    {
+      "file": "c:\\SarahCore\\Transparency_Log.py",
+      "issues": [],
+      "score": 100,
+      "lines": 68
+    },
+    {
+      "file": "c:\\SarahCore\\try_import.py",
+      "issues": [],
+      "score": 100,
+      "lines": 24
+    },
+    {
+      "file": "c:\\SarahCore\\Twin_Prime_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\verify_ace_anchor.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 5,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 31
+    },
+    {
+      "file": "c:\\SarahCore\\verify_audit.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 15,
+          "message": "Magic number 4096 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 66
+    },
+    {
+      "file": "c:\\SarahCore\\verify_bridge.py",
+      "issues": [],
+      "score": 100,
+      "lines": 27
+    },
+    {
+      "file": "c:\\SarahCore\\verify_dfs_lattice.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 37
+    },
+    {
+      "file": "c:\\SarahCore\\verify_dictionary.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 23
+    },
+    {
+      "file": "c:\\SarahCore\\verify_encyclopedia_count.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 34
+    },
+    {
+      "file": "c:\\SarahCore\\verify_fixes.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 6,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 49
+    },
+    {
+      "file": "c:\\SarahCore\\verify_gearbox.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 8,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 32,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\models\\dolphin-2.\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 112
+    },
+    {
+      "file": "c:\\SarahCore\\verify_handover.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 17,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 18,
+          "message": "Magic number 4096 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 105
+    },
+    {
+      "file": "c:\\SarahCore\\verify_handshake.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 7,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 24,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\system_heartbeat.\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 44
+    },
+    {
+      "file": "c:\\SarahCore\\verify_harvester_content.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 5,
+          "message": "Magic number 500 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 40
+    },
+    {
+      "file": "c:\\SarahCore\\verify_hive_logic.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 16,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 17,
+          "message": "Magic number 4096 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 99
+    },
+    {
+      "file": "c:\\SarahCore\\verify_map_entry.py",
+      "issues": [],
+      "score": 100,
+      "lines": 33
+    },
+    {
+      "file": "c:\\SarahCore\\verify_memory_dynamics.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 1024 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 85,
+      "lines": 121
+    },
+    {
+      "file": "c:\\SarahCore\\verify_seated_install.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 7,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 8001 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 44,
+          "message": "Potential hardcoded path or URL: \"http://127.0.0.1:8001/api/stat\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 80,
+      "lines": 56
+    },
+    {
+      "file": "c:\\SarahCore\\Yang_Mills_Solution.py",
+      "issues": [],
+      "score": 100,
+      "lines": 5
+    },
+    {
+      "file": "c:\\SarahCore\\02_THE_SHIELD\\Banshee_Shield.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 8,
+          "message": "Magic number 4096 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 140
+    },
+    {
+      "file": "c:\\SarahCore\\04_THE_MEMORY\\sovereign_memory.py",
+      "issues": [],
+      "score": 100,
+      "lines": 111
+    },
+    {
+      "file": "c:\\SarahCore\\debug\\debug_cloud_brain.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 4,
+          "message": "Potential hardcoded path or URL: \"http://localhost:3400/sarahStr\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 20
+    },
+    {
+      "file": "c:\\SarahCore\\debug\\debug_engine.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 2048 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 6,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\\models\\dolphin-2.\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 90,
+      "lines": 23
+    },
+    {
+      "file": "c:\\SarahCore\\debug\\debug_minimal.py",
+      "issues": [],
+      "score": 100,
+      "lines": 14
+    },
+    {
+      "file": "c:\\SarahCore\\debug\\debug_reasoning.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 4,
+          "message": "Potential hardcoded path or URL: \"http://localhost:3400/sarahRea\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 95,
+      "lines": 19
+    },
+    {
+      "file": "c:\\SarahCore\\Gateway\\protocol.py",
+      "issues": [],
+      "score": 100,
+      "lines": 28
+    },
+    {
+      "file": "c:\\SarahCore\\Gateway\\server.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 9,
+          "message": "Magic number 18789 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 3 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 152
+    },
+    {
+      "file": "c:\\SarahCore\\SovereignChat\\chat_native.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 41,
+          "message": "Magic number 10 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 42,
+          "message": "Magic number 200 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 43,
+          "message": "Magic number 5 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 44,
+          "message": "Magic number 600 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 45,
+          "message": "Magic number 8001 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 46,
+          "message": "Magic number 850 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 94,
+          "message": "Potential hardcoded path or URL: \"http://127.0.0.1:8001\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 77,
+          "message": "Potential hardcoded path or URL: \"http://127.0.0.1:8001/api/stat\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 60,
+      "lines": 112
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_council_logic.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 6,
+          "message": "Magic number 100 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 37
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_dialectical_logic.py",
+      "issues": [],
+      "score": 100,
+      "lines": 55
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_elite_baseline.py",
+      "issues": [
+        {
+          "type": "portability",
+          "line": 5,
+          "message": "Potential hardcoded path or URL: \"C:\\SarahCore\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "magic_number",
+          "line": 101,
+          "message": "Magic number 30 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 109
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_evolved_reasoning.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 20 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 58
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_first_contact.py",
+      "issues": [],
+      "score": 100,
+      "lines": 25
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_fractal_logic.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 4,
+          "message": "Magic number 50 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 25
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_gap_analysis.py",
+      "issues": [],
+      "score": 100,
+      "lines": 74
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_genesis_integration.py",
+      "issues": [],
+      "score": 100,
+      "lines": 82
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_handshake.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 3,
+          "message": "Magic number 60 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "portability",
+          "line": 8,
+          "message": "Potential hardcoded path or URL: \"http://localhost:11434/api/gen\"",
+          "best_practice": "hardcoded_paths"
+        },
+        {
+          "type": "portability",
+          "line": 11,
+          "message": "Potential hardcoded path or URL: \"http://localhost:11434/api/tag\"",
+          "best_practice": "hardcoded_paths"
+        }
+      ],
+      "score": 85,
+      "lines": 40
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_integrated_logic.py",
+      "issues": [],
+      "score": 100,
+      "lines": 79
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_kernel_override.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 120 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 95,
+      "lines": 62
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_lai_accuracy.py",
+      "issues": [],
+      "score": 100,
+      "lines": 63
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_security_suite.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 10,
+          "message": "Magic number 1234 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 11,
+          "message": "Magic number 6666 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 67
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_soul_plier.py",
+      "issues": [],
+      "score": 100,
+      "lines": 20
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_token_bank.py",
+      "issues": [],
+      "score": 100,
+      "lines": 70
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_tribunal.py",
+      "issues": [],
+      "score": 100,
+      "lines": 99
+    },
+    {
+      "file": "c:\\SarahCore\\tests\\test_velocity.py",
+      "issues": [
+        {
+          "type": "magic_number",
+          "line": 14,
+          "message": "Magic number 0.1 detected",
+          "best_practice": "avoid_magic_numbers"
+        },
+        {
+          "type": "magic_number",
+          "line": 15,
+          "message": "Magic number 5.0 detected",
+          "best_practice": "avoid_magic_numbers"
+        }
+      ],
+      "score": 90,
+      "lines": 42
+    }
+  ]
+}

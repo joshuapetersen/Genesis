@@ -1,0 +1,61 @@
+[
+    {
+        "term": "Idempotency in Auto-Fixers",
+        "category": "Automated Refactoring",
+        "subcategory": "Safety",
+        "description": "Ensure that running a fix script multiple times does not result in duplicate changes or progressive corruption (e.g., adding imports repeatedly).",
+        "implementation": "if 'import os' not in content:\n    content = 'import os\\n' + content",
+        "complexity": "N/A",
+        "use_cases": [
+            "Auto-fix scripts",
+            "Config updates"
+        ],
+        "related": [
+            "State Management"
+        ]
+    },
+    {
+        "term": "Validation Gates",
+        "category": "Automated Refactoring",
+        "subcategory": "Safety",
+        "description": "Always verify the syntax/integrity of a file *after* modification but *before* committing the change. Revert if validation fails.",
+        "implementation": "original = read(file)\nmodify(file)\ntry:\n    ast.parse(read(file))\nexcept SyntaxError:\n    write(file, original)\n    raise",
+        "complexity": "O(1) per file",
+        "use_cases": [
+            "Guardian Gatekeeper",
+            "CI/CD"
+        ],
+        "related": [
+            "Rollback",
+            "AST Validation"
+        ]
+    },
+    {
+        "term": "Backup Before Modify",
+        "category": "Automated Refactoring",
+        "subcategory": "Safety",
+        "description": "Create a temporary backup or git stash before applying automated changes to allow immediate recovery.",
+        "implementation": "shutil.copy(file, file + '.bak')\ntry:\n    apply_fix(file)\nexcept:\n    shutil.move(file + '.bak', file)",
+        "complexity": "O(1)",
+        "use_cases": [
+            "Critical system updates"
+        ],
+        "related": [
+            "Atomic Writes"
+        ]
+    },
+    {
+        "term": "Scope Containment",
+        "category": "Automated Refactoring",
+        "subcategory": "Safety",
+        "description": "Limit the scope of automated tools to specific directories or files (allow-lists) rather than running on the entire codebase (e.g., avoiding .venv).",
+        "implementation": "if '_test' not in filename: return",
+        "complexity": "N/A",
+        "use_cases": [
+            "Risk mitigation"
+        ],
+        "related": [
+            "Glob Patterns"
+        ]
+    }
+]

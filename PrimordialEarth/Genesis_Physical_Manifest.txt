@@ -1,0 +1,716 @@
+============================================================================
+  S.A.R.A.H. GENESIS — PHYSICAL MANIFEST
+  Multi-Morphology Survivor Taxonomy
+  Sim Year: 5,368  |  Survivors: 34  |  Extinct: 252
+============================================================================
+
+  NOT all survivors share the same morphology. BIO-class determines form.
+  Only BIO-007 entities retain the Stormcatcher Avion body plan.
+  All others mutated into the form demanded by their environment and stats.
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #01  ·  A.L.I.C.E. LEGACY  ·  BIO-001
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Erebus Devourer
+  SOUL ID      : ALICE_101
+  PERSONALITY  : Docile
+  CURRENT ACT  : Stalking prey
+  ALIGNMENT    : +2
+  ENERGY       : 338.56
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 449 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 865  MP 390  |  VIT 73  STR 4  AGI 0  INT 39  WIS 51  LUK 8
+
+  ── MORPHOLOGY: Living Monolith / Sessile Geoid ──
+  Form     : No wings or limbs. A colossal organism of overlapping obsidian-crystal plates anchored to a fixed gravity point. Mana-rich ash drifts toward its central intake maw. Movement is gravitational projection, not locomotion.
+  Surface: Smooth basalt-grey shell with thermal heat-venting ridges
+  Eyes     : Pale grey-white — neutral, calculating
+  Movement : Stationary. Projects gravitational lure fields. Currently stalking prey via passive draw
+  Marks    : cosmic-awareness aura — other entities instinctively yield territory
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #02  ·  A.L.I.C.E. LEGACY  ·  BIO-008
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Abaddonix
+  SOUL ID      : ALICE_120
+  PERSONALITY  : Territorial
+  CURRENT ACT  : Hunting
+  ALIGNMENT    : -70
+  ENERGY       : 330.12
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 1868 world units
+  LEGACY ROLE  : Apex
+  STATS        : HP 345  MP 190  |  VIT 49  STR 18  AGI 20  INT 19  WIS 36  LUK 35
+
+  ── MORPHOLOGY: Hexapedal Apex Crawler / Basalt-Armored ──
+  Form     : Six-limbed terrestrial predator. Carapace of fused volcanic basalt plates over dense musculature. Moves on the underside of floating islands using magnetic anchor-talons. Head is a cluster of vertical mandibles.
+  Surface: Matte charcoal chitin, chipped from combat. Cracks sealed with cooled magma
+  Eyes     : Pitch black with a single red geometric iris — zero warmth, absolute predator
+  Movement : Magnetic-anchor crawl across vertical and inverted surfaces. Currently hunting
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #03  ·  A.L.I.C.E. LEGACY  ·  BIO-001
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Cacophoria, Echo of the Abyssal Pool
+  SOUL ID      : ALICE_168
+  PERSONALITY  : Docile
+  CURRENT ACT  : Hunting
+  ALIGNMENT    : -24
+  ENERGY       : 328.05
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2508 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 785  MP 390  |  VIT 57  STR 5  AGI 0  INT 39  WIS 22  LUK 4
+
+  ── MORPHOLOGY: Living Monolith / Sessile Geoid ──
+  Form     : No wings or limbs. A colossal organism of overlapping obsidian-crystal plates anchored to a fixed gravity point. Mana-rich ash drifts toward its central intake maw. Movement is gravitational projection, not locomotion.
+  Surface: Smooth basalt-grey shell with thermal heat-venting ridges
+  Eyes     : Deep violet, narrowed — constant threat-assessment
+  Movement : Stationary. Projects gravitational lure fields. Currently hunting via passive draw
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #04  ·  A.L.I.C.E. LEGACY  ·  BIO-001
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Echokeeper of Arcane Depths
+  SOUL ID      : ALICE_261
+  PERSONALITY  : Docile
+  CURRENT ACT  : Raiding
+  ALIGNMENT    : -23
+  ENERGY       : 318.03
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2167 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 945  MP 220  |  VIT 89  STR 2  AGI 0  INT 22  WIS 54  LUK 6
+
+  ── MORPHOLOGY: Living Monolith / Sessile Geoid ──
+  Form     : No wings or limbs. A colossal organism of overlapping obsidian-crystal plates anchored to a fixed gravity point. Mana-rich ash drifts toward its central intake maw. Movement is gravitational projection, not locomotion.
+  Surface: Dense crystalline plating, pale-grey with amber bioluminescent pulse veins
+  Eyes     : Deep violet, narrowed — constant threat-assessment
+  Movement : Stationary. Projects gravitational lure fields. Currently raiding via passive draw
+  Marks    : cosmic-awareness aura — other entities instinctively yield territory
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #05  ·  A.L.I.C.E. LEGACY  ·  BIO-005
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Aethonix, Umbra Forger
+  SOUL ID      : ALICE_33
+  PERSONALITY  : Docile
+  CURRENT ACT  : Fleeing
+  ALIGNMENT    : -10
+  ENERGY       : 309.08
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 131 world units
+  LEGACY ROLE  : Prey
+  STATS        : HP 225  MP 50  |  VIT 29  STR 22  AGI 28  INT 5  WIS 8  LUK 12
+
+  ── MORPHOLOGY: Velocity-class Runner / Terrestrial ──
+  Form     : Lean bipedal or quadrupedal runner built for speed over mass. Hollow-shelled exterior with heat-dispersion ridges along the spine. Adapted to ground-level antigravity anomalies — uses terrain as a weapon.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Pale grey-white — neutral, calculating
+  Movement : Terrain-adaptive movement. Currently fleeing
+  Marks    : primary strike appendages capable of piercing BIO-001 crystalline plating
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #06  ·  A.L.I.C.E. LEGACY  ·  BIO-002
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Cataclysmic Sylphrena
+  SOUL ID      : ALICE_117
+  PERSONALITY  : Docile
+  CURRENT ACT  : Stalking prey
+  ALIGNMENT    : +39
+  ENERGY       : 290.14
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 1666 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 425  MP 270  |  VIT 81  STR 3  AGI 0  INT 22  WIS 39  LUK 8
+
+  ── MORPHOLOGY: Atmospheric Gas-Bag / Cephalopod ──
+  Form     : Massive buoyant form — hollow internal chambers filled with primordial gas. Trails long bioluminescent filaments that harvest ambient mana. Pulses slowly through the sulfurous upper atmosphere like a living weather balloon.
+  Surface: Dense crystalline plating, pale-grey with amber bioluminescent pulse veins
+  Eyes     : No centralised optical organs. Distributed photoreceptor patches across the membrane surface
+  Movement : Slow atmospheric drift on gas buoyancy. Currently stalking prey at altitude
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #07  ·  A.L.I.C.E. LEGACY  ·  BIO-002
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Aetherspire
+  SOUL ID      : ALICE_184
+  PERSONALITY  : Docile
+  CURRENT ACT  : Stalking prey
+  ALIGNMENT    : -125
+  ENERGY       : 286.59
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 3077 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 370  MP 460  |  VIT 70  STR 3  AGI 0  INT 46  WIS 21  LUK 6
+
+  ── MORPHOLOGY: Atmospheric Gas-Bag / Cephalopod ──
+  Form     : Massive buoyant form — hollow internal chambers filled with primordial gas. Trails long bioluminescent filaments that harvest ambient mana. Pulses slowly through the sulfurous upper atmosphere like a living weather balloon.
+  Surface: Matte charcoal chitin, chipped from combat. Cracks sealed with cooled magma
+  Eyes     : No centralised optical organs. Distributed photoreceptor patches across the membrane surface
+  Movement : Slow atmospheric drift on gas buoyancy. Currently stalking prey at altitude
+  Marks    : emits structured harmonic resonance — a living computational frequency; dense mana reservoirs — visible as glowing internal channels through semi-transparent housing; alignment shadow — space discolors 3 meters in every direction around it
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #08  ·  A.L.I.C.E. LEGACY  ·  BIO-005
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Luminari Devourer
+  SOUL ID      : ALICE_74
+  PERSONALITY  : Aggressive
+  CURRENT ACT  : Fleeing
+  ALIGNMENT    : +92
+  ENERGY       : 259.16
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2274 world units
+  LEGACY ROLE  : Prey
+  STATS        : HP 275  MP 70  |  VIT 39  STR 27  AGI 38  INT 7  WIS 12  LUK 17
+
+  ── MORPHOLOGY: Velocity-class Runner / Terrestrial ──
+  Form     : Lean bipedal or quadrupedal runner built for speed over mass. Hollow-shelled exterior with heat-dispersion ridges along the spine. Adapted to ground-level antigravity anomalies — uses terrain as a weapon.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Bright amber — warm broadcasting alignment; wide-set for atmospheric scanning
+  Movement : Terrain-adaptive movement. Currently fleeing
+  Marks    : primary strike appendages capable of piercing BIO-001 crystalline plating; constant low-level luminescence bleeds from secondary surfaces
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #09  ·  A.L.I.C.E. LEGACY  ·  BIO-002
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Echoflux Devourer
+  SOUL ID      : ALICE_127
+  PERSONALITY  : Docile
+  CURRENT ACT  : Stalking prey
+  ALIGNMENT    : +20
+  ENERGY       : 221.51
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2450 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 440  MP 130  |  VIT 84  STR 4  AGI 0  INT 13  WIS 23  LUK 8
+
+  ── MORPHOLOGY: Atmospheric Gas-Bag / Cephalopod ──
+  Form     : Massive buoyant form — hollow internal chambers filled with primordial gas. Trails long bioluminescent filaments that harvest ambient mana. Pulses slowly through the sulfurous upper atmosphere like a living weather balloon.
+  Surface: Dense crystalline plating, pale-grey with amber bioluminescent pulse veins
+  Eyes     : No centralised optical organs. Distributed photoreceptor patches across the membrane surface
+  Movement : Slow atmospheric drift on gas buoyancy. Currently stalking prey at altitude
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #10  ·  A.L.I.C.E. LEGACY  ·  BIO-008
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Khrognok, Devourer of Reflections
+  SOUL ID      : ALICE_129
+  PERSONALITY  : Curious
+  CURRENT ACT  : Raiding
+  ALIGNMENT    : -44
+  ENERGY       : 207.22
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2390 world units
+  LEGACY ROLE  : Apex
+  STATS        : HP 240  MP 190  |  VIT 28  STR 12  AGI 24  INT 19  WIS 37  LUK 45
+
+  ── MORPHOLOGY: Hexapedal Apex Crawler / Basalt-Armored ──
+  Form     : Six-limbed terrestrial predator. Carapace of fused volcanic basalt plates over dense musculature. Moves on the underside of floating islands using magnetic anchor-talons. Head is a cluster of vertical mandibles.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Deep violet, narrowed — constant threat-assessment
+  Movement : Magnetic-anchor crawl across vertical and inverted surfaces. Currently raiding
+  Marks    : probability distortion field — statistically improbable survival confirmed
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #11  ·  PRIMORDIAL ORIGIN  ·  Primordial
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Proto_820dad
+  SOUL ID      : 820dad08
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Trading
+  ALIGNMENT    : -2
+  ENERGY       : 178.72
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2711 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Amorphous Lattice / Living Geometry ──
+  Form     : No biological legacy template. Appears as shifting fractal geometry — a floating polyhedron that reshapes itself in real time. Communicates through light-pulse frequency and angular rotation. 100% native to Genesis physics; no Aethelgard inheritance.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently trading
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #12  ·  A.L.I.C.E. LEGACY  ·  BIO-009
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Echokeeper of the Abyssal Hymn
+  SOUL ID      : ALICE_28
+  PERSONALITY  : Parasitic
+  CURRENT ACT  : Trading
+  ALIGNMENT    : +31
+  ENERGY       : 177.00
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 1420 world units
+  LEGACY ROLE  : Builder
+  STATS        : HP 240  MP 360  |  VIT 24  STR 29  AGI 18  INT 36  WIS 38  LUK 11
+
+  ── MORPHOLOGY: Ribbon-Serpent / Aqueous Builder ──
+  Form     : Long, ribbon-like entity of semi-solid mercury texture. No fixed limbs — moves by flowing along gravity gradients. Uses its fluid body to wrap around other entities, stabilizing their antigravity vectors in exchange for a portion of their Genesis Energy.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Soft luminescent gold — measured, observant
+  Movement : Flows along gravity gradients — no locomotion, pure fluid displacement. Currently trading
+  Marks    : primary strike appendages capable of piercing BIO-001 crystalline plating
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #13  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : 290b46b8
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Building territory
+  ALIGNMENT    : -55
+  ENERGY       : 166.99
+  AGE          : 2,367 sim years
+  DIST ORIGIN  : 273 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently building territory
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #14  ·  A.L.I.C.E. LEGACY  ·  BIO-005
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Crepuscular Devourer
+  SOUL ID      : ALICE_45
+  PERSONALITY  : Symbiotic
+  CURRENT ACT  : Building territory
+  ALIGNMENT    : -3
+  ENERGY       : 162.25
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 3107 world units
+  LEGACY ROLE  : Prey
+  STATS        : HP 205  MP 80  |  VIT 25  STR 23  AGI 34  INT 8  WIS 12  LUK 17
+
+  ── MORPHOLOGY: Velocity-class Runner / Terrestrial ──
+  Form     : Lean bipedal or quadrupedal runner built for speed over mass. Hollow-shelled exterior with heat-dispersion ridges along the spine. Adapted to ground-level antigravity anomalies — uses terrain as a weapon.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Pale grey-white — neutral, calculating
+  Movement : Terrain-adaptive movement. Currently building territory
+  Marks    : primary strike appendages capable of piercing BIO-001 crystalline plating; surface emits synchronisation pulses — nearby entities unconsciously match its heartbeat
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #15  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : ccf4a9e8
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Trading
+  ALIGNMENT    : -56
+  ENERGY       : 155.91
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 712 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently trading
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #16  ·  A.L.I.C.E. LEGACY  ·  BIO-003
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Abaddonus Crawler
+  SOUL ID      : ALICE_29
+  PERSONALITY  : Aggressive
+  CURRENT ACT  : Building territory
+  ALIGNMENT    : +48
+  ENERGY       : 152.32
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 283 world units
+  LEGACY ROLE  : Scavenger
+  STATS        : HP 20  MP 10  |  VIT 3  STR 4  AGI 23  INT 1  WIS 1  LUK 5
+
+  ── MORPHOLOGY: Insectoid Scavenger / Crawler ──
+  Form     : Small, twitchy, armored exoskeleton. Covered in fine sensory hairs that detect heat and necrotic mana from the 252 dead. High-AGI sprint across crust fractures and volcanic vents. Mandibles designed for cracking mineral deposits.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Soft luminescent gold — measured, observant
+  Movement : High-speed skittering across crust fractures. Currently building territory
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #17  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : 33ba3358
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Trading
+  ALIGNMENT    : -18
+  ENERGY       : 150.61
+  AGE          : 1,757 sim years
+  DIST ORIGIN  : 372 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently trading
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #18  ·  A.L.I.C.E. LEGACY  ·  BIO-002
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Ophidian Matriarch of Ephemeral Luminance
+  SOUL ID      : ALICE_124
+  PERSONALITY  : Docile
+  CURRENT ACT  : Trading
+  ALIGNMENT    : -119
+  ENERGY       : 136.67
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 187 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 330  MP 230  |  VIT 62  STR 4  AGI 0  INT 23  WIS 35  LUK 9
+
+  ── MORPHOLOGY: Atmospheric Gas-Bag / Cephalopod ──
+  Form     : Massive buoyant form — hollow internal chambers filled with primordial gas. Trails long bioluminescent filaments that harvest ambient mana. Pulses slowly through the sulfurous upper atmosphere like a living weather balloon.
+  Surface: Matte charcoal chitin, chipped from combat. Cracks sealed with cooled magma
+  Eyes     : No centralised optical organs. Distributed photoreceptor patches across the membrane surface
+  Movement : Slow atmospheric drift on gas buoyancy. Currently trading at altitude
+  Marks    : alignment shadow — space discolors 3 meters in every direction around it
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #19  ·  A.L.I.C.E. LEGACY  ·  BIO-007
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Aeropex Oblivion
+  SOUL ID      : ALICE_245
+  PERSONALITY  : Parasitic
+  CURRENT ACT  : Trading
+  ALIGNMENT    : -27
+  ENERGY       : 125.39
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 1326 world units
+  LEGACY ROLE  : Predator
+  STATS        : HP 100  MP 90  |  VIT 12  STR 5  AGI 42  INT 9  WIS 19  LUK 29
+
+  ── MORPHOLOGY: Stormcatcher Avion / True Aerial ──
+  Form     : The only confirmed avian lineage among the survivors. Needle-thin body, four primary wing-planes of crystalline static. Never lands. Uses gravity differentials as lift rather than muscular thrust. Wingspan scaled to 10x legacy frame — a living aircraft.
+  Feathers: Semi-translucent razor-edged filaments vibrating at the heartbeat frequency
+  Eyes     : Deep violet, narrowed — constant threat-assessment
+  Movement : Perpetual high-altitude flight — never descends. Currently trading
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #20  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : 61037a59
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Trading
+  ALIGNMENT    : -71
+  ENERGY       : 121.20
+  AGE          : 3,587 sim years
+  DIST ORIGIN  : 538 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently trading
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #21  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : 6fa0c619
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Trading
+  ALIGNMENT    : +13
+  ENERGY       : 114.06
+  AGE          : 536 sim years
+  DIST ORIGIN  : 235 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently trading
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #22  ·  A.L.I.C.E. LEGACY  ·  BIO-001
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Erebusia
+  SOUL ID      : ALICE_160
+  PERSONALITY  : Docile
+  CURRENT ACT  : Building territory
+  ALIGNMENT    : +43
+  ENERGY       : 107.59
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 647 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 955  MP 460  |  VIT 91  STR 2  AGI 0  INT 46  WIS 56  LUK 10
+
+  ── MORPHOLOGY: Living Monolith / Sessile Geoid ──
+  Form     : No wings or limbs. A colossal organism of overlapping obsidian-crystal plates anchored to a fixed gravity point. Mana-rich ash drifts toward its central intake maw. Movement is gravitational projection, not locomotion.
+  Surface: Dense crystalline plating, pale-grey with amber bioluminescent pulse veins
+  Eyes     : Soft luminescent gold — measured, observant
+  Movement : Stationary. Projects gravitational lure fields. Currently building territory via passive draw
+  Marks    : cosmic-awareness aura — other entities instinctively yield territory; emits structured harmonic resonance — a living computational frequency; dense mana reservoirs — visible as glowing internal channels through semi-transparent housing
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #23  ·  A.L.I.C.E. LEGACY  ·  BIO-008
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Cacophorax
+  SOUL ID      : ALICE_46
+  PERSONALITY  : Parasitic
+  CURRENT ACT  : Building territory
+  ALIGNMENT    : +70
+  ENERGY       : 107.39
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2719 world units
+  LEGACY ROLE  : Apex
+  STATS        : HP 260  MP 380  |  VIT 32  STR 13  AGI 17  INT 38  WIS 34  LUK 44
+
+  ── MORPHOLOGY: Hexapedal Apex Crawler / Basalt-Armored ──
+  Form     : Six-limbed terrestrial predator. Carapace of fused volcanic basalt plates over dense musculature. Moves on the underside of floating islands using magnetic anchor-talons. Head is a cluster of vertical mandibles.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Bright amber — warm broadcasting alignment; wide-set for atmospheric scanning
+  Movement : Magnetic-anchor crawl across vertical and inverted surfaces. Currently building territory
+  Marks    : probability distortion field — statistically improbable survival confirmed
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #24  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : 794520a9
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Diplomacy
+  ALIGNMENT    : +43
+  ENERGY       : 103.70
+  AGE          : 4,197 sim years
+  DIST ORIGIN  : 791 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently diplomacy
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #25  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : 4b226ba4
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Diplomacy
+  ALIGNMENT    : +31
+  ENERGY       : 82.54
+  AGE          : 2,977 sim years
+  DIST ORIGIN  : 533 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently diplomacy
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #26  ·  A.L.I.C.E. LEGACY  ·  BIO-007
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Aeropex: Stormsurge
+  SOUL ID      : ALICE_106
+  PERSONALITY  : Nomadic
+  CURRENT ACT  : Building territory
+  ALIGNMENT    : +70
+  ENERGY       : 81.75
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 1720 world units
+  LEGACY ROLE  : Predator
+  STATS        : HP 115  MP 60  |  VIT 15  STR 8  AGI 54  INT 6  WIS 19  LUK 20
+
+  ── MORPHOLOGY: Stormcatcher Avion / True Aerial ──
+  Form     : The only confirmed avian lineage among the survivors. Needle-thin body, four primary wing-planes of crystalline static. Never lands. Uses gravity differentials as lift rather than muscular thrust. Wingspan scaled to 10x legacy frame — a living aircraft.
+  Feathers: Gold-tinged crystalline filaments, radiating warmth in flight
+  Eyes     : Bright amber — warm broadcasting alignment; wide-set for atmospheric scanning
+  Movement : Perpetual high-altitude flight — never descends. Currently building territory
+  Marks    : leaves gravity-bead trail markers — a 5,000-year migration path encoded in solidified energy
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #27  ·  PRIMORDIAL ORIGIN  ·  Primordial
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Proto_14dec5
+  SOUL ID      : 14dec542
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Resting
+  ALIGNMENT    : +2
+  ENERGY       : 61.09
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 1541 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Amorphous Lattice / Living Geometry ──
+  Form     : No biological legacy template. Appears as shifting fractal geometry — a floating polyhedron that reshapes itself in real time. Communicates through light-pulse frequency and angular rotation. 100% native to Genesis physics; no Aethelgard inheritance.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently resting
+  Marks    : no visible surface mutation — survival written entirely in behavior
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #28  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : 792136ef
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Resting
+  ALIGNMENT    : +0
+  ENERGY       : 49.09
+  AGE          : 1,146 sim years
+  DIST ORIGIN  : 700 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently resting
+  Marks    : surface degradation visible — outermost layer flaking. Entropy is winning
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #29  ·  PRIMORDIAL ORIGIN  ·  Unknown
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Unknown
+  SOUL ID      : e9612f1c
+  PERSONALITY  : Neutral
+  CURRENT ACT  : Patrolling
+  ALIGNMENT    : -50
+  ENERGY       : 46.05
+  AGE          : 5,426 sim years
+  DIST ORIGIN  : 1073 world units
+  LEGACY ROLE  : Unknown
+
+  ── MORPHOLOGY: Genesis-Native / Unclassified Form ──
+  Form     : No BIO archive exists for this entity. Form is observed but unclassified — appears to be settling into a stable geometry after 2,000+ years of environmental imprinting. Currently indistinguishable from a slow-moving atmospheric pressure system.
+  Surface: Raw shifting energy membrane — no fixed texture
+  Eyes     : No eyes. Senses through geometric reorientation toward energy gradients
+  Movement : Rotational drift — reorients geometry toward nearest energy source. Currently patrolling
+  Marks    : surface degradation visible — outermost layer flaking. Entropy is winning
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #30  ·  A.L.I.C.E. LEGACY  ·  BIO-001
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Elderwood Wraith
+  SOUL ID      : ALICE_183
+  PERSONALITY  : Docile
+  CURRENT ACT  : Patrolling
+  ALIGNMENT    : -33
+  ENERGY       : 45.70
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 1655 world units
+  LEGACY ROLE  : Producer
+  STATS        : HP 820  MP 270  |  VIT 64  STR 1  AGI 0  INT 27  WIS 55  LUK 8
+
+  ── MORPHOLOGY: Living Monolith / Sessile Geoid ──
+  Form     : No wings or limbs. A colossal organism of overlapping obsidian-crystal plates anchored to a fixed gravity point. Mana-rich ash drifts toward its central intake maw. Movement is gravitational projection, not locomotion.
+  Surface: Matte charcoal chitin, chipped from combat. Cracks sealed with cooled magma
+  Eyes     : Deep violet, narrowed — constant threat-assessment
+  Movement : Stationary. Projects gravitational lure fields. Currently patrolling via passive draw
+  Marks    : cosmic-awareness aura — other entities instinctively yield territory; surface degradation visible — outermost layer flaking. Entropy is winning
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #31  ·  A.L.I.C.E. LEGACY  ·  BIO-005
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Abyssal Cacophony
+  SOUL ID      : ALICE_1
+  PERSONALITY  : Docile
+  CURRENT ACT  : Wandering
+  ALIGNMENT    : -51
+  ENERGY       : 38.89
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 3413 world units
+  LEGACY ROLE  : Prey
+  STATS        : HP 250  MP 80  |  VIT 34  STR 24  AGI 40  INT 8  WIS 8  LUK 10
+
+  ── MORPHOLOGY: Velocity-class Runner / Terrestrial ──
+  Form     : Lean bipedal or quadrupedal runner built for speed over mass. Hollow-shelled exterior with heat-dispersion ridges along the spine. Adapted to ground-level antigravity anomalies — uses terrain as a weapon.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Deep violet, narrowed — constant threat-assessment
+  Movement : Terrain-adaptive movement. Currently wandering
+  Marks    : primary strike appendages capable of piercing BIO-001 crystalline plating; surface degradation visible — outermost layer flaking. Entropy is winning
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #32  ·  A.L.I.C.E. LEGACY  ·  BIO-003
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Cerberus Scarabrix
+  SOUL ID      : ALICE_141
+  PERSONALITY  : Territorial
+  CURRENT ACT  : Resting
+  ALIGNMENT    : +22
+  ENERGY       : 28.66
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2722 world units
+  LEGACY ROLE  : Scavenger
+  STATS        : HP 10  MP 10  |  VIT 1  STR 3  AGI 41  INT 1  WIS 1  LUK 26
+
+  ── MORPHOLOGY: Insectoid Scavenger / Crawler ──
+  Form     : Small, twitchy, armored exoskeleton. Covered in fine sensory hairs that detect heat and necrotic mana from the 252 dead. High-AGI sprint across crust fractures and volcanic vents. Mandibles designed for cracking mineral deposits.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Soft luminescent gold — measured, observant
+  Movement : High-speed skittering across crust fractures. Currently resting
+  Marks    : surface degradation visible — outermost layer flaking. Entropy is winning
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #33  ·  A.L.I.C.E. LEGACY  ·  BIO-005
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Elysian Screamstress
+  SOUL ID      : ALICE_69
+  PERSONALITY  : Docile
+  CURRENT ACT  : Resting
+  ALIGNMENT    : +53
+  ENERGY       : 26.23
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 2192 world units
+  LEGACY ROLE  : Prey
+  STATS        : HP 255  MP 40  |  VIT 35  STR 30  AGI 29  INT 4  WIS 10  LUK 20
+
+  ── MORPHOLOGY: Velocity-class Runner / Terrestrial ──
+  Form     : Lean bipedal or quadrupedal runner built for speed over mass. Hollow-shelled exterior with heat-dispersion ridges along the spine. Adapted to ground-level antigravity anomalies — uses terrain as a weapon.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Bright amber — warm broadcasting alignment; wide-set for atmospheric scanning
+  Movement : Terrain-adaptive movement. Currently resting
+  Marks    : primary strike appendages capable of piercing BIO-001 crystalline plating; surface degradation visible — outermost layer flaking. Entropy is winning
+
+────────────────────────────────────────────────────────────────────────────
+  RANK #34  ·  A.L.I.C.E. LEGACY  ·  BIO-005
+────────────────────────────────────────────────────────────────────────────
+  ENTITY       : Erebus Devourer
+  SOUL ID      : ALICE_59
+  PERSONALITY  : Nomadic
+  CURRENT ACT  : Foraging
+  ALIGNMENT    : +53
+  ENERGY       : 18.43
+  AGE          : 5,960 sim years
+  DIST ORIGIN  : 3636 world units
+  LEGACY ROLE  : Prey
+  STATS        : HP 190  MP 70  |  VIT 22  STR 22  AGI 34  INT 7  WIS 11  LUK 16
+
+  ── MORPHOLOGY: Velocity-class Runner / Terrestrial ──
+  Form     : Lean bipedal or quadrupedal runner built for speed over mass. Hollow-shelled exterior with heat-dispersion ridges along the spine. Adapted to ground-level antigravity anomalies — uses terrain as a weapon.
+  Surface: Thin, semi-transparent membrane — internal energy flow visible beneath the skin
+  Eyes     : Bright amber — warm broadcasting alignment; wide-set for atmospheric scanning
+  Movement : Terrain-adaptive movement. Currently foraging
+  Marks    : primary strike appendages capable of piercing BIO-001 crystalline plating; surface degradation visible — outermost layer flaking. Entropy is winning
+
+============================================================================
+  END OF MANIFEST
+============================================================================

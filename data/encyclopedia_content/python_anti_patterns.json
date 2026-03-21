@@ -1,0 +1,75 @@
+[
+    {
+        "term": "Mutable Default Arguments",
+        "category": "Anti-Pattern",
+        "subcategory": "Python Specific",
+        "description": "Using mutable objects (lists, dicts) as default arguments creates a persistent object shared across all calls.",
+        "implementation": "# BAD:\ndef append_to(element, to=[]):\n    to.append(element)\n    return to\n\n# GOOD:\ndef append_to(element, to=None):\n    if to is None:\n        to = []\n    to.append(element)\n    return to",
+        "complexity": "N/A",
+        "use_cases": [
+            "Function definitions"
+        ],
+        "related": [
+            "Reference Semantics"
+        ]
+    },
+    {
+        "term": "Broad Exception Catching",
+        "category": "Anti-Pattern",
+        "subcategory": "Error Handling",
+        "description": "Catching 'Exception' or 'BaseException' silences all errors, including SystemExit and KeyboardInterrupt, making debugging impossible.",
+        "implementation": "# BAD:\ntry:\n    do_something()\nexcept:\n    pass\n\n# GOOD:\ntry:\n    do_something()\nexcept (ValueError, TypeError) as e:\n    log.error(e)",
+        "complexity": "N/A",
+        "use_cases": [
+            "Robustness"
+        ],
+        "related": [
+            "traceback",
+            "logging"
+        ]
+    },
+    {
+        "term": "Modifying List While Iterating",
+        "category": "Anti-Pattern",
+        "subcategory": "Logic Error",
+        "description": "Removing or adding items to a list while iterating over it causes skip/repeat behavior.",
+        "implementation": "# BAD:\nfor item in my_list:\n    if condition(item):\n        my_list.remove(item)\n\n# GOOD:\nmy_list = [x for x in my_list if not condition(x)]",
+        "complexity": "O(n)",
+        "use_cases": [
+            "Filtering"
+        ],
+        "related": [
+            "List Comprehensions"
+        ]
+    },
+    {
+        "term": "Variable Shadowing",
+        "category": "Anti-Pattern",
+        "subcategory": "Naming",
+        "description": "Naming variables the same as built-in functions (e.g., list, str, id) overwrites them in the local scope.",
+        "implementation": "# BAD:\ndef process(list, str):\n    list.append(str)\n\n# GOOD:\ndef process(items, text):\n    items.append(text)",
+        "complexity": "N/A",
+        "use_cases": [
+            "Maintainability"
+        ],
+        "related": [
+            "Built-ins",
+            "Scope"
+        ]
+    },
+    {
+        "term": "Hardcoded Paths",
+        "category": "Anti-Pattern",
+        "subcategory": "Portability",
+        "description": "Using absolute or OS-specific paths breaks cross-platform compatibility.",
+        "implementation": "# BAD:\npath = 'C:\\Users\\User\\file.txt'\n\n# GOOD:\nimport os\npath = os.path.join(os.path.expanduser('~'), 'file.txt')",
+        "complexity": "N/A",
+        "use_cases": [
+            "File I/O"
+        ],
+        "related": [
+            "pathlib",
+            "os.path"
+        ]
+    }
+]

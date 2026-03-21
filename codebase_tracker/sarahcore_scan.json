@@ -1,0 +1,25 @@
+{
+    "ignore_patterns": [
+        ".git", ".svn", ".hg",
+        "node_modules", "__pycache__", ".vscode", ".idea",
+        "*.log", "*.tmp", "*.bak", "*.swp",
+        "build", "dist", "target", "out",
+        ".gitignore", "*.env",
+        "*.pyc", "*.pyo", "*.egg-info",
+        ".pytest_cache", ".tox",
+        "venv", "env", ".venv",
+        "Genesis_Zero",
+        "sarah_ui",
+        "*.gguf", "*.bin",
+        "*.img", "*.iso",
+        "*.exe", "*.obj", "*.so", "*.dll",
+        ".codebase_tracker",
+        "GCP_Deploy",
+        "vault",
+        "manifests"
+    ],
+    "max_file_size": 524288,
+    "scan_depth": 6,
+    "track_dependencies": true,
+    "track_complexity": true
+}

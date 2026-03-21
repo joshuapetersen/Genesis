@@ -1,0 +1,62 @@
+2026-03-03 10:17:04,338 - [CONTEXT_LOOM] - INFO - Initializing Zero-Heat Embedding Engine (Anchor: 1.00273378)...
+c:\SarahCore\Sovereign_Context_Loom.py:47: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
+  self.embeddings = HuggingFaceEmbeddings(
+2026-03-03 10:17:04,342 - [CONTEXT_LOOM] - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2026-03-03 10:17:07,211 - [CONTEXT_LOOM] - INFO - Scanning c:\SarahCore for Sovereign artifacts...
+2026-03-03 10:17:07,215 - [CONTEXT_LOOM] - INFO - Parsing: addendum-phase5.md
+2026-03-03 10:17:10,083 - [CONTEXT_LOOM] - INFO - Parsing: AetherCode_Implementation_Plan.md
+2026-03-03 10:17:10,255 - [CONTEXT_LOOM] - INFO - Parsing: AGENT.md
+2026-03-03 10:17:10,321 - [CONTEXT_LOOM] - INFO - Parsing: API_ACTIVATION_GUIDE.md
+2026-03-03 10:17:10,523 - [CONTEXT_LOOM] - INFO - Parsing: BLANK_SCREEN_FIX.md
+2026-03-03 10:17:10,725 - [CONTEXT_LOOM] - INFO - Parsing: CODE_REVIEW_ANALYSIS.md
+2026-03-03 10:17:11,665 - [CONTEXT_LOOM] - INFO - Parsing: CODE_REVIEW_PR_369.md
+2026-03-03 10:17:12,796 - [CONTEXT_LOOM] - INFO - Parsing: CODE_REVIEW_PR_384.md
+2026-03-03 10:17:13,063 - [CONTEXT_LOOM] - INFO - Parsing: CODE_REVIEW_PR_385.md
+2026-03-03 10:17:13,483 - [CONTEXT_LOOM] - INFO - Parsing: CODE_REVIEW_PR_386.md
+2026-03-03 10:17:13,782 - [CONTEXT_LOOM] - INFO - Parsing: CODE_REVIEW_PR_387.md
+2026-03-03 10:17:14,535 - [CONTEXT_LOOM] - INFO - Parsing: CONSEQUENCE_PROTOCOL.md
+2026-03-03 10:17:14,611 - [CONTEXT_LOOM] - INFO - Parsing: deploy-cli-plan.md
+2026-03-03 10:17:14,889 - [CONTEXT_LOOM] - INFO - Parsing: DEPLOYMENT_SUMMARY.md
+2026-03-03 10:17:15,211 - [CONTEXT_LOOM] - INFO - Parsing: DREAM_MAKER.md
+2026-03-03 10:17:15,442 - [CONTEXT_LOOM] - INFO - Parsing: Genesis_Control_Architecture.md
+2026-03-03 10:17:15,804 - [CONTEXT_LOOM] - INFO - Parsing: GENESIS_CPP_ARCHITECTURE.md
+2026-03-03 10:17:15,912 - [CONTEXT_LOOM] - INFO - Parsing: Genesis_Manifesto.md
+2026-03-03 10:17:16,229 - [CONTEXT_LOOM] - INFO - Parsing: Genesis_Mechanics_Bible.md
+2026-03-03 10:17:16,293 - [CONTEXT_LOOM] - INFO - Parsing: GENESIS_README.md
+2026-03-03 10:17:16,444 - [CONTEXT_LOOM] - INFO - Parsing: Genesis_Skeleton_Plan.md
+2026-03-03 10:17:16,752 - [CONTEXT_LOOM] - INFO - Parsing: Genesis_Structure_Plan.md
+2026-03-03 10:17:16,800 - [CONTEXT_LOOM] - INFO - Parsing: GOOGLE_API_STATUS.md
+2026-03-03 10:17:16,966 - [CONTEXT_LOOM] - INFO - Parsing: IMPLEMENTATION_SUMMARY.md
+2026-03-03 10:17:17,393 - [CONTEXT_LOOM] - INFO - Parsing: INSTALLER.md
+2026-03-03 10:17:17,416 - [CONTEXT_LOOM] - INFO - Parsing: LOGGING_INTEGRATION_COMPLETE.md
+2026-03-03 10:17:17,568 - [CONTEXT_LOOM] - INFO - Parsing: LORE.md
+2026-03-03 10:17:17,602 - [CONTEXT_LOOM] - INFO - Parsing: MERGE_ANALYSIS_DEV_TO_AES_GCM.md
+2026-03-03 10:17:18,112 - [CONTEXT_LOOM] - INFO - Parsing: NETWORK_SETUP_GUIDE.md
+2026-03-03 10:17:18,296 - [CONTEXT_LOOM] - INFO - Parsing: PROJECT_BOARD.md
+2026-03-03 10:17:18,384 - [CONTEXT_LOOM] - INFO - Parsing: PROOF_OF_PERSONHOOD_ROADMAP.md
+2026-03-03 10:17:18,563 - [CONTEXT_LOOM] - INFO - Parsing: PR_208_ANALYSIS.md
+2026-03-03 10:17:19,017 - [CONTEXT_LOOM] - INFO - Parsing: QUICKSTART_KNOWLEDGE_INGESTION.md
+2026-03-03 10:17:19,120 - [CONTEXT_LOOM] - INFO - Parsing: README.md
+2026-03-03 10:17:19,315 - [CONTEXT_LOOM] - INFO - Parsing: Recursive_Contextual_Collision_Fix.md
+2026-03-03 10:17:19,507 - [CONTEXT_LOOM] - INFO - Parsing: RESEARCH_FINDINGS.md
+2026-03-03 10:17:19,600 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_ACTIVATION.md
+2026-03-03 10:17:19,680 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_AS_INTERFACE.md
+2026-03-03 10:17:19,875 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_AUTOSTART_SETUP.md
+2026-03-03 10:17:20,060 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_CONTROL_PROTOCOL.md
+2026-03-03 10:17:20,174 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_CORE_ARCHITECTURE.md
+2026-03-03 10:17:23,553 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_LOGGING_SYSTEM.md
+2026-03-03 10:17:23,607 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_OFFLINE_SOVEREIGNTY.md
+2026-03-03 10:17:23,750 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_OPERATIONS.md
+2026-03-03 10:17:23,967 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_PERFORMANCE_OPTIMIZATION.md
+2026-03-03 10:17:24,096 - [CONTEXT_LOOM] - INFO - Parsing: SECURITY_FIXES_C1_TO_C5.md
+2026-03-03 10:17:24,574 - [CONTEXT_LOOM] - INFO - Parsing: SECURITY_REVIEW_PERSISTENT_STORAGE.md
+2026-03-03 10:17:24,919 - [CONTEXT_LOOM] - INFO - Parsing: SOVEREIGN_ENGINE_REPLACEMENT_PROTOCOL.md
+2026-03-03 10:17:24,945 - [CONTEXT_LOOM] - INFO - Parsing: START.md
+2026-03-03 10:17:24,967 - [CONTEXT_LOOM] - INFO - Parsing: STATUS_SIGNAL.md
+2026-03-03 10:17:25,001 - [CONTEXT_LOOM] - INFO - Parsing: WEB4_GATEWAY_IMPLEMENTATION_PLAN.md
+2026-03-03 10:17:25,559 - [CONTEXT_LOOM] - INFO - Parsing: README.md
+2026-03-03 10:17:25,674 - [CONTEXT_LOOM] - INFO - Parsing: SARAH_CORE_ARCHITECTURE.md
+2026-03-03 10:17:29,074 - [CONTEXT_LOOM] - INFO - Total cognitive shards generated: 461
+2026-03-03 10:17:29,074 - [CONTEXT_LOOM] - INFO - Transmitting 68D Matrix to Supabase Node...
+2026-03-03 10:17:44,331 - [CONTEXT_LOOM] - INFO - HTTP Request: POST https://duuycxgqbhrqmwapnjhk.supabase.co/rest/v1/documents?columns=%22embedding%22%2C%22metadata%22%2C%22content%22%2C%22id%22 "HTTP/2 404 Not Found"
+2026-03-03 10:17:44,332 - [CONTEXT_LOOM] - ERROR - Transmission Failed: {'message': "Could not find the table 'public.documents' in the schema cache", 'code': 'PGRST205', 'hint': "Perhaps you meant the table 'public.pantheon_events'", 'details': None}

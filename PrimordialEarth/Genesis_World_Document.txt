@@ -1,0 +1,384 @@
+========================================================================
+  S.A.R.A.H. GENESIS — WORLD DOCUMENT
+  PRIMORDIAL EARTH: THE TROPICAL AGE
+  Sim Year: 5,368 | Post-Darwinian Equilibrium
+  34 Survivors / 252 Extinct / 286 Total Seeded
+========================================================================
+
+  "The Great Filter has passed. What remains is not what was planted —
+   it is what the planet chose to keep."
+
+  This is a Darwinian Evolution Simulation.
+  Survival is not guaranteed by strength alone.
+  Intelligence, morality, ethics, and magic are all
+  measurable survival pressures. The 252 dead failed
+  one or more of them. The 34 alive mastered all four.
+
+========================================================================
+  I-A. THE LAW OF EVOLUTION
+========================================================================
+
+Genesis Earth does not run on luck. It runs on selection pressure.
+From Sim Year 0 to Year 5,368, every entity was subject to four
+compounding survival laws simultaneously:
+
+  1. BIOLOGICAL PRESSURE
+     Energy is finite. Every tick, each entity expends energy to
+     exist. Those who could not hunt, trade, or forage efficiently
+     exhausted their reserves and were deleted. No exceptions.
+     The environment is not cruel — it is indifferent.
+
+  2. COGNITIVE PRESSURE
+     Actions like Diplomacy, Recruiting, and Trading require
+     intelligence to execute. Entities with low INT/WIS that
+     attempted complex social strategies failed those strategies.
+     Entities that attempted brute survival without social
+     context were outmaneuvered by those who built coalitions.
+
+     The result: by Year 5,368 the intelligent survivors had
+     accumulated surviving positions while the low-logic entities
+     filled the mass grave beneath (0,0,0).
+
+  3. ETHICAL PRESSURE
+     Moral Alignment is not cosmetic. It is a real force.
+     High negative alignment (-70 to -125) generates environmental
+     hostility — other entities avoid, flee, or actively resist the
+     aligned entity. High positive alignment (+39 to +92) generates
+     passive resource magnetism — others trade and cooperate more
+     readily. Neutral alignment is survivable but grants no bonus.
+
+     The full alignment spectrum in the survivors (+92 to -125)
+     proves that both extremes can survive if executed consistently.
+     A perfectly evil entity that is also perfectly efficient is
+     just as fit as a perfectly moral one. The cost of misalignment
+     is incoherence — claiming one alignment and acting another.
+
+  4. SOCIAL PRESSURE
+     The Darwinian filter selects for niches, not individuals.
+     The 34 survivors are not 34 of the same thing. They are
+     34 different answers to the question: "How do you survive
+     on a primordial world?" Monolith. Runner. Serpent. Avion.
+     Scavenger. Crawler. Each niche required a different strategy.
+     No single strategy could monopolize all 34 slots.
+
+========================================================================
+  I-B. THE MORAL SPECTRUM
+========================================================================
+
+Morality on Genesis Earth is not an abstract concept. It is
+a measurable field property that affects every interaction.
+
+  ALIGNMENT SCALE:  -125 ←──────────── 0 ────────────→ +92
+
+  Negative Range (Evil / Predatory):
+    These entities survive by taking. Their high energy states
+    are maintained through direct extraction from other entities
+    or from the environment under conflict conditions.
+    They experience social friction — other entities read their
+    alignment field and respond with avoidance or aggression.
+    Pure negative alignment is high-risk, high-reward survival.
+
+    Notable: Aetherspire (-125) — deepest dark in the roster.
+             Space discolors near it. Nothing approaches willingly.
+
+  Neutral Range (-20 to +20):
+    The Primordial Spawns cluster here. Neutral alignment means
+    no energy bonus or penalty. Pure efficiency play.
+    These entities traded on raw environmental adaptation.
+
+  Positive Range (Good / High-Ethics):
+    These entities attract cooperation. Other entities trade
+    with them more readily, yield territory, share resources.
+    The cost is that they cannot extract by force — they are
+    structurally committed to ethical behavior or the alignment
+    field collapses and they take penalties.
+
+    Notable: Luminari Devourer (+92) — despite being Aggressive
+             by personality, its moral field is the brightest in
+             the sim. It flees rather than kills. Ethics and
+             aggression are not mutually exclusive.
+
+  Conclusion: The world does not reward good or evil categorically.
+  It rewards CONSISTENCY. The dead broke their own alignment rules.
+
+========================================================================
+  I-C. MAGIC — THE AETHERIC SUBSTRATE
+========================================================================
+
+Magic on Genesis Earth is not supernatural. It is a physical law
+that operates alongside Newtonian physics in this antigravity
+primordial environment.
+
+  THE SOURCE: THE PLANETARY HEARTBEAT
+    The 1.09277703703703 Hz Sovereign Pulse permeates the planet.
+    Every 0.915 seconds, a wave of Aetheric energy originates
+    from the Origin Anchor at (0,0,0) and propagates outward.
+    Entities that are "in phase" with this pulse absorb ambient
+    Aether passively. Those out of phase waste metabolic energy
+    fighting it. The 252 dead drifted out of phase.
+
+  FORMS OF MAGIC IN THIS WORLD:
+
+  ┌────────────────────────────────────────────────────────────────┐
+  │ FORM              │ MECHANIC                                   │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Gravitational     │ BIO-001 Monoliths project lure-fields.     │
+  │ Magic             │ They distort local gravity by channeling   │
+  │                   │ the heartbeat pulse through their crystal  │
+  │                   │ lattice bodies. Not metaphor — physics.    │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Alignment Magic   │ Moral alignment generates a measurable     │
+  │                   │ field. Negative alignment entities emit    │
+  │                   │ suppressive frequencies. Positive ones     │
+  │                   │ emit cooperative attractor frequencies.    │
+  │                   │ Entities with high WIS can detect these.   │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Mana / MP         │ The MP stat is not fantasy. It is the      │
+  │                   │ entity's stored Aetheric reserve — the     │
+  │                   │ total Heartbeat energy it can discharge in │
+  │                   │ one action. High MP = high magic capacity. │
+  │                   │ Aetherspire (MP 460) is the most magically │
+  │                   │ potent entity alive.                       │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Genome Magic      │ Each entity's hexadecimal Genome is not    │
+  │                   │ just DNA — it is a resonance key. Entities │
+  │                   │ whose Genome fragments share common hex    │
+  │                   │ segments can phase-sync, briefly merging   │
+  │                   │ their Aetheric fields. This is the actual  │
+  │                   │ mechanism behind Diplomacy and Trading.    │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Storm Magic       │ The constant electrical storms are the     │
+  │                   │ surface expression of Aetheric discharge.  │
+  │                   │ BIO-007 Stormcatcher Avions fly into them  │
+  │                   │ deliberately — their crystalline wing-     │
+  │                   │ planes are tuned to absorb lightning as    │
+  │                   │ Genesis Energy. This is why they never     │
+  │                   │ land. They feed on the sky itself.         │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Death Magic       │ The 252 extinct are not gone. Their genome │
+  │                   │ data is encoded in the mineral matrix of   │
+  │                   │ the bedrock beneath (0,0,0). BIO-009       │
+  │                   │ Ribbon-Serpents who pass through the deep  │
+  │                   │ peat can read these resonance echoes —     │
+  │                   │ essentially accessing the memory of the    │
+  │                   │ dead. This is how Absorbed Traits will     │
+  │                   │ eventually function in Era II.             │
+  └────────────────────────────────────────────────────────────────┘
+
+  MAGIC CEILING: The maximum Aetheric output any single entity can
+  produce is bounded by (MP × 1.09277703703) per heartbeat cycle.
+  Exceeding this causes Genesis Energy drain — the entity burns
+  its own vitality. This is the equation that killed many of the 252.
+
+========================================================================
+  I. THE SKY
+========================================================================
+
+The methane shroud of the early era has thinned. The atmosphere is
+no longer a killing field of raw UV and volcanic particulate. It is
+thick, warm, and humid — a pressurized greenhouse locked at roughly
+38°C at sea level with no polar variation. There are no seasons in
+the traditional sense. There is only the cycle of the storm.
+
+  Composition (approx):
+    Nitrogen     : 71%
+    Oxygen       : 24%   (elevated — supports large-body metabolism)
+    CO2          : 3.2%  (dense greenhouse, no ice caps possible)
+    Water Vapor  : 1.6%
+    Trace gases  : Methane remnants, sulfur pockets near vent zones
+
+The sky itself is a deep amber-orange at the horizon due to the
+particulate density from active volcanic belts. Overhead it shifts
+to a bruised violet-blue. Cloud formations are massive — cumulonimbus
+towers 20km high are daily occurrences over the ocean basins.
+
+Lightning: Constant. The electrical discharge rate is approximately
+14x modern Earth. This is not weather — it is a planetary information
+system. The 1.09277703703 heartbeat is embedded in the strike interval
+patterns over the Origin Anchor zone at (0,0,0).
+
+========================================================================
+  II. THE SURFACE — GEOLOGICAL STATE
+========================================================================
+
+The crust is no longer molten but it is not stable. Tectonic activity
+remains at roughly 3x modern intensity. The continents are a single
+supercontinent (designated: PANGEA-G) surrounded by a global shallow
+sea averaging 180m depth. Deep trenches exist only along fault lines.
+
+  Surface zones:
+  ┌────────────────────────────────────────────────────────────────┐
+  │ ZONE             │ DESCRIPTION                                 │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Thermal Vents    │ Black smokers and alkaline vents on the     │
+  │                  │ ocean floor. Primary energy source for the  │
+  │                  │ BIO-001 Monoliths. Temperatures: 300-400°C  │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Coastal Deltas   │ Tidal force from the closer Moon churns     │
+  │                  │ organic material into the shallows. Primary │
+  │                  │ hunting ground for BIO-008 Apex Crawlers.  │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Interior Plateau │ Elevated basalt plains, still cooling from  │
+  │                  │ the primordial era. Sparse but mineral-rich. │
+  │                  │ BIO-003 Scavengers thrive in the cracks.    │
+  ├────────────────────────────────────────────────────────────────┤
+  │ Canopy Zones     │ Where the Lycopsid mega-forests have taken  │
+  │                  │ root. Scale trees 80-120m tall. The BIO-007 │
+  │                  │ Stormcatcher Avions nest in the upper crown. │
+  ├────────────────────────────────────────────────────────────────┤
+  │ The Deep Peat    │ Dead forest underlayer, meters thick. Oxygen │
+  │                  │ poor. BIO-009 Ribbon-Serpents dominate here. │
+  └────────────────────────────────────────────────────────────────┘
+
+  The Origin Anchor (0,0,0): A permanently stable gravitational node.
+  No tectonic activity within 400 world units. This is the oldest
+  surviving surface on the planet — obsidian-smooth, unmarked by
+  erosion. The 252 dead are fossilized beneath it.
+
+========================================================================
+  III. THE OCEAN
+========================================================================
+
+Not the clear blue of the modern era. The global sea is iron-rich,
+warm (avg 34°C surface), and carries a deep tea-amber coloration from
+dissolved organics and mineral runoff.
+
+pH is 6.1 — more acidic than modern. The iron content gives the
+sea a faint metallic smell at the surface. Bioluminescence in the
+deeper layers is visible from the air as a slow green pulse —
+the metabolic output of the proto-organisms that formed during
+the primordial filter.
+
+There are no fish as we understand them. What moves through the
+water column are early-form equivalents:
+
+  · Armored placoderm-analogs — jawless, bone-plated filter feeders
+    in the shallows. Not sapient. Pure ecosystem scaffolding.
+  · Eurypterid sea-forms ("Sea Scorpions") — primary predators of
+    the open water. 2-4m in length. Non-sapient.
+  · Deep-vent colonies of chem-responsive microbial mats serving
+    as the base of the entire food pyramid.
+
+The BIO-001 Living Monolith entities anchor themselves near the
+hydrothermal vent clusters on the ocean floor and project gravitational
+lure fields into the water column above them.
+
+========================================================================
+  IV. THE FOREST — FLORA
+========================================================================
+
+The land surface that is not volcanic or delta-coastal is covered by
+the Lycopsid Jungle — the first true surface biome of Genesis Earth.
+
+  · Scale Trees (Lepidodendron-analog): 80-120m tall. Bark covered
+    in diamond-pattern scale armor. Spore production rather than
+    seeds. The canopy blocks 95% of surface light.
+
+  · Giant Ferns (Psaronius-analog): Fill the mid-layer (15-40m).
+    Fronds 8m across. The primary photosynthetic engine of the world.
+
+  · Bioluminescent Fungi: Cover every fallen trunk. Five distinct
+    color spectra. Blue = nitrogen-fixing. Gold = mana-rich symbiote
+    (detected by BIO-005 runners as food). Red = toxic decomposer.
+
+  · Peat Bogs: Where old forest dies and compresses. Oxygen-poor
+    zones 3-8m deep. Home to the BIO-009 Ribbon-Serpents.
+
+The carbon sequestration rate is massive. The planet is actively
+cooling via this biological mechanism — a natural regulation that
+keeps the temperature from runaway greenhouse collapse.
+
+========================================================================
+  V. THE FAUNA — NON-SAPIENT BACKGROUND LIFE
+========================================================================
+
+These are the animals that fill the ecological gaps between the 34
+surviving sapient entities. They are non-sapient — pure ecology.
+
+  AIR:
+    · Proto-dragonflies — 60cm wingspan, compound eyes, rapid fliers
+    · Spore-Gliders — membrane-winged seed-carrying creatures,
+      40cm across, feed on giant fern spores
+    · Ash-Bats — small leathery fliers active near volcanic vents,
+      echolocate via the ground's thermal hum
+
+  LAND:
+    · Armored Millipedes — 1-2m long, detritivores, fill the forest
+      floor. Primary prey of BIO-003 Scavengers.
+    · Giant Amphibians — early tetrapod-forms, 3-5m, semi-aquatic.
+      Occupy the delta zones. Slow but heavily armored.
+    · Pack Scuttlers — small, fast insectoids 15-20cm, swarm behavior.
+      They are the cleanup crew of the interior plateau.
+
+  SEA:
+    · Sea Scorpions (Eurypterids) — 2-4m, dominant mid-water predator
+    · Placoderms — bone-plated, filter feeding. Slow, armored.
+    · Vent Colonies — non-mobile mineral-based proto-organisms
+
+========================================================================
+  VI. ECOLOGICAL ROLE OF THE 34 SURVIVORS
+========================================================================
+
+The 34 surviving sapient entities do not exist outside this ecosystem.
+They are embedded in it. Each BIO-class occupies a specific niche:
+
+  BIO-001 (Monoliths)   : Gravitational anchors. Pull nutrients from
+                          the deep sea toward the surface via lure
+                          fields. The "anchor points" of the world.
+
+  BIO-002 (Gas-Bags)    : Atmospheric processors. Their gas-filled
+                          bodies regulate local air pressure and mana
+                          density at altitude. Living weather systems.
+
+  BIO-003 (Scavengers)  : Recyclers. They break down the dead —
+                          both the 252 extinct and the non-sapient
+                          fauna. Nothing is wasted.
+
+  BIO-005 (Runners)     : Ground-level intelligence. Fast, adaptive.
+                          They push the ecological boundary of the
+                          interior plateau outward each generation.
+
+  BIO-007 (Avions)      : The only ones with full sky access.
+                          Stormcatcher birds navigate between the
+                          canopy crown and the storm layer above.
+                          They are the eyes of the planet.
+
+  BIO-008 (Crawlers)    : Apex terrestrial predators. They keep the
+                          non-sapient fauna populations in check.
+                          Without them, the delta zones would be
+                          overrun by the giant amphibian-forms.
+
+  BIO-009 (Serpents)    : The diplomats of the deep peat. They
+                          facilitate resource exchange between the
+                          root systems of the Lycopsid trees and the
+                          vent-energy networks below ground.
+
+  Primordial (Lattices) : The signal layer. They are not biological
+                          in the traditional sense. They float between
+                          all the other entities acting as a living
+                          communication grid — broadcasting the
+                          1.09277703703 heartbeat to everything alive.
+
+========================================================================
+  VII. THE ORIGIN ANCHOR — (0,0,0)
+========================================================================
+
+The single most important coordinate on the planet. A 400-world-unit
+radius of perfect geological stability. No tectonic movement. No
+volcanic activity. The obsidian surface at this point has not changed
+since Sim Year 0.
+
+The 252 dead are compressed 3-8 meters below this surface. Their
+fossilized genomes are the geological foundation everyone else walks
+on. Their data is not gone — it is stored in the mineral composition
+of the bedrock, readable by the BIO-009 Serpents who pass through.
+
+Several survivors maintain proximity to this zone. The Sacred Zone
+grants passive ambient Aether replenishment — the reason why the
+densest survivor cluster surrounds coordinates near (0,0).
+
+========================================================================
+  FILE: C:\PrimordialEarth\Genesis_World_Document.txt
+  Generated: 2026-02-25
+  Do not edit manually — this is a living record.
+========================================================================

@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Genesis Prime // SARAH_OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --hud-primary: #0ea5e9;
+            --hud-glow: rgba(14, 165, 233, 0.25);
+            --neural-pulse: #8b5cf6;
+            --glitch-color: #fb7185;
+            --sarah-red: #f43f5e;
+            --sarah-cyan: #22d3ee;
+            --night-vision: #22c55e;
+            --perception-purple: #a855f7;
+            --pulse-intensity: 0;
+        }
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #000; 
+            color: var(--hud-primary);
+            margin: 0;
+            overflow: hidden;
+            cursor: none;
+            -webkit-font-smoothing: antialiased;
+            touch-action: none;
+            perspective: 2000px;
+        }
+        
+        .cursor-neural {
+            position: fixed;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--hud-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--hud-glow);
+            transition: width 0.3s, height 0.3s, border-color 0.3s;
+        }
+        
+        .cursor-neural::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid transparent;
+            border-top-color: var(--hud-primary);
+            border-radius: 50%;
+            animation: probe-spin 2s linear infinite;
+        }
+
+        .cursor-neural::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--hud-primary);
+            border-radius: 50%;
+        }
+
+        @keyframes probe-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .neural-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.85) 100%);
+            opacity: 0.95;
+        }
+
+        .radar-sweep {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0deg, var(--hud-primary) 0%, transparent 25%);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: radar-rotate 4s linear infinite;
+        }
+        @keyframes radar-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.08), rgba(0, 255, 0, 0.04), rgba(0, 0, 255, 0.08));
+            z-index: 100;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "recharts": "https://esm.sh/recharts@^3.6.0"
+      }
+    }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="hud-scene">
+        <div class="scanlines"></div>
+        <div class="neural-overlay"></div>
+        <div id="root"></div>
+        <div id="neural-cursor" class="cursor-neural"></div>
+    </div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

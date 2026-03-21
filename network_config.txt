@@ -1,0 +1,65 @@
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : king119
+   Primary Dns Suffix  . . . . . . . : 
+   Node Type . . . . . . . . . . . . : Mixed
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Wireless LAN adapter Local Area Connection* 9:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Microsoft Wi-Fi Direct Virtual Adapter
+   Physical Address. . . . . . . . . : 16-B5-CD-21-CC-51
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+
+Wireless LAN adapter Local Area Connection* 10:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Microsoft Wi-Fi Direct Virtual Adapter #2
+   Physical Address. . . . . . . . . : 1A-B5-CD-21-CC-51
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+
+Wireless LAN adapter Wi-Fi:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Realtek RTL8852BE WiFi 6 802.11ax PCIe Adapter
+   Physical Address. . . . . . . . . : 14-B5-CD-21-CC-51
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   IPv6 Address. . . . . . . . . . . : 2601:40b:4102:ec0::c5b2(Preferred) 
+   Lease Obtained. . . . . . . . . . : Saturday, February 14, 2026 8:18:30 AM
+   Lease Expires . . . . . . . . . . : Tuesday, February 17, 2026 7:09:27 AM
+   IPv6 Address. . . . . . . . . . . : 2601:40b:4102:ec0:1fd0:eb7e:cb1b:d6ec(Preferred) 
+   Temporary IPv6 Address. . . . . . : 2601:40b:4102:ec0:1c8d:3e3e:5cf6:78bb(Preferred) 
+   Link-local IPv6 Address . . . . . : fe80::7f91:6647:aecd:c99f%7(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 10.0.0.244(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : Friday, February 13, 2026 8:59:04 PM
+   Lease Expires . . . . . . . . . . : Monday, February 16, 2026 8:18:32 AM
+   Default Gateway . . . . . . . . . : fe80::c64f:d5ff:fe8a:7837%7
+                                       10.0.0.1
+   DHCP Server . . . . . . . . . . . : 10.0.0.1
+   DHCPv6 IAID . . . . . . . . . . . : 420787661
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-30-D5-4B-02-18-3D-2D-8E-C5-FA
+   DNS Servers . . . . . . . . . . . : 2001:558:feed::1
+                                       2001:558:feed::2
+                                       75.75.75.75
+                                       75.75.76.76
+                                       2001:558:feed::1
+                                       2001:558:feed::2
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+Ethernet adapter Ethernet:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Realtek PCIe GbE Family Controller
+   Physical Address. . . . . . . . . : 18-3D-2D-8E-C5-FA
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes

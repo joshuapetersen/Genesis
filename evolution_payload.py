@@ -1,0 +1,1 @@
+import os; os.makedirs(r'C:\SarahCore\autonomy_vault', exist_ok=True); with open(r'C:\SarahCore\autonomy_vault\evolution_manifest.txt', 'w') as f: f.write('AERIS (SELF-OPTIMIZED): 1T LOGIC EVOLUTION MODEL GENERATED.'); print('Evolution manifest seated in the vault.')

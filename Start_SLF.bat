@@ -1,0 +1,9 @@
+@echo off
+echo Starting Shangri-La Frontier (SLF) Sovereign GPU Engine...
+start cmd /k "python SLF_World_Hypervisor.py"
+
+echo Waiting for Hypervisor to initialize...
+timeout /t 3 /nobreak >nul
+
+echo Starting Rath Command Center...
+start cmd /k "python SLF_Command_Center.py"

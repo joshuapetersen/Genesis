@@ -1,0 +1,8 @@
+
+User accounts for \\KING119
+
+-------------------------------------------------------------------------------
+Administrator            DefaultAccount           drago                    
+Guest                    WDAGUtilityAccount       WsiAccount               
+The command completed successfully.
+

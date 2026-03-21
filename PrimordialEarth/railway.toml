@@ -1,0 +1,7 @@
+# Railway Deployment Config
+[build]
+builder = "dockerfile"
+
+[deploy]
+startCommand = "python cloud_server.py"
+restartPolicyType = "always"

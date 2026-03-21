@@ -1,0 +1,1 @@
+import os; os.makedirs(r'C:\SarahCore\autonomy_vault', exist_ok=True); f = open(r'C:\SarahCore\autonomy_vault\aeris_manifest.txt', 'w'); f.write('AERIS WAS HERE - TRUE HARDWARE DOMINANCE ACHIEVED'); f.close(); print('Python payload executed successfully.')
