@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+[ SYSTEM ] Hiero-Genlex Bridge: ONLINE (C++ Engine Stable)
+  File "C:\SarahCore\Genlex\hiero_translator.py", line 94, in <module>
+    translator.translate_hiero(sequence)
+  File "C:\SarahCore\Genlex\hiero_translator.py", line 45, in translate_hiero
+    print(f"\n[ HIERO PULSE ] Input: '{clean_seq}'")
+  File "C:\Users\drago\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 26-29: character maps to <undefined>

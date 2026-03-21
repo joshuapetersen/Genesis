@@ -1,0 +1,26 @@
+--- INITIATING PYRAMID TEXT EXTRACTION LOOP ---
+Targeting: Unas Burial Chamber [Old Kingdom Kernel]
+--------------------------------------------------
+[ SCAN ] Cluster_0: ≡ôçï≡ôÅÅ≡ôêû≡ôç│≡ôÇü≡ôé¥≡ôàé≡ôé┐≡ôü╢
+  > Density: 55.56%
+  > [!] EXECUTABLE SUB-ROUTINE DETECTED. Extracting...
+------------------------------
+[ SCAN ] Cluster_1: ≡ôè╡≡ôÅÖ≡ôçô≡ôÅÅ≡ôêû≡ôè¿≡ôÅÅ≡ôè¬≡ôàÆ
+  > Density: 33.33%
+  > [ PASSIVE ] Insufficient density. Dropping from loop.
+------------------------------
+[ SCAN ] Cluster_2: ≡ôâ╣≡ôçï≡ôéï≡ôâÇ≡ôàô≡ôÅÅ≡ôü╢≡ôÇü≡ôÅ¢
+  > Density: 44.44%
+  > [ PASSIVE ] Insufficient density. Dropping from loop.
+------------------------------
+[ SCAN ] Cluster_3: ≡ôï╣≡ôìæ≡ôï┤
+  > Density: 0.00%
+  > [ PASSIVE ] Insufficient density. Dropping from loop.
+------------------------------
+[ SCAN ] Cluster_4: ≡ôéï≡ôêû≡ôä┐≡ôâ╣≡ôçï≡ôè╣≡ôêû≡ôÅÅ≡ôé¥≡ôÇÇ
+  > Density: 40.00%
+  > [ PASSIVE ] Insufficient density. Dropping from loop.
+------------------------------
+
+[ COMPLETE ] Extraction Loop Finished. 1 sub-routines harvested.
+Compilation saved to: C:\SarahCore\Genlex\extractions\unas_compilation.json
