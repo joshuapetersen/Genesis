@@ -49,104 +49,82 @@ class Multivector:
     def __sub__(self, other: 'Multivector') -> 'Multivector':
         return Multivector(self.tensor - other.tensor, self.dimension)
 
-    def gp(self, other: 'Multivector') -> 'Multivector':
-        """Geometric Product using precomputed or on-the-fly sign logic (GPU optimized)."""
-        # For small dimensions, we can use a multiplication table
-        # For now, we'll use a semi-vectorized approach
-        res_tensor = torch.zeros_like(self.tensor)
-        
-        # We can optimize this further by precomputing the (k1, k2 -> result_blade, sign) table
-        # For 4D, the table is only 16x16 = 256 entries.
-        
-        # Simple sign logic for Euclidean metric
-        def get_sign(k1, k2):
-            """Function: get_sign"""
-            a_bits = [i for i in range(self.dimension) if (k1 >> i) & 1]
-            b_bits = [i for i in range(self.dimension) if (k2 >> i) & 1]
-            swaps = 0
-            combined = a_bits + b_bits
-            for i in range(len(combined)):
-                for j in range(0, len(combined)-i-1):
-                    if combined[j] > combined[j+1]:
-                        combined[j], combined[j+1] = combined[j+1], combined[j]
-                        swaps += 1
-            return -1 if (swaps % 2) else 1
+    _TABLES = {}
 
-        for k1 in range(self.num_blades):
-            if abs(self.tensor[k1]) < VAR_1eNEG_09: continue
-            for k2 in range(self.num_blades):
-                if abs(other.tensor[k2]) < VAR_1eNEG_09: continue
-                
-                sign = get_sign(k1, k2)
-                res_blade = k1 ^ k2
-                res_tensor[res_blade] += self.tensor[k1] * other.tensor[k2] * sign
-        
+    @classmethod
+    def _get_tables(cls, dim, device):
+        cache_key = (dim, device)
+        if cache_key not in cls._TABLES:
+            num_blades = 1 << dim
+            sign_matrix = torch.zeros((num_blades, num_blades), device=device)
+            blade_matrix = torch.zeros((num_blades, num_blades), dtype=torch.long, device=device)
+            wedge_mask = torch.zeros((num_blades, num_blades), device=device)
+            dot_mask = torch.zeros((num_blades, num_blades), device=device)
+            reverse_signs = torch.ones(num_blades, device=device)
+            
+            for i in range(num_blades):
+                # Reverse Signs
+                grade_i = bin(i).count('1')
+                if (grade_i * (grade_i - 1) // 2) % 2:
+                    reverse_signs[i] = -1.0
+                    
+                a_bits = [b for b in range(dim) if (i >> b) & 1]
+                for j in range(num_blades):
+                    # Sign Table
+                    b_bits = [b for b in range(dim) if (j >> b) & 1]
+                    swaps = 0
+                    combined = a_bits + b_bits
+                    for x in range(len(combined)):
+                        for y in range(0, len(combined)-x-1):
+                            if combined[y] > combined[y+1]:
+                                combined[y], combined[y+1] = combined[y+1], combined[y]
+                                swaps += 1
+                    s = -1.0 if (swaps % 2) else 1.0
+                    
+                    sign_matrix[i, j] = s
+                    res_blade = i ^ j
+                    blade_matrix[i, j] = res_blade
+                    
+                    # product masks
+                    if (i & j) == 0:
+                        wedge_mask[i, j] = 1.0
+                        
+                    grade_j = bin(j).count('1')
+                    target_grade = abs(grade_i - grade_j)
+                    if bin(res_blade).count('1') == target_grade:
+                        dot_mask[i, j] = 1.0
+                        
+            cls._TABLES[cache_key] = (sign_matrix, blade_matrix, wedge_mask, dot_mask, reverse_signs)
+        return cls._TABLES[cache_key]
+
+    def gp(self, other: 'Multivector') -> 'Multivector':
+        """Geometric Product using precomputed Vectorized Logic (GPU optimized)."""
+        sign_matrix, blade_matrix, _, _, _ = self._get_tables(self.dimension, self.tensor.device)
+        prod = self.tensor.unsqueeze(1) * other.tensor.unsqueeze(0) * sign_matrix
+        res_tensor = torch.zeros_like(self.tensor)
+        res_tensor.scatter_add_(0, blade_matrix.flatten(), prod.flatten())
         return Multivector(res_tensor, self.dimension)
 
     def wedge(self, other: 'Multivector') -> 'Multivector':
         """Outer (Wedge) Product."""
+        sign_matrix, blade_matrix, wedge_mask, _, _ = self._get_tables(self.dimension, self.tensor.device)
+        prod = self.tensor.unsqueeze(1) * other.tensor.unsqueeze(0) * sign_matrix * wedge_mask
         res_tensor = torch.zeros_like(self.tensor)
-        for k1 in range(self.num_blades):
-            if abs(self.tensor[k1]) < VAR_1eNEG_09: continue
-            for k2 in range(self.num_blades):
-                if abs(other.tensor[k2]) < VAR_1eNEG_09: continue
-                if (k1 & k2) == 0: # Grade consistency for wedge
-                    def get_sign(k1, k2):
-                        """Function: get_sign"""
-                        a_bits = [i for i in range(self.dimension) if (k1 >> i) & 1]
-                        b_bits = [i for i in range(self.dimension) if (k2 >> i) & 1]
-                        swaps = 0
-                        combined = a_bits + b_bits
-                        for i in range(len(combined)):
-                            for j in range(0, len(combined)-i-1):
-                                if combined[j] > combined[j+1]:
-                                    combined[j], combined[j+1] = combined[j+1], combined[j]
-                                    swaps += 1
-                        return -1 if (swaps % 2) else 1
-                    
-                    sign = get_sign(k1, k2)
-                    res_tensor[k1 ^ k2] += self.tensor[k1] * other.tensor[k2] * sign
+        res_tensor.scatter_add_(0, blade_matrix.flatten(), prod.flatten())
         return Multivector(res_tensor, self.dimension)
 
     def dot(self, other: 'Multivector') -> 'Multivector':
         """Inner (Dot) Product."""
+        sign_matrix, blade_matrix, _, dot_mask, _ = self._get_tables(self.dimension, self.tensor.device)
+        prod = self.tensor.unsqueeze(1) * other.tensor.unsqueeze(0) * sign_matrix * dot_mask
         res_tensor = torch.zeros_like(self.tensor)
-        for k1 in range(self.num_blades):
-            if abs(self.tensor[k1]) < VAR_1eNEG_09: continue
-            for k2 in range(self.num_blades):
-                if abs(other.tensor[k2]) < VAR_1eNEG_09: continue
-                
-                grade1 = bin(k1).count('1')
-                grade2 = bin(k2).count('1')
-                target_grade = abs(grade1 - grade2)
-                
-                def get_sign(k1, k2):
-                    """Function: get_sign"""
-                    a_bits = [i for i in range(self.dimension) if (k1 >> i) & 1]
-                    b_bits = [i for i in range(self.dimension) if (k2 >> i) & 1]
-                    swaps = 0
-                    combined = a_bits + b_bits
-                    for i in range(len(combined)):
-                        for j in range(0, len(combined)-i-1):
-                            if combined[j] > combined[j+1]:
-                                combined[j], combined[j+1] = combined[j+1], combined[j]
-                                swaps += 1
-                    return -1 if (swaps % 2) else 1
-                
-                sign = get_sign(k1, k2)
-                res_k = k1 ^ k2
-                if bin(res_k).count('1') == target_grade:
-                    res_tensor[res_k] += self.tensor[k1] * other.tensor[k2] * sign
+        res_tensor.scatter_add_(0, blade_matrix.flatten(), prod.flatten())
         return Multivector(res_tensor, self.dimension)
 
     def reverse(self) -> 'Multivector':
         """Reversion operator."""
-        new_tensor = self.tensor.clone()
-        for k in range(self.num_blades):
-            grade = bin(k).count('1')
-            sign = -1 if (grade * (grade - 1) // 2) % 2 else 1
-            new_tensor[k] *= sign
-        return Multivector(new_tensor, self.dimension)
+        _, _, _, _, reverse_signs = self._get_tables(self.dimension, self.tensor.device)
+        return Multivector(self.tensor * reverse_signs, self.dimension)
 
 class GeometricReasoningEngine:
     """

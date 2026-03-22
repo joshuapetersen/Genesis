@@ -352,8 +352,8 @@ class SarahHypervisor:
             print("[Sarah] [OK] Sovereign Hypervisor: +1 layer managing 9 inhibitory controls")
             
             # Protocol 3: S.A.U.L. - Search And Utilize Logistics
-            # Stealth Mode: Using local cache with 60min TTL to prevent Supabase triggers
-            self.logistics = SAULLogistics(cache_ttl=VAR_3600)
+            # Stealth Mode: Extended TTL (30 days) for sovereign offline operation
+            self.logistics = SAULLogistics(cache_ttl=86400 * 30)
             print("[Sarah] [OK] S.A.U.L. Logistics: Resonant Memory (Cached/Stealth) ACTIVE")
             
             # Verify continuity from March 2025 (Stealth Audit)

@@ -179,6 +179,11 @@ def get_chat_core():
 if HAS_FASTAPI:
     app = FastAPI(title="Sarah Sovereign Gateway", version="1.0")
 
+    @app.on_event("startup")
+    async def startup_event():
+        logger.info("[Gateway] PRE-LOADING MODELS: Booting Neural Orchestrator before accepting requests...")
+        get_chat_core()
+
     # CORS
     app.add_middleware(
         CORSMiddleware,
@@ -395,11 +400,14 @@ if HAS_FASTAPI:
             # Context Loom Intercept (RAG)
             augmented_prompt = user_input
             if CONTEXT_DB:
-                docs = CONTEXT_DB.similarity_search(user_input, k=3)
-                if docs:
-                    context_block = "\n".join([d.page_content for d in docs])
-                    augmented_prompt = f"Using this grounded truth:\n{context_block}\n\nUser Query: {user_input}"
-                    logger.info("[Context_Loom] Grounding injected into prompt (P=1.0) for SSE Stream.")
+                try:
+                    docs = CONTEXT_DB.similarity_search(user_input, k=3)
+                    if docs:
+                        context_block = "\n".join([d.page_content for d in docs])
+                        augmented_prompt = f"Using this grounded truth:\n{context_block}\n\nUser Query: {user_input}"
+                        logger.info("[Context_Loom] Grounding injected into prompt (P=1.0) for SSE Stream.")
+                except Exception as db_err:
+                    logger.warning(f"[Context_Loom] Stream RAG Failure (Bypassed): {db_err}")
 
             async def event_generator():
                 """Function: event_generator"""

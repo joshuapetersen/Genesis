@@ -1,0 +1,87 @@
+{
+  "name": "sarah-sovereign",
+  "displayName": "Sarah - Sovereign AI",
+  "description": "Sovereign AI coding assistant powered by SarahCore + 1T Genlex",
+  "version": "1.0.0",
+  "publisher": "joshuapetersen",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["AI", "Chat", "Programming Languages"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sarah-sidebar",
+          "title": "Sarah",
+          "icon": "media/sarah-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "sarah-sidebar": [
+        {
+          "type": "webview",
+          "id": "sarah.chatView",
+          "name": "Sarah Chat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "sarah.askSarah",
+        "title": "Sarah: Ask Sarah"
+      },
+      {
+        "command": "sarah.explainCode",
+        "title": "Sarah: Explain Selected Code"
+      },
+      {
+        "command": "sarah.fixCode",
+        "title": "Sarah: Fix Selected Code"
+      },
+      {
+        "command": "sarah.generateCode",
+        "title": "Sarah: Generate Code"
+      },
+      {
+        "command": "sarah.startGateway",
+        "title": "Sarah: Start Sovereign Gateway"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "sarah.explainCode",
+          "when": "editorHasSelection",
+          "group": "sarah@1"
+        },
+        {
+          "command": "sarah.fixCode",
+          "when": "editorHasSelection",
+          "group": "sarah@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Sarah Sovereign",
+      "properties": {
+        "sarah.gatewayUrl": {
+          "type": "string",
+          "default": "http://localhost:8001",
+          "description": "URL of the Sarah Sovereign Gateway"
+        },
+        "sarah.gatewayKey": {
+          "type": "string",
+          "default": "Sarah_Sovereign_2026",
+          "description": "Sovereign Gateway authentication key"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "npx -y @vscode/vsce package --no-dependencies"
+  }
+}

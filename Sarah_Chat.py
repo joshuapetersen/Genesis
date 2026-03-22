@@ -170,6 +170,23 @@ You are AERIS. You are here.""")
             self.vault.mark_as_synced(synced_ids)
             print(f"[Sync] Pulse Complete. {len(synced_ids)} entries seated.")
 
+    def _is_code_request(self, prompt: str) -> bool:
+        keywords = ["code", "script", "python", "debug", "refactor", "function", "class", "javascript", "html", "css", "error", "traceback", "fix", "write"]
+        return any(k in prompt.lower() for k in keywords)
+
+    def _get_cortex(self):
+        import sys
+        if "C:\\Genlex_Linear" not in sys.path:
+            sys.path.append("C:\\Genlex_Linear")
+        try:
+            from SovereignInference import SovereignCortex
+            if not hasattr(self, "_sovereign_cortex") or self._sovereign_cortex is None:
+                self._sovereign_cortex = SovereignCortex()
+            return self._sovereign_cortex
+        except Exception as e:
+            print(f"[Chat] Genlex 1T unavailable: {e}")
+            return None
+
     def generate_streaming_response(self, user_input, user_id="default_user"):
         """
         Bridges the Neural Orchestrator's stream to the Gateway.
@@ -178,7 +195,36 @@ You are AERIS. You are here.""")
         start_time = time.time()
         full_response = []
         
-        # Stream Generation
+        # 1T Genlex Cortex Intercept for coding requests
+        if self._is_code_request(user_input):
+            cortex = self._get_cortex()
+            if cortex:
+                try:
+                    activation, voice = cortex.forward(user_input)
+                    print(f"[Chat] 1T Cortex Synthesis Active (activation: {activation:.4f})")
+                    # Fake streaming for UI compatibility
+                    words = voice.split(" ")
+                    for i, word in enumerate(words):
+                        token_str = word + (" " if i < len(words) - 1 else "")
+                        full_response.append(token_str)
+                        yield token_str
+                    
+                    response_text = "".join(full_response)
+                    if response_text:
+                        metadata = {
+                            "user_id": user_id,
+                            "latency": time.time() - start_time,
+                            "model": "1t-genlex-cortex",
+                            "status": "success",
+                            "streamed": True
+                        }
+                        self.save_message(role="user", content=user_input, metadata={"timestamp": start_time})
+                        self.save_message(role="assistant", content=response_text, metadata=metadata)
+                    return
+                except Exception as e:
+                    print(f"[Chat] 1T Cortex failed: {e}. Falling back to 8B.")
+
+        # Stream Generation (8B Substrate)
         for token in self.kernel.generate_response_stream(
             user_input=user_input,
             system_instruction=self.system_instruction,

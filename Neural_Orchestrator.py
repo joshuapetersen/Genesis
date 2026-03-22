@@ -77,30 +77,29 @@ class NeuralOrchestrator:
         pantheon_id = self.PANTHEON_MAPPING.get(model_name, "ALICE_Unknown")
         print(f"[Neural Orchestrator] Manifesting: {pantheon_id}")
         
-        # GPU CONFIGURATION (RTX 4050 Optimized)
-        print("[Neural Orchestrator] Substrate 1: Pantheon Alpha (Primary GPU)")
-        # Check if we are running INSIDE the gateway to prevent recursive loops
-        if os.environ.get("SARAH_GATEWAY_MODE") == "TRUE":
-            print("[Neural Orchestrator] [GATEWAY_MODE]: Bypassing network hop. Alpha = Direct Substrate.")
-            self.pantheon_alpha = None # Will force fallback to local LLM substrate in dispatch
-        else:
-            self.pantheon_alpha = local_inference
-        
-        print("[Neural Orchestrator] Substrate 2: Pantheon Beta (Lazy Fallback)")
-        self.llm = None # Deferred load to prevent OOM on boot
+        self.llm = None # Initialization state
         self.model_path = model_path
         self.draft_model = draft_model
-        # KERNEL CONTROL (Phase 22): Dynamic parameters
-        self.mode = "NORMAL" # NORMAL, OVERRIDE, CODING
+        self.mode = "NORMAL"
         self._active_params = {
             "temperature": VAR_0_5,
             "top_k": VAR_40,
             "top_p": VAR_0_9,
             "repeat_penalty": VAR_1_1,
-            "max_tokens": VAR_1024
+            "max_tokens": 4096
         }
-        # Context window — expanded to 8K for code sessions
         self._n_ctx = MAX_CONTEXT_WINDOW_CODE
+
+        # GPU CONFIGURATION (RTX 4050 Optimized)
+        print("[Neural Orchestrator] Substrate 1: Pantheon Alpha (Primary GPU)")
+        if os.environ.get("SARAH_GATEWAY_MODE") == "TRUE":
+            print("[Neural Orchestrator] [GATEWAY_MODE]: Direct GPU Substrate Active.")
+            self.pantheon_alpha = None  # Skip network hop
+            self._preload_gpu_substrate()
+        else:
+            self.pantheon_alpha = local_inference
+        
+        print("[Neural Orchestrator] Substrate 2: Pantheon Beta (Lazy Fallback)")
         
         # SOVEREIGN DRIVER (Phase 31)
         if SOVEREIGN_AVAILABLE:
@@ -122,6 +121,25 @@ class NeuralOrchestrator:
                 except (Exception):
                     pass
         atexit.register(_cleanup)
+
+    def _preload_gpu_substrate(self):
+        """Pre-load LLM on GPU at init time for gateway mode."""
+        LlamaClass = _get_llama_substrate()
+        if not LlamaClass:
+            print("[Neural Orchestrator] WARNING: No llama substrate available for preload.")
+            return
+        try:
+            self.llm = LlamaClass(
+                model_path=self.model_path,
+                n_gpu_layers=-1,      # Full GPU offload — RTX 4050
+                n_threads=8,
+                n_ctx=self._n_ctx,     # 4096 (fits in 6GB VRAM)
+                n_batch=VAR_512,
+                verbose=False
+            )
+            print("[Neural Orchestrator] [GPU] LLM Substrate Pre-loaded Successfully.")
+        except Exception as e:
+            print(f"[Neural Orchestrator] [GPU] Pre-load Failed: {e}. Will retry on first dispatch.")
         
     def _check_dpdp(self, latency):
         """
@@ -497,7 +515,7 @@ class NeuralOrchestrator:
         if vector_memories:
             final_prompt += "<!-- CONTEXT: Recent relevant memories:\n"
             for mem in vector_memories:
-                final_prompt += f"  - {mem['content'][:VAR_150]}\n"
+                final_prompt += f"  - {mem['content'][:150]}\n"
             final_prompt += "-->\n\n"
 
         # Telemetry & Context
