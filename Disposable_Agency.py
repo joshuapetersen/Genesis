@@ -15,10 +15,8 @@ if os.name == 'nt':
     if os.path.exists(lib_dir):
         os.add_dll_directory(lib_dir)
 
-try:
-    from llama_cpp import Llama
-except ImportError:
-    print("[Disposable Agency] FATAL: llama-cpp-python not found.")
+from llama_cpp import Llama
+from contextlib import contextmanager
 
 class DisposableAgency:
     """
@@ -27,14 +25,17 @@ class DisposableAgency:
     Concept: Spawn -> Execute -> Annihilate.
     """
     
+    # Phase 17 fix for Gap 7: Relative Pathing (Portable)
+    BASE_MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models", "disposable")
+    
     AGENTS = {
         "smollm": {
-            "path": r"C:\SarahCore\models\disposable\smollm2-135m-instruct-q4_k_m.gguf",
+            "path": os.path.join(BASE_MODEL_DIR, "smollm2-135m-instruct-q4_k_m.gguf"),
             "desc": "The Pattern Matcher (135M)",
             "ctx": VAR_2048
         },
         "qwen": {
-            "path": r"C:\SarahCore\models\disposable\qwen2.5-0.5b-instruct-q4_k_m.gguf",
+            "path": os.path.join(BASE_MODEL_DIR, "qwen2.5-0.5b-instruct-q4_k_m.gguf"),
             "desc": "The Logic Auditor (0.5B)",
             "ctx": VAR_4096
         }
@@ -59,12 +60,22 @@ class DisposableAgency:
                 print(f"[Agency] CRITICAL: Model file not found at {config['path']}")
                 return None
 
-            llm = Llama(
-                model_path=config["path"],
-                n_ctx=config["ctx"],
-                n_gpu_layers=-1, # These are tiny, put them all on GPU
-                verbose=False
-            )
+            # Phase 17 fix for Gap 6: CPU Fallback on VRAM Failure
+            try:
+                llm = Llama(
+                    model_path=config["path"],
+                    n_ctx=config["ctx"],
+                    n_gpu_layers=-1, 
+                    verbose=False
+                )
+            except Exception as e:
+                print(f"[Agency] GPU Allocation Failed ({e}). Falling back to CPU...")
+                llm = Llama(
+                    model_path=config["path"],
+                    n_ctx=config["ctx"],
+                    n_gpu_layers=0, 
+                    verbose=False
+                )
             return llm
         except Exception as e:
             print(f"[Agency] Spawn Failed: {e}")
@@ -79,7 +90,7 @@ class DisposableAgency:
             self.active_agent_name = None
             gc.collect()
 
-    def run_mission(self, agent_name, prompt, system_prompt="You are a precise, helpful assistant."):
+    def run_mission(self, agent_name, prompt, system_prompt="You are a precise, helpful assistant.", persistent=False):
         """
         Executes a disposable mission.
         1. Checks if agent is running. If different, hot-swap.
@@ -114,48 +125,54 @@ class DisposableAgency:
             response = output['choices'][0]['text'].strip()
             latency = time.time() - start_t
             
-            # Auto-Annihilate to keep 8B safe? 
-            # User said: "The Annihilation: Once the token is returned to Sarah, that thread is killed."
-            # So yes, we kill it.
-            self._annihilate_agent()
+            # Phase 17 fix for Gap 4: Persistent Flag (Unlocks Hot-Sprinting)
+            # If persistent=True, we DON'T kill the agent, allowing the next mission to use it instantly.
+            if not persistent:
+                self._annihilate_agent()
             
             return {"result": response, "latency": latency, "agent": agent_name}
             
         except Exception as e:
             return f"AGENCY_ERROR: {e}"
 
+    @contextmanager
+    def _managed_agent(self, agent_name):
+        """Phase 17 fix for Gap 5: Context Manager for VRAM Protection."""
+        try:
+            # Hot-Swap Logic
+            if self.active_agent_name != agent_name:
+                if self.active_agent:
+                    self._annihilate_agent()
+                self.active_agent = self._spawn_agent(agent_name)
+                self.active_agent_name = agent_name
+            yield self.active_agent
+        finally:
+            # Ensure annihilation even if stream is abandoned
+            self._annihilate_agent()
+
     def run_stream(self, agent_name, prompt, system_prompt="You are a precise, helpful assistant."):
         """
         [STREAMING] Executes a mission and yields tokens.
+        Phase 17 fix for Gap 5: Safe Streaming (No VRAM leaks)
         """
-        # Hot-Swap Logic
-        if self.active_agent_name != agent_name:
-            if self.active_agent:
-                self._annihilate_agent()
-            self.active_agent = self._spawn_agent(agent_name)
-            self.active_agent_name = agent_name
-            
-        if not self.active_agent:
-            yield f"AGENCY_FAILURE: Could not spawn {agent_name}."
-            return
-
         formatted_prompt = f"<|im_start|>system\n{system_prompt}<|im_end|>\n<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n"
         
-        try:
-            stream = self.active_agent.create_completion(
-                formatted_prompt,
-                max_tokens=VAR_256, # Short bursts for Intro
-                stop=["<|im_end|>", "User:"],
-                echo=False,
-                temperature=VAR_0_4,
-                stream=True
-            )
-            for chunk in stream:
-                text = chunk['choices'][0]['text']
-                yield text
-                
-        except Exception as e:
-            yield f" [AGENCY_ERROR: {e}]"
-        finally:
-            # Annihilate after stream completion to free memory for 8B
-            self._annihilate_agent()
+        with self._managed_agent(agent_name) as agent:
+            if not agent:
+                yield f"AGENCY_FAILURE: Could not spawn {agent_name}."
+                return
+
+            try:
+                stream = agent.create_completion(
+                    formatted_prompt,
+                    max_tokens=VAR_256,
+                    stop=["<|im_end|>", "User:"],
+                    echo=False,
+                    temperature=VAR_0_4,
+                    stream=True
+                )
+                for chunk in stream:
+                    text = chunk['choices'][0]['text']
+                    yield text
+            except Exception as e:
+                yield f" [AGENCY_ERROR: {e}]"

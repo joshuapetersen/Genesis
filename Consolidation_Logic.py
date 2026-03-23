@@ -42,8 +42,8 @@ class MemoryConsolidator:
         print(f"[Consolidator] Deduplicated: {len(self.events)} -> {len(unique_events)}")
         
         # 2. Sort by timestamp
-        # Ensure timestamps are comparable (isoformat strings are generally sortable)
-        unique_events.sort(key=lambda x: x['timestamp'])
+        # Phase 13 fix for Break 25: Ensure timestamps are comparable strings/numbers
+        unique_events.sort(key=lambda x: str(x.get('timestamp', '0')))
         self.events = unique_events
 
     def save_consolidated(self):
@@ -55,7 +55,8 @@ class MemoryConsolidator:
         print("[Consolidator] Final memory consolidation complete.")
 
 if __name__ == "__main__":
-    consolidator = ConsolidationLogic()
+    # Phase 13 fix for Break 23: Corrected class name
+    consolidator = MemoryConsolidator()
     consolidator.load_stream()
     consolidator.normalize_and_sort()
     consolidator.save_consolidated()

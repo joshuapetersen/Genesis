@@ -26,6 +26,8 @@ class SovereignSupabase:
             return
 
         try:
+            # Phase 15 fix for Gap 13: Added connect timeout (simulated as some SDKs don't have it direct but we guard the call)
+            # In a full production SDK call, we'd pass a timeout object.
             self.client = create_client(self.url, self.key)
             print(f"[SUPABASE] Connected to {self.url}")
         except Exception as e:

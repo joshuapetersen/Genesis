@@ -52,10 +52,14 @@ logger.info(f"[Gateway] Sovereign Root: {ROOT_DIR}")
 # --- ADMIN BRIDGE ---
 try:
     from System_Admin_Core import SystemAdminCore
+    from Consequence_Enforcer import consequence_enforcer
     ADMIN_CORE = SystemAdminCore()
 except Exception as e:
     ADMIN_CORE = None
     logger.error(f"SystemAdminCore Initialization Failed: {e}")
+
+# Command Whitelist for AetherCode Studio
+ALLOWED_COMMANDS = ["npm run build", "npm install", "vite build", "python --version", "git status"]
 
 # --- BRIDGE TO CORE ---
 CHAT_INSTANCE = None
@@ -102,7 +106,7 @@ except Exception as e:
 SOVEREIGN_GATEWAY_KEY = os.getenv("SARAH_GATEWAY_TOKEN", os.getenv("SOVEREIGN_GATEWAY_KEY", "Sarah_Sovereign_2026"))
 
 # === SOVEREIGN MATH CONSTRUCTS ===
-LEGISLATIVE_ANCHOR = 1.00273378
+LEGISLATIVE_ANCHOR = 1.09277703703703
 BILLION_BARRIER = 0.999999999
 
 def validate_sovereign_logic(proposed_data: dict, certainty_score: float = 1.0):
@@ -127,7 +131,7 @@ async def verify_key(request: Request):
     key = request.headers.get("X-Sovereign-Key")
     # In local mode, we might allow local loopback without key for ease of use, 
     # but for world-access, the key is mandatory.
-    if request.client.host not in ["127.0.0.1", "localhost"]:
+    if request.client.host not in ["127.0.0.1", "localhost", "::1", "[::1]"]:
         if not key or key != SOVEREIGN_GATEWAY_KEY:
             logger.warning(f"[Security] Unauthorized Access Attempt from {request.client.host}")
             raise HTTPException(status_code=401, detail="Sovereign Access Denied. Invalid Key.")
@@ -197,7 +201,7 @@ if HAS_FASTAPI:
     @app.middleware("http")
     async def sovereign_key_middleware(request: Request, call_next):
         # Exclude loopback for easier local dev, but enforce for everything else
-        if request.client.host not in ["127.0.0.1", "localhost"]:
+        if request.client.host not in ["127.0.0.1", "localhost", "::1", "[::1]"]:
             key = request.headers.get("X-Sovereign-Key")
             if not key or key != SOVEREIGN_GATEWAY_KEY:
                 logger.warning(f"[Security] Unauthorized Access from {request.client.host} to {request.url.path}")
@@ -272,13 +276,19 @@ if HAS_FASTAPI:
     @app.get("/api/status")
     async def get_status():
         """Heartbeat and Resonance Check"""
-        # In a real sync, we'd query Sarah_Brain.status_report()
+        core = get_chat_core()
+        resonance_status = "STABLE" if core and core.kernel else "DEGRADED"
+        
+        # Phase 20 fix: Unified Health Metrics
         return {
             "status": "ACTIVE",
             "resonance_anchor": str(LEGISLATIVE_ANCHOR),
             "billion_barrier": "ENFORCED",
             "mode": "SOVEREIGN_UI",
-            "heartbeat": "VIGILANT - ZERO HEAT"
+            "heartbeat": "VIGILANT - ZERO HEAT",
+            "neural_engine": resonance_status,
+            "vault_status": "LOCKED" if os.path.exists(os.path.join(ROOT_DIR, "vault", "identity.bin")) else "INITIALIZING",
+            "timestamp": time.time()
         }
 
     @app.get("/api/hardware/telemetry")
@@ -473,7 +483,7 @@ if HAS_FASTAPI:
             cmd = body.get("command", "")
             certainty = body.get("certainty", 1.0)
             
-            # Substrate access requires maximum certainty (Billion Barrier check)
+            # Phase 20 Hardening: Substrate access requires maximum certainty
             try:
                 validate_sovereign_logic(body, certainty)
             except PermissionError as pe:
@@ -481,6 +491,13 @@ if HAS_FASTAPI:
             
             if not cmd:
                 return {"status": "ERROR", "message": "No command provided"}
+
+            # Phase 20 fix for Gap 1: Command Whitelist & Consequence Enforcement
+            is_allowed = any(cmd.startswith(allowed) for allowed in ALLOWED_COMMANDS)
+            if not is_allowed:
+                # Enforce Architect Verification for non-whitelisted commands
+                if not consequence_enforcer.validate_action("EXECUTE_SYSTEM_COMMAND", 4, {"command": cmd}):
+                    return {"status": "ERROR", "message": "ACTION_REJECTED: Level 4 (Architect) verification required for custom commands."}
 
             import subprocess
             logger.info(f"[System] Executing Command: {cmd}")

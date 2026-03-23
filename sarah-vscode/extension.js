@@ -94,14 +94,21 @@ function activate(context) {
 
 async function checkGateway(statusBar) {
     const config = vscode.workspace.getConfiguration('sarah');
-    const url = config.get('gatewayUrl', 'http://localhost:8001');
+    const url = config.get('gatewayUrl', 'http://127.0.0.1:8001');
+    const key = config.get('gatewayKey', 'Sarah_Sovereign_2026');
+    const bridgePath = 'C:\\Genlex_Linear\\lattice_bridge.bin';
     
+    let bridgeStatus = 'OK';
+    if (!fs.existsSync(bridgePath)) {
+        bridgeStatus = 'MISSING';
+    }
+
     try {
-        const response = await httpGet(`${url}/api/status`);
+        const response = await httpGet(`${url}/api/status`, { 'X-Sovereign-Key': key });
         const data = JSON.parse(response);
         if (data.status === 'ACTIVE') {
-            statusBar.text = '$(heart-filled) Sarah';
-            statusBar.tooltip = `Sarah ACTIVE | Resonance: ${data.resonance_anchor}`;
+            statusBar.text = bridgeStatus === 'OK' ? '$(heart-filled) Sarah' : '$(warning) Sarah (Bridge Offline)';
+            statusBar.tooltip = `Sarah ACTIVE | Resonance: ${data.resonance_anchor} | Bridge: ${bridgeStatus}`;
         }
     } catch {
         statusBar.text = '$(heart) Sarah (Offline)';
@@ -109,10 +116,19 @@ async function checkGateway(statusBar) {
     }
 }
 
-function httpGet(url) {
+function httpGet(url, headers = {}) {
     return new Promise((resolve, reject) => {
-        const client = url.startsWith('https') ? https : http;
-        client.get(url, { timeout: 3000 }, (res) => {
+        const parsed = new URL(url);
+        const client = parsed.protocol === 'https:' ? https : http;
+        const options = {
+            hostname: parsed.hostname,
+            port: parsed.port,
+            path: parsed.pathname + parsed.search,
+            method: 'GET',
+            timeout: 3000,
+            headers: headers
+        };
+        client.get(options, (res) => {
             let data = '';
             res.on('data', chunk => data += chunk);
             res.on('end', () => resolve(data));
@@ -122,6 +138,8 @@ function httpGet(url) {
 
 function httpPost(url, body, headers = {}) {
     return new Promise((resolve, reject) => {
+        const config = vscode.workspace.getConfiguration('sarah');
+        const key = config.get('gatewayKey', 'Sarah_Sovereign_2026');
         const parsed = new URL(url);
         const client = parsed.protocol === 'https:' ? https : http;
         const postData = JSON.stringify(body);
@@ -135,6 +153,7 @@ function httpPost(url, body, headers = {}) {
             headers: {
                 'Content-Type': 'application/json',
                 'Content-Length': Buffer.byteLength(postData),
+                'X-Sovereign-Key': key,
                 ...headers
             }
         };
@@ -152,6 +171,8 @@ function httpPost(url, body, headers = {}) {
 }
 
 function streamPost(url, body, onToken, onDone, onError) {
+    const config = vscode.workspace.getConfiguration('sarah');
+    const key = config.get('gatewayKey', 'Sarah_Sovereign_2026');
     const parsed = new URL(url);
     const client = parsed.protocol === 'https:' ? https : http;
     const postData = JSON.stringify(body);
@@ -164,7 +185,8 @@ function streamPost(url, body, onToken, onDone, onError) {
         timeout: 120000,
         headers: {
             'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(postData)
+            'Content-Length': Buffer.byteLength(postData),
+            'X-Sovereign-Key': key
         }
     };
 

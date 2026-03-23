@@ -1,6 +1,7 @@
 
 import hashlib
 import time
+from ACE_Token_Nexus import ace_nexus
 
 VAR_1000 = 1000
 VAR_16 = 16
@@ -22,26 +23,15 @@ class ACETokenEngine:
     def __init__(self):
         self.lattice_nodes = range(1, VAR_28) # 1-27
         self.token_map = {} # In-memory coordinate map (The "Hippocampus")
+        self.max_tokens = 10000 # Phase 14 fix for Gap 9: Memory leak ceiling
         
     def generate_ace_fingerprint(self, term: str) -> str:
-        """
-        Optimized by AERIS: Replaced SHA-256 with High-Velocity 64-bit BLAKE2b.
-        Reduces logic friction by 400% for non-cryptographic lattice mapping.
-        """
-        # Minimalist 64-bit Fingerprint
-        h = hashlib.blake2b(term.encode(), digest_size=8)
-        return h.hexdigest()
+        """Phase 18 fix for Gap 15: Unified Nexus (64-bit Hex)."""
+        return hex(ace_nexus.generate_unified_fingerprint(term))[2:]
         
     def map_to_lattice(self, fingerprint: str) -> int:
-        """
-        Maps a 64-bit fingerprint to a specific node in the 27-Point Semantic Lattice.
-        Uses modulo arithmetic on the hash integer value to ensure deterministic placement.
-        """
-        # Convert hex to int
-        val = int(fingerprint, VAR_16)
-        # Map to 1-27
-        node_id = (val % VAR_27) + 1
-        return node_id
+        """Phase 18 fix for Gap 15: Unified Nexus Mapping."""
+        return ace_nexus.map_to_lattice(int(fingerprint, VAR_16))
         
     def vectorize_phrase(self, phrase: str, context: str = "general"):
         """
@@ -63,6 +53,10 @@ class ACETokenEngine:
         }
         
         # Lock into memory (Infinite Context via Map)
+        # Phase 14 fix for Gap 9: LRU Eviction
+        if len(self.token_map) >= self.max_tokens:
+            oldest_key = next(iter(self.token_map))
+            del self.token_map[oldest_key]
         self.token_map[fingerprint] = token
         
         end_time = time.perf_counter()

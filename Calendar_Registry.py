@@ -28,28 +28,35 @@ class CalendarRegistry:
         """
         Handles OAuth2 flow for Google Calendar.
         """
-        token_path = os.path.join(os.path.dirname(__file__), 'token.pickle')
+        # Phase 17 fix for Gap 8: Secure JSON persistence (Replaces insecure Pickle)
+        token_path = os.path.join(os.path.dirname(__file__), 'token.json')
         creds_path = os.path.join(os.path.dirname(__file__), 'credentials.json')
 
         if os.path.exists(token_path):
-            with open(token_path, 'rb') as token:
-                self.creds = pickle.load(token)
+            try:
+                from google.oauth2.credentials import Credentials
+                self.creds = Credentials.from_authorized_user_file(token_path, self.SCOPES)
+            except Exception as e:
+                print(f"[Calendar] Token Load Error: {e}")
         
         if not self.creds or not self.creds.valid:
             if self.creds and self.creds.expired and self.creds.refresh_token:
-                self.creds.refresh(Request())
+                # Phase 17 fix for Gap 11: Guard Refresh (Prevent boot crash)
+                try:
+                    self.creds.refresh(Request())
+                except Exception as e:
+                    print(f"[Calendar] OAuth Refresh Failed: {e}")
+                    return
             else:
                 if os.path.exists(creds_path):
-                    # NON-BLOCKING CHECK: If no token, don't hang the system during boot.
-                    # The user can run 'sarah calibrate' or similar to trigger auth.
                     print("[Calendar] Handshake Required. Run 'sarah status' to authorize.")
                     return
                 else:
                     print("[Calendar] credentials.json not found. Calendar sync disabled.")
                     return
 
-            with open(token_path, 'wb') as token:
-                pickle.dump(self.creds, token)
+            with open(token_path, 'w') as token:
+                token.write(self.creds.to_json())
 
         try:
             self.service = build('calendar', 'v3', credentials=self.creds)
@@ -80,11 +87,12 @@ SUMMARY: {summary}
             'summary': f"[SDNA] {title}",
             'description': description,
             'start': {
-                'dateTime': datetime.datetime.now().isoformat(),
+                # Phase 17 fix for Gap 9: UTC-Normalized Timestamps (No more local offset mismatch)
+                'dateTime': datetime.datetime.utcnow().isoformat() + 'Z',
                 'timeZone': 'UTC',
             },
             'end': {
-                'dateTime': (datetime.datetime.now() + datetime.timedelta(minutes=VAR_30)).isoformat(),
+                'dateTime': (datetime.datetime.utcnow() + datetime.timedelta(minutes=VAR_30)).isoformat() + 'Z',
                 'timeZone': 'UTC',
             },
             'colorId': color_id
@@ -108,8 +116,11 @@ SUMMARY: {summary}
         if not self.service:
             return []
 
+        # Phase 17 fix for Gap 10: Correct Retrieval Range (Past, not Future)
+        # Using timeMax=now instead of timeMin retrieves everything BEFORE this moment.
         now = datetime.datetime.utcnow().isoformat() + 'Z'
-        events_result = self.service.events().list(calendarId=self.calendar_id, timeMin=now,
+        events_result = self.service.events().list(calendarId=self.calendar_id, 
+                                            timeMax=now,
                                             maxResults=max_results, singleEvents=True,
                                             orderBy='startTime').execute()
         events = events_result.get('items', [])

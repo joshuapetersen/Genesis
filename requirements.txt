@@ -1,0 +1,8 @@
+psutil
+lancedb
+llama-cpp-python
+sqlite3
+requests
+numpy
+pandas
+pywin32;platform_system=='Windows'

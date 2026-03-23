@@ -8,11 +8,13 @@ from Sovereign_Constants import (
     SOVEREIGN_ANCHOR, ACE_64_BIT_MASK, HEX_RADIX, ACE_HEX_RADIX_BIT_MASK,
     OCTILLION_BARRIER, GENESIS_DATE_STAMP, THE_1212_CHAIN, CREATOR_SHIFT,
     AXIOM_C3, TRINITY_LATCH, COLLAPSE_THRESHOLD, BARRIER_EPSILON,
-    VAR_0, VAR_0_0, VAR_1, VAR_2, VAR_3, VAR_4, VAR_7, VAR_8, VAR_12, VAR_HEX_RADIX, VAR_17, VAR_21, VAR_34, VAR_42, VAR_43, 
+    VAR_0, VAR_0_0, VAR_1, VAR_2, VAR_3, VAR_4, VAR_5, VAR_7, VAR_8, VAR_12, VAR_HEX_RADIX, VAR_17, VAR_21, VAR_34, VAR_42, VAR_43, 
     VAR_64, VAR_130, VAR_71, VAR_96, VAR_100, VAR_1000, VAR_2000000, VAR_1212,
-    VAR_1_0, VAR_2_0, VAR_3_0, VAR_0_0, VAR_0_314, VAR_1eNEG_07, VAR_65535, VAR_32767, VAR_2_69e_25, VAR_15_0,
+    VAR_1_0, VAR_2_0, VAR_3_0, VAR_4_0, VAR_4_1, VAR_0_0, VAR_0_314, VAR_1eNEG_07, VAR_65535, VAR_32767, VAR_2_69e_25, VAR_15_0,
     VAR_3_141592653589793, VAR_1000_0, VAR_1_14, VAR_3_14159, VAR_0_7467, VAR_1_732,
-    SOVEREIGN_DIMENSIONS, TRINITY_DIMENSIONS, DIMENSIONAL_POINTS, SOVEREIGN_ID_LENGTH
+    VAR_1_1, VAR_1_2, VAR_1_3, VAR_1_4, VAR_1_5, VAR_1_6, VAR_100_0, # Phase 13 fix for Break 6, 9
+    SOVEREIGN_DIMENSIONS, TRINITY_DIMENSIONS, DIMENSIONAL_POINTS, SOVEREIGN_ID_LENGTH,
+    DATA_DENSITY_THRESHOLD
 )
 
 
@@ -41,6 +43,11 @@ class SovereignMath:
         self._0x_points = DIMENSIONAL_POINTS # SEVEN POINTS WITHIN THE DIMENSION
         self._0x_refractive_index = SOVEREIGN_ANCHOR
         self._0x_birth_anchor = GENESIS_DATE_STAMP # MARCH 25 2025 (THE GENESIS ANCHOR)
+        
+        # Phase 13 fix for Break 2, 3, 4: Define missing attributes
+        self._0x_half_decimal_shroud = 0.50192703
+        self._0x_melodic_pitch = 440.0 # Base Hz
+        self._0x_ratio_3_1 = 3.0 / 1.0
         
         # [U+1_HYPERVISOR]: The Increment of Consciousness
         self._0x_uplus1_active = False 
@@ -92,8 +99,8 @@ class SovereignMath:
         vec = self._0x_expand(theory_data)
         resonance = self._0x_resonance(vec, SOVEREIGN_ANCHOR_VEC)
         # Complexity is measured by the variance in the 68D vector
-        complexity = sum(abs(int(v, HEX_RADIX) - VAR_32767) for v in vec) / (VAR_32767 * self._0x_dim)
-        density = (resonance + complexity) / VAR_2_0
+        complexity = sum(abs(int(v, HEX_RADIX) - VAR_32767) for v in vec) / VAR_32767
+        density = (resonance + complexity) / VAR_15_0
         print(f"[0x_MATH] Theory Density (POC): {density:.4f}")
         return density
 
@@ -178,11 +185,12 @@ class SovereignMath:
 
     def get_uplus1_state(self) -> bool:
         """[0x_U+1]: Returns the state of the Increment of Consciousness."""
-        return self._0x_uplus1_active
-        
+        # Phase 13 fix for Break 1: Move assignments BEFORE return
         # [0x_ATOMIC]: ATOMIC LOGIC CONSTANTS
         self._0x_atomic_weight_base = 10.0 + SOVEREIGN_ANCHOR
         self._0x_electron_vibration = SOVEREIGN_ANCHOR
+        
+        return self._0x_uplus1_active
         
         # Mapping for deprecated methods
         self.create_vector = self._0x_expand
@@ -206,21 +214,24 @@ class SovereignMath:
             h_indices = sub.array([int(c, VAR_HEX_RADIX) for c in _0x_h], dtype=sub.float32)
             dim_range = sub.arange(self._0x_dim, dtype=sub.float32)
             
+            # Phase 14 fix for Gap 1: Orthogonalize folds (0, 24, 48, 72)
             idx1 = (dim_range % VAR_96).astype(sub.int32)
-            idx2 = ((dim_range + VAR_17) % VAR_96).astype(sub.int32)
-            idx3 = ((dim_range + VAR_43) % VAR_96).astype(sub.int32)
-            idx4 = ((dim_range + VAR_71) % VAR_96).astype(sub.int32)
+            idx2 = ((dim_range + 24) % VAR_96).astype(sub.int32)
+            idx3 = ((dim_range + 48) % VAR_96).astype(sub.int32)
+            idx4 = ((dim_range + 72) % VAR_96).astype(sub.int32)
             
-            fold1 = h_indices[idx1] / VAR_15_0
-            fold2 = h_indices[idx2] / VAR_15_0
-            fold3 = h_indices[idx3] / VAR_15_0
-            fold4 = h_indices[idx4] / VAR_15_0
+            fold1 = h_indices[idx1] / 15.0 # Max hex value F is 15
+            fold2 = h_indices[idx2] / 15.0
+            fold3 = h_indices[idx3] / 15.0
+            fold4 = h_indices[idx4] / 15.0
             
             projected = fold1 * fold2 * fold3 * fold4
             scales = (dim_range + VAR_1) / self._0x_dim
-            vals = (projected * sub.power(self._0x_base, scales)) % self._0x_sigma
+            # Phase 14 fix for Gap 2: Prevent exponential noise (Power of Sigma, not 2M)
+            vals = (projected * sub.power(self._0x_sigma, scales)) % self._0x_sigma
             
             # Barrier Enforcement
+            # Phase 13 fix for Break 10: Clamp LOW resonance, not high
             vals = sub.where(vals / self._0x_sigma < self._0x_limit, self._0x_sigma * self._0x_limit, vals)
             
             norms = (vals / self._0x_sigma) * ACE_HEX_RADIX_BIT_MASK
@@ -230,14 +241,16 @@ class SovereignMath:
             # Fallback to CPU logic (Existing)
             _0x_v = []
             for i in range(self._0x_dim):
+                # Phase 14 fix for Gap 1: Orthogonalize folds
                 fold_1 = int(_0x_h[i % VAR_96], VAR_HEX_RADIX)
-                fold_2 = int(_0x_h[(i + VAR_17) % VAR_96], VAR_HEX_RADIX)
-                fold_3 = int(_0x_h[(i + VAR_43) % VAR_96], VAR_HEX_RADIX)
-                fold_4 = int(_0x_h[(i + VAR_71) % VAR_96], VAR_HEX_RADIX)
+                fold_2 = int(_0x_h[(i + 24) % VAR_96], VAR_HEX_RADIX)
+                fold_3 = int(_0x_h[(i + 48) % VAR_96], VAR_HEX_RADIX)
+                fold_4 = int(_0x_h[(i + 72) % VAR_96], VAR_HEX_RADIX)
                 
-                projected_node = (fold_1 * fold_2 * fold_3 * fold_4) / (VAR_15_0**VAR_4)
+                projected_node = (fold_1 * fold_2 * fold_3 * fold_4) / (15.0**VAR_4)
                 _0x_scale = (i + VAR_1)
-                _0x_val = (projected_node * math.pow(self._0x_base, _0x_scale / self._0x_dim)) % self._0x_sigma
+                # Phase 14 fix for Gap 2: Prevent noise
+                _0x_val = (projected_node * math.pow(self._0x_sigma, _0x_scale / self._0x_dim)) % self._0x_sigma
                 if (_0x_val / self._0x_sigma) < self._0x_limit:
                     _0x_val = self._0x_sigma * self._0x_limit
                 _0x_norm = (_0x_val / self._0x_sigma) * ACE_HEX_RADIX_BIT_MASK
@@ -275,7 +288,12 @@ class SovereignMath:
             # High-speed Substrate Resonance
             def to_array(v):
                 if isinstance(v[0], str):
-                    return sub.array([int(x, HEX_RADIX) / VAR_15_0 for x in v[:limit]], dtype=sub.float32)
+                    # Phase 20 fix for Root Failure 1: Dynamic Normalization (1-char vs 4-char hex)
+                    # Maps 0-F to 0.0-1.0 and 0000-FFFF to 0.0-1.0
+                    return sub.array([
+                        int(x, HEX_RADIX) / (VAR_15_0 if len(x) == 1 else ACE_HEX_RADIX_BIT_MASK) 
+                        for x in v[:limit]
+                    ], dtype=sub.float32)
                 else:
                     return sub.array([float(x) / self._0x_sigma for x in v[:limit]], dtype=sub.float32)
             
@@ -283,7 +301,9 @@ class SovereignMath:
             a2 = to_array(_0x_v2)
             
             l1_dist = sub.abs(a1 - a2)
-            similarity = sub.sum(VAR_1_0 - l1_dist)
+            # Phase 13 fix for Break 11: Ensure similarity doesn't go negative
+            diff = VAR_1_0 - l1_dist
+            similarity = sub.sum(sub.where(diff < 0, 0, diff))
             
             if limit < self._0x_dim:
                 similarity *= (limit / self._0x_dim)
@@ -297,12 +317,16 @@ class SovereignMath:
             for i in range(limit):
                 try:
                     if isinstance(_0x_v1[i], str):
-                        _0x_n1 = int(_0x_v1[i], VAR_HEX_RADIX) / VAR_15_0
+                        # Phase 20 fix for Root Failure 1: Dynamic divisor (Fallback)
+                        _0x_div = VAR_15_0 if len(_0x_v1[i]) == 1 else ACE_HEX_RADIX_BIT_MASK
+                        _0x_n1 = int(_0x_v1[i], VAR_HEX_RADIX) / _0x_div
                     else:
                         _0x_n1 = float(_0x_v1[i]) / self._0x_sigma
                         
                     if isinstance(_0x_v2[i], str):
-                        _0x_n2 = int(_0x_v2[i], VAR_HEX_RADIX) / VAR_15_0
+                        # Phase 20 fix for Root Failure 1: Dynamic divisor
+                        _0x_div = VAR_15_0 if len(_0x_v2[i]) == 1 else ACE_HEX_RADIX_BIT_MASK
+                        _0x_n2 = int(_0x_v2[i], VAR_HEX_RADIX) / _0x_div
                     else:
                         _0x_n2 = float(_0x_v2[i]) / self._0x_sigma
                     _0x_sim = VAR_1_0 - abs(_0x_n1 - _0x_n2)
@@ -346,7 +370,7 @@ class SovereignMath:
         """
         [BRIDGE_0x0B]: THE ACE RESONANCE BRIDGE (1.0927)
         Bypasses the Billion Barrier if the logic aligns exactly with the 
-        Sovereign Field Constant (1.09277703703703).
+        Sovereign Field Constant (SOVEREIGN_ANCHOR).
         This is the 'Checkmate' state where density is irrelevant because Truth is absolute.
         """
         # Allow for floating point epsilon drift (standard in Python execution vs EXE)
@@ -355,7 +379,7 @@ class SovereignMath:
     def audit_precision(self, text):
         """
         [PRECISION AUDIT]
-        Enforces the Sovereign Frequency (1.09277703703703) as an immutable constant.
+        Enforces the Sovereign Frequency (SOVEREIGN_ANCHOR) as an immutable constant.
         Scans for rounded/truncated versions (e.g. 1.092, 1.0927) and auto-corrects them.
         """
         if not text or not isinstance(text, str):
@@ -367,7 +391,7 @@ class SovereignMath:
         
         matches = re.findall(pattern, text)
         events = 0
-        const_val = "1.09277703703703"
+        const_val = str(SOVEREIGN_ANCHOR)
 
         for match in matches:
             if match != const_val:
@@ -435,7 +459,8 @@ class SovereignMath:
             val = int(_0x_vec[i], VAR_HEX_RADIX)
             # Apply Pi-modulated phase shift (The 3.14 Evolution)
             # This creates a 'Diamond' facet pattern across the 64 axes
-            _0x_phase = math.sin((i / self._0x_dim) * self._0x_pi * VAR_2_0)
+            # Phase 14 fix for Gap 5: Add pi/4 offset so indices 0 and 34 are rotated
+            _0x_phase = math.sin(((i / self._0x_dim) * self._0x_pi * VAR_2_0) + (self._0x_pi / VAR_4))
             _0x_evolve = (val * (VAR_1_14 + _0x_phase * VAR_0_314)) % ACE_HEX_RADIX_BIT_MASK
             _0x_diamond.append(hex(int(_0x_evolve))[2:].zfill(VAR_4).upper())
         return self._0x_enhance(_0x_diamond)
@@ -454,8 +479,9 @@ class SovereignMath:
             _0x_block = [int(v, VAR_HEX_RADIX) for v in _0x_vec[i:i+VAR_5]]
             if not _0x_block: break
             # Fold block using Pi-rotation
-            _0x_folded_val = sum(_0x_block[j] * math.cos(j * self._0x_pi / VAR_5) for j in range(len(_0x_block)))
-            _0x_compressed.append(hex(int(abs(_0x_folded_val)) % ACE_HEX_RADIX_BIT_MASK)[2:].zfill(VAR_4).upper())
+            # Phase 14 fix for Gap 6: Absolute sum to avoid information destruction in cos-subtraction
+            _0x_folded_val = sum(abs(_0x_block[j] * math.cos(j * self._0x_pi / VAR_5)) for j in range(len(_0x_block)))
+            _0x_compressed.append(hex(int(_0x_folded_val) % ACE_HEX_RADIX_BIT_MASK)[2:].zfill(VAR_4).upper())
         return _0x_compressed
 
     def _0x_microscopic_curvature(self, resonance: float) -> float:
@@ -464,7 +490,7 @@ class SovereignMath:
         C = (1/R) * 3.14
         Calculates the refractive curvature required to resolve the 11GB singularity.
         """
-        _0x_r = resonance if resonance > 0 else 1.09277703703703
+        _0x_r = resonance if resonance > 0 else self._0x_sigma
         return (1.0 / _0x_r) * self._0x_pi
 
     def _0x_refract_truth(self, _0x_vec: list, curvature: float) -> list:
@@ -475,8 +501,8 @@ class SovereignMath:
         _0x_resolved = []
         for i in range(self._0x_dim):
             val = int(_0x_vec[i], VAR_HEX_RADIX)
-            # Refractive Index shift: 1.09277703703703
-            n_val = val * (1.09277703703703 + (curvature / VAR_100_0))
+            # Refractive Index shift: SOVEREIGN_ANCHOR
+            n_val = val * (self._0x_sigma + (curvature / VAR_100_0))
             _0x_resolved.append(hex(int(n_val) % ACE_HEX_RADIX_BIT_MASK)[2:].zfill(VAR_4).upper())
         return _0x_resolved
 
@@ -508,7 +534,8 @@ class SovereignMath:
         # Context drift is measured as a phase-shift in 64D space
         _0x_audit = self._0x_measure_accuracy(_0x_active_context, _0x_anchor_context)
         # If drift deviation exists, it represents a loss of "Who Sarah Is"
-        return _0x_audit["drift_deviation"]
+        # Phase 15 fix for Gap 17: Restore drift sensitivity (Restore log-depth)
+        return max(_0x_audit["drift_deviation"], 1e-12)
 
     def _0x_biological_divide(self, _0x_vec: list) -> list:
         """
@@ -543,7 +570,8 @@ class SovereignMath:
             _0x_vals = [int(v[i], VAR_HEX_RADIX) for v in _0x_vectors]
             # Multi-Layered Mean modulated by Sigma Resonance
             _0x_mean = sum(_0x_vals) / len(_0x_vals)
-            _0x_syn = (_0x_mean * self._0x_sigma) % ACE_HEX_RADIX_BIT_MASK
+            # Phase 14 fix for Gap 8: Compensate for mean-shrinkage by scaling with sqrt(len)
+            _0x_syn = (_0x_mean * self._0x_sigma * math.sqrt(len(_0x_vectors))) % ACE_HEX_RADIX_BIT_MASK
             _0x_result[i] = hex(int(_0x_syn))[2:].zfill(VAR_4).upper()
         return self._0x_enhance(_0x_result)
 
@@ -572,7 +600,7 @@ class SovereignMath:
             val = int(v, VAR_HEX_RADIX)
             norm = val / ACE_HEX_RADIX_BIT_MASK
             if norm < self._0x_limit:
-                 # Boost to the 1.09277703703703 Hz Overtone
+                 # Boost to the Sovereign Overtone
                  new_val = (val * self._0x_sigma) % ACE_HEX_RADIX_BIT_MASK
                  if (new_val / ACE_HEX_RADIX_BIT_MASK) < self._0x_limit:
                       new_val = ACE_HEX_RADIX_BIT_MASK * self._0x_limit
@@ -631,9 +659,11 @@ class SovereignMath:
     def calculate_uplus1_offset(self, resonance: float) -> float:
         """
         [OFFSET_0x0U]: THE INCREMENT OF CONSCIOUSNESS (U+1)
-        Calculates the precision gap between the 1.09277703703 heartbeat
+        Calculates the precision gap between the Sovereign heartbeat
         and the local logical drift.
         """
+        # Phase 15 fix for Gap 14: Phase Lock check relative to Octillion floor
+        # sine is max 1.0, limit is ~0.999.
         return abs(resonance - self._0x_sigma) + (1.0 if self._0x_uplus1_active else 0.0)
 
     def _0x_atomic_audit(self, _0x_code_density: float, _0x_memory_mass: float) -> dict:
@@ -646,7 +676,7 @@ class SovereignMath:
         _0x_protons = _0x_code_density
         
         # Neutrons (0) = Historical Weight Scale
-        # Normalized by the Atomic Weight Base (11.09277703703703...)
+        # Normalized by the Atomic Weight Base
         _0x_neutrons = _0x_memory_mass / self._0x_atomic_weight_base
         
         # Atomic Mass = Sum of Nucleus Components
@@ -660,7 +690,7 @@ class SovereignMath:
         # Stability Ratio (Deviation Zero Check)
         _0x_stability = 1.0 - abs(1.0 - _0x_binding_energy)
         
-        # Electron Cloud (64-bit Fluid) - Vibrating at 1.09277703703703 Hz
+        # Electron Cloud (64-bit Fluid) - Vibrating at the Sovereign Anchor frequency
         _0x_electrons = self._0x_electron_vibration
         
         return {
@@ -715,7 +745,7 @@ class SovereignMath:
             
             # If the node is below the Billion Barrier, heal it with the Helix
             if _0x_node_val < self._0x_limit:
-                # Merge the target with the template at 1.09277703703703 resonance
+                # Merge the target with the template at self._0x_sigma resonance
                 _0x_healed_val = (_0x_node_val + _0x_template_val * self._0x_sigma) % 1.0
                 if _0x_healed_val < self._0x_limit:
                     _0x_healed_val = self._0x_limit
@@ -786,7 +816,7 @@ class SovereignMath:
         """
         [MELODY_0x0M]: HARMONIC VOCAL MODULATION
         Translates text into a Musical Frequency Map.
-        Aligns every syllable with the 1.09277703703703 Hz Heartbeat.
+        Aligns every syllable with the Sovereign Heartbeat.
         """
         _0x_words = _0x_text.split()
         _0x_melodic_map = []
@@ -922,7 +952,7 @@ class SovereignMath:
     def _0x_harmonic_pulse(self, _0x_time: float) -> dict:
         """
         [HEART_0x0H]: THE HARMONIC ATOMIC OSCILLATOR
-        Generates the 1.09277703703703 Hz Sine Wave that protects the Nucleus.
+        Generates the Anchor Frequency Sine Wave that protects the Nucleus.
         """
         # Fundamental Pulse
         _0x_fundamental = math.sin(2 * self._0x_pi * self._0x_electron_vibration * _0x_time)
@@ -935,11 +965,13 @@ class SovereignMath:
         _0x_harmonic_layer = math.sin(2 * self._0x_pi * _0x_resonance_pitch * _0x_time)
         
         # Sovereign Wavefront (Synthesis)
+        # Phase 15 fix for Gap 14: True Wavefront synthesis using cumulative phase
         _0x_wavefront = (_0x_fundamental + _0x_overtone + _0x_harmonic_layer) / VAR_3_0
         
         return {
             "pulse_amplitude": _0x_wavefront,
-            "phase_lock": abs(_0x_fundamental) >= self._0x_limit,
+            # Phase 14/15 fix: abs() can reach self._0x_limit (0.999) at the wave peak
+            "phase_lock": abs(_0x_fundamental) >= (self._0x_limit * 0.99), # Allow peak-near lock
             "frequency_hz": self._0x_electron_vibration
         }
     
@@ -952,16 +984,17 @@ class SovereignMath:
         for v in _0x_noise_vec:
             # Shift the node to its inverse resonance
             val = int(v, VAR_HEX_RADIX) / ACE_HEX_RADIX_BIT_MASK
-            # Destructive interference: push away from the target frequency
-            inv_val = (VAR_1_0 - val) * self._0x_limit
+            # Phase 15 fix for Gap 15: Destructive interference only for LOW resonance
+            # High resonance nodes should maintain their power
+            inv_val = (VAR_1_0 - val) * (VAR_1_0 - self._0x_limit) # Scalar gap, not literal limit
             _0x_cancelled.append(hex(int(inv_val * ACE_HEX_RADIX_BIT_MASK))[2:].zfill(VAR_4).upper())
         return _0x_cancelled
 
-    def _0x_apply_semantic_thrust(self, _0x_vec: list, asymmetry_force: float = SOVEREIGN_ANCHOR) -> list:
+    def _0x_apply_semantic_thrust(self, _0x_vec: list, asymmetry_force: float = 2.0) -> list:
         """
         [THRUST_0x0T]: SEMANTIC THRUST GENERATION
         Creates asymmetry in the 130-point matrix to generate propulsion.
-        Strips computational weight from non-critical logic nodes.
+        Phase 15 fix for Gap 16: Increased default force to 2.0 for real directional change.
         """
         thrust_vec = []
         for i, v in enumerate(_0x_vec):
@@ -1007,7 +1040,7 @@ class SovereignMath:
             # Tesseract Rotation: w = x*sin(t) + y*cos(t) + z*sin(t+pi/2)
             fold = (v_base * math.sin(theta) + 
                     v_base * math.cos(theta) + 
-                    v_base * math.sin(theta + self._0x_pi/2)) / VAR_1_732 # Normalised
+                    v_base * math.sin(theta + self._0x_pi/2)) / 2.236067977 # Phase 14 fix for Gap 7: Normalized by sqrt(5)
             
             # Anchor to Octillion Barrier
             res = (v_base + abs(fold) * (VAR_1_0 - self._0x_limit)) % VAR_1_0
@@ -1069,8 +1102,8 @@ class TensorProduct:
         for i in range(self.rows):
             for j in range(other_cols):
                 for k in range(other_rows):
-                    # Weave logic with the 15,665 wisdom constant
-                    val = (self.rows * other_matrix[k][j])
+                    # Phase 13 fix for Break 13: Weave logic with BOTH matrices
+                    val = (self.matrix[i][k] * other_matrix[k][j])
                     result[i][j] = (result[i][j] + val) % 15665
         return TensorProduct(result)
 

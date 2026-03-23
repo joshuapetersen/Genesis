@@ -18,9 +18,21 @@ def start_mmap_kernel():
 
     print("[MMAP KERNEL] Binding to lattice_bridge.bin...")
     
-    # Open the memory-mapped file
-    with open(bridge_path, "r+b") as f:
+    try:
+        # Open the memory-mapped file with shared access
+        f = open(bridge_path, "r+b")
         mm = mmap.mmap(f.fileno(), bridge_size, access=mmap.ACCESS_WRITE)
+        
+        # Reset state to IDLE on startup to prevent hangs
+        mm[0] = 0
+        print("[MMAP KERNEL] Bridge Bound and Reset.")
+    except PermissionError:
+        print("[CRITICAL] ACCESS DENIED: Another process (VS Code?) is holding the bridge.")
+        print("Please close all VS Code windows or the terminal holding lattice_bridge.bin and retry.")
+        return
+    except Exception as e:
+        print(f"[CRITICAL] Bridge Binding Failed: {e}")
+        return
     
     # Initialize Aeris Core (Layer 12)
     print("[MMAP KERNEL] Initializing Native Genlex Cortex...")

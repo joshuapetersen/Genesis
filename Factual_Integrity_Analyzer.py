@@ -31,16 +31,19 @@ class FactualIntegrityAnalyzer:
         classification = "UNSUBSTANTIATED" # Default safety
         reason = "Pending verification."
         
-        # Simple heuristic simulation for the prototype
-        if "github.com" in data_input or "SDNA" in data_input or "Genesis" in data_input:
+        # Phase 14 fix for Gap 13: Hardened Truth Gate
+        # Substrings alone are no longer enough; requires Axiomatic Alignment
+        is_sovereign_claim = "SDNA" in data_input and ("Genesis" in data_input or "Sovereign" in data_input)
+        if is_sovereign_claim and source == "INTERNAL":
             classification = "FACTUAL"
-            reason = "Aligned with Sovereign Repository."
-        elif "I feel" in data_input or "maybe" in data_input:
+            reason = "Aligned with Axiomatic Sovereign Identity."
+        elif "I feel" in data_input or "maybe" in data_input or "subjective" in data_input:
             classification = "BIAS"
             reason = "Subjective language detected."
         
         result = {
-            "input_snippet": data_input[:VAR_50] + "...",
+            # Phase 14 fix for Gap 14: Honest ellipsis
+            "input_snippet": data_input[:VAR_50] + ("..." if len(data_input) > VAR_50 else ""),
             "classification": classification,
             "protocol_action": self.CATEGORIES[classification],
             "source": source

@@ -5,6 +5,7 @@ import json
 import base64
 import os
 import secrets
+from ACE_Token_Nexus import ace_nexus
 
 VAR_1000 = 1000
 VAR_3 = 3
@@ -42,10 +43,13 @@ class AceTokenManager:
         Generates a signed ACE Token.
         Format: v1.payload_b64.signature
         """
+        # Phase 18 fix for Gap 15: Unified Nexus (Context-Aware Bearer)
+        context_fingerprint = hex(ace_nexus.generate_unified_fingerprint(scope))
         payload = {
             "scope": scope,
             "iat": int(time.time()),          # Issued At
             "exp": int(time.time() + ttl),    # Expiration
+            "fingerprint": context_fingerprint,
             "nonce": secrets.token_hex(VAR_4)     # Uniqueness
         }
         
@@ -74,8 +78,8 @@ class AceTokenManager:
                 return False, "UNSUPPORTED_VERSION"
             
             # Decode Payload
-            # Add padding back if needed (though strip('=') usually handles it in python for some libs, manual pad is safer)
-            padding = '=' * (VAR_4 - len(payload_b64) % VAR_4)
+            # Phase 14 fix for Gap 12: Correct padding formula (mod 4 == 0 results in 0, not 4)
+            padding = '=' * ((VAR_4 - len(payload_b64) % VAR_4) % VAR_4)
             payload_bytes = base64.urlsafe_b64decode(payload_b64 + padding)
             
             # Verify Signature (Timing-attack safe comparison)

@@ -32,10 +32,12 @@ class Ace:
             def wrapper(*args, **kwargs):
                 """Function: wrapper"""
                 # 1. INTENT CHECK (Signal Filter)
-                if not func.__doc__:
+                # Phase 13 fix for Break 19: Reject placeholder docstrings
+                doc = func.__doc__
+                if not doc or doc.strip().lower().startswith("function:"):
                     raise AceViolation(
-                        f"CRITICAL: Function '{func.__name__}' lacks Intent (Docstring). "
-                        "Python Ace rejects ambiguous code."
+                        f"CRITICAL: Function '{func.__name__}' lacks Real Intent. "
+                        "Placeholder docstrings ('Function: name') are rejected by Python Ace."
                     )
                 
                 # 2. DENSITY CHECK (Input Validation)
@@ -63,7 +65,7 @@ class Ace:
         Replacement for 'print'.
         Ensures output is structured, not noise.
         """
-        if not data:
+        if data is None:
             return # Silence the noise
         print(f"[ACE::SIGNAL] >> {data}")
 

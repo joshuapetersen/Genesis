@@ -1,4 +1,5 @@
 import json
+from Sovereign_Constants import VOTER_DENSITY_THRESHOLD
 
 VAR_0_2 = 0.2
 VAR_0_3 = 0.3
@@ -26,17 +27,16 @@ class ConsensusVoter:
             "TERTIARY": VAR_0_7,   # Creative / Intuitive
             "ARCHIVE": VAR_0_4     # Historical
         }
-        self.density_threshold = VAR_0_3
+        self.density_threshold = VOTER_DENSITY_THRESHOLD
 
     def calculate_density(self, proposal):
         """
         Calculates the 'information density' of a proposal.
         Simple heuristic: Ratio of unique significant words to total words.
         """
-        words = proposal.split()
-        if not words:
-            return 0.0
-        unique_words = set(w.lower() for w in words if len(w) > VAR_3)
+        # Phase 15 fix for Gap 1: Include short high-signal words (len > 2) like 'not', 'no', 'if'
+        # Only strip very short noise (1-2 chars)
+        unique_words = set(w.lower() for w in words if len(w) > 2)
         return len(unique_words) / len(words)
 
     def resolve(self, proposals):
@@ -71,12 +71,11 @@ class ConsensusVoter:
             # Score = (Confidence * Weight) + (Density * 0.2)
             score = (raw_confidence * weight) + (density * VAR_0_2)
             
-            # NODE_08 MANDATE: Density Check
+            # Phase 15 fix for Gap 2: Density floor removed (no score = 0.0)
             status = "VALID"
             if density < self.density_threshold:
                 print(f"[ConsensusVoter] ALERT: Proposal from {source} has low density ({density:.2f}). Flagging.")
                 status = "DATA_INSUFFICIENT"
-                score = 0.0 # Penalize heavily
             
             scored_proposals.append({
                 "content": content,
@@ -87,7 +86,9 @@ class ConsensusVoter:
             })
             
         # Sort by score descending
-        scored_proposals.sort(key=lambda x: x['score'], reverse=True)
+        # Phase 15 fix for Gap 3: Tie-breaker using Source Priority (Primary > Tertiary)
+        source_priority = {"PRIMARY": 0, "TERTIARY": 1, "ARCHIVE": 2}
+        scored_proposals.sort(key=lambda x: (-x['score'], source_priority.get(x['source'], 99)))
         
         winner = scored_proposals[0]
         print(f"[ConsensusVoter] Winner: {winner['source']} (Score: {winner['score']:.2f})")

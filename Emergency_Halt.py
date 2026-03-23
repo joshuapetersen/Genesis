@@ -11,7 +11,8 @@ def kill_data_bridge():
     for p in psutil.process_iter(['pid', 'name', 'cmdline']):
         try:
             cmdline = p.info.get('cmdline')
-            if cmdline and 'World_Data_Bridge.py' in ' '.join(cmdline):
+            # Phase 13 fix for Break 22: Search for substring in any part of cmdline
+            if cmdline and any('World_Data_Bridge.py' in part for part in cmdline):
                 logging.info(f"Target locked. Terminating World Data Bridge (PID: {p.info['pid']})...")
                 p.kill()
                 killed = True
@@ -42,5 +43,8 @@ def send_halt_axiom():
 if __name__ == "__main__":
     logging.warning("=== INITIATING SOVEREIGN EMERGENCY HALT ===")
     kill_data_bridge()
-    send_halt_axiom()
+    try:
+        send_halt_axiom()
+    except Exception as e:
+        logging.error(f"HALT Axiom could not be delivered to cloud: {e}")
     logging.warning("=== EMERGENCY PROTOCOL COMPLETE ===")

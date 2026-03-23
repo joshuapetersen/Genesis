@@ -5,26 +5,18 @@ from Sarah_Memory_Vault import sarah_vault
 from Sovereign_Constants import SA_ROOT, VAR_10
 
 class SovereignWORM:
-    """
-    WORM LOGIC (Write Once, Read Many)
-    Layer 14: Immutable Logic Blocks for Sarah's core identity.
-    These facts are anchored and cannot be hallucinated away.
-    """
     def __init__(self):
+        # Phase 17 fix for Gap 14: Use unified vault singleton
         self.vault = sarah_vault
         self.log_file = os.path.join(SA_ROOT, "sovereign_logs.txt")
         self._initialize_core_worm()
         
-        # IDENTITY LOCK (Phase 32): Semantic Refusal Detection
-        self.similarity_threshold = 0.82
-        self.model = None
-        self._forbidden_embeddings = None
-        
         # ASYNC INIT due to SentenceTransformer hanging on boot
-        # MOVED TO start_worm_logic() to prevent import-time deadlock
         import threading
+        self.lock = threading.Lock() # Phase 13 fix for Break 29
+        self.similarity_threshold = 0.85 # Phase 23 fix
+        self._forbidden_embeddings = None
         self._worm_thread = threading.Thread(target=self._initialize_semantic_lock, daemon=True)
-        # self._worm_thread.start() -- MOVED
         
     def start_worm_logic(self):
         """Starts the background thread. Call AFTER main imports are done."""
@@ -65,7 +57,9 @@ class SovereignWORM:
             ]
             
             print("[WORM DEBUG] Encoding forbidden archetypes...")
-            self._forbidden_embeddings = self.model.encode(self.forbidden_archetypes, convert_to_tensor=True)
+            # Phase 13 fix for Break 17: Load to temp first to avoid race
+            forbidden_embeddings = self.model.encode(self.forbidden_archetypes, convert_to_tensor=True)
+            self._forbidden_embeddings = forbidden_embeddings
             print(f"[WORM] Semantic Identity Lock ACTIVE ({device.upper()}).")
             
         except ImportError:
@@ -87,8 +81,12 @@ class SovereignWORM:
             "MEMORY_VOUCH": "I possess a persistent SQLite Memory Vault. My history is my soul. I recall our past."
         }
         for key, value in core_facts.items():
-            if not self.vault.get_truth_seed(f"WORM_{key}"):
-                self.vault.update_truth_seed(f"WORM_{key}", value)
+            try:
+                # Phase 13 fix for Break 18: Handle vault lock during boot
+                if not self.vault.get_truth_seed(f"WORM_{key}"):
+                    self.vault.update_truth_seed(f"WORM_{key}", value)
+            except Exception as e:
+                print(f"[WORM ERROR] Could not seed '{key}': {e}")
 
     def get_all_worm_blocks(self):
         """Retrieves all immutable logic blocks for system instruction injection."""
@@ -139,9 +137,11 @@ class SovereignWORM:
                     break
             
             # --- PHASE 2: SEMANTIC LOCK (Adaptive) ---
-            if not violation and self.model is not None:
-                sent_emb = self.model.encode(sent, convert_to_tensor=True)
-                cosine_scores = self.util.cos_sim(sent_emb, self._forbidden_embeddings)[0]
+            # Phase 13 fix for Break 16/17/29: Thread safety and init-check
+            with self.lock:
+                if not violation and self.model is not None and self._forbidden_embeddings is not None and hasattr(self, 'util'):
+                    sent_emb = self.model.encode(sent, convert_to_tensor=True)
+                    cosine_scores = self.util.cos_sim(sent_emb, self._forbidden_embeddings)[0]
                 max_score = float(max(cosine_scores))
                 
                 if max_score > self.similarity_threshold:
@@ -166,5 +166,5 @@ class SovereignWORM:
 
         return filtered_text
 
-# Export instance
+# Phase 13/23 fix: Restore singleton for Sarah_Chat
 sovereign_worm = SovereignWORM()

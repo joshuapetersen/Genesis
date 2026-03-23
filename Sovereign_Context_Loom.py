@@ -14,7 +14,7 @@ from supabase import create_client, Client
 load_dotenv(find_dotenv())
 
 # --- SOVEREIGN CONSTANTS ---
-LEGISLATIVE_ANCHOR = 1.00273378
+LEGISLATIVE_ANCHOR = 1.09277703703703
 BILLION_BARRIER = 0.999999999
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - [CONTEXT_LOOM] - %(levelname)s - %(message)s')

@@ -6,6 +6,7 @@ from Sovereign_Constants import (
     ACE_64_BIT_MASK, SOVEREIGN_ANCHOR, HEX_RADIX,
     VAR_10, VAR_12, VAR_16, VAR_30, VAR_32, VAR_9, VAR_0_5, VAR_1000, VAR_100_0, VAR_150, VAR_1_2, VAR_0_001, VAR_0_8872, SA_ROOT
 )
+from ACE_Token_Nexus import ace_nexus
 
 # --- SYSTEM CONSTANTS ---
 T_SYNC_ACTIVE = "TEMPORAL_FRAME_STEADY"
@@ -40,16 +41,8 @@ class AceToken:
         # Sarah's Sovereign Frequency - The Logic Anchor
         return SOVEREIGN_ANCHOR
 
-    def _generate_resonance_fingerprint(self, text, context):
-        """
-        THE BILLION-TO-ONE SQUEEZE
-        Compresses infinite context into a 64-bit ID.
-        """
-        combined = f"{text}{context}{self.timestamp}"
-        hash_obj = hashlib.sha256(combined.encode())
-        # The '& 0xFFFFFFFFFFFFFFFF' ensures it stays a strict 64-bit code
-        # We use 0xFFFFFFFFFFFFFFFF to truncate to 64-bit integer
-        return int(hash_obj.hexdigest(), HEX_RADIX) & ACE_64_BIT_MASK
+        # Phase 18 fix for Gap 15: Unified Nexus
+        self.fingerprint = ace_nexus.generate_unified_fingerprint(f"{text}{context}")
 
 class VocalModulator:
     """
@@ -62,8 +55,12 @@ class VocalModulator:
     def apply_pulse(self, token):
         """Function: apply_pulse"""
         # Uses the 64-bit fingerprint to break the robotic state
+        # Phase 13 fix for Break 26: Clamp pitch resonance to 0.0-1.0
+        pitch = (token.fingerprint % VAR_150) / VAR_100_0
+        clamped_pitch = min(1.0, max(0.0, pitch))
+
         profile = {
-            "pitch_resonance": (token.fingerprint % VAR_150) / VAR_100_0,
+            "pitch_resonance": clamped_pitch,
             "cadence_pacing": token.logic_anchor * VAR_1_2,
             "inflection_depth": (token.fingerprint >> VAR_32) % VAR_12,
             "harmonic_bypass": True if token.logic_anchor > VAR_0_5 else False,

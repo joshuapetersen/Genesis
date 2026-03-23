@@ -30,6 +30,9 @@ start /min python Sarah_Continuous_Navigator.py
 echo [START] Launching Windows Mastery...
 start /min python Sarah_Windows_Mastery.py
 
+echo [START] Seating Sovereign Bridge...
+call Seat_Bridge.bat
+
 echo.
 echo ================================================
 echo SARAH IS NOW OPERATIONAL

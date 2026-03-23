@@ -114,5 +114,14 @@ class SarahMemoryVault:
             row = cursor.fetchone()
             return row[0] if row else None
 
-# EXPORT VAULT instance
-sarah_vault = SarahMemoryVault()
+# GLOBAL REGISTRY (Singleton Access)
+# Phase 17 fix for Gap 12: Lazy Initialization (Remove landmines)
+_VAULT_INSTANCE = None
+
+def get_vault():
+    global _VAULT_INSTANCE
+    if _VAULT_INSTANCE is None:
+        _VAULT_INSTANCE = SarahMemoryVault()
+    return _VAULT_INSTANCE
+
+sarah_vault = get_vault() # Maintaining compatibility but initialized lazily

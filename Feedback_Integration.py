@@ -26,8 +26,14 @@ class FeedbackIntegration:
         self.lessons = self._load_lessons()
 
     def _load_lessons(self) -> Dict[str, Any]:
-        # Force reset lessons to break error feedback loop
-        return {"failures": [], "corrective_actions": [], "patterns": [], "repair": "Feedback_Integration reset at SYSTEM_CMD"}
+        # Phase 15 fix for Gap 4: Restore persistent loading from JSON library
+        if os.path.exists(self.failure_library):
+            try:
+                with open(self.failure_library, 'r') as f:
+                    return json.load(f)
+            except Exception:
+                pass # Fallback to reset
+        return {"failures": [], "corrective_actions": [], "patterns": [], "repair": "Feedback_Integration initialization"}
 
     def _save_lessons(self):
         with open(self.failure_library, 'w') as f:
@@ -46,8 +52,11 @@ class FeedbackIntegration:
 
         self.lessons["failures"].append(failure_entry)
 
-        # Automatically record to metrics
-        self.metrics.record_error("feedback_integration", f"{failure_type}: {context}", severity)
+        # Phase 15 fix for Gap 6: Try/Except around metrics to prevent crash
+        try:
+            self.metrics.record_error("feedback_integration", f"{failure_type}: {context}", severity)
+        except Exception as e:
+            print(f"[FeedbackInt] Metrics Error: {e}")
 
         # Try to infer a corrective action
         corrective = self._infer_corrective_action(failure_type, context)
@@ -110,7 +119,9 @@ class FeedbackIntegration:
 
         # Check for similar past failures
         for corrective in self.lessons["corrective_actions"]:
-            if any(word in proposed_action.lower() for word in corrective["failure_type"].lower().split()):
+            # Phase 15 fix for Gap 5: Flexible matching (handles underscores and substrings)
+            match_key = corrective["failure_type"].lower().replace("_", " ")
+            if any(word in proposed_action.lower() for word in match_key.split()):
                 suggestions.append({
                     "from_past": corrective["failure_type"],
                     "recommendation": corrective["corrective_action"]

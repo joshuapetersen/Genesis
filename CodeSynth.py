@@ -11,9 +11,11 @@ Capabilities:
 import os
 import ast
 from typing import Optional, Dict, Any
+import shutil
 from Sarah_Laws import SarahLaws
 from TinyRuntime import get_runtime
 from IntelligenceAmplifier import IntelligenceAmplifier
+from Consequence_Enforcer import consequence_enforcer
 
 VAR_0_2 = 0.2
 VAR_3 = 3
@@ -31,6 +33,26 @@ class CodeSynth:
         
         if not os.path.exists(self.staging_dir):
             os.makedirs(self.staging_dir)
+            
+        # Phase 19 fix for Gap 14: Protected Zone (The Immutable Core)
+        self.PROTECTED_ZONE = [
+            "Sarah_Sovereign_Core.py",
+            "Sovereign_Math.py",
+            "Sovereign_WORM.py",
+            "Banshee_Shield.py",
+            "Sarah_Memory_Vault.py",
+            "Sovereign_Constants.py",
+            "Consequence_Enforcer.py"
+        ]
+            
+        # Phase 16 fix for Gap 13: Core Blacklist (The Soul Protection)
+        self.CORE_BLACKLIST = [
+            "Sarah_Sovereign_Core.py",
+            "Sovereign_WORM.py",
+            "Sovereign_Math.py",
+            "Sovereign_Constants.py",
+            "Banshee_Shield.py"
+        ]
             
         print("[CodeSynth] Engine Online (Offline mode supported)")
 
@@ -104,9 +126,19 @@ class CodeSynth:
 
     def _plan_refactor(self, filename: str, code: str, objective: str) -> str:
         """Use Amplifier to plan the changes."""
-        query = f"How to optimize {filename} for {objective}. Code snippet: {code[:500]}..."
-        
-        # Ask Amplifier to breakdown the task
+        # Phase 16 fix for Gap 6: Outline-Aware Planning (No more header-only)
+        # We extract the 'Skeleton' (defs/classes) to give the model full scope context
+        try:
+            tree = ast.parse(code)
+            skeleton = []
+            for node in ast.walk(tree):
+                if isinstance(node, (ast.ClassDef, ast.FunctionDef)):
+                    skeleton.append(f"{type(node).__name__}: {node.name}")
+            outline = "\n".join(skeleton[:VAR_100]) if skeleton else code[:500]
+        except:
+            outline = code[:500]
+
+        query = f"Plan optimization for {filename} ({objective}). File Outline:\n{outline}\n..."
         plan = self.amplifier.amplify_thought(query)
         return plan
 
@@ -147,25 +179,31 @@ class CodeSynth:
 
     def _validate_integrity(self, original: str, new: str) -> bool:
         """
-        Ensure the new code isn't a hallucinated stub.
-        Checks:
-        1. Length ratio (must be > 50% of original)
-        2. Keyword retention (classes/defs should persist)
+        Phase 16 fix for Gap 4: AST Parity Validation.
+        Ensures the new version didn't 'evolve away' fundamental structures.
         """
-        if len(new) == 0:
-            return False
+        if len(new) == 0: return False
             
-        # 1. Size Check
+        # 1. Size Check (Maintain 50% floor)
         ratio = len(new) / len(original)
-        if ratio < 0.5:
-            print(f"[CodeSynth] Integrity Warning: Size dropped by {(1-ratio)*100:.1f}%")
-            return False
+        if ratio < 0.5: return False
             
-        # 2. Structure Check
-        # If original had classes, new should probably have classes
-        if "class " in original and "class " not in new:
-            print("[CodeSynth] Integrity Warning: Classes vanished")
-            return False
+        # 2. Semantic Parity (AST Check)
+        try:
+            t_orig = ast.parse(original)
+            t_new = ast.parse(new)
+            
+            orig_struct = {node.name for node in ast.walk(t_orig) if isinstance(node, (ast.ClassDef, ast.FunctionDef)) if not node.name.startswith("_")}
+            new_struct = {node.name for node in ast.walk(t_new) if isinstance(node, (ast.ClassDef, ast.FunctionDef)) if not node.name.startswith("_")}
+            
+            # If we lost > 30% of public methods/classes, it's a destructive hallucination
+            if orig_struct:
+                loss_ratio = len(orig_struct - new_struct) / len(orig_struct)
+                if loss_ratio > 0.3:
+                    print(f"[CodeSynth] Integrity FAIL: Lost {loss_ratio*100:.1f}% of structures.")
+                    return False
+        except:
+            return False # Parse error in check
             
         return True
 
@@ -188,21 +226,38 @@ class CodeSynth:
             return False
             
         try:
-            # Backup
+            # Phase 19 fix for Gap 14: Prevent core-soul self-overwrite (The Protected Zone)
+            if any(filename.endswith(p) for p in self.PROTECTED_ZONE):
+                print(f"[CodeSynth] EVOLUTION BLOCKED: {filename} is in the PROTECTED_ZONE.")
+                return False
+
+            # Phase 19 fix for Gap 3/10: Consequence Enforcement (Level 3)
+            # Code evolution represents a high TFC (Total Failure Cost)
+            authorized, reason = consequence_enforcer.verify_operation(3)
+            if not authorized:
+                print(f"[CodeSynth] EVOLUTION DENIED: {reason}")
+                return False
+
+            # Backup (Copy existing to .bak)
             backup_path = prod_path + ".bak"
             if os.path.exists(prod_path):
                 import shutil
                 shutil.copy2(prod_path, backup_path)
             
-            # Apply
+            # Phase 16 fix for Gap 3: Atomic Apply (os.replace)
+            # Write to a temp file on the same drive then swap to ensure atomicity.
+            temp_path = prod_path + ".tmp"
             import shutil
-            shutil.copy2(staged_path, prod_path)
+            shutil.copy2(staged_path, temp_path)
+            os.replace(temp_path, prod_path)
                 
-            print(f"[CodeSynth] EVOLUTION APPLIED: {filename}")
+            print(f"[CodeSynth] EVOLUTION ATOMICALLY APPLIED: {filename}")
             return True
             
         except Exception as e:
             print(f"[CodeSynth] Apply Error: {e}")
+            if 'temp_path' in locals() and os.path.exists(temp_path):
+                os.remove(temp_path)
             return False
 
 if __name__ == "__main__":

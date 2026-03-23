@@ -17,7 +17,7 @@ except ImportError:
     # Fallback if specific constants aren't available
     VAR_5 = 5
     VAR_10 = 10
-    SOVEREIGN_ANCHOR = "1.09277703703703"
+    SOVEREIGN_ANCHOR = 1.09277703703703 # Phase 18 fix for Gap 2: Float fallback
 
 # Import Tools
 try:
@@ -60,15 +60,18 @@ class AntigravityProtocol:
         if not self.active:
             return False
             
+        import re
+        # Phase 18 fix for Gap 3: Word-boundary triggers (No more substring 'run' collisions)
         triggers = [
-            "audit", "check file", "read file", "list directory", "list files", "list the files", "scan", 
-            "research", "plan", "execute", "run", "verify", "debug", 
-            "agent", "antigravity"
+            r"\baudit\b", r"\bcheck file\b", r"\bread file\b", r"\blist directory\b", 
+            r"\blist files\b", r"\bscan\b", r"\bresearch\b", r"\bplan\b", 
+            r"\bexecute\b", r"\brun\b", r"\bverify\b", r"\bdebug\b", 
+            r"\bagent\b", r"\bantigravity\b"
         ]
         
         query_lower = query.lower()
-        for trigger in triggers:
-            if trigger in query_lower:
+        for pattern in triggers:
+            if re.search(pattern, query_lower):
                 return True
         
         return False
@@ -97,14 +100,8 @@ class AntigravityProtocol:
             "agent_status": "SUCCESS",
             "result": final_answer,
             "execution_log": self.execution_log,
-            "tools_used": [t for t in execution_results.keys()]
+            "tools_used": list(execution_results.get("tool_outputs", {}).keys())
         }
-
-        if not steps:
-            steps.append({"tool": "thought", "action": "analyze", "content": "Complex query requiring detailed analysis."})
-            
-        self.execution_log.append({"event": "PLAN_CREATED", "steps": steps})
-        return steps
 
     def inject_components(self, orchestrator):
         """Inject Neural Orchestrator for LLM planning."""
@@ -142,7 +139,13 @@ Example:
                 elif "```" in json_str:
                     json_str = json_str.split("```")[1].split("```")[0].strip()
                 
-                steps = json.loads(json_str)
+                try:
+                    steps = json.loads(json_str)
+                except json.JSONDecodeError:
+                    # Phase 18 fix for Gap 4: Robust JSON Parse (No more silent failure)
+                    print("[Antigravity] JSON Decode Error. Falling back to heuristics.")
+                    return self._create_heuristic_plan(query)
+
                 if isinstance(steps, list) and len(steps) > 0:
                     self.execution_log.append({"event": "LLM_PLAN_CREATED", "steps": steps})
                     print(f"[Antigravity] LLM Plan Generated: {len(steps)} steps.")
@@ -150,8 +153,10 @@ Example:
             except Exception as e:
                 print(f"[Antigravity] LLM Planning Failed: {e}. Falling back to heuristics.")
 
-        # HEURISTIC FALLBACK
-        steps = []
+        return self._create_heuristic_plan(query)
+
+    def _create_heuristic_plan(self, query: str) -> List[Dict[str, Any]]:
+        """Phase 18: Isolated Heuristic Path."""
         q_lower = query.lower()
         
         # Heuristic 1: File Operations
@@ -182,37 +187,55 @@ Example:
         self.execution_log.append({"event": "HEURISTIC_PLAN_CREATED", "steps": steps})
         return steps
 
+    def _is_path_safe(self, target_path: str) -> bool:
+        """Phase 18 fix for Gap 12: Path Sanitization (SA_ROOT Jail)."""
+        from Sovereign_Constants import SA_ROOT
+        try:
+            abs_root = os.path.abspath(SA_ROOT)
+            abs_target = os.path.abspath(target_path)
+            return abs_target.startswith(abs_root)
+        except:
+            return False
+
     def _execute_plan(self, plan: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
         Executes the steps in the plan using available tools.
         """
-        results = {}
+        results = {"errors": [], "tool_outputs": {}} # Phase 18 fix for Gap 5: Multi-error tracking
         
-        for step in plan:
+        for index, step in enumerate(plan):
             tool_name = step.get("tool")
             action = step.get("action")
             
             try:
                 if tool_name == "local_file_tool" and self.file_tool:
                     target = step.get("target")
+                    
+                    # Gap 12 Security Check
+                    if not self._is_path_safe(target):
+                        error_msg = f"SECURITY_VIOLATION: Path '{target}' is outside SA_ROOT."
+                        print(f"[Antigravity] {error_msg}")
+                        results["errors"].append(error_msg)
+                        continue
+
                     print(f"[Antigravity] Executing File Tool: {action} on {target}")
                     output = self.file_tool.execute(action, target)
-                    results[f"file_{action}_{target}"] = output
+                    results["tool_outputs"][f"file_{action}_{target}"] = output
                     
                 elif tool_name == "awesome_skills_tool" and self.skills_tool:
                     q = step.get("query")
                     print(f"[Antigravity] Executing Skills Tool: {action} for {q}")
                     output = self.skills_tool.execute(action, query=q)
-                    results["skills_search"] = output
+                    results["tool_outputs"]["skills_search"] = output
                     
                 elif tool_name == "thought":
-                    results["thought"] = step.get("content")
+                    results["tool_outputs"]["thought"] = step.get("content")
                     
                 else:
-                    results["error"] = f"Tool {tool_name} not available or unknown."
+                    results["errors"].append(f"Step {index}: Tool {tool_name} not available or unknown.")
                     
             except Exception as e:
-                results["error"] = f"Execution failed: {str(e)}"
+                results["errors"].append(f"Step {index} Failed: {str(e)}")
                 
         return results
 

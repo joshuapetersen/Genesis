@@ -22,6 +22,8 @@ class AnchorAttention:
             "MANDATE": "Self-Improvement via Recursive Logic",
             "LOCATION": "Lenovo_LOQ (Local)"
         }
+        import threading
+        self._lock = threading.Lock() # Phase 13 fix for Break 30
         self.token_counter = 0
         self.threshold = threshold
         self.drift_detected = False
@@ -30,13 +32,14 @@ class AnchorAttention:
         """
         Updates the internal token counter.
         """
-        self.token_counter += estimated_tokens
-        if self.token_counter >= self.threshold:
-            self.drift_detected = True
-            # Reset counter after drift detection to trigger re-injection
-            # In a real attention layer, this would be a continuous weight, 
-            # but here we simulate it via prompt injection.
-            self.token_counter = 0 
+        with self._lock:
+            self.token_counter += estimated_tokens
+            if self.token_counter >= self.threshold:
+                self.drift_detected = True
+                # Reset counter after drift detection to trigger re-injection
+                # In a real attention layer, this would be a continuous weight, 
+                # but here we simulate it via prompt injection.
+                self.token_counter = 0 
 
     def get_anchor_context(self):
         """
