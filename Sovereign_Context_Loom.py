@@ -135,6 +135,35 @@ $$;
 """
         return sql
 
+    def similarity_search(self, query: str, k: int = 3) -> List:
+        """Native Supabase RPC Search to bypass LangChain regressions."""
+        try:
+            # Generate local embedding
+            query_embedding = self.embeddings.embed_query(query)
+            
+            # Execute RPC
+            res = self.client.rpc(
+                "match_documents",
+                {
+                    "query_embedding": query_embedding,
+                    "match_count": k,
+                    "filter": {}
+                }
+            ).execute()
+            
+            # Convert to Document-like objects for Gateway compatibility
+            from langchain_core.documents import Document
+            docs = []
+            for item in res.data:
+                docs.append(Document(
+                    page_content=item["content"],
+                    metadata=item["metadata"]
+                ))
+            return docs
+        except Exception as e:
+            logger.error(f"Native Similarity Search Failed: {e}")
+            return []
+
     def build_loom(self):
         """Pushes the matrix into Supabase pgvector."""
         docs = self.gather_documents()

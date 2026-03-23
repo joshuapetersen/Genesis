@@ -37,12 +37,9 @@ class AceToken:
         # Resolves noise to core intent (e.g., 'ur' -> 'Person_2nd')
         return f"RESOLVED_INTENT::{text.upper().strip()}"
 
-    def _calculate_anchor(self, intent):
-        # Sarah's Sovereign Frequency - The Logic Anchor
-        return SOVEREIGN_ANCHOR
-
-        # Phase 18 fix for Gap 15: Unified Nexus
-        self.fingerprint = ace_nexus.generate_unified_fingerprint(f"{text}{context}")
+    def _generate_resonance_fingerprint(self, text, context=None):
+        """Phase 18 fix for Gap 15: Unified Nexus."""
+        return ace_nexus.generate_unified_fingerprint(f"{text}{context or ''}")
 
 class VocalModulator:
     """

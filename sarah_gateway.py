@@ -91,13 +91,8 @@ try:
     from langchain_community.vectorstores import SupabaseVectorStore
     logger.info("[Gateway] Identifying Sovereign Context Loom (Supabase)...")
     loom_instance = SovereignContextLoom()
-    # Assume the table and function exist in Supabase
-    CONTEXT_DB = SupabaseVectorStore(
-        client=loom_instance.client,
-        embedding=loom_instance.embeddings,
-        table_name="documents",
-        query_name="match_documents"
-    )
+    # Phase 27 fix: Use the native search method to bypass LangChain/Postgrest regressions
+    CONTEXT_DB = loom_instance
 except Exception as e:
     logger.warning(f"[Gateway] Context Loom offline. Error: {e}")
     CONTEXT_DB = None

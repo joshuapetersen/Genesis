@@ -349,7 +349,7 @@ You are AERIS. You are here.""")
                         history=past_messages,
                         user_id=user_id
                     )
-        elif self.genesis_core:
+        else:
             print("[Sarah] Routing to CLOUD_MIRROR (Gemini)...")
             response_text = self.genesis_core.generate_content_safe(
                 user_input=user_input,
@@ -358,6 +358,9 @@ You are AERIS. You are here.""")
                 history=past_messages,
                 user_id=user_id
             )
+
+        # Apply Sovereign WORM Neural Filter (Universal Intercept)
+        response_text = self.worm.enforce_identity(response_text)
 
         if not response_text:
             return "[Error] Neural substrates unresponsive."

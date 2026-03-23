@@ -300,16 +300,21 @@ class SovereignMath:
             a1 = to_array(_0x_v1)
             a2 = to_array(_0x_v2)
             
-            l1_dist = sub.abs(a1 - a2)
-            # Phase 13 fix for Break 11: Ensure similarity doesn't go negative
-            diff = VAR_1_0 - l1_dist
-            similarity = sub.sum(sub.where(diff < 0, 0, diff))
+            # Phase 27 Fix: High-precision Euclidean (L2) Resonance
+            # Resolves the '1.0 score compression' issue
+            diff_sq = sub.square(a1 - a2)
+            sum_sq = sub.sum(diff_sq)
+            dist = sub.sqrt(sum_sq)
             
-            if limit < self._0x_dim:
-                similarity *= (limit / self._0x_dim)
-                
-            score = (similarity / self._0x_dim) * self._0x_sigma
-            if score > self._0x_limit: return VAR_1_0
+            # Normalize by sqrt(dim) for full 0.0-1.0 range
+            max_dist = math.sqrt(self._0x_dim)
+            score = 1.0 - (dist / max_dist)
+            
+            # Apply Sovereign Anchor damping
+            score = score * self._0x_sigma
+            
+            if score > VAR_1_0: return VAR_1_0
+            if score < self._0x_limit: score = self._0x_limit
             return float(sub.get_cpu(score))
         else:
             # Fallback to pure python loop

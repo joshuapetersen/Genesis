@@ -158,6 +158,7 @@ Example:
     def _create_heuristic_plan(self, query: str) -> List[Dict[str, Any]]:
         """Phase 18: Isolated Heuristic Path."""
         q_lower = query.lower()
+        steps = []
         
         # Heuristic 1: File Operations
         if "read" in q_lower or "check" in q_lower:
