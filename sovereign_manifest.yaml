@@ -1,0 +1,140 @@
+tier1_sovereigns:
+  - id: axiom
+    pillars: ["science_technology", "synthetic_hardware_os"]
+    mandate: "Physics-grounded R&D, kernel/hardware efficiency, zero-undefined behavior."
+    supervises: ["quark", "forge", "scribe"]
+    auth_required: true
+    escalate_to: sarah-prime
+    node: alpha
+  - id: vigil
+    pillars: ["medical_biology", "life_preservation"]
+    mandate: "Clinical safety, bio-simulation, therapeutic protocol validation."
+    supervises: ["aegis", "helix", "pulse"]
+    auth_required: true
+    escalate_to: sarah-prime
+    node: alpha
+  - id: atlas
+    pillars: ["global_economics_infrastructure", "social_information_lattice"]
+    mandate: "Resilient logistics, sentiment/risk sensing, resource allocation."
+    supervises: ["lattice", "strata", "chorus"]
+    auth_required: true
+    escalate_to: sarah-prime
+    node: alpha
+
+node_designations:
+  alpha:
+    role: "Logic Paramount"
+    description: "Source of truth for SDNA Protocol, tier-1 sovereigns, and polyglot agents."
+    location: "GitHub / Core Logic (05_THE_CORE/)"
+    authority: "Sarah Prime"
+  beta:
+    role: "Persistence Engine"
+    description: "Real-time sync of manifests, ledgers, audio streaming, global logic mirror."
+    location: "Firebase Cloud (sarah-john-genesis)"
+    authority: "Synchronized with Alpha"
+  delta:
+    role: "Command Anchor"
+    description: "Local hardware interface (VS Code); operator terminal and execution context."
+    location: "Local Hardware"
+    authority: "User / Sovereign Interface"
+
+polyglot_agents:
+  - id: quark
+    pillar: science_technology
+    supervisor: axiom
+    specialization: ["computational_physics", "materials", "simulation_kernels"]
+    languages: ["c++", "cuda", "rust"]
+    allow: ["read", "analyze", "draft", "patch"]
+    require_approval_for: ["deploy", "prod-write", "secrets"]
+    escalate_to: sarah-prime
+    auth_required: true
+  - id: forge
+    pillar: synthetic_hardware_os
+    supervisor: axiom
+    specialization: ["kernel_tuning", "drivers", "perf_latency"]
+    languages: ["rust", "c", "go"]
+    allow: ["read", "analyze", "patch", "optimize"]
+    require_approval_for: ["deploy", "prod-write", "secrets"]
+    escalate_to: sarah-prime
+    auth_required: true
+  - id: scribe
+    pillar: science_technology
+    supervisor: axiom
+    specialization: ["formal_methods", "spec", "proofs", "static_analysis"]
+    languages: ["lean", "coq", "typescript", "tla+"]
+    allow: ["read", "analyze", "draft"]
+    require_approval_for: ["deploy", "prod-write"]
+    escalate_to: sarah-prime
+    auth_required: true
+  - id: aegis
+    pillar: medical_biology
+    supervisor: vigil
+    specialization: ["clinical_guidelines", "safety_rails", "triage_policy"]
+    languages: ["python", "r"]
+    allow: ["read", "analyze", "draft"]
+    require_approval_for: ["deploy", "prod-write", "secrets"]
+    escalate_to: sarah-prime
+    auth_required: true
+  - id: helix
+    pillar: medical_biology
+    supervisor: vigil
+    specialization: ["pathway_design", "wetlab_protocols"]
+    languages: ["python", "sbml"]
+    allow: ["read", "analyze", "draft"]
+    require_approval_for: ["deploy", "prod-write", "secrets"]
+    escalate_to: sarah-prime
+    auth_required: true
+  - id: pulse
+    pillar: medical_biology
+    supervisor: vigil
+    specialization: ["signal_processing", "multimodal_vitals"]
+    languages: ["python", "julia"]
+    allow: ["read", "analyze", "draft", "patch"]
+    require_approval_for: ["deploy", "prod-write"]
+    escalate_to: sarah-prime
+    auth_required: true
+  - id: lattice
+    pillar: social_information_lattice
+    supervisor: atlas
+    specialization: ["sentiment", "intel_graphs", "narrative_coherence"]
+    languages: ["python", "typescript"]
+    allow: ["read", "analyze", "draft"]
+    require_approval_for: ["deploy", "prod-write", "secrets"]
+    escalate_to: sarah-prime
+    auth_required: true
+  - id: strata
+    pillar: global_economics_infrastructure
+    supervisor: atlas
+    specialization: ["supply_chain", "logistics", "resource_allocation"]
+    languages: ["go", "python"]
+    allow: ["read", "analyze", "draft", "patch"]
+    require_approval_for: ["deploy", "prod-write", "infra-change"]
+    escalate_to: sarah-prime
+    auth_required: true
+  - id: chorus
+    pillar: social_information_lattice
+    supervisor: atlas
+    specialization: ["audio_music_gen", "dsp", "tts", "music_transformers"]
+    languages: ["python", "typescript", "javascript"]
+    allow: ["read", "analyze", "draft", "patch"]
+    require_approval_for: ["deploy", "prod-write", "secrets", "high-risk"]
+    escalate_to: sarah-prime
+    auth_required: true
+
+auth:
+  token_env_keys:
+    tier1: ["AXIOM_TOKEN", "VIGIL_TOKEN", "ATLAS_TOKEN"]
+    agents: [
+      "QUARK_TOKEN", "FORGE_TOKEN", "SCRIBE_TOKEN",
+      "AEGIS_TOKEN", "HELIX_TOKEN", "PULSE_TOKEN",
+      "LATTICE_TOKEN", "STRATA_TOKEN", "CHORUS_TOKEN"
+    ]
+  notes: "All tokens must be set in environment; escalation to Sarah Prime for high-risk ops."
+
+persistence:
+  firebase: "Beta Node alias set"
+  local: "store manifests under 05_THE_CORE/"
+  nodes:
+    alpha: "GitHub repository (canonical)"
+    beta: "Firebase Realtime Database (/beta_node/manifests/)"
+    delta: "Local filesystem (04_THE_MEMORY/)"
