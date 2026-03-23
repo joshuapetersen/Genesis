@@ -6,6 +6,8 @@ import threading
 from datetime import datetime
 import firebase_admin
 from firebase_admin import db
+from Sovereign_Telemetry import sovereign_telemetry
+from Sovereign_Supabase import sovereign_supabase
 
 class SAUL:
     """
@@ -59,7 +61,10 @@ class SAUL:
                 # 2. Ingest Cloud Logs (Google Ecosystem)
                 cloud_count = self.ingest_google_history()
                 
-                # 3. Optimize Index (Remove duplicates, sort)
+                # 3. sync to Supabase (Phase 31)
+                self.sync_to_supabase()
+                
+                # 4. Optimize Index (Remove duplicates, sort)
                 # (Simple dedupe by ID/Timestamp would go here)
                 
                 # Log activity if significant
@@ -80,6 +85,23 @@ class SAUL:
             except Exception as e:
                 print(f"[SAUL] Autonomy Error: {e}")
                 time.sleep(60)
+
+    def sync_to_supabase(self):
+        """Synchronizes tracked telemetry files to Supabase."""
+        try:
+            if not sovereign_supabase.is_connected():
+                sovereign_supabase.connect()
+            
+            if sovereign_supabase.is_connected():
+                # Sync context chain and other primary ledgers
+                for ledger in ["context_chain.jsonl", "sdm_bootlog.jsonl", "introspection_log.jsonl"]:
+                    sovereign_telemetry.ingest_jsonl(ledger, "sarah_telemetry")
+                
+                # Sync state snapshots
+                for snapshot in ["peak_state.json", "weaver_state.json"]:
+                    sovereign_telemetry.push_snapshot(snapshot, "sarah_snapshots")
+        except Exception as e:
+            print(f"[SAUL] Supabase Sync Error: {e}")
 
     def get_micro_timestamp(self):
         """

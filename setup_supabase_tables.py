@@ -52,3 +52,23 @@ def create_supabase_table(sqlite_path):
 if __name__ == "__main__":
     create_supabase_table("Genesis_Soul_Vault.sqlite")
     create_supabase_table("SLF_Akashic_Records.sqlite")
+
+    print("\n--- NEW TELEMETRY SCHEMA (Run in Supabase SQL Editor) ---")
+    telemetry_sql = """
+CREATE TABLE IF NOT EXISTS sarah_telemetry (
+    id BIGSERIAL PRIMARY KEY,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    source_file TEXT,
+    payload JSONB,
+    collected_at TIMESTAMPTZ
+);
+
+CREATE TABLE IF NOT EXISTS sarah_snapshots (
+    id BIGSERIAL PRIMARY KEY,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    source_file TEXT,
+    payload JSONB,
+    collected_at TIMESTAMPTZ
+);
+    """
+    print(telemetry_sql)
