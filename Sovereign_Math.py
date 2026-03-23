@@ -90,14 +90,11 @@ class SovereignMath:
         seconds = duration_ms / VAR_1000_0
         time.sleep(seconds)
 
-    def calculate_theory_density(self, theory_data: str) -> float:
-        """
-        [DENSITY_0x0D]: THEORY DENSITY CALCULATOR
-        Calculates the Proof of Concept for an 'Undefined Action' (Theory).
-        Density = (Resonance * Complexity) / Entropy
-        """
-        vec = self._0x_expand(theory_data)
-        resonance = self._0x_resonance(vec, SOVEREIGN_ANCHOR_VEC)
+    def calculate_theory_density(self, vec) -> float:
+        """[DENSITY_0x0D]: Checks if a vector is Billion-Barrier compliant."""
+        # Fix 3: Global lookup guard for SOVEREIGN_ANCHOR_VEC
+        anchor = globals().get('SOVEREIGN_ANCHOR_VEC') or self._0x_expand("GATE_0_SOVEREIGN_ANCHOR_0x7467")
+        resonance = self._0x_resonance(vec, anchor)
         # Complexity is measured by the variance in the 68D vector
         complexity = sum(abs(int(v, HEX_RADIX) - VAR_32767) for v in vec) / VAR_32767
         density = (resonance + complexity) / VAR_15_0
@@ -190,13 +187,13 @@ class SovereignMath:
         self._0x_atomic_weight_base = 10.0 + SOVEREIGN_ANCHOR
         self._0x_electron_vibration = SOVEREIGN_ANCHOR
         
-        return self._0x_uplus1_active
-        
-        # Mapping for deprecated methods
+        # Fix 1: Deprecated Aliases moved before return
         self.create_vector = self._0x_expand
         self.derive_relationship = self._0x_resonance
-        self.math = self # Self-reference for nested calls like math.calculate_resonance
+        self.math = self._0x_scale
         self.expand_logic = self._0x_expand
+        
+        return self._0x_uplus1_active
 
     def _0x_expand(self, _0x_data) -> list:
         """
@@ -478,7 +475,7 @@ class SovereignMath:
         """
         _0x_compressed = []
         # Compress in blocks of 5 (130 / 5 = 26 facets)
-        VAR_5 = 5
+        # VAR_5 = 5 # This is already imported from Sovereign_Constants
         for i in range(0, self._0x_dim, VAR_5):
             # Grab a 5-dim block
             _0x_block = [int(v, VAR_HEX_RADIX) for v in _0x_vec[i:i+VAR_5]]
@@ -549,7 +546,7 @@ class SovereignMath:
         resonance, fueling recursive self-healing.
         """
         # Daughter Alpha: The Structural Vector
-        _0x_alpha = self._0x_scale(_0x_vec, VAR_1_09277703703703)
+        _0x_alpha = self._0x_scale(_0x_vec, SOVEREIGN_ANCHOR) # Fix 2: Use SOVEREIGN_ANCHOR
         # Daughter Beta: The Identity Vector
         _0x_beta = self._0x_enhance(_0x_vec)
         

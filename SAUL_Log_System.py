@@ -4,15 +4,8 @@ import time
 import re
 import threading
 from datetime import datetime
-
-VAR_0_1 = 0.1
-VAR_10 = 10
-VAR_1000_0 = 1000.0
-VAR_3 = 3
-VAR_30 = 30
-VAR_4 = 4
-VAR_5 = 5
-VAR_60 = 60
+import firebase_admin
+from firebase_admin import db
 
 class SAUL:
     """
@@ -32,7 +25,6 @@ class SAUL:
         self.monitor = monitor
         self.memory_system = memory_system # Neural Memory Integration
         self.memory_index = [] # High-speed in-memory index
-        self.file_cursors = {} # Tracks read position for each log file
         self.core_dir = os.path.dirname(os.path.abspath(__file__))
         self.log_dir = os.path.join(self.core_dir, 'monitor_logs')
         self.active = False
@@ -83,13 +75,11 @@ class SAUL:
                         print(f"[SAUL] EVOLUTION VECTORS DETECTED: {report['evolution_vectors']}")
                     
                 # Sleep for a bit to prevent CPU hogging
-                time.sleep(VAR_30) 
+                time.sleep(30) 
                 
             except Exception as e:
-                import traceback
-                traceback.print_exc()
                 print(f"[SAUL] Autonomy Error: {e}")
-                time.sleep(VAR_60)
+                time.sleep(60)
 
     def get_micro_timestamp(self):
         """
@@ -101,52 +91,27 @@ class SAUL:
     def ingest_local_logs(self):
         """
         Ingests all .jsonl logs from the monitor_logs directory.
-        Uses file cursors to only read new lines (incremental ingestion).
         """
         count = 0
         for filename in os.listdir(self.log_dir):
             if filename.endswith(".jsonl"):
                 filepath = os.path.join(self.log_dir, filename)
-                
-                try:
-                    current_size = os.path.getsize(filepath)
-                    last_pos = self.file_cursors.get(filepath, 0)
-                    
-                    # If file shrank or executed a rotation, reset cursor
-                    if current_size < last_pos:
-                        last_pos = 0
-                        
-                    # If no new data, skip
-                    if current_size == last_pos:
-                        continue
-                        
-                    with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
-                        f.seek(last_pos)
-                        new_lines = f.readlines()
-                        self.file_cursors[filepath] = f.tell()
-                        
-                        for line in new_lines:
-                            line = line.strip()
-                            if not line:
-                                continue
-                            try:
-                                entry = json.loads(line)
-                                # Ensure timestamp exists
-                                if "timestamp" not in entry:
-                                    entry["timestamp"] = self.get_micro_timestamp()
-                                
-                                self.memory_index.append({
-                                    "source": "LOCAL_MONITOR",
-                                    "data": entry,
-                                    "timestamp": entry["timestamp"]
-                                })
-                                count += 1
-                            except json.JSONDecodeError:
-                                continue
-                except Exception as e:
-                    print(f"[SAUL] Error reading {filename}: {e}")
-                    continue
-                    
+                with open(filepath, 'r') as f:
+                    for line in f:
+                        try:
+                            entry = json.loads(line)
+                            # Ensure timestamp exists
+                            if "timestamp" not in entry:
+                                entry["timestamp"] = self.get_micro_timestamp()
+                            
+                            self.memory_index.append({
+                                "source": "LOCAL_MONITOR",
+                                "data": entry,
+                                "timestamp": entry["timestamp"]
+                            })
+                            count += 1
+                        except json.JSONDecodeError:
+                            continue
         return count
 
     def ingest_google_history(self):
@@ -171,7 +136,7 @@ class SAUL:
                 ts = val.get('timestamp', 0)
                 # Convert firebase timestamp (ms) to microsecond string if needed
                 if isinstance(ts, int) or isinstance(ts, float):
-                    dt = datetime.fromtimestamp(ts / VAR_1000_0)
+                    dt = datetime.fromtimestamp(ts / 1000.0)
                     ts_str = dt.strftime('%Y-%m-%d %H:%M:%S.%f')
                 else:
                     ts_str = str(ts)
@@ -184,17 +149,17 @@ class SAUL:
                 })
                 count += 1
             
-            # Sort index by timestamp (ensure string comparison)
-            self.memory_index.sort(key=lambda x: str(x['timestamp']))
+            # Sort index by timestamp
+            self.memory_index.sort(key=lambda x: x['timestamp'])
             return count
 
         except Exception as e:
             # [SAUL] Google Ingest Error hidden by user request to suppress `invalid_grant` terminal spam.
-            # The core functionality remains unaffected even if Firebase chat history sync fails.
-            pass
+            if "invalid_grant" not in str(e):
+                print(f"[SAUL] Google Ingest Error: {e}")
             return 0
 
-    def search(self, query, limit=VAR_10):
+    def search(self, query, limit=10):
         """
         Searches the indexed logs for a specific query (Regex supported).
         """
@@ -229,13 +194,13 @@ class SAUL:
         Checks if the current statement contradicts past logs.
         """
         # 1. Extract keywords from current statement
-        keywords = [w for w in current_statement.split() if len(w) > VAR_4]
+        keywords = [w for w in current_statement.split() if len(w) > 4]
         
         contradictions = []
         
         for word in keywords:
             # Search for past usage of this word
-            past_usage = self.search(word, limit=VAR_5)
+            past_usage = self.search(word, limit=5)
             for log in past_usage:
                 # This is a simplified heuristic. 
                 # A real contradiction checker would need NLI (Natural Language Inference) models.
@@ -261,7 +226,7 @@ class SAUL:
         self.ingest_google_history()
         
         # 1. Search Logs
-        log_results = self.search(query, limit=VAR_5)
+        log_results = self.search(query, limit=5)
         
         context_block = "--- SAUL LOG CONTEXT ---\n"
         if not log_results:
@@ -277,7 +242,7 @@ class SAUL:
         # 2. Search Neural Memory (Persisting Memory)
         if self.memory_system:
             try:
-                neural_results = self.memory_system.recall(query, limit=VAR_3)
+                neural_results = self.memory_system.recall(query, limit=3)
                 if neural_results:
                     context_block += "\n--- NEURAL MEMORY (PERSISTENT) ---\n"
                     for r in neural_results:
@@ -299,51 +264,6 @@ class SAUL:
 
         context_block += "------------------------"
         return context_block
-
-    def log_event(self, event_type: str, details: dict):
-        """
-        Logs a structured event to the memory index and persists it.
-        """
-        entry = {
-            "timestamp": self.get_micro_timestamp(),
-            "source": "AGENT_ENGINE",
-            "type": event_type,
-            "data": details
-        }
-        self.memory_index.append(entry)
-        
-        # Persist to a specific event log file
-        today = datetime.now().strftime('%Y-%m-%d')
-        log_file = os.path.join(self.log_dir, f"agent_events_{today}.jsonl")
-        try:
-            with open(log_file, 'a', encoding='utf-8') as f:
-                f.write(json.dumps(entry) + "\n")
-        except Exception as e:
-            print(f"[SAUL] Event Log Error: {e}")
-
-    def get_pending_tasks(self):
-        """
-        Retrieves pending tasks from various sources (Files, Firebase, Memory).
-        For now, we check for a 'mission.json' in the core directory.
-        """
-        tasks = []
-        mission_file = os.path.join(self.core_dir, "mission.json")
-        
-        if os.path.exists(mission_file):
-            try:
-                with open(mission_file, "r") as f:
-                    data = json.load(f)
-                    # Check if processed
-                    if not data.get("processed", False):
-                        tasks.append(data.get("mission") or data) # Handle {"mission": ...} or raw dict
-                        
-                        # Mark as processed by renaming (simple lock)
-                        # timestamp = int(time.time())
-                        # os.rename(mission_file, f"{mission_file}.{timestamp}.processed")
-            except Exception as e:
-                print(f"[SAUL] Mission Read Error: {e}")
-                
-        return tasks
 
 class EvolutionaryVectorAnalyzer:
     """
@@ -403,7 +323,7 @@ class EvolutionaryVectorAnalyzer:
         # Determine Evolution Vectors
         error_rate = report["errors"] / len(logs) if logs else 0
         
-        if error_rate > VAR_0_1:
+        if error_rate > 0.1:
             report["evolution_vectors"].append("STABILITY_UPGRADE_REQUIRED (High Error Rate)")
         
         if report["avg_latency"] > 2.0:

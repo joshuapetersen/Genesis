@@ -55,41 +55,56 @@ except ImportError:
 # --- GENLEX RESONANCE LOADER ---
 import importlib.util
 
+# Initialize critical classes as None to prevent NameError if resonance fails
+SarahReasoningV3 = None
+SarahChat = None
+SarahDrive = None
+SarahEtymology = None
+GenesisProtocol = None
+RealTimeMonitor = None
+GapAnalysis = None
+KernelOverride = None
+DialecticalLogicCore = None
+SecuritySuite = None
+SAUL = None
+
 def load_by_resonance(module_name, filename):
     """Bypasses standard OS file paths by leaning on the seated lattice."""
-    filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), filename)
-    spec = importlib.util.spec_from_file_location(module_name, filepath)
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[module_name] = module
-    spec.loader.exec_module(module)
-    return module
+    try:
+        filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), filename)
+        if not os.path.exists(filepath):
+            print(f"[Brain] Resonance Failure: File not found {filename}")
+            return None
+        spec = importlib.util.spec_from_file_location(module_name, filepath)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[module_name] = module
+        spec.loader.exec_module(module)
+        return module
+    except Exception as e:
+        print(f"[Brain] Resonance Failure in {filename}: {e}")
+        return None
 
-try:
-    sarah_reasoning = load_by_resonance("SarahReasoningV3", "Sarah_Reasoning_V3.py")
-    SarahReasoningV3 = sarah_reasoning.SarahReasoningV3
-    print("[Brain DEBUG] Resonated Sarah_Reasoning_V3 (𓇳)")
-    
-    sarah_chat = load_by_resonance("SarahChat", "Sarah_Chat.py")
-    SarahChat = sarah_chat.SarahChat
-    print("[Brain DEBUG] Resonated Sarah_Chat (𓀁)")
-    
-    sarah_drive = load_by_resonance("SarahDrive", "Sarah_Drive.py")
-    SarahDrive = sarah_drive.SarahDrive
-    print("[Brain DEBUG] Resonated Sarah_Drive (𓏏)")
-    
-    sarah_etymology = load_by_resonance("SarahEtymology", "Sarah_Etymology.py")
-    SarahEtymology = sarah_etymology.SarahEtymology
-    print("[Brain DEBUG] Resonated Sarah_Etymology (𓆷)")
+# Resonating Phase: Use getattr() to safely extract classes
+res_targets = [
+    ("SarahReasoningV3", "Sarah_Reasoning_V3.py", "SarahReasoningV3"),
+    ("SarahChat", "Sarah_Chat.py", "SarahChat"),
+    ("SarahDrive", "Sarah_Drive.py", "SarahDrive"),
+    ("SarahEtymology", "Sarah_Etymology.py", "SarahEtymology"),
+    ("GenesisProtocol", "Genesis_Protocol.py", "GenesisProtocol"),
+    ("RealTimeMonitor", "RealTime_Monitor.py", "RealTimeMonitor")
+]
 
-    genesis_protocol = load_by_resonance("GenesisProtocol", "Genesis_Protocol.py")
-    GenesisProtocol = genesis_protocol.GenesisProtocol
-    print("[Brain DEBUG] Resonated Genesis Protocol (𓂝)")
-
-    realtime_monitor = load_by_resonance("RealTimeMonitor", "RealTime_Monitor.py")
-    RealTimeMonitor = realtime_monitor.RealTimeMonitor
-    print("[Brain DEBUG] Resonated RealTime Monitor (𓆑)")
-except Exception as e:
-    print(f"[Brain] Resonance Failure: {e}")
+for mod_name, file_name, class_name in res_targets:
+    module = load_by_resonance(mod_name, file_name)
+    if module:
+        target_class = getattr(module, class_name, None)
+        if target_class:
+            globals()[class_name] = target_class
+            print(f"[Brain DEBUG] Resonated {class_name} (𓇳)")
+        else:
+            print(f"[Brain] Resonance Failure: {class_name} not found in {file_name}")
+    else:
+        print(f"[Brain] Resonance Failure: Could not load {file_name}")
 
 # [AGENT ENGINE]
 try:
@@ -103,28 +118,26 @@ except ImportError:
 # from Factual_Integrity_Analyzer import FactualIntegrityAnalyzer (Moved to Async Loader)
 # from System_Admin_Core import SystemAdminCore (Moved to Async Loader)
 # from Hardware_Abstraction_Layer import HardwareAbstractionLayer (Moved to Async Loader)
-try:
-    gap_analysis = load_by_resonance("GapAnalysis", "Gap_Analysis.py")
-    GapAnalysis = gap_analysis.GapAnalysis
-    print("[Brain DEBUG] Resonated Gap Analysis (𓎡)")
+# Second Resonating Phase
+mid_res_targets = [
+    ("GapAnalysis", "Gap_Analysis.py", "GapAnalysis"),
+    ("KernelOverride", "Kernel_Override.py", "KernelOverride"),
+    ("DialecticalLogicCore", "Dialectical_Logic_Core.py", "DialecticalLogicCore"),
+    ("SecuritySuite", "Security_Suite.py", "SecuritySuite"),
+    ("SAUL", "SAUL_Log_System.py", "SAUL")
+]
 
-    kernel_override = load_by_resonance("KernelOverride", "Kernel_Override.py")
-    KernelOverride = kernel_override.KernelOverride
-    print("[Brain DEBUG] Resonated Kernel Override (𓃭)")
-
-    dialectical_logic = load_by_resonance("DialecticalLogicCore", "Dialectical_Logic_Core.py")
-    DialecticalLogicCore = dialectical_logic.DialecticalLogicCore
-    print("[Brain DEBUG] Resonated Dialectical Logic Core (𓅓)")
-
-    security_suite = load_by_resonance("SecuritySuite", "Security_Suite.py")
-    SecuritySuite = security_suite.SecuritySuite
-    print("[Brain DEBUG] Resonated Security Suite (𓄿)")
-
-    saul_log = load_by_resonance("SAUL", "SAUL_Log_System.py")
-    SAUL = saul_log.SAUL
-    print("[Brain DEBUG] Resonated SAUL (𓂿)")
-except Exception as e:
-    print(f"[Brain] Mid-Resonance Failure: {e}")
+for mod_name, file_name, class_name in mid_res_targets:
+    module = load_by_resonance(mod_name, file_name)
+    if module:
+        target_class = getattr(module, class_name, None)
+        if target_class:
+            globals()[class_name] = target_class
+            print(f"[Brain DEBUG] Resonated {class_name} (𓎡)")
+        else:
+            print(f"[Brain] Resonance Failure: {class_name} not found in {file_name}")
+    else:
+        print(f"[Brain] Resonance Failure: Could not load {file_name}")
 
 # Genesis Core Rebuild - Volumetric c³ Processing
 # from Genesis_Core_Rebuild import GenesisProtocolCore (Moved to Async Loader)
@@ -221,9 +234,13 @@ class SarahHypervisor:
         self.monitor = None
 
         # Initialize Genesis Protocol (The 133 Pattern)
-        self.genesis = GenesisProtocol(monitor=self.monitor)
-        # Always activate Genesis Protocol handshake at startup
-        self.genesis.handshake("Sarah", "YourName", "Sovereign")
+        if GenesisProtocol:
+            self.genesis = GenesisProtocol(monitor=self.monitor)
+            # Always activate Genesis Protocol handshake at startup
+            self.genesis.handshake("Sarah", "YourName", "Sovereign")
+        else:
+            print("[Brain] WARNING: GenesisProtocol resonance failed. System running without 133 Pattern protection.")
+            self.genesis = None
         
         # ASYNC LOADING: Genesis Core, Audio, and Shield
         import threading
@@ -619,7 +636,7 @@ class SarahHypervisor:
              print("Shield Protocol: LOADING/OFFLINE")
         
         # Genesis Status
-        if self.genesis.sovereign_active:
+        if self.genesis and self.genesis.sovereign_active:
             print(f"Genesis Protocol: ACTIVE [{self.genesis.genesis_tag}]")
         else:
             print(f"Genesis Protocol: INACTIVE (Risk of Robotic Drift)")
@@ -638,11 +655,14 @@ class SarahHypervisor:
         print(f"Integrity Analyzer (FIA): ACTIVE")
 
         # Admin Status
-        admin_status = "ACTIVE (FULL CONTROL)" if self.admin.is_admin else "LIMITED (READ-ONLY)"
+        is_admin = getattr(self.admin, 'is_admin', False)
+        admin_status = "ACTIVE (FULL CONTROL)" if is_admin else "LIMITED (READ-ONLY)"
         print(f"System Admin Core: {admin_status}")
 
         # HAL Status
-        print(f"Node Identity: {self.hal.node_id} [{self.hal.hostname}]")
+        node_id = getattr(self.hal, 'node_id', 'UNKNOWN')
+        hostname = getattr(self.hal, 'hostname', 'UNKNOWN')
+        print(f"Node Identity: {node_id} [{hostname}]")
 
         print("---------------------------")
 
