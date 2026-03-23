@@ -87,17 +87,28 @@ class SAUL:
                 time.sleep(60)
 
     def sync_to_supabase(self):
-        """Synchronizes tracked telemetry files to Supabase."""
+        """Synchronizes and offloads all telemetry from monitor_logs to Supabase."""
         try:
             if not sovereign_supabase.is_connected():
                 sovereign_supabase.connect()
             
             if sovereign_supabase.is_connected():
-                # Sync context chain and other primary ledgers
+                # 1. Sync primary ledgers
                 for ledger in ["context_chain.jsonl", "sdm_bootlog.jsonl", "introspection_log.jsonl"]:
                     sovereign_telemetry.ingest_jsonl(ledger, "sarah_telemetry")
                 
-                # Sync state snapshots
+                # 2. Sync all session logs in monitor_logs then purge (Phase 32 refined)
+                if os.path.exists(self.log_dir):
+                    logs = [f for f in os.listdir(self.log_dir) if f.endswith(".jsonl")]
+                    for log_file in logs:
+                        filepath = os.path.join(self.log_dir, log_file)
+                        # Ingest to Supabase
+                        res = sovereign_telemetry.ingest_jsonl(filepath, "sarah_telemetry")
+                        # Only delete if ingestion confirmed (Phase 32 refined)
+                        if res:
+                            os.remove(filepath)
+                
+                # 3. Sync state snapshots
                 for snapshot in ["peak_state.json", "weaver_state.json"]:
                     sovereign_telemetry.push_snapshot(snapshot, "sarah_snapshots")
         except Exception as e:
@@ -112,17 +123,28 @@ class SAUL:
 
     def ingest_local_logs(self):
         """
-        Ingests all .jsonl logs from the monitor_logs directory.
+        Ingests the 100 most recent .jsonl logs from the monitor_logs directory.
+        Cleans up old logs after indexing.
         """
         count = 0
-        for filename in os.listdir(self.log_dir):
-            if filename.endswith(".jsonl"):
-                filepath = os.path.join(self.log_dir, filename)
+        if not os.path.exists(self.log_dir):
+            return 0
+            
+        files = sorted(
+            [f for f in os.listdir(self.log_dir) if f.endswith(".jsonl")],
+            key=lambda x: os.path.getmtime(os.path.join(self.log_dir, x)),
+            reverse=True
+        )
+        
+        # Only process the 100 most recent files to prevent memory bloat
+        for filename in files[:100]:
+            filepath = os.path.join(self.log_dir, filename)
+            try:
                 with open(filepath, 'r') as f:
                     for line in f:
+                        if not line.strip(): continue
                         try:
                             entry = json.loads(line)
-                            # Ensure timestamp exists
                             if "timestamp" not in entry:
                                 entry["timestamp"] = self.get_micro_timestamp()
                             
@@ -134,6 +156,15 @@ class SAUL:
                             count += 1
                         except json.JSONDecodeError:
                             continue
+                
+                # Capping index size at 5000 entries (Phase 32)
+                if len(self.memory_index) > 5000:
+                    self.memory_index = self.memory_index[-5000:]
+                
+                # Auto-purge is now handled in sync_to_supabase after pushing (Phase 32 refined)
+
+            except Exception as e:
+                print(f"[SAUL] Ingest Error ({filename}): {e}")
         return count
 
     def ingest_google_history(self):

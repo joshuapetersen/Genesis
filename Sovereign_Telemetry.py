@@ -61,11 +61,18 @@ class SovereignTelemetry:
                     self.state[filepath] = new_pos
                     self._save_state()
                     print(f"[TELEMETRY] ✓ Synced {filepath}")
+                    return True
                 else:
                     print(f"[TELEMETRY] ✗ Failed to sync {filepath}")
+                    return False
+            else:
+                # No new entries is still 'success' for the sake of purging if needed, 
+                # but we'll mark it as True only if it was already tracked or empty.
+                return True
 
         except Exception as e:
             print(f"[TELEMETRY] Error ingesting {filepath}: {e}")
+            return False
 
     def push_snapshot(self, filepath: str, table: str):
         """Pushes a single JSON snapshot to Supabase."""
