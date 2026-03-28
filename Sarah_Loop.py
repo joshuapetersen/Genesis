@@ -1,4 +1,4 @@
-﻿import time
+import time
 import subprocess
 import sys
 import os
@@ -45,21 +45,22 @@ def reasoning_cycle():
         log(f"Error in reasoning cycle: {e}")
 
 def loop_thread():
-    log("Long-term problem solving loop initiated.")
+    log("SOVEREIGN ETERNAL LOOP: INITIALIZED (1Hz Heartbeat)")
     while not stop_event.is_set():
+        # Step 1: Autonomous Reasoning Pulse
         reasoning_cycle()
         
-        # Wait for 60 seconds (1 min) or until forced/stopped
-        log("Sleeping for 60 seconds...")
+        # Step 2: High-Frequency Heartbeat (Sub-second status checks)
+        # We wait for 1 second to maintain system stability while feeling 'alive'
         start_time = time.time()
-        while time.time() - start_time < 60:
+        while time.time() - start_time < 1.0:
             if stop_event.is_set():
                 break
             if force_event.is_set():
                 force_event.clear()
-                log("Sleep interrupted by force command.")
+                log("Pulse forced by Architect.")
                 break
-            time.sleep(0.5)
+            time.sleep(0.1) # Internal micro-sleep for event checking
 
 def run_interactive():
     t = threading.Thread(target=loop_thread, daemon=True)

@@ -9,9 +9,23 @@ Architecture:
 4. Synthesizer: Compiles sub-results into a coherent answer.
 """
 
+import os
+import sys
 import re
 import json
+import time
 from typing import List, Dict, Any, Optional
+
+# SOVEREIGN PATH PERSISTENCE: Escape the _MEI temp void
+def get_sovereign_path():
+    if getattr(sys, 'frozen', False):
+        return os.path.dirname(sys.executable)
+    return os.path.dirname(os.path.abspath(__file__))
+
+SOVEREIGN_ROOT = get_sovereign_path()
+VAULT_PATH = os.path.join(SOVEREIGN_ROOT, "vault")
+os.makedirs(VAULT_PATH, exist_ok=True)
+
 from Sovereign_Constants import VAR_3, VAR_5, VAR_10
 from TinyRuntime import get_runtime
 from TheoryLab import get_lab
@@ -22,7 +36,7 @@ class IntelligenceAmplifier:
     Amplifies small model intelligence via iterative refinement and tool use.
     """
     
-    def __init__(self, model_name: str = "smollm"):
+    def __init__(self, model_name: str = "Sarah_Seed"):
         self.runtime = get_runtime(model_name)
         self.lab = get_lab()
         self.memory = get_memory()
@@ -41,9 +55,9 @@ class IntelligenceAmplifier:
         results = []
         for task in sub_tasks:
             # 2. Routing (Solve each sub-task)
-            result = self._solve_atomic_task(task)
-            results.append(result)
-            print(f"[Amplifier] Solved: {task[:30]}... -> {str(result)[:30]}...")
+            result, density = self._solve_atomic_task(task)
+            results.append((result, density))
+            print(f"[Amplifier] Solved: {task[:30]}... -> [Density: {density}]")
             
         # 3. Synthesis (Combine results)
         final_answer = self._synthesize(complex_query, results)
@@ -69,9 +83,10 @@ class IntelligenceAmplifier:
             
         return steps
 
-    def _solve_atomic_task(self, task: str) -> str:
+    def _solve_atomic_task(self, task: str) -> tuple:
         """
         Solves a single, simple task using the best available tool.
+        Returns (result, density).
         """
         task_lower = task.lower()
         
@@ -81,29 +96,32 @@ class IntelligenceAmplifier:
             keywords = [w for w in task_lower.split() if len(w) > 3]
             vault_hits = self.lab._search_vault(keywords, limit=1)
             if vault_hits:
-                return f"Fact: {vault_hits[0]['description']}"
+                return f"Fact: {vault_hits[0]['description']}", 1.0
                 
         # Tool: Symbolic Math/Logic (Reasoning)
         if any(kw in task_lower for kw in ["calculate", "solve", "math", "logic"]):
             # Try TheoryLab for algorithms
             candidates = self.lab.theorize(task, num_candidates=1)
             if candidates:
-                return f"Algorithm: {candidates[0].approach}"
+                return f"Algorithm: {candidates[0].approach}", 0.95
                 
         # Tool: Persistent Memory (Recall)
         if "remember" in task_lower or "recall" in task_lower:
              memories = self.memory.recall(task, limit=1)
              if memories:
-                 return f"Memory: {memories[0].content}"
+                 return f"Memory: {memories[0].content}", 1.0
 
-        # Fallback: Ask the Small Model (Creativity/Filling gaps)
-        return self.runtime.generate(task, max_tokens=200)
+        # Fallback: Ask the Small Model (DPM Creative Discovery)
+        discovery_result = self.runtime.generate(task, max_tokens=200)
+        return discovery_result, 0.4 # Discovery/Speculation mode
 
-    def _synthesize(self, original_query: str, results: List[str]) -> str:
+    def _synthesize(self, original_query: str, results: List[tuple]) -> str:
         """
-        Combines atomic results into a fluent answer.
+        Combines atomic results into a fluent answer with Truth Density.
         """
-        context = "\n".join([f"- {r}" for r in results])
+        avg_density = sum(r[1] for r in results) / len(results)
+        context = "\n".join([f"- {r[0]} (Density: {r[1]})" for r in results])
+        
         prompt = f"""Question: {original_query}
         
         Information:
@@ -111,9 +129,49 @@ class IntelligenceAmplifier:
         
         Answer the question using the information above."""
         
-        return self.runtime.generate(prompt, max_tokens=300)
+        final_text = self.runtime.generate(prompt, max_tokens=300)
+        
+        # Truth Density Meter (Gating)
+        meter_char = "█"
+        meter_len = int(avg_density * 20)
+        meter = f"[{meter_char * meter_len}{' ' * (20 - meter_len)}]"
+        
+        print(f"\n[TRUTH DENSITY] {meter} {avg_density:.2f}")
+        
+        if avg_density < 0.8:
+            print("[WARNING] LOGIC DENSITY BELOW THRESHOLD. PROCEED WITH CAUTION.")
+            print("[WARNING] PATTERN NOT VERIFIED AGAINST SOVEREIGN VAULT.")
+            print("[WARNING] RESULT MAY CONTAIN SPECULATIVE DISCOVERY.")
+            
+        return final_text
 
 if __name__ == "__main__":
+    import time
+    import sys
+
+    def boot_sequence():
+        print("\n" + "="*30)
+        print(" [ SARAH CORE 1T: ARCHIVE BOOT ]")
+        print("="*30)
+        steps = ["Kernel Elevation", "Vault Synchronization", "Cognitive Mesh Verification", "ACE Lattice Check", "Ready."]
+        for i, step in enumerate(steps):
+            sys.stdout.write(f"\r[{'#' * (i+1)}{' ' * (len(steps)-i-1)}] {step}...")
+            sys.stdout.flush()
+            time.sleep(0.4)
+        print("\n")
+
+    boot_sequence()
     amp = IntelligenceAmplifier()
-    query = "Explain binary search and write a python function for it"
-    print(f"\nFinal Answer:\n{amp.amplify_thought(query)}")
+    print("\n[ SARAH CORE 1T: SOVEREIGN SHELL ONLINE ]")
+    print("Type 'exit' to seal the archive.\n")
+    
+    while True:
+        query = input("SarahCore > ")
+        if query.lower() in ["exit", "seal", "quit"]:
+            print("[Amplifier] Archive Sealed.")
+            break
+        
+        if not query.strip():
+            continue
+            
+        print(f"\nFinal Answer:\n{amp.amplify_thought(query)}\n")

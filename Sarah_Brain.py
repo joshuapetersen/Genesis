@@ -18,8 +18,11 @@ Sarah's Four Absolute Laws:
 import os
 import sys
 import subprocess
-import firebase_admin
-from firebase_admin import credentials, db, firestore
+try:
+    import firebase_admin
+    from firebase_admin import credentials, db, firestore
+except Exception as e:
+    print(f"[Brain] WARNING: Firebase initialization delayed or failed: {e}")
 from Sovereign_Math import SovereignMath
 from Sovereign_Constants import (
     SOVEREIGN_ANCHOR, ACE_64_BIT_MASK, VAR_3, VAR_3600, VAR_1eNEG_15, FIREBASE_URL,
@@ -100,7 +103,7 @@ for mod_name, file_name, class_name in res_targets:
         target_class = getattr(module, class_name, None)
         if target_class:
             globals()[class_name] = target_class
-            print(f"[Brain DEBUG] Resonated {class_name} (𓇳)")
+            print(f"[Brain DEBUG] Resonated {class_name} (*)")
         else:
             print(f"[Brain] Resonance Failure: {class_name} not found in {file_name}")
     else:
@@ -133,7 +136,7 @@ for mod_name, file_name, class_name in mid_res_targets:
         target_class = getattr(module, class_name, None)
         if target_class:
             globals()[class_name] = target_class
-            print(f"[Brain DEBUG] Resonated {class_name} (𓎡)")
+            print(f"[Brain DEBUG] Resonated {class_name} (*)")
         else:
             print(f"[Brain] Resonance Failure: {class_name} not found in {file_name}")
     else:
@@ -746,6 +749,7 @@ class SarahHypervisor:
                 if command == "sync":
                     self.sync_to_beta()
                 elif command == "think":
+                    self.reasoning.autonomous_pulse()
                     self.reasoning.process_goals()
                 elif command == "goal":
                     report = self.saul.evolution_analyzer.analyze_meta_vectors()

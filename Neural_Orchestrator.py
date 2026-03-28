@@ -91,15 +91,15 @@ class NeuralOrchestrator:
         self._n_ctx = MAX_CONTEXT_WINDOW_CODE
 
         # GPU CONFIGURATION (RTX 4050 Optimized)
-        print("[Neural Orchestrator] Substrate 1: Pantheon Alpha (Primary GPU)")
-        if os.environ.get("SARAH_GATEWAY_MODE") == "TRUE":
-            print("[Neural Orchestrator] [GATEWAY_MODE]: Direct GPU Substrate Active.")
-            self.pantheon_alpha = None  # Skip network hop
-            self._preload_gpu_substrate()
-        else:
-            self.pantheon_alpha = local_inference
+        print("[Neural Orchestrator] Substrate 1: Pantheon Alpha (Native GPU Hub)")
+        # SOVEREIGN_MODE: NO FALLBACK TO PROXIES.
+        self.pantheon_alpha = None 
+        self._preload_gpu_substrate()
         
-        print("[Neural Orchestrator] Substrate 2: Pantheon Beta (Lazy Fallback)")
+        if not self.llm:
+            print("[Neural Orchestrator] CRITICAL: Native Substrate failed to manifest.")
+        
+        print("[Neural Orchestrator] Substrate 2: Pantheon Beta (Sovereign Internal)")
         
         # SOVEREIGN DRIVER (Phase 31)
         if SOVEREIGN_AVAILABLE:
@@ -437,7 +437,8 @@ class NeuralOrchestrator:
 
         try:
             # 1. Calculate Theory Density (Semantic Weight)
-            density = self._sovereign_math.calculate_theory_density(user_input)
+            vec = self._sovereign_math._0x_expand(user_input)
+            density = self._sovereign_math.calculate_theory_density(vec)
             
             # 2. Calculate Resonance Flux (Creative Potential)
             flux = self._sovereign_math.get_resonance_flux(user_input)

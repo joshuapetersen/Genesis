@@ -1,7 +1,7 @@
 import time
 from Transparency_Log import TransparencyLog
 
-VAR_600 = 600
+VAR_600 = 300
 
 class GenesisProtocol:
     """
