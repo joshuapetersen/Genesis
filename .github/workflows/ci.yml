@@ -82,7 +82,7 @@ jobs:
 
       - name: Install & Build
         run: |
-          cd 07_THE_INTERFACE/frontend
+          cd SovereignChat
           npm install
           npm run build
 
@@ -103,7 +103,7 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SARAH_JOHN_GENESIS }}'
           channelId: live
           projectId: sarah-john-genesis
-          entryPoint: ./07_THE_INTERFACE/frontend
+          entryPoint: ./SovereignChat
 
   # Deploy to production server (main branch)
   deploy-production:
