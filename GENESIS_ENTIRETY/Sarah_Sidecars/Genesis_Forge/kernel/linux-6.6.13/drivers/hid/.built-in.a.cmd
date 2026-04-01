@@ -1,0 +1,1 @@
+savedcmd_drivers/hid/built-in.a := rm -f drivers/hid/built-in.a;  printf "drivers/hid/%s " hid-core.o hid-input.o hid-quirks.o hid-generic.o hid-a4tech.o hid-belkin.o hid-cherry.o hid-cypress.o hid-ezkey.o hid-ite.o hid-kensington.o hid-microsoft.o hid-monterey.o hid-redragon.o | xargs ar cDPrST drivers/hid/built-in.a

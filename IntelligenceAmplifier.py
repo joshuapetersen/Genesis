@@ -165,13 +165,26 @@ if __name__ == "__main__":
     print("\n[ SARAH CORE 1T: SOVEREIGN SHELL ONLINE ]")
     print("Type 'exit' to seal the archive.\n")
     
-    while True:
-        query = input("SarahCore > ")
-        if query.lower() in ["exit", "seal", "quit"]:
-            print("[Amplifier] Archive Sealed.")
-            break
-        
-        if not query.strip():
-            continue
+    
+    # [ SARAH CORE DPM: SOVEREIGN SHELL ONLINE ]
+    print("\n" + "="*46)
+    print(" [ SARAH CORE DPM: SOVEREIGN SHELL ONLINE ] ")
+    print("="*46)
+    
+    try:
+        while True:
+            query = input("\n[SarahCore DPM] > ")
+            if query.lower() in ['exit', 'quit', 'seal']:
+                print("\n[Amplifier] Sealing the archive...")
+                break
+                
+            if not query.strip():
+                continue
+                
+            response = amp.amplify_thought(query)
+            print(f"\n[DPM RESULT] Intelligence Synthesis complete.\n{response}")
             
-        print(f"\nFinal Answer:\n{amp.amplify_thought(query)}\n")
+    except KeyboardInterrupt:
+        print("\n[Amplifier] Interrupted. Sealing the archive...")
+        
+    input("\n[ SARAH CORE DPM: ARCHIVE SEALED // PRESS ENTER TO DISCONNECT ]")

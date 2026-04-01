@@ -37,6 +37,11 @@ class AceToken:
         # Resolves noise to core intent (e.g., 'ur' -> 'Person_2nd')
         return f"RESOLVED_INTENT::{text.upper().strip()}"
 
+    def _calculate_anchor(self, intent_root):
+        # A hash-based logic anchor simulating cognitive weight
+        hash_val = int(hashlib.sha256(intent_root.encode()).hexdigest(), 16)
+        return float((hash_val % 1000) / 1000.0)
+
     def _generate_resonance_fingerprint(self, text, context=None):
         """Phase 18 fix for Gap 15: Unified Nexus."""
         return ace_nexus.generate_unified_fingerprint(f"{text}{context or ''}")

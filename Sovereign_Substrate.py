@@ -46,6 +46,7 @@ class SovereignSubstrate:
         self.argmax = self.backend.argmax
         self.argmin = self.backend.argmin
         self.power = self.backend.power
+        self.square = self.backend.square
         
         # Types
         self.float32 = self.backend.float32

@@ -1,0 +1,6 @@
+[RESONANCE] Seated 19 Sovereign Nodes from Genlex_Map.json
+--- INITIALIZING GENLEX LINEAR RUNTIME v2.0 ---
+Executing: test_shell.all
+--------------------------------------------------
+  > [ OS_SHELL ] SHELL
+    [ SYSTEM ] Executing shell: Get-Process | Select-Object -First 5

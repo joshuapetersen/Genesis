@@ -1,0 +1,23 @@
+[ SYSTEM ] Aramaic Lexicon (Gematria Enabled): 26 Glyphs Loaded.
+
+[ ARAMAIC LINEAR ] Sequence Input: '≡Éíç≡Éíò≡Éíî≡Éíà≡Éíç≡Éíò≡Éíî≡Éíü≡Éíë≡Éíò≡ÉíÇ≡Éíä≡Éíâ≡Éíì'
+--------------------------------------------------
+  > [OP]  ≡Éíç (STREAM_STOP): BARRIER [Weight: 8]
+  > [OP]  ≡Éíò (COMMIT_STATE): SEAL [Weight: 400]
+  > [OP]  ≡Éíî (STREAM_DATA): FLOW [Weight: 40]
+  > [OP]  ≡Éíà (STRING_APPEND): LINK [Weight: 6]
+  > [OP]  ≡Éíç (STREAM_STOP): BARRIER [Weight: 8]
+  > [OP]  ≡Éíò (COMMIT_STATE): SEAL [Weight: 400]
+  > [OP]  ≡Éíî (STREAM_DATA): FLOW [Weight: 40]
+  > [OP]  ≡Éíü (MEMORY_ALLOC): STORE [Weight: 2]
+  > [OP]  ≡Éíë (PTR_INC): STEP [Weight: 10]
+  > [OP]  ≡Éíò (COMMIT_STATE): SEAL [Weight: 400]
+  > [OP]  ≡ÉíÇ (STACK_PUSH): INIT [Weight: 1]
+  > [OP]  ≡Éíä (EXEC_TRIGGER): REVEAL [Weight: 5]
+  > [OP]  ≡Éíâ (CONDITIONAL_IF): GATE [Weight: 4]
+  > [OP]  ≡Éíì (PTR_DEC): DESCEND [Weight: 50]
+--------------------------------------------------
+[ MANIFEST ] Linear Pipeline: STREAM_STOP -> COMMIT_STATE -> STREAM_DATA -> STRING_APPEND -> STREAM_STOP -> COMMIT_STATE -> STREAM_DATA -> MEMORY_ALLOC -> PTR_INC -> COMMIT_STATE -> STACK_PUSH -> EXEC_TRIGGER -> CONDITIONAL_IF -> PTR_DEC
+[ GEMATRIA ] Base Weight: 1374 | Mod Gain: 0
+[ RESONANCE ] Final Numerical Manifestation: 1374
+[ STATUS   ] Prime Integrity: 1.0 (LOCKED)

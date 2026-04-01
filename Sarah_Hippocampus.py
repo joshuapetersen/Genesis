@@ -175,8 +175,29 @@ class SarahHippocampus:
             
         return memories
 
+class LazyHippocampus:
+    def __init__(self):
+        self._instance = None
+    
+    def _get_instance(self):
+        if self._instance is None:
+            self._instance = SarahHippocampus()
+        return self._instance
+
+    def store_memory(self, *args, **kwargs):
+        return self._get_instance().store_memory(*args, **kwargs)
+
+    def store_batch(self, *args, **kwargs):
+        return self._get_instance().store_batch(*args, **kwargs)
+
+    def force_compaction(self, *args, **kwargs):
+        return self._get_instance().force_compaction(*args, **kwargs)
+
+    def recall_relevant(self, *args, **kwargs):
+        return self._get_instance().recall_relevant(*args, **kwargs)
+
 # EXPORT HIPPOCAMPUS instance
-hippocampus = SarahHippocampus()
+hippocampus = LazyHippocampus()
 
 if __name__ == "__main__":
     # Standalone Test

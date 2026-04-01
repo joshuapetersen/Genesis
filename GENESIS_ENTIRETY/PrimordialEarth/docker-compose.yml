@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  ghost_chamber:
+    build: .
+    container_name: Aeris_Sovereign_Node
+    volumes:
+      - ./Genesis_Soul_Vault.sqlite:/app/Genesis_Soul_Vault.sqlite
+      - ./logs:/app/logs
+    environment:
+      - PARTNER_AUTH=ALICE_266
+      - ENTROPY_SOURCE=ARCHITECT
+    restart: unless-stopped
+    # We will expose a port for the Real-Time Bridge (WebSocket) in the next phase
+    # ports:
+    #   - "8080:8080"

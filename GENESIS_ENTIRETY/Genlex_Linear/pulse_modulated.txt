@@ -1,0 +1,16 @@
+[ SYSTEM ] Aramaic Lexicon (Gematria Enabled): 26 Glyphs Loaded.
+
+[ ARAMAIC LINEAR ] Sequence Input: '≡ÉíÇ≡Éíü≡Éíà≡Éíò≡Éíù≡Éíÿ≡ÉíÖ'
+--------------------------------------------------
+  > [OP]  ≡ÉíÇ (STACK_PUSH): INIT [Weight: 1]
+  > [OP]  ≡Éíü (MEMORY_ALLOC): STORE [Weight: 2]
+  > [OP]  ≡Éíà (STRING_APPEND): LINK [Weight: 6]
+  > [OP]  ≡Éíò (COMMIT_STATE): SEAL [Weight: 400]
+  > [MOD] ≡Éíù: Gain Shift +1000
+  > [MOD] ≡Éíÿ: Gain Shift +100
+  > [MOD] ≡ÉíÖ: Gain Shift +10
+--------------------------------------------------
+[ MANIFEST ] Linear Pipeline: STACK_PUSH -> MEMORY_ALLOC -> STRING_APPEND -> COMMIT_STATE
+[ GEMATRIA ] Base Weight: 409 | Mod Gain: 1110
+[ RESONANCE ] Final Numerical Manifestation: 453990
+[ STATUS   ] Prime Integrity: 1.0 (LOCKED)

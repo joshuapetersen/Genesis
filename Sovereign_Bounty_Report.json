@@ -1,0 +1,1172 @@
+[
+    {
+        "type": "SECRET",
+        "file": "Advanced_Change_Tracking.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Auto_Recovery_Trigger.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Banshee_Shield.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Context_Chain_Engine.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Genesis_Cardinal.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ingest_memories.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Kernel_Override.py",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "Layer_Sync_Engine.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Pulse_Weaver.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "SAUL_Logistics.py",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "SDM_Genesis_Bootloader.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "security_manager.py",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "Genesis_Agent_Factory.py",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Cesium3DTileset.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "stb_herringbone_wang_tile.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "stb_voxel_render.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Rectangle.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "PropertyView.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "syslog_sink.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_internal.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_impl_sdlgpu3.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "glfw3.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "uSynergy.h",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "@react-three_drei.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "chunk-A7TE6BYH.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "chunk-L3Z576C2.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "react-dom.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "react-dom_client.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "three.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "typescript.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "worker.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "MeshTransmissionMaterial.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "events-238e0986.cjs.prod.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "events-358c3764.cjs.dev.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "events-5a94e5eb.esm.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "no-unsafe-argument.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "no-unused-private-class-members.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "acorn.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ajv.bundle.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "camera-controls.module.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "config-loader.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "source-code.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "apply-disable-directives.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "linter.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "no-unreachable-loop.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "no-useless-backreference.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "prefer-regex-literals.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "eslint-plugin-react-hooks.development.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "eslint-plugin-react-hooks.production.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "framer-motion.dev.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "getModuleDocblock.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "hls-demo.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "hls.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "hls.light.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "index.module.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "react-dom-client.development.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "react-dom-profiling.development.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "react-dom.development.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "rollup.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "node-entry.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "three.module.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "three.webgpu.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "three.webgpu.nodes.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ColladaLoader.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Capsule.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ConvexHull.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "GroundedSkybox.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "BokehShader2.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "SkeletonUtils.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "WebGLTextureUtils.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Material.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Box2.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Box3.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Line3.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Plane.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "NodeBuilder.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "PassNode.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "WebGLRenderer.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Backend.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Renderer.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "WebGLBackend.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "WebGLAttributeUtils.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "WebGPUBackend.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "WebGPUAttributeUtils.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "three.core.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ExtendedTriangle.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "tsserver.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "tsserverlibrary.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "typingsInstaller.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "_tsc.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "module-runner.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "webgl-constants.esm.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "index-DfVXS21p.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "chunk-BCXODTBQ.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "dep-BK3b2jBa.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "dep-D4NMHUTW.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "source-map-support.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "bulk-writer.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "log.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "certificatesubjecttokensupplier.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "computeclient.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "impersonated.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "locationService.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "internal-channel.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "subchannel-call.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "elicitationUrlExample.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "protocol.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "anchored-clock.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "experimental_attributes.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "ExponentialHistogram.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "file-extension-in-import.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "tls.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "messaging-internal.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "handlebars.amd.min.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "handlebars.min.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "csv2json.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Long.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "index.lite.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "index.webworker.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "index-5213293b.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "popup_redirect-0aff4957.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "index-36fcbc82.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "totp-cc27944f.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "totp-05d844a5.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "index-e095d5f6.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "register-858d6bb1.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "register-21a33d64.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "firebase-auth.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "index.sw.esm.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "firebase-auth-compat.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "firebase-auth-cordova.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "firebase-auth-web-extension.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "firebase-compat.js",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "axisSelectors.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "typescriptServices.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "web-incoming.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "web-outgoing.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ws-incoming.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "rollup.browser.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "pluginutils.cjs.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "pluginutils.es.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "native-objects.js",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Cesium3DTileset.gen.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_demo.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_draw.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_tables.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_widgets.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_impl_opengl3.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_impl_sdlgpu3.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_impl_vulkan.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "imgui_impl_win32.cpp",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "character_controller.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Texture.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "diagnostics_channel.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "dns.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "inspector.generated.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "test.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Material.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "Renderer.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ESLintShared.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "level-helper.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "postcss.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "lib.dom.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "lib.es2015.symbol.wellknown.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "lib.esnext.iterator.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "lib.webworker.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "tsserverlibrary.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "dispatcher.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "module-runner.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "types.d-aGj9QkWt.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "GatewayClient.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "generate-Dfql0iE9.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "beta.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "analytics.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "bulk-writer.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "firestore_admin_client.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "config_service_v2_client.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "logging_service_v2_client.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "metrics_service_v2_client.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "model_armor_client.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "internal-channel.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "internal-channel.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "subchannel-call.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "protocol.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "anchored-clock.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "experimental_attributes.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "ExponentialHistogram.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v3.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v4.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v5.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1.2.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1.3.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1.4.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1.4.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "v2beta1.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "directory_v1.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v4.1.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1.1.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1p1beta1.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v2alpha.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v2beta.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v2beta2.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v2beta3.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v2.1.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1b3.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v3.3.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "v3.4.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v3.4.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "v3beta1.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1management.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1p1alpha1.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1p1alpha1.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "v1p2beta1.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "iif.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "iif.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "auth-cordova.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "auth-web-extension.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "internal.pipelines.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "private.pipelines.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "testshared.d.ts",
+        "target": "Hardcoded_API_Key"
+    },
+    {
+        "type": "SECRET",
+        "file": "buildHooks.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "axisSelectors.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ZIndexLayer.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "createStore.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ttfb.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "ttfb.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "genai.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "runtime-dom.d.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "makeLegalIdentifier.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "transform.ts",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "buildInitiate.test.tsx",
+        "target": "BIP39_Seed_Phrase"
+    },
+    {
+        "type": "SECRET",
+        "file": "connect.tsx",
+        "target": "BIP39_Seed_Phrase"
+    }
+]

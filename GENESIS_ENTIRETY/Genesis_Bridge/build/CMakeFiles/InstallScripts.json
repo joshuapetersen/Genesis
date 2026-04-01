@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Genesis_Bridge/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

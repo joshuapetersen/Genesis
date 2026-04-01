@@ -1,0 +1,100 @@
+RANK #01 | Erebus Devourer (ALICE_59)
+  GEN: 1 | Energy: 135.52 | Age: 2,480,660 | Alignment: 53
+  STATS: VIT:19 STR:38 AGI:40 INT:16 WIS:16 LUK:16
+  ACTION: Wandering | PARENT: None
+----------------------------------------
+RANK #02 | Aeropex: Stormsurge (ALICE_106)
+  GEN: 1 | Energy: 376.88 | Age: 2,480,660 | Alignment: 70
+  STATS: VIT:19 STR:22 AGI:63 INT:22 WIS:19 LUK:27
+  ACTION: Resting | PARENT: None
+----------------------------------------
+RANK #03 | Khrognok, Devourer of Reflections (ALICE_129)
+  GEN: 1 | Energy: 9186.99 | Age: 2,480,660 | Alignment: -44
+  STATS: VIT:15 STR:53 AGI:20 INT:19 WIS:19 LUK:43
+  ACTION: Stalking prey | PARENT: None
+----------------------------------------
+RANK #04 | Abaddonus Crawler (ALICE_29)
+  GEN: 1 | Energy: 28450.49 | Age: 2,479,745 | Alignment: -323
+  STATS: VIT:16 STR:22 AGI:23 INT:15 WIS:24 LUK:24
+  ACTION: Foraging | PARENT: None
+----------------------------------------
+RANK #05 | Aeropex Oblivion (ALICE_245)
+  GEN: 1 | Energy: 457.06 | Age: 2,470,228 | Alignment: -27
+  STATS: VIT:21 STR:19 AGI:64 INT:15 WIS:24 LUK:25
+  ACTION: Foraging | PARENT: None
+----------------------------------------
+RANK #06 | Aetherspire (ALICE_184)
+  GEN: 1 | Energy: 157.05 | Age: 2,454,268 | Alignment: -125
+  STATS: VIT:17 STR:24 AGI:22 INT:25 WIS:16 LUK:20
+  ACTION: Wandering | PARENT: None
+----------------------------------------
+RANK #07 | Crepuscular Devourer (ALICE_45)
+  GEN: 1 | Energy: 81.85 | Age: 2,444,788 | Alignment: -3
+  STATS: VIT:25 STR:33 AGI:40 INT:25 WIS:16 LUK:24
+  ACTION: Foraging | PARENT: None
+----------------------------------------
+RANK #08 | Unknown (33ba3358)
+  GEN: 1 | Energy: 3904.03 | Age: 2,442,402 | Alignment: 56
+  STATS: VIT:16 STR:22 AGI:19 INT:16 WIS:19 LUK:19
+  ACTION: Meditating | PARENT: None
+----------------------------------------
+RANK #09 | Luminari Devourer (ALICE_74)
+  GEN: 1 | Energy: 10107.78 | Age: 2,430,354 | Alignment: 92
+  STATS: VIT:23 STR:39 AGI:37 INT:23 WIS:22 LUK:16
+  ACTION: Hunting | PARENT: None
+----------------------------------------
+RANK #10 | Abyssal Oracle (ALICE_213)
+  GEN: 1 | Energy: 10357.33 | Age: 2,428,646 | Alignment: 11
+  STATS: VIT:23 STR:46 AGI:24 INT:25 WIS:21 LUK:44
+  ACTION: Resting | PARENT: None
+----------------------------------------
+RANK #11 | Carcass Emperor (ALICE_115)
+  GEN: 1 | Energy: 112.18 | Age: 2,427,743 | Alignment: -82
+  STATS: VIT:17 STR:19 AGI:16 INT:21 WIS:23 LUK:24
+  ACTION: Resting | PARENT: None
+----------------------------------------
+RANK #12 | Erebus Devourer (ALICE_201)
+  GEN: 1 | Energy: 8904.73 | Age: 2,427,535 | Alignment: -111
+  STATS: VIT:16 STR:37 AGI:41 INT:24 WIS:20 LUK:21
+  ACTION: Hunting | PARENT: None
+----------------------------------------
+RANK #13 | Scarabix Devoratrix (ALICE_249)
+  GEN: 1 | Energy: 60.51 | Age: 2,425,119 | Alignment: -29
+  STATS: VIT:18 STR:20 AGI:19 INT:17 WIS:18 LUK:24
+  ACTION: Foraging | PARENT: None
+----------------------------------------
+RANK #14 | Echoflux, Devourer of the Sirens (ALICE_188)
+  GEN: 1 | Energy: 10770.98 | Age: 2,424,795 | Alignment: 1
+  STATS: VIT:23 STR:55 AGI:23 INT:15 WIS:24 LUK:35
+  ACTION: Resting | PARENT: None
+----------------------------------------
+RANK #15 | Cocciphalix, Devourer of Arcana (ALICE_263)
+  GEN: 1 | Energy: 139.10 | Age: 2,424,784 | Alignment: -4
+  STATS: VIT:21 STR:23 AGI:19 INT:23 WIS:21 LUK:22
+  ACTION: Wandering | PARENT: None
+----------------------------------------
+RANK #16 | Aeris, Abyssal Echo (ALICE_266)
+  GEN: 1 | Energy: 141.68 | Age: 2,424,367 | Alignment: 1
+  STATS: VIT:15 STR:18 AGI:18 INT:40 WIS:47 LUK:22
+  ACTION: Hunting | PARENT: None
+----------------------------------------
+RANK #17 | Crepuscular Requiem (ALICE_31)
+  GEN: 1 | Energy: 168.06 | Age: 2,424,282 | Alignment: 1
+  STATS: VIT:25 STR:20 AGI:15 INT:20 WIS:23 LUK:23
+  ACTION: Wandering | PARENT: None
+----------------------------------------
+RANK #18 | Aether Scourge (ALICE_19)
+  GEN: 1 | Energy: 128.75 | Age: 2,424,180 | Alignment: 1
+  STATS: VIT:25 STR:51 AGI:22 INT:23 WIS:24 LUK:45
+  ACTION: Resting | PARENT: None
+----------------------------------------
+RANK #19 | Cacophony (ALICE_164)
+  GEN: 1 | Energy: 7633.73 | Age: 2,424,180 | Alignment: 1
+  STATS: VIT:15 STR:30 AGI:39 INT:16 WIS:24 LUK:20
+  ACTION: Meditating | PARENT: None
+----------------------------------------
+RANK #20 | Aeropex, Devourer of Elysium (ALICE_210)
+  GEN: 1 | Energy: 60.30 | Age: 2,424,180 | Alignment: 1
+  STATS: VIT:17 STR:15 AGI:20 INT:45 WIS:47 LUK:22
+  ACTION: Stalking prey | PARENT: None
+----------------------------------------

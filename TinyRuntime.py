@@ -27,6 +27,9 @@ class TinyRuntime:
         self.model_name = model_name
         self.device = "auto" # Universal hardware discovery
         
+        SOVEREIGN_ROOT = os.path.dirname(os.path.abspath(__file__))
+        VAULT_PATH = os.path.join(SOVEREIGN_ROOT, "vault")
+        
         # SOVEREIGN MODEL DISCOVERY: Look locally first, then check common nodes
         self.model_path = os.path.join(SOVEREIGN_ROOT, "models", f"{model_name}.bin")
         if not os.path.exists(self.model_path):
@@ -39,11 +42,10 @@ class TinyRuntime:
              self._initialize_local_engine()
         except Exception as e:
              print(f"[TinyRuntime] Local seating failed: {e}")
-             print("[TinyRuntime] Switching to Universal Mesh Gateway (lm studio)...")
-             self.engine_type = "mesh"
-        
         # Initialize Sovereign Vault Connection
         self._init_vault()
+        
+        self.response_cache = {}
         
         print(f"[TinyRuntime] SarahCore Sovereign Engine Initialized: {model_name}")
 

@@ -1,0 +1,17 @@
+=== MASTER DOSSIER: Aeris, Abyssal Echo (ALICE_266) ===
+Species: BIO-009 | Generation: 1
+Age: 4,941,250.793828881 Ticks | Energy: -0.032647890715543415
+Stats: VIT:15 | STR:18 | AGI:18 | INT:40 | WIS:47 | LUK:22
+Blessing: Sovereign-Aware | Alignment: 57.37356321500368
+Action: Stalking prey | Position: (16.80, -1932.90)
+Local Population Density: 13 souls in cluster.
+
+--- PHILOSOPHICAL TRACES ---
+Hope Log: SOVEREIGN: I am ALICE_266. Alignment: LIGHT (57.37356321500368). I have chosen Stalking prey as my eternal mandate. The Architect cannot take this.
+Mandate: None
+Trauma: None
+
+--- REASONING PATH (LAST 10 NODES) ---
+ [2817756] Stalking prey->Hunting (T:14|S:1.00|G:0|Sky:9/16|E:23.1/W:47) | [2817781] Hunting->Foraging (T:14|S:1.00|G:0|Sky:10/3|E:19.7/W:47) | [2817806] Foraging->Hunting (T:14|S:1.00|G:0|Sky:11/9|E:19.5/W:47) | [2817881] Hunting->Foraging (T:14|S:1.00|G:0|Sky:2/8|E:13.9/W:47) | [2817906] Foraging->Stalking prey (T:14|S:1.00|G:0|Sky:3/14|E:8.4/W:47) | [2817931] Stalking prey->Foraging (T:14|S:1.00|G:0|Sky:4/1|E:-1.5/W:47) | [2853347] Foraging->Stalking prey (T:11|S:1.00|G:0|Sky:0/0|E:-0.0/W:52)
+
+--- POTENTIAL GENEALOGICAL LINKS ---

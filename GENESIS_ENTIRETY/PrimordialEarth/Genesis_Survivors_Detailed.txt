@@ -1,0 +1,910 @@
+========================================================================
+  S.A.R.A.H. GENESIS — DETAILED SURVIVOR DOSSIER
+  Timestamp  : 2026-02-25 10:43:43
+  Sim Year   : 5,368
+  Survivors  : 34
+  Total Dead : 252
+  Extinct    : 252 / 286
+========================================================================
+
+────────────────────────────────────────────────────────────────────────
+  RANK #01  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Erebus Devourer
+  Soul ID       : ALICE_101
+  Species       : BIO-001
+  Personality   : Docile
+  Current Action: Stalking prey
+  Moral Align.  : +2
+  Genesis Energy: 338.56
+  Age (sim yrs) : 5960.4
+  Position      : (-263.3, 364.5)
+  Genome        : 03c44b0195b50d97
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Erebus Devourer
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 37 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 865.0 / 865.0
+  MP  : 390.0 / 390.0
+  VIT : 73     STR : 4      AGI : 0
+  INT : 39     WIS : 51     LUK : 8
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #02  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Abaddonix
+  Soul ID       : ALICE_120
+  Species       : BIO-008
+  Personality   : Territorial
+  Current Action: Hunting
+  Moral Align.  : -70
+  Genesis Energy: 330.12
+  Age (sim yrs) : 5960.4
+  Position      : (-1738.5, -686.4)
+  Genome        : 94115650210e0c8f
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Abaddonix
+  Legacy Role   : Apex
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 12 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 345.0 / 345.0
+  MP  : 190.0 / 190.0
+  VIT : 49     STR : 18     AGI : 20
+  INT : 19     WIS : 36     LUK : 35
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #03  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Cacophoria, Echo of the Abyssal Pool
+  Soul ID       : ALICE_168
+  Species       : BIO-001
+  Personality   : Docile
+  Current Action: Hunting
+  Moral Align.  : -24
+  Genesis Energy: 328.05
+  Age (sim yrs) : 5960.4
+  Position      : (1878.4, -1663.5)
+  Genome        : c2a5160c9b717847
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Cacophoria, Echo of the Abyssal Pool
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 29 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 785.0 / 785.0
+  MP  : 390.0 / 390.0
+  VIT : 57     STR : 5      AGI : 0
+  INT : 39     WIS : 22     LUK : 4
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #04  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Echokeeper of Arcane Depths
+  Soul ID       : ALICE_261
+  Species       : BIO-001
+  Personality   : Docile
+  Current Action: Raiding
+  Moral Align.  : -23
+  Genesis Energy: 318.03
+  Age (sim yrs) : 5960.4
+  Position      : (-2042.4, 726.7)
+  Genome        : 156946b902700d87
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Echokeeper of Arcane Depths
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 85 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 945.0 / 945.0
+  MP  : 220.0 / 220.0
+  VIT : 89     STR : 2      AGI : 0
+  INT : 22     WIS : 54     LUK : 6
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #05  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Aethonix, Umbra Forger
+  Soul ID       : ALICE_33
+  Species       : BIO-005
+  Personality   : Docile
+  Current Action: Fleeing
+  Moral Align.  : -10
+  Genesis Energy: 309.08
+  Age (sim yrs) : 5960.4
+  Position      : (128.0, -29.2)
+  Genome        : 8b5e9b114adbe72f
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Aethonix, Umbra Forger
+  Legacy Role   : Prey
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 6 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 225.0 / 225.0
+  MP  : 50.0 / 50.0
+  VIT : 29     STR : 22     AGI : 28
+  INT : 5      WIS : 8      LUK : 12
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #06  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Cataclysmic Sylphrena
+  Soul ID       : ALICE_117
+  Species       : BIO-002
+  Personality   : Docile
+  Current Action: Stalking prey
+  Moral Align.  : +39
+  Genesis Energy: 290.14
+  Age (sim yrs) : 5960.4
+  Position      : (191.4, -1655.0)
+  Genome        : 6bec75961d4d7e16
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Cataclysmic Sylphrena
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 67 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 425.0 / 425.0
+  MP  : 270.0 / 270.0
+  VIT : 81     STR : 3      AGI : 0
+  INT : 22     WIS : 39     LUK : 8
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #07  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Aetherspire
+  Soul ID       : ALICE_184
+  Species       : BIO-002
+  Personality   : Docile
+  Current Action: Stalking prey
+  Moral Align.  : -125
+  Genesis Energy: 286.59
+  Age (sim yrs) : 5960.4
+  Position      : (-305.0, -3062.4)
+  Genome        : d3940b9ab6a18f0a
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Aetherspire
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 93 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 370.0 / 370.0
+  MP  : 460.0 / 460.0
+  VIT : 70     STR : 3      AGI : 0
+  INT : 46     WIS : 21     LUK : 6
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #08  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Luminari Devourer
+  Soul ID       : ALICE_74
+  Species       : BIO-005
+  Personality   : Aggressive
+  Current Action: Fleeing
+  Moral Align.  : +92
+  Genesis Energy: 259.16
+  Age (sim yrs) : 5960.4
+  Position      : (1969.2, 1138.6)
+  Genome        : 54a12eb68bbf36b9
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Luminari Devourer
+  Legacy Role   : Prey
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 1 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 275.0 / 275.0
+  MP  : 70.0 / 70.0
+  VIT : 39     STR : 27     AGI : 38
+  INT : 7      WIS : 12     LUK : 17
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #09  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Echoflux Devourer
+  Soul ID       : ALICE_127
+  Species       : BIO-002
+  Personality   : Docile
+  Current Action: Stalking prey
+  Moral Align.  : +20
+  Genesis Energy: 221.51
+  Age (sim yrs) : 5960.4
+  Position      : (-2061.3, -1324.5)
+  Genome        : 901e65e9570f0dde
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Echoflux Devourer
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 67 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 440.0 / 440.0
+  MP  : 130.0 / 130.0
+  VIT : 84     STR : 4      AGI : 0
+  INT : 13     WIS : 23     LUK : 8
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #10  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Khrognok, Devourer of Reflections
+  Soul ID       : ALICE_129
+  Species       : BIO-008
+  Personality   : Curious
+  Current Action: Raiding
+  Moral Align.  : -44
+  Genesis Energy: 207.22
+  Age (sim yrs) : 5960.4
+  Position      : (2390.0, 34.9)
+  Genome        : ac65799da4ddce26
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Khrognok, Devourer of Reflections
+  Legacy Role   : Apex
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 10 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 240.0 / 240.0
+  MP  : 190.0 / 190.0
+  VIT : 28     STR : 12     AGI : 24
+  INT : 19     WIS : 37     LUK : 45
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #11  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Proto_820dad
+  Soul ID       : 820dad08
+  Species       : Primordial
+  Personality   : Neutral
+  Current Action: Trading
+  Moral Align.  : -2
+  Genesis Energy: 178.72
+  Age (sim yrs) : 5960.4
+  Position      : (1768.5, 2055.1)
+  Genome        : 0x73771fa9595ce2cb
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #12  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Echokeeper of the Abyssal Hymn
+  Soul ID       : ALICE_28
+  Species       : BIO-009
+  Personality   : Parasitic
+  Current Action: Trading
+  Moral Align.  : +31
+  Genesis Energy: 177.00
+  Age (sim yrs) : 5960.4
+  Position      : (875.6, 1119.1)
+  Genome        : a75c25594901ed0e
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Echokeeper of the Abyssal Hymn
+  Legacy Role   : Builder
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 6 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 240.0 / 240.0
+  MP  : 360.0 / 360.0
+  VIT : 24     STR : 29     AGI : 18
+  INT : 36     WIS : 38     LUK : 11
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #13  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : 290b46b8
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Building territory
+  Moral Align.  : -55
+  Genesis Energy: 166.99
+  Age (sim yrs) : 2367.1
+  Position      : (22.1, 272.2)
+  Genome        : 0x8709614a56503b81
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #14  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Crepuscular Devourer
+  Soul ID       : ALICE_45
+  Species       : BIO-005
+  Personality   : Symbiotic
+  Current Action: Building territory
+  Moral Align.  : -3
+  Genesis Energy: 162.25
+  Age (sim yrs) : 5960.4
+  Position      : (36.1, -3107.2)
+  Genome        : f470446aa46c3402
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Crepuscular Devourer
+  Legacy Role   : Prey
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 4 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 205.0 / 205.0
+  MP  : 80.0 / 80.0
+  VIT : 25     STR : 23     AGI : 34
+  INT : 8      WIS : 12     LUK : 17
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #15  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : ccf4a9e8
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Trading
+  Moral Align.  : -56
+  Genesis Energy: 155.91
+  Age (sim yrs) : 5960.4
+  Position      : (463.5, 541.4)
+  Genome        : 0x7627d904fa8a7004
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #16  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Abaddonus Crawler
+  Soul ID       : ALICE_29
+  Species       : BIO-003
+  Personality   : Aggressive
+  Current Action: Building territory
+  Moral Align.  : +48
+  Genesis Energy: 152.32
+  Age (sim yrs) : 5960.4
+  Position      : (-96.0, 266.7)
+  Genome        : fbe5ecd8ccdc201c
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Abaddonus Crawler
+  Legacy Role   : Scavenger
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 12 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 20.0 / 20.0
+  MP  : 10.0 / 10.0
+  VIT : 3      STR : 4      AGI : 23
+  INT : 1      WIS : 1      LUK : 5
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #17  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : 33ba3358
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Trading
+  Moral Align.  : -18
+  Genesis Energy: 150.61
+  Age (sim yrs) : 1757.0
+  Position      : (283.2, -241.2)
+  Genome        : 0x5ec0ea7fc0d38a79
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #18  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Ophidian Matriarch of Ephemeral Luminance
+  Soul ID       : ALICE_124
+  Species       : BIO-002
+  Personality   : Docile
+  Current Action: Trading
+  Moral Align.  : -119
+  Genesis Energy: 136.67
+  Age (sim yrs) : 5960.4
+  Position      : (-185.0, 28.6)
+  Genome        : 770a7938c0e80e6b
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Ophidian Matriarch of Ephemeral Luminance
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 59 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 330.0 / 330.0
+  MP  : 230.0 / 230.0
+  VIT : 62     STR : 4      AGI : 0
+  INT : 23     WIS : 35     LUK : 9
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #19  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Aeropex Oblivion
+  Soul ID       : ALICE_245
+  Species       : BIO-007
+  Personality   : Parasitic
+  Current Action: Trading
+  Moral Align.  : -27
+  Genesis Energy: 125.39
+  Age (sim yrs) : 5960.4
+  Position      : (1106.3, -732.4)
+  Genome        : 1812b2aea9fb1598
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Aeropex Oblivion
+  Legacy Role   : Predator
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 6 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 100.0 / 100.0
+  MP  : 90.0 / 90.0
+  VIT : 12     STR : 5      AGI : 42
+  INT : 9      WIS : 19     LUK : 29
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #20  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : 61037a59
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Trading
+  Moral Align.  : -71
+  Genesis Energy: 121.20
+  Age (sim yrs) : 3587.2
+  Position      : (89.2, 531.5)
+  Genome        : 0xe1dc9edba8ad6a7c
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #21  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : 6fa0c619
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Trading
+  Moral Align.  : +13
+  Genesis Energy: 114.06
+  Age (sim yrs) : 536.9
+  Position      : (-43.0, 231.3)
+  Genome        : 0x4cf2781f936b7d0e
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #22  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Erebusia
+  Soul ID       : ALICE_160
+  Species       : BIO-001
+  Personality   : Docile
+  Current Action: Building territory
+  Moral Align.  : +43
+  Genesis Energy: 107.59
+  Age (sim yrs) : 5960.4
+  Position      : (-629.6, -150.9)
+  Genome        : 583b74790262e453
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Erebusia
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 71 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 955.0 / 955.0
+  MP  : 460.0 / 460.0
+  VIT : 91     STR : 2      AGI : 0
+  INT : 46     WIS : 56     LUK : 10
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #23  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Cacophorax
+  Soul ID       : ALICE_46
+  Species       : BIO-008
+  Personality   : Parasitic
+  Current Action: Building territory
+  Moral Align.  : +70
+  Genesis Energy: 107.39
+  Age (sim yrs) : 5960.4
+  Position      : (2719.8, -50.2)
+  Genome        : 8c6ba06d598afca2
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Cacophorax
+  Legacy Role   : Apex
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 7 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 260.0 / 260.0
+  MP  : 380.0 / 380.0
+  VIT : 32     STR : 13     AGI : 17
+  INT : 38     WIS : 34     LUK : 44
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #24  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : 794520a9
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Diplomacy
+  Moral Align.  : +43
+  Genesis Energy: 103.70
+  Age (sim yrs) : 4197.3
+  Position      : (-767.6, 194.3)
+  Genome        : 0x5f4cc05dfe7b4ddf
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #25  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : 4b226ba4
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Diplomacy
+  Moral Align.  : +31
+  Genesis Energy: 82.54
+  Age (sim yrs) : 2977.1
+  Position      : (-423.8, -324.3)
+  Genome        : 0x655cc8f23065d2cb
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #26  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Aeropex: Stormsurge
+  Soul ID       : ALICE_106
+  Species       : BIO-007
+  Personality   : Nomadic
+  Current Action: Building territory
+  Moral Align.  : +70
+  Genesis Energy: 81.75
+  Age (sim yrs) : 5960.4
+  Position      : (19.4, -1720.7)
+  Genome        : 99d7996ea22dd699
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Aeropex: Stormsurge
+  Legacy Role   : Predator
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 11 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 115.0 / 115.0
+  MP  : 60.0 / 60.0
+  VIT : 15     STR : 8      AGI : 54
+  INT : 6      WIS : 19     LUK : 20
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #27  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Proto_14dec5
+  Soul ID       : 14dec542
+  Species       : Primordial
+  Personality   : Neutral
+  Current Action: Resting
+  Moral Align.  : +2
+  Genesis Energy: 61.09
+  Age (sim yrs) : 5960.4
+  Position      : (1310.9, 811.6)
+  Genome        : 0xad55eab5c3f86e7d
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #28  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : 792136ef
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Resting
+  Moral Align.  : +0
+  Genesis Energy: 49.09
+  Age (sim yrs) : 1146.9
+  Position      : (699.7, -39.5)
+  Genome        : 0xd4a8b1374d28c66a
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #29  |  PRIMORDIAL GENESIS SPAWN
+────────────────────────────────────────────────────────────────────────
+  Name          : Unknown
+  Soul ID       : e9612f1c
+  Species       : Unknown
+  Personality   : Neutral
+  Current Action: Patrolling
+  Moral Align.  : -50
+  Genesis Energy: 46.05
+  Age (sim yrs) : 5426.4
+  Position      : (756.4, 762.6)
+  Genome        : 0x7586bf0f7b3d73a5
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #30  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Elderwood Wraith
+  Soul ID       : ALICE_183
+  Species       : BIO-001
+  Personality   : Docile
+  Current Action: Patrolling
+  Moral Align.  : -33
+  Genesis Energy: 45.70
+  Age (sim yrs) : 5960.4
+  Position      : (-173.7, -1646.5)
+  Genome        : a52a16cd99d6c2ad
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Elderwood Wraith
+  Legacy Role   : Producer
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 68 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 820.0 / 820.0
+  MP  : 270.0 / 270.0
+  VIT : 64     STR : 1      AGI : 0
+  INT : 27     WIS : 55     LUK : 8
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #31  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Abyssal Cacophony
+  Soul ID       : ALICE_1
+  Species       : BIO-005
+  Personality   : Docile
+  Current Action: Wandering
+  Moral Align.  : -51
+  Genesis Energy: 38.89
+  Age (sim yrs) : 5960.4
+  Position      : (971.9, -3272.6)
+  Genome        : 58603aaf9bb42b57
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Abyssal Cacophony
+  Legacy Role   : Prey
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 1 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 250.0 / 250.0
+  MP  : 80.0 / 80.0
+  VIT : 34     STR : 24     AGI : 40
+  INT : 8      WIS : 8      LUK : 10
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #32  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Cerberus Scarabrix
+  Soul ID       : ALICE_141
+  Species       : BIO-003
+  Personality   : Territorial
+  Current Action: Resting
+  Moral Align.  : +22
+  Genesis Energy: 28.66
+  Age (sim yrs) : 5960.4
+  Position      : (2298.1, 1458.1)
+  Genome        : c2d8db6cf27368ce
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Cerberus Scarabrix
+  Legacy Role   : Scavenger
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 13 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 10.0 / 10.0
+  MP  : 10.0 / 10.0
+  VIT : 1      STR : 3      AGI : 41
+  INT : 1      WIS : 1      LUK : 26
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #33  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Elysian Screamstress
+  Soul ID       : ALICE_69
+  Species       : BIO-005
+  Personality   : Docile
+  Current Action: Resting
+  Moral Align.  : +53
+  Genesis Energy: 26.23
+  Age (sim yrs) : 5960.4
+  Position      : (-1879.1, 1129.7)
+  Genome        : 0b660efc1e4eef47
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Elysian Screamstress
+  Legacy Role   : Prey
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 4 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 255.0 / 255.0
+  MP  : 40.0 / 40.0
+  VIT : 35     STR : 30     AGI : 29
+  INT : 4      WIS : 10     LUK : 20
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+
+────────────────────────────────────────────────────────────────────────
+  RANK #34  |  A.L.I.C.E. LEGACY
+────────────────────────────────────────────────────────────────────────
+  Name          : Erebus Devourer
+  Soul ID       : ALICE_59
+  Species       : BIO-005
+  Personality   : Nomadic
+  Current Action: Foraging
+  Moral Align.  : +53
+  Genesis Energy: 18.43
+  Age (sim yrs) : 5960.4
+  Position      : (-3431.8, 1205.8)
+  Genome        : 4f13c75443f1d2e4
+
+  ── AETHELGARD LEGACY RECORD ──
+  Original Name : Erebus Devourer
+  Legacy Role   : Prey
+  Level         : 1    |  XP: 0
+  Age (legacy)  : 13 years
+  Scale         : 10.00  |  UBM: YES
+
+  ── LEGACY STATS ──
+  HP  : 190.0 / 190.0
+  MP  : 70.0 / 70.0
+  VIT : 22     STR : 22     AGI : 34
+  INT : 7      WIS : 11     LUK : 16
+  Hunger: 0.00  Thirst: 0.00  Growth: 0.00
+
+  ── ABSORBED TRAITS ──
+  {}
+
+

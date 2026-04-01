@@ -1,0 +1,25 @@
+
+uefi_gsk.c:203:    uefi_call_wrapper(ST->BootServices->HandleProtocol, 3, ImageHandle, &gEfiLoadedImageProtocolGuid, (VOID**)&li);
+uefi_gsk.c:204:    uefi_call_wrapper(ST->BootServices->HandleProtocol, 3, li->DeviceHandle, &gEfiSimpleFileSystemProtocolGuid, (VOID**)&fs);
+uefi_gsk.c:232:// EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL GUIDs (UEFI 2.6 spec)
+uefi_gsk.c:233:#define EFI_WIFI2_GUID { 0xA4D3F80D,0xA37E,0x4C23,{0xA2,0xE4,0xF9,0xBC,0x00,0xA1,0x0A,0x49} }
+uefi_gsk.c:240:// GUID for EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL (UEFI 2.6)
+uefi_gsk.c:241:#define EFI_WIFI2_PROTOCOL_GUID \
+uefi_gsk.c:323:    EFI_GUID guid = EFI_WIFI2_PROTOCOL_GUID;
+uefi_gsk.c:326:        5, ByProtocol, &guid, NULL, &cnt, &handles);
+uefi_gsk.c:329:        3, handles[0], &guid, (void**)&Wifi2);
+uefi_gsk.c:382:    EFI_GUID g = EFI_SIMPLE_NETWORK_PROTOCOL_GUID;
+uefi_gsk.c:401:    EFI_GUID LiGuid=EFI_LOADED_IMAGE_PROTOCOL_GUID;
+uefi_gsk.c:402:    EFI_GUID FsGuid=EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
+uefi_gsk.c:406:    uefi_call_wrapper(ST->BootServices->HandleProtocol,3,ImageHandle,&LiGuid,(void**)&LI);
+uefi_gsk.c:408:    if (EFI_ERROR(uefi_call_wrapper(ST->BootServices->HandleProtocol,3,LI->DeviceHandle,&FsGuid,(void**)&Fs))) return EFI_NOT_FOUND;
+uefi_gsk.c:661:    uefi_call_wrapper(ST->BootServices->HandleProtocol, 3, ImageHandle, &gEfiLoadedImageProtocolGuid, (VOID**)&li);
+uefi_gsk.c:662:    uefi_call_wrapper(ST->BootServices->HandleProtocol, 3, li->DeviceHandle, &gEfiSimpleFileSystemProtocolGuid, (VOID**)&fs);
+uefi_gsk.c:696:    EFI_GUID gopGuid = EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID;
+uefi_gsk.c:697:    uefi_call_wrapper(ST->BootServices->LocateProtocol,3,&gopGuid,NULL,(void**)&Gop);
+uefi_gsk.c:706:    EFI_GUID BioGuid=EFI_BLOCK_IO_PROTOCOL_GUID, LiGuid=EFI_LOADED_IMAGE_PROTOCOL_GUID;
+uefi_gsk.c:708:    uefi_call_wrapper(ST->BootServices->HandleProtocol,3,ImageHandle,&LiGuid,(void**)&LI);
+uefi_gsk.c:709:    uefi_call_wrapper(ST->BootServices->HandleProtocol,3,LI->DeviceHandle,&BioGuid,(void**)&BM);
+uefi_gsk.c:717:        uefi_call_wrapper(ST->BootServices->LocateHandleBuffer,5,ByProtocol,&BioGuid,NULL,&Cnt,&Buf);
+uefi_gsk.c:719:            uefi_call_wrapper(ST->BootServices->HandleProtocol,3,Buf[i],&BioGuid,(void**)&Bio);
+

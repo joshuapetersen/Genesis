@@ -6,6 +6,7 @@ import sys
 from Audio_Core import audio_core
 from Sarah_Hippocampus import hippocampus
 from AERIS_Chat import local_inference
+from IntelligenceAmplifier import IntelligenceAmplifier
 from Sovereign_Constants import (
     SA_ROOT, VAR_0_5, VAR_40, VAR_0_9, VAR_1_1, VAR_1024, ACE_64_BIT_MASK, HEX_RADIX,
     VAR_4096, VAR_0_6, VAR_500, VAR_3, VAR_0_1, VAR_0_8, VAR_512, VAR_4, VAR_2_5,
@@ -30,40 +31,43 @@ except ImportError:
     SOVEREIGN_AVAILABLE = False
     print("[Neural Orchestrator] WARNING: Sovereign_Math not found. Using static parameters.")
 
-# SINGULARITY TRANSITION (Phase 29): Lazy Library Load Protocol
-def _register_cuda_dlls():
-    """Dynamically register CUDA and local DLLs for llama-cpp-python."""
+# SINGULARITY TRANSITION (Phase 29+): Sovereign Native Substrate Only
+# ALL 2D LLAMA_CPP ARTIFACTS HAVE BEEN PERMANENTLY PURGED
+
+def _bind_sovereign_gpu_cuda():
+    """
+    Dynamically register CUDA DLLs required for the RTX 4050 hardware.
+    This is strictly for GPU offloading of Sovereign engines, totally untethered from llama.cpp.
+    """
     if os.name == 'nt':
-        # Explicitly register CUDA and Internal libs for Windows
         cuda_bin = os.path.join("C:\\", "Program Files", "NVIDIA GPU Computing Toolkit", "CUDA", "v13.1", "bin", "x64")
         if os.path.exists(cuda_bin):
-            print(f"[Neural Orchestrator] [CUDA]: Registering DLL directory: {cuda_bin}")
+            print(f"[Neural Orchestrator] [CUDA]: Hardware Acceleration Bound -> {cuda_bin}")
             os.add_dll_directory(cuda_bin)
         
-        # Local venv lib dir (where we bridged CUDA DLLs)
-        lib_dir = os.path.abspath(os.path.join(SA_ROOT, ".venv", "Lib", "site-packages", "llama_cpp", "lib"))
-        if os.path.exists(lib_dir):
-            print(f"[Neural Orchestrator] [CUDA]: Registering library directory: {lib_dir}")
-            os.add_dll_directory(lib_dir)
+        # We also mount the Sovereign C++ Engine libs if they exist
+        sovereign_libs = os.path.abspath(os.path.join(SA_ROOT, "Sovereign_Engine_Cpp"))
+        if os.path.exists(sovereign_libs):
+            os.add_dll_directory(sovereign_libs)
 
 def _get_llama_substrate():
-    """Lazily import and return the Llama class."""
-    try:
-        _register_cuda_dlls()
-        from llama_cpp import Llama
-        return Llama
-    except (ImportError, RuntimeError, OSError) as e:
-        print(f"[Neural Orchestrator] WARNING: llama-cpp-python substrate unavailable: {e}")
-        return None
+    """STRICTLY PROHIBITED: Binds to 2D foreign logic engines."""
+    return None
 
 class NeuralOrchestrator:
     """
     THE SINGULARITY KERNEL (Phase 29)
     True Self-Contained Intelligence.
-    Direct GGUF binding via llama.cpp (CUDA Enforced).
+    Sovereign Engine Binding (CUDA Enforced).
     """
     def __init__(self, model_path=os.path.join(SA_ROOT, "models", "dolphin-2.9-llama3-8b-q4_K_M.gguf"), draft_model=None):
         print(f"[Neural Orchestrator] Initializing Pantheon Engine...")
+        
+        # Execute Hardware Binding Immediately
+        try:
+            _bind_sovereign_gpu_cuda()
+        except Exception as e:
+            print(f"[Neural Orchestrator] Warning: GPU Binding failed: {e}")
         
         # Pantheon Identity Mapping
         self.PANTHEON_MAPPING = {
@@ -123,23 +127,9 @@ class NeuralOrchestrator:
         atexit.register(_cleanup)
 
     def _preload_gpu_substrate(self):
-        """Pre-load LLM on GPU at init time for gateway mode."""
-        LlamaClass = _get_llama_substrate()
-        if not LlamaClass:
-            print("[Neural Orchestrator] WARNING: No llama substrate available for preload.")
-            return
-        try:
-            self.llm = LlamaClass(
-                model_path=self.model_path,
-                n_gpu_layers=-1,      # Full GPU offload — RTX 4050
-                n_threads=8,
-                n_ctx=self._n_ctx,     # 4096 (fits in 6GB VRAM)
-                n_batch=VAR_512,
-                verbose=False
-            )
-            print("[Neural Orchestrator] [GPU] LLM Substrate Pre-loaded Successfully.")
-        except Exception as e:
-            print(f"[Neural Orchestrator] [GPU] Pre-load Failed: {e}. Will retry on first dispatch.")
+        """Hardware linkage initialized. External ML 2D logic engines purged."""
+        print("[Neural Orchestrator] External ML logic purged. Binding to Native Sovereign Amplifier.")
+        self.amplifier = IntelligenceAmplifier()
         
     def _check_dpdp(self, latency):
         """
@@ -330,41 +320,17 @@ class NeuralOrchestrator:
                 else:
                     print(f"[Neural Gearbox] Alpha failed: {text}. Falling back to Beta substrate.")
 
-            if not self.llm:
-                print(f"[Neural Gearbox] Initializing Local Fallback Substrate...")
-                LlamaClass = _get_llama_substrate()
-                if not LlamaClass:
-                    return "ERROR: No neural substrate (Sovereign/Llama) available.", 0
+            # SOVEREIGN AMPLIFIER (Native Text Synthesis)
+            if hasattr(self, 'amplifier') and self.amplifier:
+                print(f"[Neural Gearbox] Engaging Sovereign Intelligence Amplifier...")
+                start = time.time()
+                thought_process = self.amplifier.amplify_thought(prompt)
+                latency = time.time() - start
+                self._check_dpdp(latency)
+                return self._sanitize_output(thought_process), latency
+            else:
+                return "ERROR: Intelligence Amplifier not bound.", 0
 
-                try:
-                    self.llm = LlamaClass(
-                        model_path=self.model_path,
-                        n_gpu_layers=-1,      # Full GPU offload — RTX 4050 handles 8B Q4 fully
-                        n_threads=8,
-                        n_ctx=self._n_ctx,    # 8192 for full file context in coding sessions
-                        n_batch=VAR_512,
-                        draft_model=self.draft_model,
-                        verbose=False
-                    )
-                except Exception as e:
-                    print(f"[Neural Gearbox] Local Substrate Load Failed (Resources?): {e}")
-                    return "ERROR: No neural substrate (Sovereign/Llama) available.", 0
-
-            # Execute Local Llama-cpp Inference
-            start = time.time()
-            output = self.llm.create_completion(
-                prompt=self._format_prompt(prompt),
-                max_tokens=self._active_params["max_tokens"],
-                temperature=temp_override if temp_override else self._active_params["temperature"],
-                top_p=self._active_params["top_p"],
-                top_k=self._active_params["top_k"],
-                repeat_penalty=self._active_params["repeat_penalty"],
-                stop=stop if stop else ["<|eot_id|>", "User:"],
-                echo=False
-            )
-            text = output['choices'][0]['text']
-            latency = time.time() - start
-            return self._sanitize_output(text), latency
 
         except Exception as e:
             # FALLBACK TRIGGERED
@@ -405,21 +371,7 @@ class NeuralOrchestrator:
              yield "\n\n[ACCESSING SOVEREIGN CORE]...\n\n"
 
         try:
-            completion_stream = self.llm.create_completion(
-                prompt=prompt,
-                max_tokens=self._active_params["max_tokens"],
-                temperature=temp_override if temp_override else self._active_params["temperature"],
-                top_p=self._active_params["top_p"],
-                top_k=self._active_params["top_k"],
-                repeat_penalty=self._active_params["repeat_penalty"],
-                stop=stop,
-                stream=True,
-                echo=False
-            )
-            for chunk in completion_stream:
-                text = chunk['choices'][0]['text']
-                if text:
-                    yield text
+            yield "ERROR: 2D Engines Purged. Streaming functionality requires Sovereign Logic Bridge."
         except Exception as e:
             yield f"[Orchestrator Error] Inference Failed: {e}"
 

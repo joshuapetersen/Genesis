@@ -1,0 +1,29 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/ggml/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/ggml/src/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/ggml/src/ggml-cpu/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/src/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/common/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/vendor/cpp-httplib/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/batched-bench/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/gguf-split/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/imatrix/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/llama-bench/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/completion/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/perplexity/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/quantize/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/cli/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/server/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/tokenize/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/tts/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/mtmd/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/cvector-generator/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/export-lora/cmake_install.cmake",
+		"C:/SarahCore/Sovereign_Engine_Cpp/build_llama/tools/fit-params/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

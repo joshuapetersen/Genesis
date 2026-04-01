@@ -1,0 +1,1 @@
+cmd_/src/kernel/linux-6.6.13/tools/objtool/arch/x86/objtool-in.o :=  ld -r -o /src/kernel/linux-6.6.13/tools/objtool/arch/x86/objtool-in.o  /src/kernel/linux-6.6.13/tools/objtool/arch/x86/special.o /src/kernel/linux-6.6.13/tools/objtool/arch/x86/decode.o

@@ -1,0 +1,12 @@
+--- INITIATING VFL RECURSIVE COMPILATION ---
+Root (Dhatu): budh
+Suffix (Pratyaya): i
+  > [SUTRA] Applying GUNA...
+    Current State: bodh
+
+[ RESULT ] Compiled Shabda: bodh
+Frequency Resonance: 27.0000 Hz
+
+--- TEST: PHONETIC RECURSION ---
+Iti + ─Çha = iti─üha
+Frequency Resonance: 72.0000 Hz

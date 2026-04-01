@@ -1,0 +1,1 @@
+C:\SarahCore\Sovereign_Engine_Cpp\build_llama\common\build_info.dir\Release\build_info.lib

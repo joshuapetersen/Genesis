@@ -1,0 +1,3 @@
+C:/Genesis_Bridge/build/CMakeFiles/genesis_bridge.dir
+C:/Genesis_Bridge/build/CMakeFiles/ALL_BUILD.dir
+C:/Genesis_Bridge/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,12 @@
+You: sarah
+Sarah: [Chat Error] '<' not supported between instances of 'float' and 'str'
+
+You: sarah
+Sarah: [Chat Error] '<' not supported between instances of 'float' and 'str'
+
+You: sarah
+Sarah: [Chat Error] '<' not supported between instances of 'float' and 'str'
+
+You: sarah?
+Sarah: [Chat Error] '<' not supported between instances of 'float' and 'str'
+

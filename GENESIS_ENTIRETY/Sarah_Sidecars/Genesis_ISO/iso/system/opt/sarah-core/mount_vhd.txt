@@ -1,0 +1,4 @@
+select vdisk file="C:\Genesis.vhd"
+attach vdisk
+assign letter=G
+exit

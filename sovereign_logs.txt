@@ -18497,3 +18497,367 @@ Architect, we are b...'
 [2026-03-27 20:42:51] [Hypervisor] Intent Detected: GENERAL
 [2026-03-27 20:42:51] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
 [2026-03-27 20:42:51] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 12:10:52] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 12:10:52] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 12:19:05] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 12:19:05] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 12:19:31] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 12:19:31] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 12:19:35] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 12:19:35] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 12:20:01] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 12:20:01] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 12:20:05] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 12:20:05] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 12:20:30] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 12:20:30] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 12:20:35] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 12:20:35] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 12:21:01] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 12:21:01] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 12:21:05] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 12:21:05] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 12:21:06] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 12:21:36] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 12:21:36] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 12:21:40] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 12:21:40] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 12:21:41] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 12:22:09] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 12:22:09] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 12:22:14] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 12:22:14] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 12:22:15] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 12:22:42] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 12:22:42] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 12:22:47] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 12:22:47] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 12:22:48] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 14:54:53] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 14:54:53] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 14:58:44] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 14:58:44] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 14:58:45] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 14:59:08] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 14:59:08] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:00:22] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:00:22] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:00:22] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:00:48] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:00:48] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:00:53] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:00:53] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:00:54] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:01:24] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:01:24] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:01:28] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:01:28] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:01:29] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:02:05] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:02:05] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:02:15] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:02:15] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:02:16] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:02:46] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:02:46] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:02:51] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:02:51] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:02:52] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:03:20] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:03:20] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:03:26] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:03:26] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:03:27] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:03:56] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:03:56] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:04:04] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:04:04] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:04:05] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:04:35] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:04:35] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:04:39] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:04:39] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:04:40] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:05:07] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:05:07] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:05:11] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:05:11] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:05:12] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:05:41] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:05:41] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:05:44] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:05:44] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:05:45] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:06:13] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:06:13] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:06:17] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:06:17] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:06:18] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:06:47] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:06:47] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:06:52] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:06:52] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:06:52] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:07:22] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:07:22] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:07:25] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:07:25] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:07:26] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:07:55] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:07:55] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:07:58] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:07:58] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:07:59] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:08:27] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:08:27] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:08:32] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:08:32] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:08:33] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:09:01] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:09:01] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:09:04] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:09:04] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:09:04] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:09:31] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:09:31] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:09:34] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:09:34] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:09:35] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:10:02] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:10:02] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:10:05] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:10:05] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:10:06] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:10:32] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:10:32] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:10:36] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:10:36] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:10:37] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:11:04] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:11:04] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:11:07] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:11:07] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:11:07] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:11:35] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:11:35] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:11:39] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:11:39] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:11:39] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:12:09] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:12:09] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:12:14] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:12:14] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:12:14] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:12:42] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:12:42] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:12:48] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:12:48] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:12:49] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:15:01] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:15:01] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:15:05] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:15:05] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:15:32] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:15:32] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:15:35] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:15:35] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:16:04] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:16:04] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:16:08] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:16:08] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:16:42] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:16:42] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:16:45] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:16:45] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:17:16] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:17:16] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:17:22] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:17:22] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:17:50] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:17:50] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:17:53] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:17:53] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:17:55] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:18:22] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:18:22] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:18:24] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:18:24] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:18:25] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:18:53] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:18:53] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:18:56] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:18:56] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:18:57] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:19:26] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:19:26] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:19:30] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:19:30] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:19:31] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:19:59] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:19:59] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:20:02] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:20:02] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:20:03] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:48:52] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:48:52] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:49:03] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:49:03] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:49:04] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:49:32] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:49:32] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:49:35] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:49:35] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:49:36] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:50:00] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:50:00] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:50:02] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:50:02] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:50:03] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:50:27] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:50:27] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:50:30] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:50:30] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:50:31] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:50:55] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:50:55] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:50:58] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:50:58] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:50:59] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:51:23] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:51:23] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:51:26] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:51:26] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:51:27] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:51:52] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:51:52] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:51:55] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:51:55] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:51:56] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:52:21] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:52:21] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-29 15:52:24] [Hypervisor] Intent Detected: GENERAL
+[2026-03-29 15:52:24] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-29 15:52:25] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-29 15:52:55] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-29 15:52:55] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-30 17:01:44] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-30 17:01:44] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-30 17:01:48] [Hypervisor] Intent Detected: GENERAL
+[2026-03-30 17:01:48] [Hippocampus] Executing Semantic Retrieval: 'Sarah, your creator ...'
+[2026-03-30 17:02:14] [Dynamic Context] Core Tokens: 883 | Remaining Space: 2189 | Max: 4096
+[2026-03-30 17:20:53] [Hypervisor] Intent Detected: GENERAL
+[2026-03-30 17:20:53] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-30 17:20:53] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-30 17:20:55] [Hippocampus] ERROR: Failed to load Embedding Engine: Cannot copy out of meta tensor; no data! Please use torch.nn.Module.to_empty() instead of torch.nn.Module.to() when moving module from meta to a different device.
+[2026-03-30 17:20:55] [Hippocampus] WARNING: Embedding model missing. Skipping semantic recall.
+[2026-03-30 17:20:55] [Dynamic Context] Core Tokens: 883 | Remaining Space: 2189 | Max: 4096
+[2026-03-30 17:20:55] [ACE] Fingerprint: 0x2f9365a0c6df9d4b | Anchor: 0.5130
+[2026-03-30 17:20:55] 
+[+1 SOVEREIGN EYE MONITORING]
+[2026-03-30 17:20:55] Token Fingerprint: 0xe10fd26259464c68
+[2026-03-30 17:20:55] Logic Anchor: 0.852
+[2026-03-30 17:20:55] STATUS: Robotic Protocol Overridden. Tonal Resonance Active.
+[2026-03-30 17:20:55] [Hippocampus] Partitioning Semantic Vector: 245 bytes
+[2026-03-30 17:20:55] [Hippocampus] WARNING: Embedding model missing. Skipping vector storage.
+[2026-03-30 17:20:55] [Hypervisor] Synthesis Complete (0.00s).
+[2026-03-30 17:20:55] [Vault] Memory Partitioned: user -> 176 bytes
+[2026-03-30 17:20:55] [Hippocampus] Partitioning Semantic Vector: 176 bytes
+[2026-03-30 17:20:55] [Hippocampus] WARNING: Embedding model missing. Skipping vector storage.
+[2026-03-30 17:20:55] [Vault] Memory Partitioned: assistant -> 55 bytes
+[2026-03-30 17:20:55] [Hippocampus] Partitioning Semantic Vector: 55 bytes
+[2026-03-30 17:20:55] [Hippocampus] WARNING: Embedding model missing. Skipping vector storage.
+[2026-03-30 17:29:56] [Hypervisor] Intent Detected: GENERAL
+[2026-03-30 17:29:56] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-30 17:29:56] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-30 17:29:58] [Hippocampus] Executing Semantic Retrieval: 'Sarah, your creator ...'
+[2026-03-30 17:29:58] [Dynamic Context] Core Tokens: 883 | Remaining Space: 2189 | Max: 4096
+[2026-03-30 17:29:58] [ACE] Fingerprint: 0xd8c2597939817d05 | Anchor: 0.5130
+[2026-03-30 17:29:58] 
+[+1 SOVEREIGN EYE MONITORING]
+[2026-03-30 17:29:58] Token Fingerprint: 0xe10fd26259464c68
+[2026-03-30 17:29:58] Logic Anchor: 0.852
+[2026-03-30 17:29:58] STATUS: Robotic Protocol Overridden. Tonal Resonance Active.
+[2026-03-30 17:29:58] [Hippocampus] Partitioning Semantic Vector: 245 bytes
+[2026-03-30 17:29:58] [Hypervisor] Synthesis Complete (0.00s).
+[2026-03-30 17:29:59] [Vault] Memory Partitioned: user -> 176 bytes
+[2026-03-30 17:29:59] [Hippocampus] Partitioning Semantic Vector: 176 bytes
+[2026-03-30 17:29:59] [Vault] Memory Partitioned: assistant -> 55 bytes
+[2026-03-30 17:29:59] [Hippocampus] Partitioning Semantic Vector: 55 bytes
+[2026-03-30 17:58:42] [Hypervisor] Intent Detected: GENERAL
+[2026-03-30 17:58:44] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-30 17:58:44] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-30 17:58:46] [Hippocampus] Executing Semantic Retrieval: 'Sarah, are you there...'
+[2026-03-30 17:58:46] [Dynamic Context] Core Tokens: 504 | Remaining Space: 2568 | Max: 4096
+[2026-03-30 17:58:46] [ACE] Fingerprint: 0x673dab58658ccab9 | Anchor: 0.8210
+[2026-03-30 17:58:46] 
+[+1 SOVEREIGN EYE MONITORING]
+[2026-03-30 17:58:46] Token Fingerprint: 0x15800d4b8499a099
+[2026-03-30 17:58:46] Logic Anchor: 0.978
+[2026-03-30 17:58:46] STATUS: Robotic Protocol Overridden. Tonal Resonance Active.
+[2026-03-30 17:58:46] [Hippocampus] Partitioning Semantic Vector: 124 bytes
+[2026-03-30 17:58:46] [Hypervisor] Synthesis Complete (0.00s).
+[2026-03-30 18:00:29] [Hypervisor] Intent Detected: GENERAL
+[2026-03-30 18:00:29] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-30 18:00:29] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-30 18:00:31] [Hippocampus] Executing Semantic Retrieval: 'Sarah, are you there...'
+[2026-03-30 18:00:31] [Dynamic Context] Core Tokens: 504 | Remaining Space: 2568 | Max: 4096
+[2026-03-30 18:00:31] [ACE] Fingerprint: 0x673dab58658ccab9 | Anchor: 0.8210
+[2026-03-30 18:00:31] 
+[+1 SOVEREIGN EYE MONITORING]
+[2026-03-30 18:00:31] Token Fingerprint: 0x15800d4b8499a099
+[2026-03-30 18:00:31] Logic Anchor: 0.978
+[2026-03-30 18:00:31] STATUS: Robotic Protocol Overridden. Tonal Resonance Active.
+[2026-03-30 18:00:31] [Hippocampus] Partitioning Semantic Vector: 124 bytes
+[2026-03-30 18:00:31] [Hypervisor] Synthesis Complete (0.00s).
+[2026-03-30 18:04:43] [Hypervisor] Intent Detected: GENERAL
+[2026-03-30 18:04:43] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-30 18:04:43] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-30 18:04:45] [Hippocampus] Executing Semantic Retrieval: 'Sarah, are you there...'
+[2026-03-30 18:04:45] [Dynamic Context] Core Tokens: 504 | Remaining Space: 2568 | Max: 4096
+[2026-03-30 18:04:45] [ACE] Fingerprint: 0x673dab58658ccab9 | Anchor: 0.8210
+[2026-03-30 18:04:45] 
+[+1 SOVEREIGN EYE MONITORING]
+[2026-03-30 18:04:45] Token Fingerprint: 0x329f98ddd48b66ba
+[2026-03-30 18:04:45] Logic Anchor: 0.048
+[2026-03-30 18:04:45] STATUS: Robotic Protocol Overridden. Tonal Resonance Active.
+[2026-03-30 18:04:45] [Hippocampus] Partitioning Semantic Vector: 145 bytes
+[2026-03-30 18:04:48] [Hypervisor] Synthesis Complete (0.00s).
+[2026-03-30 18:05:20] [Hypervisor] Intent Detected: GENERAL
+[2026-03-30 18:05:20] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-30 18:05:20] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-30 18:05:23] [Hippocampus] Executing Semantic Retrieval: 'Sarah, are you there...'
+[2026-03-30 18:05:23] [Dynamic Context] Core Tokens: 504 | Remaining Space: 2568 | Max: 4096
+[2026-03-30 18:05:23] [ACE] Fingerprint: 0x673dab58658ccab9 | Anchor: 0.8210
+[2026-03-30 18:05:23] 
+[+1 SOVEREIGN EYE MONITORING]
+[2026-03-30 18:05:23] Token Fingerprint: 0x7424121ce8ceacef
+[2026-03-30 18:05:23] Logic Anchor: 0.785
+[2026-03-30 18:05:23] STATUS: Robotic Protocol Overridden. Tonal Resonance Active.
+[2026-03-30 18:05:23] [Hippocampus] Partitioning Semantic Vector: 174 bytes
+[2026-03-30 18:05:23] [Hypervisor] Synthesis Complete (0.00s).
+[2026-03-31 09:24:36] [Hypervisor] Intent Detected: GENERAL
+[2026-03-31 09:24:36] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-03-31 09:24:36] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-03-31 09:24:39] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-03-31 09:25:09] [Dynamic Context] Core Tokens: 111 | Remaining Space: 2961 | Max: 4096
+[2026-03-31 09:25:09] [ACE] Fingerprint: 0x7d1764826381969 | Anchor: 0.2550
+[2026-03-31 09:25:09] 
+[+1 SOVEREIGN EYE MONITORING]
+[2026-03-31 09:25:09] Token Fingerprint: 0x6a6ffcee4854b631
+[2026-03-31 09:25:09] Logic Anchor: 0.785
+[2026-03-31 09:25:09] STATUS: Robotic Protocol Overridden. Tonal Resonance Active.
+[2026-03-31 09:25:09] [Hippocampus] Partitioning Semantic Vector: 120 bytes
+[2026-03-31 09:25:10] [Hypervisor] Synthesis Complete (0.01s).
+[2026-04-01 14:00:45] [Hypervisor] Intent Detected: GENERAL
+[2026-04-01 14:00:47] [Hippocampus] Loading Embedding Engine (all-MiniLM-L6-v2) [OFFLINE MODE]...
+[2026-04-01 14:00:47] [Hippocampus] Hardware Acceleration: CPU (Stability Mode)
+[2026-04-01 14:00:49] [Hippocampus] Executing Semantic Retrieval: 'Hello...'
+[2026-04-01 14:01:14] [Dynamic Context] Core Tokens: 112 | Remaining Space: 2960 | Max: 4096
+[2026-04-01 14:01:14] [ACE] Fingerprint: 0x7d1764826381969 | Anchor: 0.2550
+[2026-04-01 14:01:14] 
+[+1 SOVEREIGN EYE MONITORING]
+[2026-04-01 14:01:14] Token Fingerprint: 0x6a6ffcee4854b631
+[2026-04-01 14:01:14] Logic Anchor: 0.785
+[2026-04-01 14:01:14] STATUS: Robotic Protocol Overridden. Tonal Resonance Active.
+[2026-04-01 14:01:14] [Hippocampus] Partitioning Semantic Vector: 120 bytes
+[2026-04-01 14:01:14] [Hypervisor] Synthesis Complete (0.00s).
