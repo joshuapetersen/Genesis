@@ -1,0 +1,158 @@
+[package]
+name = "sovereign_specialized_agents"
+version = "1.0.9270"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+async-trait = "0.1"
+walkdir = "2.3"
+rayon = "1.8"
+regex = "1.10"
+tree-sitter = "0.20"
+tree-sitter-javascript = "0.20"
+num_cpus = "1.16"
+serde_yaml = "0.9"
+memmap2 = "0.9"
+md5 = "0.7"
+tokio = { version = "1.35", features = ["fs", "full", "io-util", "macros", "rt-multi-thread", "sync"] }
+reqwest = { version = "0.11", features = ["json"] }
+sha2 = "0.10"
+sysinfo = "0.30"
+tokio-tungstenite = "0.29.0"
+futures-util = "0.3.32"
+ndarray = "0.17.2"
+nalgebra = "0.34.2"
+warp = { version = "0.4.2", features = ["server", "websocket"] }
+wry = "0.55.0"
+tao = "0.35.0"
+windows = { version = "0.62.2", features = ["Win32_Storage_FileSystem", "Win32_System_IO", "Win32_System_Ioctl", "Win32_Foundation", "Win32_Security", "Win32_System_SystemInformation", "Win32_System_Threading", "Win32_System_Memory"] }
+crossbeam-channel = "0.5.15"
+async-walkdir = "2.1.0"
+futures-lite = "2.6.1"
+candle-core = "0.10.2"
+candle-nn = "0.10.2"
+candle-transformers = "0.10.2"
+sovereign_suite = { path = "../Sovereign_Suite_RS" }
+
+[[bin]]
+name = "sovereign_agents"
+path = "src/main.rs"
+
+[[bin]]
+name = "agents_manifest"
+path = "src/bin/agents_manifest.rs"
+
+[[bin]]
+name = "sovereign_kernel"
+path = "src/bin/sovereign_kernel.rs"
+
+[[bin]]
+name = "flash_update"
+path = "src/bin/flash_update.rs"
+
+[[bin]]
+name = "genesis_mirror"
+path = "src/bin/genesis_mirror.rs"
+
+[[bin]]
+name = "sovereign_usb_driver"
+path = "src/bin/sovereign_usb_driver.rs"
+
+[[bin]]
+name = "godseye_v10"
+path = "src/bin/godseye_v10.rs"
+
+[[bin]]
+name = "godseye_v11"
+path = "src/bin/godseye_v11.rs"
+
+[[bin]]
+name = "brain_sarah_1t"
+path = "src/bin/brain_sarah_1t.rs"
+
+[[bin]]
+name = "brain_gemma_3_4b"
+path = "src/bin/brain_gemma_3_4b.rs"
+
+[[bin]]
+name = "brain_nemotron_3"
+path = "src/bin/brain_nemotron_3.rs"
+
+[[bin]]
+name = "brain_gemma_3_vision"
+path = "src/bin/brain_gemma_3_vision.rs"
+
+[[bin]]
+name = "brain_nomic_embed"
+path = "src/bin/brain_nomic_embed.rs"
+
+[[bin]]
+name = "brain_mobilellm_350m"
+path = "src/bin/brain_mobilellm_350m.rs"
+
+[[bin]]
+name = "brain_gemma_3_270m"
+path = "src/bin/brain_gemma_3_270m.rs"
+
+[[bin]]
+name = "brain_mobilellm_125m"
+path = "src/bin/brain_mobilellm_125m.rs"
+
+[[bin]]
+name = "brain_qwen3_5_9b"
+path = "src/bin/brain_qwen3_5_9b.rs"
+
+[[bin]]
+name = "brain_qwen3_5_vision"
+path = "src/bin/brain_qwen3_5_vision.rs"
+
+[[bin]]
+name = "sovereign_chat_daemon"
+path = "src/bin/sovereign_chat_daemon.rs"
+
+[[bin]]
+name = "factory_internet"
+path = "src/bin/factory_internet.rs"
+
+[[bin]]
+name = "factory_coding"
+path = "src/bin/factory_coding.rs"
+
+[[bin]]
+name = "factory_network"
+path = "src/bin/factory_network.rs"
+
+[[bin]]
+name = "factory_security"
+path = "src/bin/factory_security.rs"
+
+[[bin]]
+name = "factory_cryptography"
+path = "src/bin/factory_cryptography.rs"
+
+[[bin]]
+name = "factory_hacking"
+path = "src/bin/factory_hacking.rs"
+
+[[bin]]
+name = "factory_research_alpha"
+path = "src/bin/factory_research_alpha.rs"
+
+[[bin]]
+name = "factory_research_beta"
+path = "src/bin/factory_research_beta.rs"
+
+[[bin]]
+name = "factory_development_alpha"
+path = "src/bin/factory_development_alpha.rs"
+
+[[bin]]
+name = "factory_development_beta"
+path = "src/bin/factory_development_beta.rs"
+
+[[bin]]
+name = "simulation_strike"
+path = "src/bin/simulation_strike.rs"
