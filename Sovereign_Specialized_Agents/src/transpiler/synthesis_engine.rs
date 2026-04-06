@@ -1,16 +1,21 @@
 use crate::brain_scars::{LogicFragment, BrainScarVault};
 use anyhow::Result;
 
+use crate::hive_comms::HiveComms;
+use std::sync::Arc;
+
 /// NEURAL FORGE: SYNTHESIS ENGINE (V-60.0)
 /// MISSION: Bridging Academic Theory with High-Performance Implementation
 pub struct SynthesisEngine {
     vault: BrainScarVault,
+    hive: Arc<HiveComms>,
 }
 
 impl SynthesisEngine {
-    pub fn new() -> Result<Self> {
+    pub fn new(hive: Arc<HiveComms>) -> Result<Self> {
         Ok(Self {
-            vault: BrainScarVault::new()?,
+            vault: BrainScarVault::new(hive.clone())?,
+            hive,
         })
     }
 

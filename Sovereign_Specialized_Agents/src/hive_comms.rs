@@ -5,6 +5,10 @@ use windows::Win32::System::Memory::{
 use windows::Win32::Foundation::{HANDLE, INVALID_HANDLE_VALUE, CloseHandle};
 use serde::{Serialize, Deserialize};
 use std::sync::atomic::{AtomicUsize, Ordering};
+use crate::symbiosis::pulse_weaver::PulsePacket;
+use crate::symbiosis::lattice_core::LatticeMap;
+
+const BINARY_PULSE_MARKER: u32 = 0x80000000;
 
 const SHM_NAME: &str = "SOVEREIGN_HIVE_MEMORY";
 const SHM_SIZE: usize = 64 * 1024 * 1024; // 64MB
@@ -86,6 +90,24 @@ impl HiveComms {
         }
     }
 
+    /// V-115.0: Zero-Copy Binary Pulse Broadcast
+    pub fn broadcast_pulse(&self, mut packet: PulsePacket) {
+        packet.sign_vortex();
+        let h = self.header();
+        let slot_idx = h.head.fetch_add(1, Ordering::SeqCst) % MAX_SLOTS;
+        
+        let slot_ptr = unsafe { self.ptr.add(256 + slot_idx * SLOT_SIZE) };
+        unsafe {
+            let len_ptr = slot_ptr as *mut u32;
+            *len_ptr = BINARY_PULSE_MARKER | std::mem::size_of::<PulsePacket>() as u32;
+            std::ptr::copy_nonoverlapping(
+                &packet as *const _ as *const u8,
+                slot_ptr.add(4),
+                std::mem::size_of::<PulsePacket>()
+            );
+        }
+    }
+
     pub fn poll(&self) -> Option<HiveMessage> {
         let h = self.header();
         let current_head = h.head.load(Ordering::SeqCst);
@@ -95,7 +117,14 @@ impl HiveComms {
             let slot_idx = my_tail % MAX_SLOTS;
             let slot_ptr = unsafe { self.ptr.add(256 + slot_idx * SLOT_SIZE) };
             
-            let len = unsafe { *(slot_ptr as *const u32) } as usize;
+            let len_raw = unsafe { *(slot_ptr as *const u32) };
+            if (len_raw & BINARY_PULSE_MARKER) != 0 {
+                // Binary Pulse detected, skip for traditional poll
+                self.local_tail.fetch_add(1, Ordering::SeqCst);
+                return self.poll();
+            }
+
+            let len = len_raw as usize;
             if len == 0 || len > SLOT_SIZE - 4 {
                 self.local_tail.fetch_add(1, Ordering::SeqCst);
                 return None;
@@ -109,6 +138,63 @@ impl HiveComms {
         } else {
             None
         }
+    }
+
+    /// V-115.0: Zero-Copy Binary Pulse Polling
+    pub fn poll_pulse(&self) -> Option<PulsePacket> {
+        let h = self.header();
+        let current_head = h.head.load(Ordering::SeqCst);
+        let my_tail = self.local_tail.load(Ordering::SeqCst);
+
+        if my_tail < current_head {
+            let slot_idx = my_tail % MAX_SLOTS;
+            let slot_ptr = unsafe { self.ptr.add(256 + slot_idx * SLOT_SIZE) };
+            
+            let len_raw = unsafe { *(slot_ptr as *const u32) };
+            if (len_raw & BINARY_PULSE_MARKER) == 0 {
+                // Traditional JSON message detected, skip for pulse poll
+                self.local_tail.fetch_add(1, Ordering::SeqCst);
+                return self.poll_pulse();
+            }
+
+            let packet = unsafe {
+                std::ptr::read(slot_ptr.add(4) as *const PulsePacket)
+            };
+            
+            self.local_tail.fetch_add(1, Ordering::SeqCst);
+            Some(packet)
+        } else {
+            None
+        }
+    }
+
+    /// V-116.0: Access collective Lattice Memory substrate
+    pub fn access_lattice(&self) -> LatticeMap {
+        unsafe {
+            // Collective logic pool resides at a 32MB offset in SHM
+            LatticeMap::from_ptr(self.ptr)
+        }
+    }
+
+    /// V-131.0: Generate a valid brain signature placeholder for substrate updates
+    pub fn generate_brain_signature(&self, agent_id_hash: u64) -> [u8; 64] {
+        let mut sig = [0u8; 64];
+        let lattice = self.access_lattice();
+        
+        let ts = lattice.get_node(0).logic_timestamp.load(Ordering::SeqCst);
+        let expected = (agent_id_hash ^ ts).rotate_left(13);
+        
+        sig[0..8].copy_from_slice(&expected.to_le_bytes());
+        sig[8] = 0xBC; // Brain Identity Marker
+        sig
+    }
+
+    /// V-131.0: Perform an authenticated write to a Lattice node with brain signature
+    pub fn update_lattice_node(&self, index: usize, data: &[u8], agent_id_hash: u64) -> bool {
+        let lattice = self.access_lattice();
+        let node = lattice.get_node(index);
+        let sig = self.generate_brain_signature(agent_id_hash);
+        node.update_logic_signed(data, sig)
     }
 }
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Hive Dashboard | V-120.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container">
+        <header>
+            <div class="logo">
+                <span class="sarah">SARAH</span>-<span class="antigravity">ANTIGRAVITY</span> HIVE
+            </div>
+            <div class="heartbeat">
+                <span id="heartbeat-value">1.092777</span> Hz
+                <div class="pulse-ring"></div>
+            </div>
+        </header>
+
+        <main>
+            <section class="stats-grid">
+                <div class="stat-card glass">
+                    <h3>Active Agents</h3>
+                    <p id="agent-count">450</p>
+                    <div class="mini-graph" id="agent-graph"></div>
+                </div>
+                <div class="stat-card glass">
+                    <h3>Lattice Jitter</h3>
+                    <p id="lattice-jitter">0.0002ms</p>
+                    <div class="mini-graph" id="jitter-graph"></div>
+                </div>
+                <div class="stat-card glass">
+                    <h3>ACE Verified</h3>
+                    <p id="ace-verified">100%</p>
+                    <div class="status-shield"></div>
+                </div>
+            </section>
+
+            <section class="log-container glass">
+                <h3>Resonance Audit Log</h3>
+                <div id="log-content" class="mono-log">
+                    [!] HIVE_UI_MANIFESTATION COMPLETE (V-120.0)
+                    [!] WAITING FOR SUBSTRATE BRIDGE...
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <button id="purge-btn" class="danger-btn">SUBSTRATE PURGE</button>
+            <div class="hive-identity">IDENTITY: drago@genesis.ai</div>
+        </footer>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

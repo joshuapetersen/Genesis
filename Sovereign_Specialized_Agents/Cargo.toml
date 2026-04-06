@@ -36,6 +36,14 @@ candle-core = "0.10.2"
 candle-nn = "0.10.2"
 candle-transformers = "0.10.2"
 sovereign_suite = { path = "../Sovereign_Suite_RS" }
+"lib-identity" = { path = "../lib-identity" }
+"lib-crypto" = { path = "../lib-crypto" }
+fxhash = "0.2"
+tracing = "0.1"
+hex = "0.4"
+
+[build-dependencies]
+cc = "1.0"
 
 [[bin]]
 name = "sovereign_agents"

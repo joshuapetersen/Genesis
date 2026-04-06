@@ -7,6 +7,8 @@ pub mod evolution;
 pub mod symbiosis;
 pub mod brain_scars;
 pub mod neural_cores;
+pub mod self_audit;
+pub mod pulse_weaver;
 
 pub use transpiler::{UirNode, UirNodeKind};
 pub use transpiler::{JavascriptFrontend, RustFrontend, RustBackend, JavascriptBackend, traits::SovereignFrontend, traits::SovereignBackend};
