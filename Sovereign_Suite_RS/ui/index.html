@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GodsEye Chat V-26.0 | Sovereign Rust Suite</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">
+                <span class="pulse"></span>
+                <h1>GODSEYE <span class="version">V-26.0</span></h1>
+            </div>
+            <div class="metrics">
+                <div class="metric">
+                    <span class="label">HEARTBEAT</span>
+                    <span id="heartbeat-value" class="value">1.009270 HZ</span>
+                </div>
+                <div class="metric">
+                    <span class="label">INFERENCE</span>
+                    <span id="inference-value" class="value">0.00 MS</span>
+                </div>
+            </div>
+        </header>
+
+        <main id="chat-container">
+            <div id="messages">
+                <div class="message system">
+                    [!] NEURAL CORE ENGAGED: GEMMA-3-4B
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="input-wrapper">
+                <input type="text" id="user-input" placeholder="Enter Neural Command..." autocomplete="off">
+                <button id="send-btn">STRIKE</button>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

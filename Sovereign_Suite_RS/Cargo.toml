@@ -1,0 +1,32 @@
+[package]
+name = "sovereign_suite"
+version = "1.0.9270"
+edition = "2021"
+
+
+
+[dependencies]
+walkdir = "2.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.51.0", features = ["full"] }
+winapi = { version = "0.3.9", features = ["memoryapi", "winnt", "handleapi", "winbase"] }
+anyhow = "1.0.102"
+memmap2 = "0.9.10"
+tracing = "0.1.44"
+warp = { version = "0.4.2", features = ["websocket", "server"] }
+futures-util = "0.3.32"
+candle-core = "0.10.2"
+candle-nn = "0.10.2"
+candle-transformers = "0.10.2"
+sha2 = "0.11.0"
+hmac = "0.13.0"
+hex = "0.4.3"
+
+[[bin]]
+name = "sovereign"
+path = "src/main.rs"
+
+[[bin]]
+name = "supabase_restore"
+path = "Supabase_Restore.rs"
