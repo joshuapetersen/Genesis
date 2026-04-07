@@ -30,7 +30,7 @@ pub struct QuantumKeypair {
 }
 
 impl PrivateIdentityData {
-    /// Create new private identity data
+    /// Create new private identity data from constituent parts
     pub fn new(private_key: Vec<u8>, public_key: Vec<u8>, seed: [u8; 32], recovery_phrases: Vec<String>) -> Self {
         Self {
             private_key: private_key.clone(),

@@ -201,7 +201,89 @@ impl IdentityManager {
         ))
     }
 
+    /// V-131.0: CREATE AUTONOMOUS AGENT IDENTITY
+    /// 
+    /// Tailored for the Sovereign specialized agent fleet.
+    /// Creates a lightweight identity with dual-layer signing:
+    /// 1. Dilithium (Post-Quantum) for high-level DID operations.
+    /// 2. Ed25519 (Classical) for real-time 1.09Hz Lattice substrate signatures.
+    pub async fn create_agent_identity(
+        &mut self,
+        agent_name: String,
+    ) -> Result<(IdentityId, Vec<u8>, Vec<u8>)> {
+        // 1. Generate post-quantum key pair (Dilithium)
+        let (pq_sk, pq_pk) = self.generate_pq_keypair().await?;
 
+        // 2. Generate classical key pair (Ed25519) for lattice
+        let (ed_pk, ed_sk) = lib_crypto::classical::ed25519::ed25519_keypair();
+
+        // Wrap in PrivateKey struct (Master)
+        let private_key = lib_crypto::PrivateKey {
+            dilithium_sk: pq_sk.clone(),
+            kyber_sk: vec![],
+            master_seed: vec![],
+        };
+
+        // Create identity ID from PQ public key
+        let id = Hash::from_bytes(&lib_crypto::hash_blake3(&pq_pk));
+
+        // Generate ownership proof
+        let ownership_proof = ZeroKnowledgeProof {
+            proof_system: "AgentDualLayer".to_string(),
+            proof_data: ed_pk.clone(), // Store Ed25519 PK in proof data for fast access
+            public_inputs: pq_pk.clone(),
+            verification_key: vec![],
+            plonky2_proof: None,
+            proof: vec![],
+        };
+        
+        // Create minimal wallet manager
+        let wallet_manager = crate::wallets::WalletManager::new(id.clone());
+        
+        // Create identity
+        let mut identity = ZhtpIdentity::from_legacy_fields(
+            id.clone(),
+            IdentityType::Agent,
+            pq_pk.clone(),
+            private_key,
+            agent_name.clone(),
+            ownership_proof,
+            wallet_manager,
+        )?;
+
+        identity.reputation = 0;
+        identity.access_level = AccessLevel::Visitor;
+        identity.metadata.insert("agent_name".to_string(), agent_name);
+        identity.metadata.insert("lattice_pk".to_string(), hex::encode(&ed_pk));
+        
+        // Store private data
+        let private_data = PrivateIdentityData::new(
+            pq_sk.clone(),
+            pq_pk,
+            [0u8; 32],
+            vec![],
+        );
+        
+        self.identities.insert(id.clone(), identity);
+        self.private_data.insert(id.clone(), private_data);
+
+        tracing::info!(
+            " [ IDENTITY ] AGENT CREATED: {} | Lattice PK: {}",
+            hex::encode(&id.0[..4]),
+            hex::encode(&ed_pk[..4])
+        );
+
+        Ok((id, pq_sk, ed_sk))
+    }
+
+    /// V-131.0: Find identity by 64-bit truncated hash (lattice identifier)
+    pub fn find_identity_by_truncated_hash(&self, truncated_hash: u64) -> Option<&ZhtpIdentity> {
+        self.identities.values().find(|id| {
+            let mut h = [0u8; 8];
+            h.copy_from_slice(&id.id.0[0..8]);
+            u64::from_le_bytes(h) == truncated_hash
+        })
+    }
 
     /// Get identity by ID
     pub fn get_identity(&self, identity_id: &IdentityId) -> Option<&ZhtpIdentity> {

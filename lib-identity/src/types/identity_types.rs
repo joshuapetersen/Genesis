@@ -93,6 +93,16 @@ impl PrivateIdentityData {
     pub fn recovery_phrases(&self) -> &[String] {
         &self.recovery_phrases
     }
+
+    /// Create from existing parts
+    pub fn from_parts(private_key: Vec<u8>, _public_key: Vec<u8>, seed: [u8; 32], recovery_phrases: Vec<String>) -> Self {
+        Self {
+            private_key,
+            seed,
+            recovery_phrases,
+            biometric_hashes: Vec::new(),
+        }
+    }
 }
 
 impl Default for PrivateIdentityData {
