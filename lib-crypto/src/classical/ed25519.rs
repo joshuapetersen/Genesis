@@ -26,6 +26,17 @@ pub fn ed25519_keypair_from_seed(seed: &[u8; 32]) -> (Vec<u8>, Vec<u8>) {
     (verifying_key.as_bytes().to_vec(), signing_key.as_bytes().to_vec())
 }
 
+/// Derive Public Key from Secret Key
+pub fn ed25519_public_key(secret_key: &[u8]) -> [u8; 32] {
+    if secret_key.len() != 32 {
+        return [0u8; 32];
+    }
+    let mut sk_bytes = [0u8; 32];
+    sk_bytes.copy_from_slice(&secret_key[..32]);
+    let signing_key = SigningKey::from_bytes(&sk_bytes);
+    *signing_key.verifying_key().as_bytes()
+}
+
 /// Sign message with Ed25519
 pub fn ed25519_sign(message: &[u8], secret_key: &[u8]) -> Result<Vec<u8>> {
     if secret_key.len() != 32 {
