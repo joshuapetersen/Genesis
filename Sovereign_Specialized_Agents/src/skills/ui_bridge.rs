@@ -6,6 +6,7 @@ use std::sync::atomic::Ordering;
 
 /// SKILL #303: TELEMETRY SYNTHESIS (V-1.0)
 /// Goal: Efficiently bridge SHM Lattice nodes to UI-ready telemetry.
+#[derive(Clone)]
 pub struct TelemetrySynthesizer {
     comms: Arc<HiveComms>,
 }

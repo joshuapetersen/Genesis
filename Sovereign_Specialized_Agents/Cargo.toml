@@ -28,7 +28,7 @@ nalgebra = "0.34.2"
 warp = { version = "0.4.2", features = ["server", "websocket"] }
 wry = "0.55.0"
 tao = "0.35.0"
-windows = { version = "0.62.2", features = ["Win32_Storage_FileSystem", "Win32_System_IO", "Win32_System_Ioctl", "Win32_Foundation", "Win32_Security", "Win32_System_SystemInformation", "Win32_System_Threading", "Win32_System_Memory"] }
+windows = { version = "0.62.2", features = ["Win32_Storage_FileSystem", "Win32_System_IO", "Win32_System_Ioctl", "Win32_Foundation", "Win32_Security", "Win32_System_SystemInformation", "Win32_System_Threading", "Win32_System_Memory", "Win32_System_Performance"] }
 crossbeam-channel = "0.5.15"
 async-walkdir = "2.1.0"
 futures-lite = "2.6.1"
@@ -41,6 +41,7 @@ sovereign_suite = { path = "../Sovereign_Suite_RS" }
 fxhash = "0.2"
 tracing = "0.1"
 hex = "0.4"
+rand = "0.8"
 
 [build-dependencies]
 cc = "1.0"
@@ -164,3 +165,19 @@ path = "src/bin/factory_development_beta.rs"
 [[bin]]
 name = "simulation_strike"
 path = "src/bin/simulation_strike.rs"
+
+[[bin]]
+name = "hive_obsidian_monitor"
+path = "src/bin/hive_obsidian_monitor.rs"
+
+[[bin]]
+name = "trinity_strike"
+path = "src/bin/trinity_strike.rs"
+
+[[bin]]
+name = "resonance_strike"
+path = "src/bin/resonance_strike.rs"
+
+[[bin]]
+name = "evolution_strike"
+path = "src/bin/evolution_strike.rs"

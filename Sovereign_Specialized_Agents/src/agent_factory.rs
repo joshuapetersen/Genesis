@@ -13,8 +13,8 @@ pub struct SovereignAgentFactory {
     active_agents: Arc<Mutex<HashMap<u32, Child>>>,
     hive_comms: Arc<HiveComms>,
     audit_manager: Arc<SelfAuditManager>,
-    mesh_router: Arc<MeshRouter>,
-    identity_manager: Arc<RwLock<IdentityManager>>,
+    pub mesh_router: Arc<MeshRouter>,
+    pub identity_manager: Arc<RwLock<IdentityManager>>,
     pub factory_id: String,
 }
 
@@ -31,7 +31,7 @@ impl SovereignAgentFactory {
             audit_manager,
             mesh_router,
             identity_manager,
-            factory_id: "Sovereign_Hive_Factory_V-131.0".to_string(),
+            factory_id: "Sovereign_Hive_Factory_V-132.0".to_string(),
         });
 
         // Mitigation Listener Strike
@@ -60,14 +60,24 @@ impl SovereignAgentFactory {
         // V-131.0: Manifest agent identity
         let mut id_manager = self.identity_manager.write().await;
         let (agent_id, pq_sk, ed_sk) = id_manager.create_agent_identity(brain_name.to_string()).await?;
+        // V-131.0: Manifest agent identity hash (8-byte forensic anchor)
+        let mut id_bytes = [0u8; 8];
+        id_bytes.copy_from_slice(&agent_id.0[0..8]);
+        let agent_id_hash = u64::from_le_bytes(id_bytes);
         let agent_id_hex = hex::encode(&agent_id.0);
         let pq_sk_hex = hex::encode(&pq_sk);
         let ed_sk_hex = hex::encode(&ed_sk);
+
+        // V-128.0: Elastic Mesh Node Allocation (Pre-spawn Strike)
+        let node_idx = self.mesh_router.allocate_node(agent_id_hash).await
+            .ok_or_else(|| anyhow::anyhow!("Mesh allocation failed"))?;
 
         let child = Command::new(brain_path)
             .env("SOVEREIGN_AGENT_ID", &agent_id_hex)
             .env("SOVEREIGN_AGENT_SK", &pq_sk_hex)
             .env("SOVEREIGN_LATTICE_SK", &ed_sk_hex)
+            .env("SOVEREIGN_NODE_IDX", node_idx.to_string())
+            .env("SOVEREIGN_AGENT_ID_HASH", agent_id_hash.to_string())
             .stdin(Stdio::null())
             .stdout(Stdio::inherit())
             .stderr(Stdio::inherit())
@@ -77,17 +87,11 @@ impl SovereignAgentFactory {
         let pid = child.id();
         self.active_agents.lock().unwrap().insert(pid, child);
         
-        // V-131.0: Elastic Mesh Node Allocation
-        let node_idx = self.mesh_router.allocate_node(pid as u64).await
-            .ok_or_else(|| anyhow::anyhow!("Mesh allocation failed"))?;
-        
         let lattice = self.hive_comms.access_lattice();
         let node = lattice.get_node(node_idx);
         
-        // V-131.0: Store Cryptographic Identity Hash (8 bytes)
-        let mut id_trunc = [0u8; 8];
-        id_trunc.copy_from_slice(&agent_id.0[0..8]);
-        node.agent_id_hash.store(u64::from_le_bytes(id_trunc), std::sync::atomic::Ordering::SeqCst);
+        // V-131.0: Store Cryptographic Identity Hash in the node anchor
+        node.agent_id_hash.store(agent_id_hash, std::sync::atomic::Ordering::SeqCst);
         
         // V-118.0: Experience Priming
         for i in 16384..32768 {
@@ -109,6 +113,18 @@ impl SovereignAgentFactory {
         // V-131.0: Manifest agent identity
         println!("[ FACTORY ] Brain Online | PID: {} | Identity Locked | Mesh Node: {}", pid, node_idx);
         Ok(pid)
+    }
+
+    /// MANIFEST 3 x BRAIN CLUSTER (Skill #222)
+    /// V-132.0: Trinity Consensus Orchestration Strike
+    pub async fn spawn_trinity(&self, brain_name: &str) -> Result<Vec<u32>> {
+        println!("[ FACTORY ] Spawning Trinity Cluster: {}", brain_name);
+        let mut pids = Vec::new();
+        for i in 0..3 {
+            let pid = self.spawn_brain(&format!("{}_{}", brain_name, i)).await?;
+            pids.push(pid);
+        }
+        Ok(pids)
     }
 
     pub fn get_mesh_router(&self) -> Arc<MeshRouter> {

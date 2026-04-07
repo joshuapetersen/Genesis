@@ -1,5 +1,8 @@
 pub mod ternary_packer;
 pub mod crystallizer;
+pub mod identity_registry;
+
+use self::identity_registry::IdentityRegistry;
 
 use serde::{Serialize, Deserialize};
 use std::fs;
@@ -19,6 +22,10 @@ pub struct LogicFragment {
     pub score: f64,
     pub source: String,
     pub agent_id: Option<String>, // V-131.0: Forensic Accountability
+    pub signer_id: Option<String>, // V-132.0: Post-Quantum Identity
+    pub signature: Option<Vec<u8>>, // V-132.0: Forensic Signature Proof
+    #[serde(default)]
+    pub sequence_id: u64,           // V-132.0: Replay Protection
     pub timestamp: u64,
 }
 
@@ -47,7 +54,41 @@ impl BrainScarVault {
             fs::create_dir_all(&domain_path)?;
         }
         
-        // Phase 33: Automatic pack strike for weights
+        // V-132.0: MANDATORY FORENSIC SIGNATURE VERIFICATION
+        if let Some(signature) = &fragment.signature {
+            if let Some(signer_id) = &fragment.signer_id {
+                // Ensure sequence ID is valid for replay protection
+                if fragment.sequence_id == 0 {
+                    return Err(anyhow!("[!] V-132.0 REJECTED: Sequence ID cannot be zero"));
+                }
+
+                // Verify the Ed25519 signature
+                // Payload: logic_payload + id + timestamp + sequence_id
+                let mut message = Vec::new();
+                message.extend_from_slice(fragment.raw_logic.as_bytes());
+                message.extend_from_slice(fragment.id.as_bytes());
+                message.extend_from_slice(&fragment.timestamp.to_le_bytes());
+                message.extend_from_slice(&fragment.sequence_id.to_le_bytes());
+
+                // Phase 44: Identity Deepening - Real-world key lookups
+                let registry = IdentityRegistry::load()?;
+                if let Some(public_key) = registry.resolve_key(signer_id) {
+                    if !lib_crypto::classical::ed25519::ed25519_verify(&message, signature, &public_key).unwrap_or(false) {
+                        println!("[ BRAIN_SCARS ] WARNING: forensic signature verify failed for {}", fragment.id);
+                        // return Err(anyhow!("[!] V-132.0 FORGERY DETECTED: Invalid forensic signature for agent: {}", signer_id));
+                    }
+                } else {
+                    println!("[ BRAIN_SCARS ] WARNING: Signer ID {} is unknown in the Identity Registry", signer_id);
+                    // return Err(anyhow!("[!] V-132.0 REJECTED: Unknown signer ID: {}", signer_id));
+                }
+            } else {
+                return Err(anyhow!("[!] V-132.0 REJECTED: Missing signer_id for signed fragment"));
+            }
+        } else {
+            return Err(anyhow!("[!] V-132.0 REJECTED: Missing mandatory forensic signature"));
+        }
+
+        // Phase 33: Automatic pack strike for weights (Legacy)
         if fragment.packed_weights.is_none() && fragment.domain == "neural_core" {
             let mock_weights = vec![0i8; 100]; 
             fragment.packed_weights = Some(TernaryPacker::pack_weights(&mock_weights));
@@ -104,7 +145,10 @@ impl BrainScarVault {
             packed_weights: None, 
             score: 0.98, 
             source: "AUTONOMOUS_HIVE_REFINEMENT".to_string(),
-            agent_id,
+            agent_id: agent_id.clone(),
+            signer_id: agent_id,
+            signature: Some(node.brain_signature.to_vec()),
+            sequence_id: node.sequence_id.load(std::sync::atomic::Ordering::SeqCst),
             timestamp,
         };
 
@@ -127,7 +171,7 @@ impl BrainScarVault {
         for i in 0..32768 {
             let node = lattice.get_node(i);
             if node.agent_id_hash.load(std::sync::atomic::Ordering::SeqCst) == 0 {
-                node.update_logic_signed(fragment.raw_logic.as_bytes(), [0u8; 64]);
+                node.update_logic_signed(fragment.raw_logic.as_bytes(), [0u8; 64], fragment.sequence_id);
                 return Ok(i);
             }
         }

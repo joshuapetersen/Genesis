@@ -14,3 +14,5 @@ pub use transpiler::{UirNode, UirNodeKind};
 pub use transpiler::{JavascriptFrontend, RustFrontend, RustBackend, JavascriptBackend, traits::SovereignFrontend, traits::SovereignBackend};
 pub use transpiler::{worm::SovereignWorm, inference::SovereignInference};
 pub use skills::{SkillIngestor, SkillsHub};
+pub use hive_comms::{HiveComms, HiveMessage};
+pub use symbiosis::pulse_weaver::PulsePacket;

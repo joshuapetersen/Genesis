@@ -1,9 +1,9 @@
-use crate::hive_comms::HiveComms;
-use crate::agent_factory::SovereignAgentFactory;
-use crate::pulse_weaver::PulseWeaver;
-use crate::brain_scars::BrainScarVault;
-use crate::brain_scars::crystallizer::LogicCrystallizer;
-use crate::symbiosis::consensus::NeuralConsensusEngine;
+use sovereign_specialized_agents::hive_comms::HiveComms;
+use sovereign_specialized_agents::agent_factory::SovereignAgentFactory;
+use sovereign_specialized_agents::pulse_weaver::PulseWeaver;
+use sovereign_specialized_agents::brain_scars::BrainScarVault;
+use sovereign_specialized_agents::brain_scars::crystallizer::LogicCrystallizer;
+use sovereign_specialized_agents::symbiosis::consensus::NeuralConsensusEngine;
 use anyhow::Result;
 use std::sync::Arc;
 
@@ -12,12 +12,12 @@ use std::sync::Arc;
 #[tokio::main]
 async fn main() -> Result<()> {
     println!("--------------------------------------------------");
-    println!("   SOVEREIGN SPECIALIZED AGENTS KERNEL V-131.0    ");
-    println!("   [ CALIBRATION ] 1.09277703703 HZ               ");
+    println!("   SOVEREIGN SPECIALIZED AGENTS KERNEL V-132.0    ");
+    println!("   [ CALIBRATION ] 1.09277703703 HZ (Forensic)    ");
     println!("--------------------------------------------------");
 
     // 1. Initialize Hive Communications (Lattice Substrate)
-    let hive_comms = Arc::new(HiveComms::new());
+    let hive_comms = Arc::new(HiveComms::connect());
 
     // 2. Initialize Agent Factory & Identity Management (V-131.0)
     let agent_factory = SovereignAgentFactory::new(hive_comms.clone());
@@ -26,7 +26,7 @@ async fn main() -> Result<()> {
     let consensus_engine = Arc::new(NeuralConsensusEngine::new(
         hive_comms.clone(), 
         agent_factory.get_mesh_router(),
-        agent_factory.identity_manager.clone() // Requires identity_manager to be pub in factory
+        agent_factory.identity_manager.clone()
     ));
 
     // 4. Initialize crystallization (Forensic Persistence)
@@ -38,8 +38,8 @@ async fn main() -> Result<()> {
     // Heartbeat Strike
     let heart_hive = hive_comms.clone();
     tokio::spawn(async move {
-        let pulse = PulseWeaver::new(heart_hive);
-        pulse.start_weaver().await;
+        let mut pulse = PulseWeaver::new(heart_hive);
+        pulse.start_pulse().await;
     });
 
     // Crystallization Strike

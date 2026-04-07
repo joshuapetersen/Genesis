@@ -103,13 +103,56 @@ impl NeuralConsensusEngine {
             }
         }
         
-        // Ensure 2/3 quorum even for the "winner"
-        if let Some(hash) = best_hash {
-            if self.reaches_quorum(&hash).await {
-                return Some(hash);
+        best_hash
+    }
+
+    /// V-132.8: Retrieve the raw logic payload of the dominant hive fragment
+    pub async fn get_dominant_payload(&self) -> Option<[u8; 896]> {
+        if let Some(winner_hash) = self.determine_winning_logic().await {
+            let lattice = self.hive.access_lattice();
+            for i in 0..16384 {
+                let node = lattice.get_node(i);
+                if node.agent_id_hash.load(Ordering::SeqCst) != 0 {
+                    let current_hash = format!("{:x}", md5::compute(&node.logic_payload));
+                    if current_hash == winner_hash {
+                        let mut payload = [0u8; 896];
+                        payload.copy_from_slice(&node.logic_payload);
+                        return Some(payload);
+                    }
+                }
             }
         }
-        
         None
+    }
+
+    /// V-132.8: Retrieve the top 'N' logic payloads and their resonance counts
+    pub async fn get_top_resonances(&self, limit: usize) -> Vec<([u8; 896], usize)> {
+        let bins = self.vote_bins.read().await;
+        let mut sorted_bins: Vec<_> = bins.iter().collect();
+        sorted_bins.sort_by(|a, b| b.1.len().cmp(&a.1.len()));
+
+        let mut results = Vec::new();
+        let lattice = self.hive.access_lattice();
+
+        for (hash, voters) in sorted_bins.iter().take(limit) {
+            // Find the representative payload for this hash in the lattice
+            for i in 0..16384 {
+                let node = lattice.get_node(i);
+                if node.agent_id_hash.load(Ordering::SeqCst) != 0 {
+                    let current_hash = format!("{:x}", md5::compute(&node.logic_payload));
+                    if current_hash == **hash {
+                        let (payload, _, _) = node.read_logic_safe();
+                        results.push((payload, voters.len()));
+                        break;
+                    }
+                }
+            }
+        }
+        results
+    }
+
+    /// V-132.9: Retrieve the raw vote bins for forensic auditing
+    pub async fn get_vote_bins(&self) -> HashMap<String, Vec<u64>> {
+        self.vote_bins.read().await.clone()
     }
 }
