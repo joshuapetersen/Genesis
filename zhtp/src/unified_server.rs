@@ -10,18 +10,10 @@
 //! - WiFi/Bluetooth protocols (server::protocols)
 //! - API handler registration (server::api_registration)
 
+// Import our direct memory stream
+use crate::server::memory_stream::SovereignMemoryStream;
 use std::sync::Arc;
-use std::net::SocketAddr;
 use tokio::sync::RwLock;
-// REMOVED: TCP/UDP no longer used - QUIC-only architecture
-// use tokio::net::{TcpListener, UdpSocket, TcpStream};
-use anyhow::{Result, Context};
-use tracing::{info, warn, error, debug};
-use uuid::Uuid;
-
-// Import from libraries (no circular dependencies!)
-use lib_protocols::zhtp::ZhtpRequestHandler;
-use lib_network::protocols::quic_mesh::QuicMeshProtocol;
 
 // Import new QUIC handler for native ZHTP-over-QUIC
 use crate::server::QuicHandler;
@@ -613,9 +605,16 @@ impl ZhtpUnifiedServer {
         Ok(())
     }
     
-    /// Start the unified server on port 9333
+    /// Start the unified server on the Bare-Metal Memory Stream (BMMS)
     pub async fn start(&mut self) -> Result<()> {
-        info!("Starting ZHTP Unified Server on port {}", self.port);
+        info!("[!] SOVEREIGN UNIFIED SERVER IGNITING ON BARE-METAL MEMORY STREAM");
+        info!("[!] FREQUENCY CALIBRATION: 1.0092703703703 HZ");
+
+        let memory_stream = Arc::new(SovereignMemoryStream::create());
+        let mut buffer = vec![0u8; 1024 * 1024]; // 1MB pulse window
+
+        // STEP 1: Apply network isolation to block internet access
+        info!(" Applying network isolation for ISP-free mesh operation...");
 
         // Initialize global mesh router provider for API handlers
         let mesh_router_arc = Arc::new(self.mesh_router.clone());

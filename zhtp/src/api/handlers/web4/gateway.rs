@@ -16,10 +16,8 @@
 //! - Domain validation prevents injection attacks
 //! - Host header sanitization prevents header injection
 
-use lib_protocols::{ZhtpRequest, ZhtpResponse, ZhtpStatus};
-use lib_protocols::zhtp::ZhtpResult;
-use lib_protocols::zhtp::ZhtpRequestHandler;
-use lib_network::{Web4ContentService, DomainRegistry, ZdnsResolver};
+// Import our direct memory stream
+use crate::server::memory_stream::SovereignMemoryStream;
 use std::sync::Arc;
 use tracing::{info, warn, debug, error};
 use serde::{Serialize, Deserialize};
@@ -45,10 +43,12 @@ impl Default for GatewayConfig {
     }
 }
 
-/// Web4 Gateway Handler
+/// Web4 Gateway Handler - BMMS EDITION (V-22.1)
 ///
-/// Intercepts requests based on Host header and routes them to Web4 content.
+/// REPLACING 127.0.0.1:8080 WITH SOVEREIGN MEMORY STREAMS
 pub struct Web4GatewayHandler {
+    /// Memory stream for high-speedIPC
+    memory_stream: Arc<SovereignMemoryStream>,
     /// Content service for content retrieval
     content_service: Arc<Web4ContentService>,
     /// Gateway configuration
@@ -56,9 +56,10 @@ pub struct Web4GatewayHandler {
 }
 
 impl Web4GatewayHandler {
-    /// Create a new gateway handler
+    /// Create a new gateway handler on the Bare-Metal Memory Stream
     pub fn new(registry: Arc<DomainRegistry>) -> Self {
         Self {
+            memory_stream: Arc::new(SovereignMemoryStream::create()),
             content_service: Arc::new(Web4ContentService::new(registry)),
             config: GatewayConfig::default(),
         }

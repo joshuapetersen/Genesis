@@ -1,6 +1,6 @@
 [package]
 name = "lib-identity"
-version = "0.1.0"
+version = "1.0.9271"
 edition = "2021"
 description = "ZHTP Identity Management - Zero-knowledge identity system with quantum-resistant cryptography and complete citizen onboarding"
 

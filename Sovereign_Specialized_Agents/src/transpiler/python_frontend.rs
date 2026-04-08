@@ -35,6 +35,8 @@ impl SovereignFrontend for PythonFrontend {
                 id: "GuardianKernel".to_string(),
                 logic_payload: source_code.as_bytes().to_vec(),
                 metadata: HashMap::new(),
+                resonance: 1.09277703703703,
+                children: Vec::new(),
             });
         }
         
@@ -45,6 +47,8 @@ impl SovereignFrontend for PythonFrontend {
                 id: "native_inference".to_string(),
                 logic_payload: source_code.as_bytes().to_vec(),
                 metadata: HashMap::new(),
+                resonance: 1.09277703703703,
+                children: Vec::new(),
             });
         }
 

@@ -225,8 +225,8 @@ impl Environment {
                 network_settings: NetworkSettings {
                     network_id: "lib-dev".to_string(),
                     bootstrap_peers: vec![
-                        "127.0.0.1:9333".to_string(),
-                        "localhost:9334".to_string(),
+                        "SOVEREIGN_CORE_MEMORY_ID".to_string(), // Was "127.0.0.1:9333"
+                        "SOVEREIGN_CORE_MEMORY_ID".to_string(), // Was "localhost:9334"
                         "192.168.1.245:9333".to_string(),
                     ],
                     max_peers: 10,
@@ -291,7 +291,7 @@ impl Environment {
                 network_settings: NetworkSettings {
                     network_id: "lib-testnet".to_string(),
                     bootstrap_peers: vec![
-                        "127.0.0.1:9333".to_string(),
+                        "SOVEREIGN_CORE_MEMORY_ID".to_string(), // Was "127.0.0.1:9333"
                         "192.168.1.245:9333".to_string(),
                     ],
                     max_peers: 50,
@@ -356,7 +356,7 @@ impl Environment {
                 network_settings: NetworkSettings {
                     network_id: "lib-mainnet".to_string(),
                     bootstrap_peers: vec![
-                        "127.0.0.1:9333".to_string(),
+                        "SOVEREIGN_CORE_MEMORY_ID".to_string(), // Was "127.0.0.1:9333"
                         "192.168.1.245:9333".to_string(),
                     ],
                     max_peers: 100,

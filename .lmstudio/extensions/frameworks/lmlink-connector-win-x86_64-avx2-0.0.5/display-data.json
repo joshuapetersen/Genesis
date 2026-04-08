@@ -1,0 +1,11 @@
+[
+  [
+    "en",
+    {
+      "langKey": "en",
+      "displayName": "LM Link Connector",
+      "description": "LM Link for cross-device secure inference",
+      "releaseNotes": []
+    }
+  ]
+]

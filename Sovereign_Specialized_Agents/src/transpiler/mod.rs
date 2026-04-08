@@ -8,6 +8,7 @@ pub mod python_frontend;
 pub mod worm;
 pub mod inference;
 pub mod synthesis_engine;
+pub mod dylan_bridge;
 
 pub use uir::{UirNode, UirNodeKind};
 pub use traits::{SovereignFrontend, SovereignBackend};

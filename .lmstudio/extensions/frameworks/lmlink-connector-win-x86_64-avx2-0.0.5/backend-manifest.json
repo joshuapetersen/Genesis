@@ -1,0 +1,19 @@
+{
+  "cpu": {
+    "architecture": "x86_64",
+    "instruction_set_extensions": [
+      "AVX2"
+    ]
+  },
+  "domains": [
+    "lmlinkConnector"
+  ],
+  "extension_type": "framework",
+  "framework": "lmlink-connector",
+  "manifest_version": "4",
+  "minimum_llmster_version": "0.0.3+1",
+  "minimum_lmstudio_version": "0.4.3+1",
+  "name": "lmlink-connector-win-x86_64-avx2",
+  "platform": "win",
+  "version": "0.0.5"
+}

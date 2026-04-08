@@ -1,0 +1,24 @@
+{
+  "globalPredictionConfig": {
+    "fields": []
+  },
+  "selectedConversation": "1774467567828.conversation.json",
+  "newChatConversationIdentifier": null,
+  "selectedConversationHistory": [
+    "1774368228801.conversation.json",
+    "1774467567828.conversation.json"
+  ],
+  "selectedConversationHistoryIndex": 1,
+  "selectedPredictionProcessorIdentifier": "lmstudio:simplePredictionProcessor",
+  "viewMode": "markdown",
+  "fontSize": "medium",
+  "fontWeight": "normal",
+  "conversationFontSizeIndex": 6,
+  "messageStyle": "bubble",
+  "selectedDirectory": "",
+  "expandedDirectories": [
+    "",
+    "1774368228801.conversation.json",
+    "1774467567828.conversation.json"
+  ]
+}

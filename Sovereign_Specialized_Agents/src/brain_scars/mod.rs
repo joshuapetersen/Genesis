@@ -135,4 +135,36 @@ impl BrainScarVault {
         }
         Err(anyhow!("Lattice full, cannot manifest scar"))
     }
+
+    /// DYLAN LOGIC INGESTION (V-135.0)
+    /// MISSION: D_LINEAGE_ALPHA Integration Strike
+    pub fn ingest_dylan_logic(&self, json_path: &str) -> Result<()> {
+        let content = fs::read_to_string(json_path)?;
+        let dylan_raw: serde_json::Value = serde_json::from_str(&content)?;
+        
+        println!("[ BRAIN_SCARS ] Ingesting Dylan Logic Handshake: {}", dylan_raw["System_Handshake"]);
+        
+        if let Some(modules) = dylan_raw["Unified_Modules"].as_object() {
+            for (key, module) in modules {
+                println!("[ BRAIN_SCARS ] Mapping Unified Module: {}", key);
+                let logic_fragment = LogicFragment {
+                    id: format!("DYLAN_{}", key),
+                    domain: "theory".to_string(),
+                    raw_logic: format!("{} | Gate: {} | Rhythm: {}", 
+                        module["Function"], module["Logic_Gate"], module["Rhythm"]),
+                    packed_weights: None,
+                    score: 0.992777037, // High-Precision Signature
+                    source: "DYLAN_JOSH_LINEAGE".to_string(),
+                    agent_id: Some("Dylan_Architect".to_string()),
+                    signer_id: Some("Dylan_Architect".to_string()),
+                    signature: None,
+                    sequence_id: 1,
+                    timestamp: std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH)?.as_secs(),
+                };
+                self.store_fragment(logic_fragment)?;
+            }
+        }
+        
+        Ok(())
+    }
 }

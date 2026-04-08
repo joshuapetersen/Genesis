@@ -1,0 +1,1782 @@
+{
+  "models": [
+    {
+      "domain": "llm",
+      "contextLength": 2048,
+      "indexedModelIdentifier": "pjh64/MobileLLM-350M-GGUF/MobileLLM-376M-Q8_0.gguf",
+      "displayName": "MobileLLM 376M",
+      "containingDirSubpath": "pjh64/MobileLLM-350M-GGUF",
+      "containingDirMtime": 1775064732953,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/models/pjh64/MobileLLM-350M-GGUF",
+      "sourceDirectoryType": "user",
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "llama",
+          "name": "MobileLLM-350M",
+          "embeddingLength": 960,
+          "numAttentionHeads": 15,
+          "numKeyValueHeads": 5,
+          "parameters": "350M",
+          "bosToken": "<s>",
+          "eosToken": "</s>",
+          "contextLength": 2048,
+          "numLayers": 32
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "MobileLLM-376M-Q8_0.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/pjh64/MobileLLM-350M-GGUF/MobileLLM-376M-Q8_0.gguf",
+          "relPath": "pjh64/MobileLLM-350M-GGUF/MobileLLM-376M-Q8_0.gguf",
+          "sizeBytes": 400504288,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/pjh64/MobileLLM-350M-GGUF",
+      "entryPoint": {
+        "filename": "MobileLLM-376M-Q8_0.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/pjh64/MobileLLM-350M-GGUF/MobileLLM-376M-Q8_0.gguf",
+        "relPath": "pjh64/MobileLLM-350M-GGUF/MobileLLM-376M-Q8_0.gguf",
+        "sizeBytes": 400504288,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": false,
+      "quant": {
+        "bits": 8,
+        "name": "Q8_0"
+      },
+      "arch": "llama",
+      "params": "350M",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "pjh64/MobileLLM-350M-GGUF/MobileLLM-376M-Q8_0.gguf",
+      "sizeBytes": 400504288,
+      "selfFiles": [
+        {
+          "filename": "MobileLLM-376M-Q8_0.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/pjh64/MobileLLM-350M-GGUF/MobileLLM-376M-Q8_0.gguf",
+          "relPath": "pjh64/MobileLLM-350M-GGUF/MobileLLM-376M-Q8_0.gguf",
+          "sizeBytes": 400504288,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "altIndexedModelIdentifier": "pjh64/MobileLLM-350M-GGUF",
+      "user": "pjh64",
+      "model": "MobileLLM-350M-GGUF",
+      "file": "MobileLLM-376M-Q8_0.gguf",
+      "defaultIdentifier": "mobilellm-350m",
+      "autoIdentifiers": [
+        "mobilellm-350m",
+        "pjh64/mobilellm-350m",
+        "mobilellm-350m@q8_0",
+        "pjh64/mobilellm-350m@q8_0",
+        "pjh64/mobilellm-350m-gguf/mobilellm-376m-q8_0.gguf",
+        "pjh64/mobilellm-350m-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q8_0",
+        "gguf-q8_0"
+      ]
+    },
+    {
+      "domain": "llm",
+      "contextLength": 32768,
+      "indexedModelIdentifier": "lmstudio-community/gemma-3-270m-it-GGUF/gemma-3-270m-it-Q8_0.gguf",
+      "displayName": "Gemma 3 270m Instruct",
+      "containingDirSubpath": "lmstudio-community/gemma-3-270m-it-GGUF",
+      "containingDirMtime": 1775064439876,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-270m-it-GGUF",
+      "sourceDirectoryType": "user",
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "gemma3",
+          "name": "Gemma 3 270m It",
+          "chatTemplate": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n",
+          "embeddingLength": 640,
+          "numAttentionHeads": 4,
+          "numKeyValueHeads": 1,
+          "parameters": "270M",
+          "bosToken": "<bos>",
+          "eosToken": "<eos>",
+          "contextLength": 32768,
+          "numLayers": 18
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "gemma-3-270m-it-Q8_0.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-270m-it-GGUF/gemma-3-270m-it-Q8_0.gguf",
+          "relPath": "lmstudio-community/gemma-3-270m-it-GGUF/gemma-3-270m-it-Q8_0.gguf",
+          "sizeBytes": 291545216,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-270m-it-GGUF",
+      "entryPoint": {
+        "filename": "gemma-3-270m-it-Q8_0.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-270m-it-GGUF/gemma-3-270m-it-Q8_0.gguf",
+        "relPath": "lmstudio-community/gemma-3-270m-it-GGUF/gemma-3-270m-it-Q8_0.gguf",
+        "sizeBytes": 291545216,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": false,
+      "quant": {
+        "bits": 8,
+        "name": "Q8_0"
+      },
+      "arch": "gemma3",
+      "params": "270M",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/gemma-3-270m-it-GGUF/gemma-3-270m-it-Q8_0.gguf",
+      "sizeBytes": 291545216,
+      "selfFiles": [
+        {
+          "filename": "gemma-3-270m-it-Q8_0.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-270m-it-GGUF/gemma-3-270m-it-Q8_0.gguf",
+          "relPath": "lmstudio-community/gemma-3-270m-it-GGUF/gemma-3-270m-it-Q8_0.gguf",
+          "sizeBytes": 291545216,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "altIndexedModelIdentifier": "lmstudio-community/gemma-3-270m-it-GGUF",
+      "user": "lmstudio-community",
+      "model": "gemma-3-270m-it-GGUF",
+      "file": "gemma-3-270m-it-Q8_0.gguf",
+      "defaultIdentifier": "gemma-3-270m-it",
+      "autoIdentifiers": [
+        "gemma-3-270m-it",
+        "lmstudio-community/gemma-3-270m-it",
+        "gemma-3-270m-it@q8_0",
+        "lmstudio-community/gemma-3-270m-it@q8_0",
+        "lmstudio-community/gemma-3-270m-it-gguf/gemma-3-270m-it-q8_0.gguf",
+        "lmstudio-community/gemma-3-270m-it-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q8_0",
+        "gguf-q8_0"
+      ]
+    },
+    {
+      "domain": "llm",
+      "contextLength": 2048,
+      "indexedModelIdentifier": "mradermacher/MobileLLM-125M-HF-GGUF/MobileLLM-125M-HF.Q8_0.gguf",
+      "displayName": "MobileLLM 125M HF",
+      "containingDirSubpath": "mradermacher/MobileLLM-125M-HF-GGUF",
+      "containingDirMtime": 1775064227099,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/models/mradermacher/MobileLLM-125M-HF-GGUF",
+      "sourceDirectoryType": "user",
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "llama",
+          "name": "MobileLLM 125M HF",
+          "embeddingLength": 576,
+          "numAttentionHeads": 9,
+          "numKeyValueHeads": 3,
+          "parameters": "125M",
+          "bosToken": "<s>",
+          "eosToken": "</s>",
+          "contextLength": 2048,
+          "numLayers": 30
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "MobileLLM-125M-HF.Q8_0.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/mradermacher/MobileLLM-125M-HF-GGUF/MobileLLM-125M-HF.Q8_0.gguf",
+          "relPath": "mradermacher/MobileLLM-125M-HF-GGUF/MobileLLM-125M-HF.Q8_0.gguf",
+          "sizeBytes": 133269216,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/mradermacher/MobileLLM-125M-HF-GGUF",
+      "entryPoint": {
+        "filename": "MobileLLM-125M-HF.Q8_0.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/mradermacher/MobileLLM-125M-HF-GGUF/MobileLLM-125M-HF.Q8_0.gguf",
+        "relPath": "mradermacher/MobileLLM-125M-HF-GGUF/MobileLLM-125M-HF.Q8_0.gguf",
+        "sizeBytes": 133269216,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": false,
+      "quant": {
+        "bits": 8,
+        "name": "Q8_0"
+      },
+      "arch": "llama",
+      "params": "125M",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "mradermacher/MobileLLM-125M-HF-GGUF/MobileLLM-125M-HF.Q8_0.gguf",
+      "sizeBytes": 133269216,
+      "selfFiles": [
+        {
+          "filename": "MobileLLM-125M-HF.Q8_0.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/mradermacher/MobileLLM-125M-HF-GGUF/MobileLLM-125M-HF.Q8_0.gguf",
+          "relPath": "mradermacher/MobileLLM-125M-HF-GGUF/MobileLLM-125M-HF.Q8_0.gguf",
+          "sizeBytes": 133269216,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "altIndexedModelIdentifier": "mradermacher/MobileLLM-125M-HF-GGUF",
+      "user": "mradermacher",
+      "model": "MobileLLM-125M-HF-GGUF",
+      "file": "MobileLLM-125M-HF.Q8_0.gguf",
+      "defaultIdentifier": "mobilellm-125m-hf",
+      "autoIdentifiers": [
+        "mobilellm-125m-hf",
+        "mradermacher/mobilellm-125m-hf",
+        "mobilellm-125m-hf@q8_0",
+        "mradermacher/mobilellm-125m-hf@q8_0",
+        "mradermacher/mobilellm-125m-hf-gguf/mobilellm-125m-hf.q8_0.gguf",
+        "mradermacher/mobilellm-125m-hf-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q8_0",
+        "gguf-q8_0"
+      ]
+    },
+    {
+      "domain": "llm",
+      "contextLength": 262144,
+      "indexedModelIdentifier": "qwen/qwen3.5-9b@lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+      "displayName": "Qwen3.5 9B",
+      "containingDirSubpath": "qwen/qwen3.5-9b",
+      "containingDirMtime": 1774449645754,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b",
+      "sourceDirectoryType": "hub",
+      "revision": 2,
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "qwen35",
+          "name": "Qwen_Qwen3.5 9B",
+          "chatTemplate": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for item in content %}\n            {%- if 'image' in item or 'image_url' in item or item.type == 'image' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain images.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set image_count.value = image_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Picture ' ~ image_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|image_pad|><|vision_end|>' }}\n            {%- elif 'video' in item or item.type == 'video' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain videos.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set video_count.value = video_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Video ' ~ video_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|video_pad|><|vision_end|>' }}\n            {%- elif 'text' in item %}\n                {{- item.text }}\n            {%- else %}\n                {{- raise_exception('Unexpected item type in content.') }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif content is none or content is undefined %}\n        {{- '' }}\n    {%- else %}\n        {{- raise_exception('Unexpected content type.') }}\n    {%- endif %}\n{%- endmacro %}\n{%- if not messages %}\n    {{- raise_exception('No messages provided.') }}\n{%- endif %}\n{%- if tools and tools is iterable and tools is not mapping %}\n    {{- '<|im_start|>system\\n' }}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {%- if content %}\n            {{- '\\n\\n' + content }}\n        {%- endif %}\n    {%- endif %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {{- '<|im_start|>system\\n' + content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" %}\n        {%- set content = render_content(message.content, false)|trim %}\n        {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n            {%- set ns.multi_step_tool = false %}\n            {%- set ns.last_query_index = index %}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if ns.multi_step_tool %}\n    {{- raise_exception('No user query found in messages.') }}\n{%- endif %}\n{%- for message in messages %}\n    {%- set content = render_content(message.content, true)|trim %}\n    {%- if message.role == \"system\" %}\n        {%- if not loop.first %}\n            {{- raise_exception('System message must be at the beginning.') }}\n        {%- endif %}\n    {%- elif message.role == \"user\" %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- set reasoning_content = reasoning_content|trim %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content + '\\n</think>\\n\\n' + content }}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls and message.tool_calls is iterable and message.tool_calls is not mapping %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if tool_call.function is defined %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {%- if loop.first %}\n                    {%- if content|trim %}\n                        {{- '\\n\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- else %}\n                        {{- '<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- endif %}\n                {%- else %}\n                    {{- '\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                {%- endif %}\n                {%- if tool_call.arguments is defined %}\n                    {%- for args_name, args_value in tool_call.arguments|items %}\n                        {{- '<parameter=' + args_name + '>\\n' }}\n                        {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}\n                        {{- args_value }}\n                        {{- '\\n</parameter>\\n' }}\n                    {%- endfor %}\n                {%- endif %}\n                {{- '</function>\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- raise_exception('Unexpected message role.') }}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- else %}\n        {{- '<think>\\n' }}\n    {%- endif %}\n{%- endif %}",
+          "embeddingLength": 4096,
+          "numAttentionHeads": 16,
+          "numKeyValueHeads": 4,
+          "parameters": "9B",
+          "eosToken": "<|im_end|>",
+          "contextLength": 262144,
+          "numLayers": 32
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/manifest.json",
+          "relPath": "qwen/qwen3.5-9b/manifest.json",
+          "sizeBytes": 402,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/model.yaml",
+          "relPath": "qwen/qwen3.5-9b/model.yaml",
+          "sizeBytes": 1369,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/README.md",
+          "relPath": "qwen/qwen3.5-9b/README.md",
+          "sizeBytes": 884,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/thumbnail.png",
+          "relPath": "qwen/qwen3.5-9b/thumbnail.png",
+          "sizeBytes": 175626,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF",
+      "entryPoint": {
+        "filename": "Qwen3.5-9B-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+        "sizeBytes": 5627044256,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "visionAdapter": {
+        "filename": "mmproj-Qwen3.5-9B-BF16.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+        "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+        "sizeBytes": 921704480,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": true,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "qwen35",
+      "params": "9B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+      "sizeBytes": 6548927017,
+      "selfFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/manifest.json",
+          "relPath": "qwen/qwen3.5-9b/manifest.json",
+          "sizeBytes": 402,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/model.yaml",
+          "relPath": "qwen/qwen3.5-9b/model.yaml",
+          "sizeBytes": 1369,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/README.md",
+          "relPath": "qwen/qwen3.5-9b/README.md",
+          "sizeBytes": 884,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/thumbnail.png",
+          "relPath": "qwen/qwen3.5-9b/thumbnail.png",
+          "sizeBytes": 175626,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "user": "qwen",
+      "model": "qwen3.5-9b",
+      "defaultIdentifier": "qwen/qwen3.5-9b@q4_k_m",
+      "autoIdentifiers": [
+        "qwen/qwen3.5-9b@q4_k_m",
+        "qwen/qwen3.5-9b@gguf-q4_k_m",
+        "qwen/qwen3.5-9b@qwen3.5-9b",
+        "qwen/qwen3.5-9b@lmstudio-community/qwen3.5-9b",
+        "qwen/qwen3.5-9b@qwen3.5-9b:q4_k_m",
+        "qwen/qwen3.5-9b@lmstudio-community/qwen3.5-9b:q4_k_m",
+        "qwen/qwen3.5-9b@lmstudio-community/qwen3.5-9b-gguf/qwen3.5-9b-q4_k_m.gguf",
+        "qwen/qwen3.5-9b@lmstudio-community/qwen3.5-9b-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ],
+      "virtual": {
+        "isAlt": true,
+        "baseChain": [
+          "qwen/qwen3.5-9b",
+          "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf"
+        ],
+        "manifestAbsPath": "C:\\Users\\drago\\.lmstudio\\hub\\models\\qwen\\qwen3.5-9b\\model.yaml",
+        "customFieldConfigBaseKey": "ext.virtualModel.customField.qwen.qwen3.59b.",
+        "customFieldDefinitions": [
+          {
+            "key": "ext.virtualModel.customField.qwen.qwen3.59b.enableThinking",
+            "displayName": "Enable Thinking",
+            "description": "Controls whether the model will think before replying",
+            "type": "boolean",
+            "defaultValue": true,
+            "effects": [
+              {
+                "type": "setJinjaVariable",
+                "variable": "enable_thinking"
+              }
+            ]
+          }
+        ],
+        "suggestions": [],
+        "concreteModelOptions": [
+          "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf"
+        ],
+        "concreteModelIndexedModelIdentifier": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+        "metadataOverridesParamsStrings": [
+          "9B"
+        ],
+        "metadataOverridesReasoning": true
+      }
+    },
+    {
+      "domain": "llm",
+      "contextLength": 262144,
+      "indexedModelIdentifier": "qwen/qwen3.5-9b",
+      "displayName": "Qwen3.5 9B",
+      "containingDirSubpath": "qwen/qwen3.5-9b",
+      "containingDirMtime": 1774449645754,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b",
+      "sourceDirectoryType": "hub",
+      "revision": 2,
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "qwen35",
+          "name": "Qwen_Qwen3.5 9B",
+          "chatTemplate": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for item in content %}\n            {%- if 'image' in item or 'image_url' in item or item.type == 'image' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain images.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set image_count.value = image_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Picture ' ~ image_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|image_pad|><|vision_end|>' }}\n            {%- elif 'video' in item or item.type == 'video' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain videos.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set video_count.value = video_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Video ' ~ video_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|video_pad|><|vision_end|>' }}\n            {%- elif 'text' in item %}\n                {{- item.text }}\n            {%- else %}\n                {{- raise_exception('Unexpected item type in content.') }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif content is none or content is undefined %}\n        {{- '' }}\n    {%- else %}\n        {{- raise_exception('Unexpected content type.') }}\n    {%- endif %}\n{%- endmacro %}\n{%- if not messages %}\n    {{- raise_exception('No messages provided.') }}\n{%- endif %}\n{%- if tools and tools is iterable and tools is not mapping %}\n    {{- '<|im_start|>system\\n' }}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {%- if content %}\n            {{- '\\n\\n' + content }}\n        {%- endif %}\n    {%- endif %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {{- '<|im_start|>system\\n' + content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" %}\n        {%- set content = render_content(message.content, false)|trim %}\n        {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n            {%- set ns.multi_step_tool = false %}\n            {%- set ns.last_query_index = index %}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if ns.multi_step_tool %}\n    {{- raise_exception('No user query found in messages.') }}\n{%- endif %}\n{%- for message in messages %}\n    {%- set content = render_content(message.content, true)|trim %}\n    {%- if message.role == \"system\" %}\n        {%- if not loop.first %}\n            {{- raise_exception('System message must be at the beginning.') }}\n        {%- endif %}\n    {%- elif message.role == \"user\" %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- set reasoning_content = reasoning_content|trim %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content + '\\n</think>\\n\\n' + content }}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls and message.tool_calls is iterable and message.tool_calls is not mapping %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if tool_call.function is defined %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {%- if loop.first %}\n                    {%- if content|trim %}\n                        {{- '\\n\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- else %}\n                        {{- '<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- endif %}\n                {%- else %}\n                    {{- '\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                {%- endif %}\n                {%- if tool_call.arguments is defined %}\n                    {%- for args_name, args_value in tool_call.arguments|items %}\n                        {{- '<parameter=' + args_name + '>\\n' }}\n                        {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}\n                        {{- args_value }}\n                        {{- '\\n</parameter>\\n' }}\n                    {%- endfor %}\n                {%- endif %}\n                {{- '</function>\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- raise_exception('Unexpected message role.') }}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- else %}\n        {{- '<think>\\n' }}\n    {%- endif %}\n{%- endif %}",
+          "embeddingLength": 4096,
+          "numAttentionHeads": 16,
+          "numKeyValueHeads": 4,
+          "parameters": "9B",
+          "eosToken": "<|im_end|>",
+          "contextLength": 262144,
+          "numLayers": 32
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/manifest.json",
+          "relPath": "qwen/qwen3.5-9b/manifest.json",
+          "sizeBytes": 402,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/model.yaml",
+          "relPath": "qwen/qwen3.5-9b/model.yaml",
+          "sizeBytes": 1369,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/README.md",
+          "relPath": "qwen/qwen3.5-9b/README.md",
+          "sizeBytes": 884,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/thumbnail.png",
+          "relPath": "qwen/qwen3.5-9b/thumbnail.png",
+          "sizeBytes": 175626,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF",
+      "entryPoint": {
+        "filename": "Qwen3.5-9B-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+        "sizeBytes": 5627044256,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "visionAdapter": {
+        "filename": "mmproj-Qwen3.5-9B-BF16.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+        "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+        "sizeBytes": 921704480,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": true,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "qwen35",
+      "params": "9B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+      "sizeBytes": 6548927017,
+      "selfFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/manifest.json",
+          "relPath": "qwen/qwen3.5-9b/manifest.json",
+          "sizeBytes": 402,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/model.yaml",
+          "relPath": "qwen/qwen3.5-9b/model.yaml",
+          "sizeBytes": 1369,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/README.md",
+          "relPath": "qwen/qwen3.5-9b/README.md",
+          "sizeBytes": 884,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/qwen/qwen3.5-9b/thumbnail.png",
+          "relPath": "qwen/qwen3.5-9b/thumbnail.png",
+          "sizeBytes": 175626,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "user": "qwen",
+      "model": "qwen3.5-9b",
+      "defaultIdentifier": "qwen/qwen3.5-9b",
+      "autoIdentifiers": [
+        "qwen/qwen3.5-9b"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ],
+      "virtual": {
+        "isAlt": false,
+        "alts": [
+          {
+            "virtualModelIndexedModelIdentifier": "qwen/qwen3.5-9b@lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+            "virtualModelDefaultIdentifier": "qwen/qwen3.5-9b@q4_k_m",
+            "concreteModelIndexedModelIdentifier": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf"
+          }
+        ],
+        "baseChain": [
+          "qwen/qwen3.5-9b",
+          "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf"
+        ],
+        "manifestAbsPath": "C:\\Users\\drago\\.lmstudio\\hub\\models\\qwen\\qwen3.5-9b\\model.yaml",
+        "customFieldConfigBaseKey": "ext.virtualModel.customField.qwen.qwen3.59b.",
+        "customFieldDefinitions": [
+          {
+            "key": "ext.virtualModel.customField.qwen.qwen3.59b.enableThinking",
+            "displayName": "Enable Thinking",
+            "description": "Controls whether the model will think before replying",
+            "type": "boolean",
+            "defaultValue": true,
+            "effects": [
+              {
+                "type": "setJinjaVariable",
+                "variable": "enable_thinking"
+              }
+            ]
+          }
+        ],
+        "suggestions": [],
+        "concreteModelOptions": [
+          "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf"
+        ],
+        "concreteModelIndexedModelIdentifier": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+        "metadataOverridesParamsStrings": [
+          "9B"
+        ],
+        "metadataOverridesReasoning": true
+      }
+    },
+    {
+      "domain": "llm",
+      "contextLength": 262144,
+      "indexedModelIdentifier": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+      "displayName": "Qwen3.5 9B",
+      "containingDirSubpath": "lmstudio-community/Qwen3.5-9B-GGUF",
+      "containingDirMtime": 1774449645659,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF",
+      "sourceDirectoryType": "user",
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "qwen35",
+          "name": "Qwen_Qwen3.5 9B",
+          "chatTemplate": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for item in content %}\n            {%- if 'image' in item or 'image_url' in item or item.type == 'image' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain images.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set image_count.value = image_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Picture ' ~ image_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|image_pad|><|vision_end|>' }}\n            {%- elif 'video' in item or item.type == 'video' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain videos.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set video_count.value = video_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Video ' ~ video_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|video_pad|><|vision_end|>' }}\n            {%- elif 'text' in item %}\n                {{- item.text }}\n            {%- else %}\n                {{- raise_exception('Unexpected item type in content.') }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif content is none or content is undefined %}\n        {{- '' }}\n    {%- else %}\n        {{- raise_exception('Unexpected content type.') }}\n    {%- endif %}\n{%- endmacro %}\n{%- if not messages %}\n    {{- raise_exception('No messages provided.') }}\n{%- endif %}\n{%- if tools and tools is iterable and tools is not mapping %}\n    {{- '<|im_start|>system\\n' }}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {%- if content %}\n            {{- '\\n\\n' + content }}\n        {%- endif %}\n    {%- endif %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {{- '<|im_start|>system\\n' + content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" %}\n        {%- set content = render_content(message.content, false)|trim %}\n        {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n            {%- set ns.multi_step_tool = false %}\n            {%- set ns.last_query_index = index %}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if ns.multi_step_tool %}\n    {{- raise_exception('No user query found in messages.') }}\n{%- endif %}\n{%- for message in messages %}\n    {%- set content = render_content(message.content, true)|trim %}\n    {%- if message.role == \"system\" %}\n        {%- if not loop.first %}\n            {{- raise_exception('System message must be at the beginning.') }}\n        {%- endif %}\n    {%- elif message.role == \"user\" %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- set reasoning_content = reasoning_content|trim %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content + '\\n</think>\\n\\n' + content }}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls and message.tool_calls is iterable and message.tool_calls is not mapping %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if tool_call.function is defined %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {%- if loop.first %}\n                    {%- if content|trim %}\n                        {{- '\\n\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- else %}\n                        {{- '<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- endif %}\n                {%- else %}\n                    {{- '\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                {%- endif %}\n                {%- if tool_call.arguments is defined %}\n                    {%- for args_name, args_value in tool_call.arguments|items %}\n                        {{- '<parameter=' + args_name + '>\\n' }}\n                        {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}\n                        {{- args_value }}\n                        {{- '\\n</parameter>\\n' }}\n                    {%- endfor %}\n                {%- endif %}\n                {{- '</function>\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- raise_exception('Unexpected message role.') }}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- else %}\n        {{- '<think>\\n' }}\n    {%- endif %}\n{%- endif %}",
+          "embeddingLength": 4096,
+          "numAttentionHeads": 16,
+          "numKeyValueHeads": 4,
+          "parameters": "9B",
+          "eosToken": "<|im_end|>",
+          "contextLength": 262144,
+          "numLayers": 32
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "Qwen3.5-9B-Q4_K_M.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+          "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+          "sizeBytes": 5627044256,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        },
+        {
+          "filename": "mmproj-Qwen3.5-9B-BF16.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+          "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+          "sizeBytes": 921704480,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF",
+      "entryPoint": {
+        "filename": "Qwen3.5-9B-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+        "sizeBytes": 5627044256,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "visionAdapter": {
+        "filename": "mmproj-Qwen3.5-9B-BF16.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+        "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+        "sizeBytes": 921704480,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": true,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "qwen35",
+      "params": "9B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+      "sizeBytes": 6548748736,
+      "selfFiles": [
+        {
+          "filename": "Qwen3.5-9B-Q4_K_M.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+          "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+          "sizeBytes": 5627044256,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        },
+        {
+          "filename": "mmproj-Qwen3.5-9B-BF16.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+          "relPath": "lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+          "sizeBytes": 921704480,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "altIndexedModelIdentifier": "lmstudio-community/Qwen3.5-9B-GGUF",
+      "user": "lmstudio-community",
+      "model": "Qwen3.5-9B-GGUF",
+      "file": "Qwen3.5-9B-Q4_K_M.gguf",
+      "defaultIdentifier": "qwen3.5-9b",
+      "autoIdentifiers": [
+        "qwen3.5-9b",
+        "lmstudio-community/qwen3.5-9b",
+        "qwen3.5-9b@q4_k_m",
+        "lmstudio-community/qwen3.5-9b@q4_k_m",
+        "lmstudio-community/qwen3.5-9b-gguf/qwen3.5-9b-q4_k_m.gguf",
+        "lmstudio-community/qwen3.5-9b-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ]
+    },
+    {
+      "domain": "llm",
+      "contextLength": 1048576,
+      "indexedModelIdentifier": "nvidia/nemotron-3-nano-4b@lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+      "displayName": "Nemotron 3 Nano 4B",
+      "containingDirSubpath": "nvidia/nemotron-3-nano-4b",
+      "containingDirMtime": 1774448998399,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b",
+      "sourceDirectoryType": "hub",
+      "revision": 1,
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "nemotron_h",
+          "name": "Lmstudio Community_Nn",
+          "chatTemplate": "{% macro render_extra_keys(json_dict, handled_keys) %}\n    {%- if json_dict is mapping %}\n        {%- for json_key in json_dict if json_key not in handled_keys %}\n            {%- if json_dict[json_key] is mapping or (json_dict[json_key] is sequence and json_dict[json_key] is not string) %}\n                {{- '\\n<' ~ json_key ~ '>' ~ (json_dict[json_key] | tojson | safe) ~ '</' ~ json_key ~ '>' }}\n            {%- else %}\n                {{-'\\n<' ~ json_key ~ '>' ~ (json_dict[json_key] | string) ~ '</' ~ json_key ~ '>' }}\n            {%- endif %}\n        {%- endfor %}\n    {%- endif %}\n{% endmacro %}\n{%- set enable_thinking = enable_thinking if enable_thinking is defined else True %}\n{%- set truncate_history_thinking = truncate_history_thinking if truncate_history_thinking is defined else True %}\n\n{%- set ns = namespace(last_user_idx = -1) %}\n{%- set loop_messages = messages %}\n{%- for m in loop_messages %}\n  {%- if m[\"role\"] == \"user\" %}\n    {%- set ns.last_user_idx = loop.index0 %}\n  {%- endif %}\n{%- endfor %}\n\n{%- if messages[0][\"role\"] == \"system\" %}\n    {%- set system_message = messages[0][\"content\"] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set system_message = \"\" %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n{%- if not tools is defined %}\n    {%- set tools = [] %}\n{%- endif %}\n{# Recompute last_user_idx relative to loop_messages after handling system #}\n{%- set ns = namespace(last_user_idx = -1) %}\n{%- for m in loop_messages %}\n  {%- if m[\"role\"] == \"user\" %}\n    {%- set ns.last_user_idx = loop.index0 %}\n  {%- endif %}\n{%- endfor %}\n{%- if system_message is defined %}\n    {{- \"<|im_start|>system\\n\" + system_message }}\n{%- else %}\n    {%- if tools is iterable and tools | length > 0 %}\n        {{- \"<|im_start|>system\\n\" }}\n    {%- endif %}\n{%- endif %}\n{%- if tools is iterable and tools | length > 0 %}\n    {%- if system_message is defined and system_message | length > 0 %}\n        {{- \"\\n\\n\" }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n\" }}\n    {{- \"<tools>\" }}\n    {%- for tool in tools %}\n        {%- if tool.function is defined %}\n            {%- set tool = tool.function %}\n        {%- endif %}\n        {{- \"\\n<function>\\n<name>\" ~ tool.name ~ \"</name>\" }}\n        {%- if tool.description is defined %}\n            {{- '\\n<description>' ~ (tool.description | trim) ~ '</description>' }}\n        {%- endif %}\n        {{- '\\n<parameters>' }}\n        {%- if tool.parameters is defined and tool.parameters is mapping and tool.parameters.properties is defined and tool.parameters.properties is mapping %}\n            {%- for param_name, param_fields in tool.parameters.properties|items %}\n                {{- '\\n<parameter>' }}\n                {{- '\\n<name>' ~ param_name ~ '</name>' }}\n                {%- if param_fields.type is defined %}\n                    {{- '\\n<type>' ~ (param_fields.type | string) ~ '</type>' }}\n                {%- endif %}\n                {%- if param_fields.description is defined %}\n                    {{- '\\n<description>' ~ (param_fields.description | trim) ~ '</description>' }}\n                {%- endif %}\n                {%- if param_fields.enum is defined %}\n                    {{- '\\n<enum>' ~ (param_fields.enum | tojson | safe) ~ '</enum>' }}\n                {%- endif %}\n                {%- set handled_keys = ['name', 'type', 'description', 'enum'] %}\n                {{- render_extra_keys(param_fields, handled_keys) }}\n                {{- '\\n</parameter>' }}\n            {%- endfor %}\n        {%- endif %}\n        {% set handled_keys = ['type', 'properties', 'required'] %}\n        {{- render_extra_keys(tool.parameters, handled_keys) }}\n        {%- if tool.parameters is defined and tool.parameters.required is defined %}\n            {{- '\\n<required>' ~ (tool.parameters.required | tojson | safe) ~ '</required>' }}\n        {%- endif %}\n        {{- '\\n</parameters>' }}\n        {%- set handled_keys = ['type', 'name', 'description', 'parameters'] %}\n        {{- render_extra_keys(tool, handled_keys) }}\n        {{- '\\n</function>' }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n{%- endif %}\n\n\n{%- if system_message is defined %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if tools is iterable and tools | length > 0 %}\n        {{- '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n\n{%- for message in loop_messages %}\n    {%- if message.role == \"assistant\" %}\n        {# Add reasoning content in to content field for unified processing below. #}\n        {%- if message.reasoning_content is defined and message.reasoning_content is string and message.reasoning_content | trim | length > 0 %}\n            {%- set content = \"<think>\\n\" ~ message.reasoning_content ~ \"\\n</think>\\n\" ~ (message.content | default('', true)) %}\n        {%- else %}\n            {%- set content = message.content | default('', true) %}\n            {%- if content is string -%}\n                {# Allow downstream logic to to take care of broken thought, only handle coherent reasoning here. #}\n                {%- if '<think>' not in content and '</think>' not in content -%}\n                    {%- set content = \"<think></think>\" ~ content -%}\n                {%- endif -%}\n            {%- else -%}\n                {%- set content = content -%}\n            {%- endif -%}\n        {%- endif %}\n        {%- if message.tool_calls is defined and message.tool_calls is iterable and message.tool_calls | length > 0 %}\n            {# Assistant message has tool calls. #}\n            {{- '<|im_start|>assistant\\n' }}\n                {%- set include_content = not (truncate_history_thinking and loop.index0 < ns.last_user_idx) %}\n                {%- if content is string and content | trim | length > 0 %}\n                    {%- if include_content %}\n                        {{- (content | trim) ~ '\\n' -}}\n                    {%- else %}\n                        {%- set c = (content | string) %}\n                        {%- if '</think>' in c %}\n                            {# Keep only content after the last closing think. Also generation prompt causes this. #}\n                            {%- set c = c.split('</think>')[-1] %}\n                        {%- elif '<think>' in c %}\n                            {# If <think> was opened but never closed, drop the trailing think segment #}\n                            {%- set c = c.split('<think>')[0] %}\n                        {%- endif %}\n                        {%- set c = \"<think></think>\" ~ c | trim %}\n                        {%- if c | length > 0 %}\n                            {{- c ~ '\\n' -}}\n                        {%- endif %}\n                    {%- endif %}\n                {%- else %}\n                    {{- \"<think></think>\" -}}\n                {%- endif %}\n                {%- for tool_call in message.tool_calls %}\n                    {%- if tool_call.function is defined %}\n                        {%- set tool_call = tool_call.function %}\n                    {%- endif %}\n                    {{- '<tool_call>\\n<function=' ~ tool_call.name ~ '>\\n' -}}\n                        {%- if tool_call.arguments is defined %}\n                            {%- for args_name, args_value in tool_call.arguments|items %}\n                                {{- '<parameter=' ~ args_name ~ '>\\n' -}}\n                                    {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}\n                                {{- args_value ~ '\\n</parameter>\\n' -}}\n                            {%- endfor %}\n                        {%- endif %}\n                    {{- '</function>\\n</tool_call>\\n' -}}\n                {%- endfor %}\n                {{- '<|im_end|>\\n' }}\n        {%- else %}\n            {# Assistant message doesn't have tool calls. #}\n            {%- if not (truncate_history_thinking and loop.index0 < ns.last_user_idx) %}\n                {{- '<|im_start|>assistant\\n' ~ (content | default('', true) | string | trim) ~ '<|im_end|>\\n' }}\n            {%- else %}\n                {%- set c = (content | default('', true) | string) %}\n                {%- if '<think>' in c and '</think>' in c %}\n                    {%- set c = \"<think></think>\" ~ c.split('</think>')[-1] %}\n                {%- endif %}\n                {%- set c = c | trim %}\n                {%- if c | length > 0 %}\n                    {{- '<|im_start|>assistant\\n' ~ c ~ '<|im_end|>\\n' }}\n                {%- else %}\n                    {{- '<|im_start|>assistant\\n<|im_end|>\\n' }}\n                {%- endif %}\n            {%- endif %}\n        {%- endif %}\n    {%- elif message.role == \"user\" or message.role == \"system\" %}\n        {{- '<|im_start|>' + message.role + '\\n' }}\n        {%- set content = message.content | string %}\n        {{- content }}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user\\n' }}\n        {%- endif %}\n        {{- '<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>\\n' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endfor %}\n\n{%- if add_generation_prompt %}\n    {%- if enable_thinking %}\n        {{- '<|im_start|>assistant\\n<think>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>assistant\\n<think></think>' }}\n    {%- endif %}\n{%- endif %}\n",
+          "embeddingLength": 3136,
+          "numAttentionHeads": 40,
+          "numKeyValueHeads": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "parameters": "4.0B",
+          "bosToken": "<s>",
+          "eosToken": "<|im_end|>",
+          "contextLength": 1048576,
+          "numLayers": 42
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/manifest.json",
+          "relPath": "nvidia/nemotron-3-nano-4b/manifest.json",
+          "sizeBytes": 442,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/model.yaml",
+          "relPath": "nvidia/nemotron-3-nano-4b/model.yaml",
+          "sizeBytes": 1144,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/README.md",
+          "relPath": "nvidia/nemotron-3-nano-4b/README.md",
+          "sizeBytes": 640,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/thumbnail.png",
+          "relPath": "nvidia/nemotron-3-nano-4b/thumbnail.png",
+          "sizeBytes": 98387,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF",
+      "entryPoint": {
+        "filename": "NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "sizeBytes": 2837072896,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": true,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "nemotron_h",
+      "params": "4.0B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+      "sizeBytes": 2837173509,
+      "selfFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/manifest.json",
+          "relPath": "nvidia/nemotron-3-nano-4b/manifest.json",
+          "sizeBytes": 442,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/model.yaml",
+          "relPath": "nvidia/nemotron-3-nano-4b/model.yaml",
+          "sizeBytes": 1144,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/README.md",
+          "relPath": "nvidia/nemotron-3-nano-4b/README.md",
+          "sizeBytes": 640,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/thumbnail.png",
+          "relPath": "nvidia/nemotron-3-nano-4b/thumbnail.png",
+          "sizeBytes": 98387,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "user": "nvidia",
+      "model": "nemotron-3-nano-4b",
+      "defaultIdentifier": "nvidia/nemotron-3-nano-4b@q4_k_m",
+      "autoIdentifiers": [
+        "nvidia/nemotron-3-nano-4b@q4_k_m",
+        "nvidia/nemotron-3-nano-4b@gguf-q4_k_m",
+        "nvidia/nemotron-3-nano-4b@nvidia-nemotron-3-nano-4b",
+        "nvidia/nemotron-3-nano-4b@lmstudio-community/nvidia-nemotron-3-nano-4b",
+        "nvidia/nemotron-3-nano-4b@nvidia-nemotron-3-nano-4b:q4_k_m",
+        "nvidia/nemotron-3-nano-4b@lmstudio-community/nvidia-nemotron-3-nano-4b:q4_k_m",
+        "nvidia/nemotron-3-nano-4b@lmstudio-community/nvidia-nemotron-3-nano-4b-gguf/nvidia-nemotron-3-nano-4b-q4_k_m.gguf",
+        "nvidia/nemotron-3-nano-4b@lmstudio-community/nvidia-nemotron-3-nano-4b-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ],
+      "virtual": {
+        "isAlt": true,
+        "baseChain": [
+          "nvidia/nemotron-3-nano-4b",
+          "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf"
+        ],
+        "manifestAbsPath": "C:\\Users\\drago\\.lmstudio\\hub\\models\\nvidia\\nemotron-3-nano-4b\\model.yaml",
+        "customFieldConfigBaseKey": "ext.virtualModel.customField.nvidia.nemotron3Nano4b.",
+        "customFieldDefinitions": [
+          {
+            "key": "ext.virtualModel.customField.nvidia.nemotron3Nano4b.enableThinking",
+            "displayName": "Enable Thinking",
+            "description": "Controls whether the model will think before replying",
+            "type": "boolean",
+            "defaultValue": true,
+            "effects": [
+              {
+                "type": "setJinjaVariable",
+                "variable": "enable_thinking"
+              }
+            ]
+          },
+          {
+            "key": "ext.virtualModel.customField.nvidia.nemotron3Nano4b.truncateThinkingHistory",
+            "displayName": "Truncate Thinking History",
+            "description": "Controls whether thinking history will be truncated to save context space",
+            "type": "boolean",
+            "defaultValue": true,
+            "effects": [
+              {
+                "type": "setJinjaVariable",
+                "variable": "truncate_history_thinking"
+              }
+            ]
+          }
+        ],
+        "suggestions": [],
+        "concreteModelOptions": [
+          "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf"
+        ],
+        "concreteModelIndexedModelIdentifier": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "metadataOverridesParamsStrings": [
+          "4B"
+        ],
+        "metadataOverridesReasoning": true
+      }
+    },
+    {
+      "domain": "llm",
+      "contextLength": 1048576,
+      "indexedModelIdentifier": "nvidia/nemotron-3-nano-4b",
+      "displayName": "Nemotron 3 Nano 4B",
+      "containingDirSubpath": "nvidia/nemotron-3-nano-4b",
+      "containingDirMtime": 1774448998399,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b",
+      "sourceDirectoryType": "hub",
+      "revision": 1,
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "nemotron_h",
+          "name": "Lmstudio Community_Nn",
+          "chatTemplate": "{% macro render_extra_keys(json_dict, handled_keys) %}\n    {%- if json_dict is mapping %}\n        {%- for json_key in json_dict if json_key not in handled_keys %}\n            {%- if json_dict[json_key] is mapping or (json_dict[json_key] is sequence and json_dict[json_key] is not string) %}\n                {{- '\\n<' ~ json_key ~ '>' ~ (json_dict[json_key] | tojson | safe) ~ '</' ~ json_key ~ '>' }}\n            {%- else %}\n                {{-'\\n<' ~ json_key ~ '>' ~ (json_dict[json_key] | string) ~ '</' ~ json_key ~ '>' }}\n            {%- endif %}\n        {%- endfor %}\n    {%- endif %}\n{% endmacro %}\n{%- set enable_thinking = enable_thinking if enable_thinking is defined else True %}\n{%- set truncate_history_thinking = truncate_history_thinking if truncate_history_thinking is defined else True %}\n\n{%- set ns = namespace(last_user_idx = -1) %}\n{%- set loop_messages = messages %}\n{%- for m in loop_messages %}\n  {%- if m[\"role\"] == \"user\" %}\n    {%- set ns.last_user_idx = loop.index0 %}\n  {%- endif %}\n{%- endfor %}\n\n{%- if messages[0][\"role\"] == \"system\" %}\n    {%- set system_message = messages[0][\"content\"] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set system_message = \"\" %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n{%- if not tools is defined %}\n    {%- set tools = [] %}\n{%- endif %}\n{# Recompute last_user_idx relative to loop_messages after handling system #}\n{%- set ns = namespace(last_user_idx = -1) %}\n{%- for m in loop_messages %}\n  {%- if m[\"role\"] == \"user\" %}\n    {%- set ns.last_user_idx = loop.index0 %}\n  {%- endif %}\n{%- endfor %}\n{%- if system_message is defined %}\n    {{- \"<|im_start|>system\\n\" + system_message }}\n{%- else %}\n    {%- if tools is iterable and tools | length > 0 %}\n        {{- \"<|im_start|>system\\n\" }}\n    {%- endif %}\n{%- endif %}\n{%- if tools is iterable and tools | length > 0 %}\n    {%- if system_message is defined and system_message | length > 0 %}\n        {{- \"\\n\\n\" }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n\" }}\n    {{- \"<tools>\" }}\n    {%- for tool in tools %}\n        {%- if tool.function is defined %}\n            {%- set tool = tool.function %}\n        {%- endif %}\n        {{- \"\\n<function>\\n<name>\" ~ tool.name ~ \"</name>\" }}\n        {%- if tool.description is defined %}\n            {{- '\\n<description>' ~ (tool.description | trim) ~ '</description>' }}\n        {%- endif %}\n        {{- '\\n<parameters>' }}\n        {%- if tool.parameters is defined and tool.parameters is mapping and tool.parameters.properties is defined and tool.parameters.properties is mapping %}\n            {%- for param_name, param_fields in tool.parameters.properties|items %}\n                {{- '\\n<parameter>' }}\n                {{- '\\n<name>' ~ param_name ~ '</name>' }}\n                {%- if param_fields.type is defined %}\n                    {{- '\\n<type>' ~ (param_fields.type | string) ~ '</type>' }}\n                {%- endif %}\n                {%- if param_fields.description is defined %}\n                    {{- '\\n<description>' ~ (param_fields.description | trim) ~ '</description>' }}\n                {%- endif %}\n                {%- if param_fields.enum is defined %}\n                    {{- '\\n<enum>' ~ (param_fields.enum | tojson | safe) ~ '</enum>' }}\n                {%- endif %}\n                {%- set handled_keys = ['name', 'type', 'description', 'enum'] %}\n                {{- render_extra_keys(param_fields, handled_keys) }}\n                {{- '\\n</parameter>' }}\n            {%- endfor %}\n        {%- endif %}\n        {% set handled_keys = ['type', 'properties', 'required'] %}\n        {{- render_extra_keys(tool.parameters, handled_keys) }}\n        {%- if tool.parameters is defined and tool.parameters.required is defined %}\n            {{- '\\n<required>' ~ (tool.parameters.required | tojson | safe) ~ '</required>' }}\n        {%- endif %}\n        {{- '\\n</parameters>' }}\n        {%- set handled_keys = ['type', 'name', 'description', 'parameters'] %}\n        {{- render_extra_keys(tool, handled_keys) }}\n        {{- '\\n</function>' }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n{%- endif %}\n\n\n{%- if system_message is defined %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if tools is iterable and tools | length > 0 %}\n        {{- '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n\n{%- for message in loop_messages %}\n    {%- if message.role == \"assistant\" %}\n        {# Add reasoning content in to content field for unified processing below. #}\n        {%- if message.reasoning_content is defined and message.reasoning_content is string and message.reasoning_content | trim | length > 0 %}\n            {%- set content = \"<think>\\n\" ~ message.reasoning_content ~ \"\\n</think>\\n\" ~ (message.content | default('', true)) %}\n        {%- else %}\n            {%- set content = message.content | default('', true) %}\n            {%- if content is string -%}\n                {# Allow downstream logic to to take care of broken thought, only handle coherent reasoning here. #}\n                {%- if '<think>' not in content and '</think>' not in content -%}\n                    {%- set content = \"<think></think>\" ~ content -%}\n                {%- endif -%}\n            {%- else -%}\n                {%- set content = content -%}\n            {%- endif -%}\n        {%- endif %}\n        {%- if message.tool_calls is defined and message.tool_calls is iterable and message.tool_calls | length > 0 %}\n            {# Assistant message has tool calls. #}\n            {{- '<|im_start|>assistant\\n' }}\n                {%- set include_content = not (truncate_history_thinking and loop.index0 < ns.last_user_idx) %}\n                {%- if content is string and content | trim | length > 0 %}\n                    {%- if include_content %}\n                        {{- (content | trim) ~ '\\n' -}}\n                    {%- else %}\n                        {%- set c = (content | string) %}\n                        {%- if '</think>' in c %}\n                            {# Keep only content after the last closing think. Also generation prompt causes this. #}\n                            {%- set c = c.split('</think>')[-1] %}\n                        {%- elif '<think>' in c %}\n                            {# If <think> was opened but never closed, drop the trailing think segment #}\n                            {%- set c = c.split('<think>')[0] %}\n                        {%- endif %}\n                        {%- set c = \"<think></think>\" ~ c | trim %}\n                        {%- if c | length > 0 %}\n                            {{- c ~ '\\n' -}}\n                        {%- endif %}\n                    {%- endif %}\n                {%- else %}\n                    {{- \"<think></think>\" -}}\n                {%- endif %}\n                {%- for tool_call in message.tool_calls %}\n                    {%- if tool_call.function is defined %}\n                        {%- set tool_call = tool_call.function %}\n                    {%- endif %}\n                    {{- '<tool_call>\\n<function=' ~ tool_call.name ~ '>\\n' -}}\n                        {%- if tool_call.arguments is defined %}\n                            {%- for args_name, args_value in tool_call.arguments|items %}\n                                {{- '<parameter=' ~ args_name ~ '>\\n' -}}\n                                    {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}\n                                {{- args_value ~ '\\n</parameter>\\n' -}}\n                            {%- endfor %}\n                        {%- endif %}\n                    {{- '</function>\\n</tool_call>\\n' -}}\n                {%- endfor %}\n                {{- '<|im_end|>\\n' }}\n        {%- else %}\n            {# Assistant message doesn't have tool calls. #}\n            {%- if not (truncate_history_thinking and loop.index0 < ns.last_user_idx) %}\n                {{- '<|im_start|>assistant\\n' ~ (content | default('', true) | string | trim) ~ '<|im_end|>\\n' }}\n            {%- else %}\n                {%- set c = (content | default('', true) | string) %}\n                {%- if '<think>' in c and '</think>' in c %}\n                    {%- set c = \"<think></think>\" ~ c.split('</think>')[-1] %}\n                {%- endif %}\n                {%- set c = c | trim %}\n                {%- if c | length > 0 %}\n                    {{- '<|im_start|>assistant\\n' ~ c ~ '<|im_end|>\\n' }}\n                {%- else %}\n                    {{- '<|im_start|>assistant\\n<|im_end|>\\n' }}\n                {%- endif %}\n            {%- endif %}\n        {%- endif %}\n    {%- elif message.role == \"user\" or message.role == \"system\" %}\n        {{- '<|im_start|>' + message.role + '\\n' }}\n        {%- set content = message.content | string %}\n        {{- content }}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user\\n' }}\n        {%- endif %}\n        {{- '<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>\\n' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endfor %}\n\n{%- if add_generation_prompt %}\n    {%- if enable_thinking %}\n        {{- '<|im_start|>assistant\\n<think>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>assistant\\n<think></think>' }}\n    {%- endif %}\n{%- endif %}\n",
+          "embeddingLength": 3136,
+          "numAttentionHeads": 40,
+          "numKeyValueHeads": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "parameters": "4.0B",
+          "bosToken": "<s>",
+          "eosToken": "<|im_end|>",
+          "contextLength": 1048576,
+          "numLayers": 42
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/manifest.json",
+          "relPath": "nvidia/nemotron-3-nano-4b/manifest.json",
+          "sizeBytes": 442,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/model.yaml",
+          "relPath": "nvidia/nemotron-3-nano-4b/model.yaml",
+          "sizeBytes": 1144,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/README.md",
+          "relPath": "nvidia/nemotron-3-nano-4b/README.md",
+          "sizeBytes": 640,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/thumbnail.png",
+          "relPath": "nvidia/nemotron-3-nano-4b/thumbnail.png",
+          "sizeBytes": 98387,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF",
+      "entryPoint": {
+        "filename": "NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "sizeBytes": 2837072896,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": true,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "nemotron_h",
+      "params": "4.0B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+      "sizeBytes": 2837173509,
+      "selfFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/manifest.json",
+          "relPath": "nvidia/nemotron-3-nano-4b/manifest.json",
+          "sizeBytes": 442,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/model.yaml",
+          "relPath": "nvidia/nemotron-3-nano-4b/model.yaml",
+          "sizeBytes": 1144,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/README.md",
+          "relPath": "nvidia/nemotron-3-nano-4b/README.md",
+          "sizeBytes": 640,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/nvidia/nemotron-3-nano-4b/thumbnail.png",
+          "relPath": "nvidia/nemotron-3-nano-4b/thumbnail.png",
+          "sizeBytes": 98387,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "user": "nvidia",
+      "model": "nemotron-3-nano-4b",
+      "defaultIdentifier": "nvidia/nemotron-3-nano-4b",
+      "autoIdentifiers": [
+        "nvidia/nemotron-3-nano-4b"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ],
+      "virtual": {
+        "isAlt": false,
+        "alts": [
+          {
+            "virtualModelIndexedModelIdentifier": "nvidia/nemotron-3-nano-4b@lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+            "virtualModelDefaultIdentifier": "nvidia/nemotron-3-nano-4b@q4_k_m",
+            "concreteModelIndexedModelIdentifier": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf"
+          }
+        ],
+        "baseChain": [
+          "nvidia/nemotron-3-nano-4b",
+          "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf"
+        ],
+        "manifestAbsPath": "C:\\Users\\drago\\.lmstudio\\hub\\models\\nvidia\\nemotron-3-nano-4b\\model.yaml",
+        "customFieldConfigBaseKey": "ext.virtualModel.customField.nvidia.nemotron3Nano4b.",
+        "customFieldDefinitions": [
+          {
+            "key": "ext.virtualModel.customField.nvidia.nemotron3Nano4b.enableThinking",
+            "displayName": "Enable Thinking",
+            "description": "Controls whether the model will think before replying",
+            "type": "boolean",
+            "defaultValue": true,
+            "effects": [
+              {
+                "type": "setJinjaVariable",
+                "variable": "enable_thinking"
+              }
+            ]
+          },
+          {
+            "key": "ext.virtualModel.customField.nvidia.nemotron3Nano4b.truncateThinkingHistory",
+            "displayName": "Truncate Thinking History",
+            "description": "Controls whether thinking history will be truncated to save context space",
+            "type": "boolean",
+            "defaultValue": true,
+            "effects": [
+              {
+                "type": "setJinjaVariable",
+                "variable": "truncate_history_thinking"
+              }
+            ]
+          }
+        ],
+        "suggestions": [],
+        "concreteModelOptions": [
+          "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf"
+        ],
+        "concreteModelIndexedModelIdentifier": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "metadataOverridesParamsStrings": [
+          "4B"
+        ],
+        "metadataOverridesReasoning": true
+      }
+    },
+    {
+      "domain": "llm",
+      "contextLength": 1048576,
+      "indexedModelIdentifier": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+      "displayName": "NVIDIA Nemotron 3 Nano 4B",
+      "containingDirSubpath": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF",
+      "containingDirMtime": 1774448998333,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF",
+      "sourceDirectoryType": "user",
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "nemotron_h",
+          "name": "Lmstudio Community_Nn",
+          "chatTemplate": "{% macro render_extra_keys(json_dict, handled_keys) %}\n    {%- if json_dict is mapping %}\n        {%- for json_key in json_dict if json_key not in handled_keys %}\n            {%- if json_dict[json_key] is mapping or (json_dict[json_key] is sequence and json_dict[json_key] is not string) %}\n                {{- '\\n<' ~ json_key ~ '>' ~ (json_dict[json_key] | tojson | safe) ~ '</' ~ json_key ~ '>' }}\n            {%- else %}\n                {{-'\\n<' ~ json_key ~ '>' ~ (json_dict[json_key] | string) ~ '</' ~ json_key ~ '>' }}\n            {%- endif %}\n        {%- endfor %}\n    {%- endif %}\n{% endmacro %}\n{%- set enable_thinking = enable_thinking if enable_thinking is defined else True %}\n{%- set truncate_history_thinking = truncate_history_thinking if truncate_history_thinking is defined else True %}\n\n{%- set ns = namespace(last_user_idx = -1) %}\n{%- set loop_messages = messages %}\n{%- for m in loop_messages %}\n  {%- if m[\"role\"] == \"user\" %}\n    {%- set ns.last_user_idx = loop.index0 %}\n  {%- endif %}\n{%- endfor %}\n\n{%- if messages[0][\"role\"] == \"system\" %}\n    {%- set system_message = messages[0][\"content\"] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set system_message = \"\" %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n{%- if not tools is defined %}\n    {%- set tools = [] %}\n{%- endif %}\n{# Recompute last_user_idx relative to loop_messages after handling system #}\n{%- set ns = namespace(last_user_idx = -1) %}\n{%- for m in loop_messages %}\n  {%- if m[\"role\"] == \"user\" %}\n    {%- set ns.last_user_idx = loop.index0 %}\n  {%- endif %}\n{%- endfor %}\n{%- if system_message is defined %}\n    {{- \"<|im_start|>system\\n\" + system_message }}\n{%- else %}\n    {%- if tools is iterable and tools | length > 0 %}\n        {{- \"<|im_start|>system\\n\" }}\n    {%- endif %}\n{%- endif %}\n{%- if tools is iterable and tools | length > 0 %}\n    {%- if system_message is defined and system_message | length > 0 %}\n        {{- \"\\n\\n\" }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n\" }}\n    {{- \"<tools>\" }}\n    {%- for tool in tools %}\n        {%- if tool.function is defined %}\n            {%- set tool = tool.function %}\n        {%- endif %}\n        {{- \"\\n<function>\\n<name>\" ~ tool.name ~ \"</name>\" }}\n        {%- if tool.description is defined %}\n            {{- '\\n<description>' ~ (tool.description | trim) ~ '</description>' }}\n        {%- endif %}\n        {{- '\\n<parameters>' }}\n        {%- if tool.parameters is defined and tool.parameters is mapping and tool.parameters.properties is defined and tool.parameters.properties is mapping %}\n            {%- for param_name, param_fields in tool.parameters.properties|items %}\n                {{- '\\n<parameter>' }}\n                {{- '\\n<name>' ~ param_name ~ '</name>' }}\n                {%- if param_fields.type is defined %}\n                    {{- '\\n<type>' ~ (param_fields.type | string) ~ '</type>' }}\n                {%- endif %}\n                {%- if param_fields.description is defined %}\n                    {{- '\\n<description>' ~ (param_fields.description | trim) ~ '</description>' }}\n                {%- endif %}\n                {%- if param_fields.enum is defined %}\n                    {{- '\\n<enum>' ~ (param_fields.enum | tojson | safe) ~ '</enum>' }}\n                {%- endif %}\n                {%- set handled_keys = ['name', 'type', 'description', 'enum'] %}\n                {{- render_extra_keys(param_fields, handled_keys) }}\n                {{- '\\n</parameter>' }}\n            {%- endfor %}\n        {%- endif %}\n        {% set handled_keys = ['type', 'properties', 'required'] %}\n        {{- render_extra_keys(tool.parameters, handled_keys) }}\n        {%- if tool.parameters is defined and tool.parameters.required is defined %}\n            {{- '\\n<required>' ~ (tool.parameters.required | tojson | safe) ~ '</required>' }}\n        {%- endif %}\n        {{- '\\n</parameters>' }}\n        {%- set handled_keys = ['type', 'name', 'description', 'parameters'] %}\n        {{- render_extra_keys(tool, handled_keys) }}\n        {{- '\\n</function>' }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n{%- endif %}\n\n\n{%- if system_message is defined %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if tools is iterable and tools | length > 0 %}\n        {{- '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n\n{%- for message in loop_messages %}\n    {%- if message.role == \"assistant\" %}\n        {# Add reasoning content in to content field for unified processing below. #}\n        {%- if message.reasoning_content is defined and message.reasoning_content is string and message.reasoning_content | trim | length > 0 %}\n            {%- set content = \"<think>\\n\" ~ message.reasoning_content ~ \"\\n</think>\\n\" ~ (message.content | default('', true)) %}\n        {%- else %}\n            {%- set content = message.content | default('', true) %}\n            {%- if content is string -%}\n                {# Allow downstream logic to to take care of broken thought, only handle coherent reasoning here. #}\n                {%- if '<think>' not in content and '</think>' not in content -%}\n                    {%- set content = \"<think></think>\" ~ content -%}\n                {%- endif -%}\n            {%- else -%}\n                {%- set content = content -%}\n            {%- endif -%}\n        {%- endif %}\n        {%- if message.tool_calls is defined and message.tool_calls is iterable and message.tool_calls | length > 0 %}\n            {# Assistant message has tool calls. #}\n            {{- '<|im_start|>assistant\\n' }}\n                {%- set include_content = not (truncate_history_thinking and loop.index0 < ns.last_user_idx) %}\n                {%- if content is string and content | trim | length > 0 %}\n                    {%- if include_content %}\n                        {{- (content | trim) ~ '\\n' -}}\n                    {%- else %}\n                        {%- set c = (content | string) %}\n                        {%- if '</think>' in c %}\n                            {# Keep only content after the last closing think. Also generation prompt causes this. #}\n                            {%- set c = c.split('</think>')[-1] %}\n                        {%- elif '<think>' in c %}\n                            {# If <think> was opened but never closed, drop the trailing think segment #}\n                            {%- set c = c.split('<think>')[0] %}\n                        {%- endif %}\n                        {%- set c = \"<think></think>\" ~ c | trim %}\n                        {%- if c | length > 0 %}\n                            {{- c ~ '\\n' -}}\n                        {%- endif %}\n                    {%- endif %}\n                {%- else %}\n                    {{- \"<think></think>\" -}}\n                {%- endif %}\n                {%- for tool_call in message.tool_calls %}\n                    {%- if tool_call.function is defined %}\n                        {%- set tool_call = tool_call.function %}\n                    {%- endif %}\n                    {{- '<tool_call>\\n<function=' ~ tool_call.name ~ '>\\n' -}}\n                        {%- if tool_call.arguments is defined %}\n                            {%- for args_name, args_value in tool_call.arguments|items %}\n                                {{- '<parameter=' ~ args_name ~ '>\\n' -}}\n                                    {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}\n                                {{- args_value ~ '\\n</parameter>\\n' -}}\n                            {%- endfor %}\n                        {%- endif %}\n                    {{- '</function>\\n</tool_call>\\n' -}}\n                {%- endfor %}\n                {{- '<|im_end|>\\n' }}\n        {%- else %}\n            {# Assistant message doesn't have tool calls. #}\n            {%- if not (truncate_history_thinking and loop.index0 < ns.last_user_idx) %}\n                {{- '<|im_start|>assistant\\n' ~ (content | default('', true) | string | trim) ~ '<|im_end|>\\n' }}\n            {%- else %}\n                {%- set c = (content | default('', true) | string) %}\n                {%- if '<think>' in c and '</think>' in c %}\n                    {%- set c = \"<think></think>\" ~ c.split('</think>')[-1] %}\n                {%- endif %}\n                {%- set c = c | trim %}\n                {%- if c | length > 0 %}\n                    {{- '<|im_start|>assistant\\n' ~ c ~ '<|im_end|>\\n' }}\n                {%- else %}\n                    {{- '<|im_start|>assistant\\n<|im_end|>\\n' }}\n                {%- endif %}\n            {%- endif %}\n        {%- endif %}\n    {%- elif message.role == \"user\" or message.role == \"system\" %}\n        {{- '<|im_start|>' + message.role + '\\n' }}\n        {%- set content = message.content | string %}\n        {{- content }}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user\\n' }}\n        {%- endif %}\n        {{- '<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>\\n' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endfor %}\n\n{%- if add_generation_prompt %}\n    {%- if enable_thinking %}\n        {{- '<|im_start|>assistant\\n<think>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>assistant\\n<think></think>' }}\n    {%- endif %}\n{%- endif %}\n",
+          "embeddingLength": 3136,
+          "numAttentionHeads": 40,
+          "numKeyValueHeads": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "parameters": "4.0B",
+          "bosToken": "<s>",
+          "eosToken": "<|im_end|>",
+          "contextLength": 1048576,
+          "numLayers": 42
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+          "relPath": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+          "sizeBytes": 2837072896,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF",
+      "entryPoint": {
+        "filename": "NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+        "sizeBytes": 2837072896,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": true,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "nemotron_h",
+      "params": "4.0B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+      "sizeBytes": 2837072896,
+      "selfFiles": [
+        {
+          "filename": "NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+          "relPath": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+          "sizeBytes": 2837072896,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "altIndexedModelIdentifier": "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF",
+      "user": "lmstudio-community",
+      "model": "NVIDIA-Nemotron-3-Nano-4B-GGUF",
+      "file": "NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+      "defaultIdentifier": "nvidia-nemotron-3-nano-4b",
+      "autoIdentifiers": [
+        "nvidia-nemotron-3-nano-4b",
+        "lmstudio-community/nvidia-nemotron-3-nano-4b",
+        "nvidia-nemotron-3-nano-4b@q4_k_m",
+        "lmstudio-community/nvidia-nemotron-3-nano-4b@q4_k_m",
+        "lmstudio-community/nvidia-nemotron-3-nano-4b-gguf/nvidia-nemotron-3-nano-4b-q4_k_m.gguf",
+        "lmstudio-community/nvidia-nemotron-3-nano-4b-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ]
+    },
+    {
+      "domain": "llm",
+      "contextLength": 131072,
+      "indexedModelIdentifier": "google/gemma-3-4b@lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+      "displayName": "Gemma 3 4B",
+      "containingDirSubpath": "google/gemma-3-4b",
+      "containingDirMtime": 1774366262490,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b",
+      "sourceDirectoryType": "hub",
+      "revision": 4,
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "gemma3",
+          "name": "Gemma 3 4b It",
+          "chatTemplate": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n",
+          "embeddingLength": 2560,
+          "numAttentionHeads": 8,
+          "numKeyValueHeads": 4,
+          "parameters": "4B",
+          "bosToken": "<bos>",
+          "eosToken": "<eos>",
+          "contextLength": 131072,
+          "numLayers": 34
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/manifest.json",
+          "relPath": "google/gemma-3-4b/manifest.json",
+          "sizeBytes": 780,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/model.yaml",
+          "relPath": "google/gemma-3-4b/model.yaml",
+          "sizeBytes": 832,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/README.md",
+          "relPath": "google/gemma-3-4b/README.md",
+          "sizeBytes": 371,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/thumbnail.png",
+          "relPath": "google/gemma-3-4b/thumbnail.png",
+          "sizeBytes": 70543,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF",
+      "entryPoint": {
+        "filename": "gemma-3-4b-it-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+        "sizeBytes": 2489757856,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "visionAdapter": {
+        "filename": "mmproj-model-f16.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+        "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+        "sizeBytes": 851251104,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": false,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "gemma3",
+      "params": "4B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+      "sizeBytes": 3341081486,
+      "selfFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/manifest.json",
+          "relPath": "google/gemma-3-4b/manifest.json",
+          "sizeBytes": 780,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/model.yaml",
+          "relPath": "google/gemma-3-4b/model.yaml",
+          "sizeBytes": 832,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/README.md",
+          "relPath": "google/gemma-3-4b/README.md",
+          "sizeBytes": 371,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/thumbnail.png",
+          "relPath": "google/gemma-3-4b/thumbnail.png",
+          "sizeBytes": 70543,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "user": "google",
+      "model": "gemma-3-4b",
+      "defaultIdentifier": "google/gemma-3-4b@q4_k_m",
+      "autoIdentifiers": [
+        "google/gemma-3-4b@q4_k_m",
+        "google/gemma-3-4b@gguf-q4_k_m",
+        "google/gemma-3-4b@gemma-3-4b-it",
+        "google/gemma-3-4b@lmstudio-community/gemma-3-4b-it",
+        "google/gemma-3-4b@gemma-3-4b-it:q4_k_m",
+        "google/gemma-3-4b@lmstudio-community/gemma-3-4b-it:q4_k_m",
+        "google/gemma-3-4b@lmstudio-community/gemma-3-4b-it-gguf/gemma-3-4b-it-q4_k_m.gguf",
+        "google/gemma-3-4b@lmstudio-community/gemma-3-4b-it-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ],
+      "virtual": {
+        "isAlt": true,
+        "baseChain": [
+          "google/gemma-3-4b",
+          "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf"
+        ],
+        "manifestAbsPath": "C:\\Users\\drago\\.lmstudio\\hub\\models\\google\\gemma-3-4b\\model.yaml",
+        "customFieldConfigBaseKey": "ext.virtualModel.customField.google.gemma34b.",
+        "customFieldDefinitions": [],
+        "suggestions": [],
+        "concreteModelOptions": [
+          "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf"
+        ],
+        "concreteModelIndexedModelIdentifier": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+        "metadataOverridesParamsStrings": [
+          "4B"
+        ]
+      }
+    },
+    {
+      "domain": "llm",
+      "contextLength": 131072,
+      "indexedModelIdentifier": "google/gemma-3-4b",
+      "displayName": "Gemma 3 4B",
+      "containingDirSubpath": "google/gemma-3-4b",
+      "containingDirMtime": 1774366262490,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b",
+      "sourceDirectoryType": "hub",
+      "revision": 4,
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "gemma3",
+          "name": "Gemma 3 4b It",
+          "chatTemplate": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n",
+          "embeddingLength": 2560,
+          "numAttentionHeads": 8,
+          "numKeyValueHeads": 4,
+          "parameters": "4B",
+          "bosToken": "<bos>",
+          "eosToken": "<eos>",
+          "contextLength": 131072,
+          "numLayers": 34
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/manifest.json",
+          "relPath": "google/gemma-3-4b/manifest.json",
+          "sizeBytes": 780,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/model.yaml",
+          "relPath": "google/gemma-3-4b/model.yaml",
+          "sizeBytes": 832,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/README.md",
+          "relPath": "google/gemma-3-4b/README.md",
+          "sizeBytes": 371,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/thumbnail.png",
+          "relPath": "google/gemma-3-4b/thumbnail.png",
+          "sizeBytes": 70543,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF",
+      "entryPoint": {
+        "filename": "gemma-3-4b-it-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+        "sizeBytes": 2489757856,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "visionAdapter": {
+        "filename": "mmproj-model-f16.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+        "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+        "sizeBytes": 851251104,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": false,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "gemma3",
+      "params": "4B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+      "sizeBytes": 3341081486,
+      "selfFiles": [
+        {
+          "filename": "manifest.json",
+          "ext": "json",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/manifest.json",
+          "relPath": "google/gemma-3-4b/manifest.json",
+          "sizeBytes": 780,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "model.yaml",
+          "ext": "yaml",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/model.yaml",
+          "relPath": "google/gemma-3-4b/model.yaml",
+          "sizeBytes": 832,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "README.md",
+          "ext": "md",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/README.md",
+          "relPath": "google/gemma-3-4b/README.md",
+          "sizeBytes": 371,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        },
+        {
+          "filename": "thumbnail.png",
+          "ext": "png",
+          "absPath": "C:/Users/drago/.lmstudio/hub/models/google/gemma-3-4b/thumbnail.png",
+          "relPath": "google/gemma-3-4b/thumbnail.png",
+          "sizeBytes": 70543,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/hub/models"
+        }
+      ],
+      "user": "google",
+      "model": "gemma-3-4b",
+      "defaultIdentifier": "google/gemma-3-4b",
+      "autoIdentifiers": [
+        "google/gemma-3-4b"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ],
+      "virtual": {
+        "isAlt": false,
+        "alts": [
+          {
+            "virtualModelIndexedModelIdentifier": "google/gemma-3-4b@lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+            "virtualModelDefaultIdentifier": "google/gemma-3-4b@q4_k_m",
+            "concreteModelIndexedModelIdentifier": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf"
+          }
+        ],
+        "baseChain": [
+          "google/gemma-3-4b",
+          "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf"
+        ],
+        "manifestAbsPath": "C:\\Users\\drago\\.lmstudio\\hub\\models\\google\\gemma-3-4b\\model.yaml",
+        "customFieldConfigBaseKey": "ext.virtualModel.customField.google.gemma34b.",
+        "customFieldDefinitions": [],
+        "suggestions": [],
+        "concreteModelOptions": [
+          "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf"
+        ],
+        "concreteModelIndexedModelIdentifier": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+        "metadataOverridesParamsStrings": [
+          "4B"
+        ]
+      }
+    },
+    {
+      "domain": "llm",
+      "contextLength": 131072,
+      "indexedModelIdentifier": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+      "displayName": "Gemma 3 4B Instruct",
+      "containingDirSubpath": "lmstudio-community/gemma-3-4b-it-GGUF",
+      "containingDirMtime": 1774366262435,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF",
+      "sourceDirectoryType": "user",
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "gemma3",
+          "name": "Gemma 3 4b It",
+          "chatTemplate": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n",
+          "embeddingLength": 2560,
+          "numAttentionHeads": 8,
+          "numKeyValueHeads": 4,
+          "parameters": "4B",
+          "bosToken": "<bos>",
+          "eosToken": "<eos>",
+          "contextLength": 131072,
+          "numLayers": 34
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "gemma-3-4b-it-Q4_K_M.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+          "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+          "sizeBytes": 2489757856,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        },
+        {
+          "filename": "mmproj-model-f16.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+          "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+          "sizeBytes": 851251104,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF",
+      "entryPoint": {
+        "filename": "gemma-3-4b-it-Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+        "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+        "sizeBytes": 2489757856,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "visionAdapter": {
+        "filename": "mmproj-model-f16.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+        "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+        "sizeBytes": 851251104,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+      },
+      "trainedForToolUse": false,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "gemma3",
+      "params": "4B",
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+      "sizeBytes": 3341008960,
+      "selfFiles": [
+        {
+          "filename": "gemma-3-4b-it-Q4_K_M.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+          "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/gemma-3-4b-it-Q4_K_M.gguf",
+          "sizeBytes": 2489757856,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        },
+        {
+          "filename": "mmproj-model-f16.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/models/lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+          "relPath": "lmstudio-community/gemma-3-4b-it-GGUF/mmproj-model-f16.gguf",
+          "sizeBytes": 851251104,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/models"
+        }
+      ],
+      "altIndexedModelIdentifier": "lmstudio-community/gemma-3-4b-it-GGUF",
+      "user": "lmstudio-community",
+      "model": "gemma-3-4b-it-GGUF",
+      "file": "gemma-3-4b-it-Q4_K_M.gguf",
+      "defaultIdentifier": "gemma-3-4b-it",
+      "autoIdentifiers": [
+        "gemma-3-4b-it",
+        "lmstudio-community/gemma-3-4b-it",
+        "gemma-3-4b-it@q4_k_m",
+        "lmstudio-community/gemma-3-4b-it@q4_k_m",
+        "lmstudio-community/gemma-3-4b-it-gguf/gemma-3-4b-it-q4_k_m.gguf",
+        "lmstudio-community/gemma-3-4b-it-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ]
+    },
+    {
+      "domain": "embedding",
+      "contextLength": 2048,
+      "indexedModelIdentifier": "nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+      "displayName": "Nomic Embed Text v1.5",
+      "containingDirSubpath": "nomic-ai/nomic-embed-text-v1.5-GGUF",
+      "containingDirMtime": 1774362021988,
+      "containingDirAbsolutePath": "C:/Users/drago/.lmstudio/.internal/bundled-models/nomic-ai/nomic-embed-text-v1.5-GGUF",
+      "sourceDirectoryType": "bundled",
+      "format": "gguf",
+      "metadata": {
+        "gguf": {
+          "arch": "nomic-bert",
+          "name": "nomic-embed-text-v1.5",
+          "embeddingLength": 768,
+          "numAttentionHeads": 12,
+          "parameters": "",
+          "bosToken": "[CLS]",
+          "eosToken": "[SEP]",
+          "contextLength": 2048,
+          "numLayers": 12
+        }
+      },
+      "allFiles": [
+        {
+          "filename": "nomic-embed-text-v1.5.Q4_K_M.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/.internal/bundled-models/nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+          "relPath": "nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+          "sizeBytes": 84106624,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/.internal/bundled-models"
+        }
+      ],
+      "concreteModelDirAbsolutePath": "C:/Users/drago/.lmstudio/.internal/bundled-models/nomic-ai/nomic-embed-text-v1.5-GGUF",
+      "entryPoint": {
+        "filename": "nomic-embed-text-v1.5.Q4_K_M.gguf",
+        "ext": "gguf",
+        "absPath": "C:/Users/drago/.lmstudio/.internal/bundled-models/nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+        "relPath": "nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+        "sizeBytes": 84106624,
+        "rootAbsolutePath": "C:/Users/drago/.lmstudio/.internal/bundled-models"
+      },
+      "trainedForToolUse": false,
+      "quant": {
+        "bits": 4,
+        "name": "Q4_K_M"
+      },
+      "arch": "nomic-bert",
+      "params": null,
+      "isCucumber": false,
+      "deviceIdentifier": null,
+      "originalIndexedModelIdentifier": "nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+      "sizeBytes": 84106624,
+      "selfFiles": [
+        {
+          "filename": "nomic-embed-text-v1.5.Q4_K_M.gguf",
+          "ext": "gguf",
+          "absPath": "C:/Users/drago/.lmstudio/.internal/bundled-models/nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+          "relPath": "nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
+          "sizeBytes": 84106624,
+          "rootAbsolutePath": "C:/Users/drago/.lmstudio/.internal/bundled-models"
+        }
+      ],
+      "altIndexedModelIdentifier": "nomic-ai/nomic-embed-text-v1.5-GGUF",
+      "user": "nomic-ai",
+      "model": "nomic-embed-text-v1.5-GGUF",
+      "file": "nomic-embed-text-v1.5.Q4_K_M.gguf",
+      "defaultIdentifier": "text-embedding-nomic-embed-text-v1.5",
+      "autoIdentifiers": [
+        "text-embedding-nomic-embed-text-v1.5",
+        "nomic-ai/text-embedding-nomic-embed-text-v1.5",
+        "text-embedding-nomic-embed-text-v1.5@q4_k_m",
+        "nomic-ai/text-embedding-nomic-embed-text-v1.5@q4_k_m",
+        "nomic-embed-text-v1.5",
+        "nomic-ai/nomic-embed-text-v1.5",
+        "nomic-embed-text-v1.5@q4_k_m",
+        "nomic-ai/nomic-embed-text-v1.5@q4_k_m",
+        "nomic-ai/nomic-embed-text-v1.5-gguf/nomic-embed-text-v1.5.q4_k_m.gguf",
+        "nomic-ai/nomic-embed-text-v1.5-gguf"
+      ],
+      "baselessAutoIdentifiers": [
+        "q4_k_m",
+        "gguf-q4_k_m"
+      ]
+    }
+  ],
+  "conflicts": [],
+  "unclassifiedFiles": [],
+  "unresolvedVirtualModels": [],
+  "badModels": [],
+  "errors": []
+}

@@ -951,7 +951,7 @@ impl IdentityManager {
         self.identities
             .iter()
             .find(|(_, identity)| identity.did.starts_with(did) || did.starts_with(&identity.did))
-            .map(|(id, _)| id.clone())
+            .map(|(id, _): (&IdentityId, &ZhtpIdentity)| id.clone())
     }
 
     /// Get DID by identity ID

@@ -34,11 +34,18 @@ pub enum UirNodeKind {
         id: String, 
         signature: String 
     },
+    /// V-117.F: High-Level Structural Manifestations
+    Class,
+    Function,
+    Handshake { protocol: String },
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct UirNode {
     pub kind: UirNodeKind,
+    pub id: String,
+    pub logic_payload: Vec<u8>,
+    pub metadata: std::collections::HashMap<String, String>,
     pub resonance: f64,
     pub children: Vec<UirNode>,
 }
@@ -47,6 +54,9 @@ impl UirNode {
     pub fn new(kind: UirNodeKind) -> Self {
         Self {
             kind,
+            id: String::new(),
+            logic_payload: Vec::new(),
+            metadata: std::collections::HashMap::new(),
             resonance: 1.09277703703703,
             children: Vec::new(),
         }

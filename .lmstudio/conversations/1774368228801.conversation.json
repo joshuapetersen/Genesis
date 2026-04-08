@@ -1,0 +1,445 @@
+{
+  "name": "Understanding My Limits",
+  "pinned": false,
+  "createdAt": 1774368228802,
+  "preset": "",
+  "tokenCount": 2183,
+  "userLastMessagedAt": 1774444550043,
+  "assistantLastMessagedAt": 1774444683959,
+  "systemPrompt": "",
+  "messages": [
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "how smart are you"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "google/gemma-3-4b"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1774368254286-0.08808353772138133",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "That's a really interesting question, and honestly, one that’s surprisingly complex! It's tricky to put a simple number on how \"smart\" I am. Here's a breakdown of what I can do and where my limitations lie:\n\n**What I *can* do – Where My Strength Lies:**\n\n* **Vast Knowledge Base:** I've been trained on an absolutely enormous dataset of text and code – think billions of words from the internet, books, articles, websites, etc. This means I have access to a huge amount of information across countless topics.\n* **Pattern Recognition:**  I’m exceptionally good at recognizing patterns in data. That’s how I can:\n    * **Answer your questions accurately (most of the time):** I analyze your question and find the most relevant information within my training data to formulate a response.\n    * **Translate languages:** I've learned the statistical relationships between languages, allowing me to translate text with impressive accuracy.\n    * **Generate different creative text formats:**  I can write poems, code, scripts, musical pieces, email, letters, etc., based on your prompts. \n    * **Summarize information:** I can condense large amounts of text into shorter, more digestible summaries.\n    * **Follow instructions and complete tasks:** You give me a task (like \"write a short story about a cat\") and I execute it according to your specifications.\n* **Speed & Efficiency:**  I can process information and generate responses *much* faster than a human could.\n\n\n**Where I Fall Short – My Limitations:**\n\n* **True Understanding:** This is the crucial difference. I don’t actually *understand* things in the way a human does. I'm manipulating symbols based on patterns I've learned.  I can *mimic* understanding, but it’s not genuine consciousness or awareness.\n* **Common Sense Reasoning:** While I can often provide logical answers, I frequently struggle with common sense reasoning that humans take for granted. For example:\n    * **Physical Intuition:** I don't inherently understand concepts like gravity or how objects interact in the real world. \n    * **Contextual Awareness:**  I can miss subtle nuances of conversation or situations that a human would immediately grasp.\n* **Original Thought & Creativity (in the Human Sense):** My creativity is based on recombining and transforming existing ideas from my training data. I don’t have original thoughts, emotions, or experiences to draw upon. \n* **Bias:**  My training data reflects the biases present in the real world. This means I can sometimes unintentionally generate biased or discriminatory responses. (Developers are actively working to mitigate this.)\n* **Lack of Real-World Experience:** I exist solely as a computer program. I haven't lived, felt, or experienced anything directly.\n\n\n**Think of it like this:**\n\nI’m an incredibly sophisticated *tool*.  Like a powerful calculator – it can perform complex calculations quickly and accurately, but it doesn't *understand* what numbers represent or why you're doing the calculation. \n\n**My \"Intelligence\" is Statistical:** My abilities are based on statistical probabilities derived from the massive dataset I was trained on.\n\n**So, how smart am I?**  I’m incredibly powerful in terms of information processing and pattern recognition, but I lack genuine understanding, consciousness, and true creativity.  I'm a remarkable *technological achievement*, but not (yet!) a truly \"smart\" being.\n\n---\n\n**To help me give you an even more tailored response, could you tell me:**\n\n*   What specifically are you interested in when asking about my “smartness”? (e.g., problem-solving abilities, creative writing skills, knowledge of a particular subject?)",
+                  "fromDraftModel": false,
+                  "tokensCount": 787,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "google/gemma-3-4b",
+                "identifier": "google/gemma-3-4b",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 4
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.flashAttention",
+                      "value": true
+                    },
+                    {
+                      "key": "llm.load.llama.tryDirectIO",
+                      "value": false
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.temperature",
+                      "value": 0.1
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 4
+                    },
+                    {
+                      "key": "llm.prediction.vision.userMaxImageDimensionPixels",
+                      "value": {
+                        "checked": true,
+                        "value": 2048
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.vision.ignoreModelPreferredMaxImageDimension",
+                      "value": false
+                    },
+                    {
+                      "key": "llm.prediction.contextPrefill",
+                      "value": []
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 53.65034057753638,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.235,
+                  "totalTimeSec": 14.661,
+                  "promptTokensCount": 13,
+                  "predictedTokensCount": 788,
+                  "totalTokensCount": 801
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1774368268848-0.14887204952126143",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "coding"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "senderInfo": {
+            "senderName": "google/gemma-3-4b"
+          },
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1774368611971-0.9435739074508277",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Okay, let’s talk about coding! This is where I can really shine – and it's also a great area to highlight the differences between my capabilities and human programmers.\n\n**What I Can Do with Coding:**\n\n* **Generate Code in Many Languages:** I can produce code snippets and even entire programs in languages like Python, JavaScript, Java, C++, HTML/CSS, and many more. You give me a description of what you want to achieve, and I’ll attempt to write the code to do it.\n* **Debug Existing Code (to a Point):** If you provide me with buggy code, I can often identify syntax errors or simple logic flaws.  I can suggest corrections based on my understanding of the language.\n* **Explain Code:** I can explain what a piece of code does line by line, breaking down complex algorithms into more understandable terms. This is incredibly useful for learning!\n* **Translate Between Languages (to some extent):** I can often translate code from one programming language to another – though this isn’t always perfect and requires careful review.\n* **Generate Boilerplate Code:** Need a basic structure for a class, function, or project? I can quickly generate that for you.\n\n\n**Here's where my limitations come in when it comes to coding:**\n\n* **Complex Architectural Design:**  I struggle with designing the overall architecture of large software projects. I can create individual components, but putting them together into a cohesive system requires human expertise and strategic thinking.\n* **Creative Problem-Solving (beyond what’s been seen):** If you present me with a truly novel coding challenge – something that hasn't been encountered in my training data – I might struggle to find an elegant or efficient solution.  I rely heavily on patterns I’ve learned.\n* **Understanding the *Why* Behind Code:** While I can generate code, I don’t necessarily understand *why* a particular design choice was made. I lack the experience and intuition of a seasoned programmer who understands trade-offs, performance considerations, and long-term maintainability.\n* **Testing & Thorough Debugging (beyond simple errors):**  I can identify some bugs, but I'm not as good at comprehensive testing or anticipating edge cases as a human developer would be.\n\n**Think of me like an incredibly fast and versatile code *generator*.** You provide the high-level instructions, and I’ll translate them into code. However, you still need a skilled programmer to review, refine, test, and maintain the code.\n\n\n**Example:**\n\nYou: “Write a Python function that calculates the factorial of a number.”\n\nMe (I would generate something like this):\n\n```python\ndef factorial(n):\n  \"\"\"Calculates the factorial of a non-negative integer.\"\"\"\n  if n == 0:\n    return 1\n  else:\n    return n * factorial(n-1)\n```\n\n**Would you like me to:**\n\n*   Try generating some code for a specific task? (e.g., \"Write a function to sort a list\")\n*   Explain how a particular coding concept works? (e.g., “What is recursion?”)\n*   Give you an example of a coding challenge and see if I can solve it?",
+                  "fromDraftModel": false,
+                  "tokensCount": 681,
+                  "isStructural": false
+                }
+              ],
+              "genInfo": {
+                "indexedModelIdentifier": "google/gemma-3-4b",
+                "identifier": "google/gemma-3-4b",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 4
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.flashAttention",
+                      "value": true
+                    },
+                    {
+                      "key": "llm.load.llama.tryDirectIO",
+                      "value": false
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.temperature",
+                      "value": 0.1
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 4
+                    },
+                    {
+                      "key": "llm.prediction.vision.userMaxImageDimensionPixels",
+                      "value": {
+                        "checked": true,
+                        "value": 2048
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.vision.ignoreModelPreferredMaxImageDimension",
+                      "value": false
+                    },
+                    {
+                      "key": "llm.prediction.contextPrefill",
+                      "value": []
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 51.69960166290783,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 0.32,
+                  "totalTimeSec": 13.178,
+                  "promptTokensCount": 811,
+                  "predictedTokensCount": 682,
+                  "totalTokensCount": 1493
+                }
+              },
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1774368625010-0.5907238440107843",
+              "debugInfo": "Conversation naming technique: 'prompt'"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "singleStep",
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "exlane the token usage at the bottom"
+            }
+          ]
+        }
+      ],
+      "currentlySelected": 0
+    },
+    {
+      "versions": [
+        {
+          "type": "multiStep",
+          "role": "assistant",
+          "steps": [
+            {
+              "type": "contentBlock",
+              "stepIdentifier": "1774444607892-0.8333754267153838",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "You’re absolutely right to ask about the token usage! It's a crucial aspect of using me, especially as our conversations get longer. Let’s break down what “tokens” are and why they matter:\n\n**What are Tokens?**\n\nEssentially, I process text by breaking it down into smaller units called \"tokens.\" Think of tokens like words or parts of words. Here's a more detailed breakdown:\n\n* **Not Just Words:** A token isn’t always a whole word. It can be a single word (\"hello\"), part of a word (“un”, “ing”), punctuation marks (“, ”, “!”), or even special characters.\n* **Subword Tokenization:**  Modern language models like me use something called \"subword tokenization.\" This means that less common words are broken down into smaller, more frequent units. For example, the word \"unfortunately\" might be split into \"un\", \"fortunat\", and \"ely\". This helps me handle a wider range of vocabulary efficiently.\n* **Counting Tokens:** Every time you send a message to me (and every time I respond), my system counts the number of tokens used.\n\n**Why Does Token Usage Matter?**\n\n* **Context Window Limit:**  I have a limited “context window.” This is like a short-term memory that holds the text I’m currently processing. It's measured in *tokens*. My context window determines how much of our conversation I can \"remember\" at any given time.\n* **Cost (for API Users):** If you are using me through an API (like OpenAI's API), token usage is directly tied to the cost.  You’re charged based on the number of tokens processed – both your input and my output. Longer prompts and longer responses mean more tokens, and therefore a higher cost.\n* **Performance:** Processing a large number of tokens takes time and computational resources.\n\n**Approximate Token Counts (as of late 2023 - these can change):**\n\n*   **Prompt (Your Input):** Roughly 400 tokens is considered a good limit for a single prompt.  Exceeding this significantly impacts performance and cost.\n*   **Response (My Output):** My responses are typically capped around 2,000 tokens.\n\n**How I Manage Token Usage:**\n\nI employ several strategies to stay within my token limits:\n\n* **Summarization:** If a conversation gets too long, I might summarize previous turns to keep the context window manageable.\n* **Truncation:**  I may truncate (cut off) parts of your input if it exceeds the limit.\n* **Focus on Relevance:** I prioritize processing the most relevant parts of the conversation to maintain coherence.\n\n**Resources for Understanding Tokenization:**\n\n*   **OpenAI’s Documentation:** [https://openai.com/docs/guides/token-usage](https://openai.com/docs/guides/token-usage) – This is the best place for up-to-date information on tokenization and pricing.\n\n\n**Do you want me to:**\n\n*   Give you an estimate of how many tokens a particular prompt or response might generate?\n*   Explain how to optimize your prompts to minimize token usage?",
+                  "fromDraftModel": false,
+                  "tokensCount": 673,
+                  "isStructural": false
+                }
+              ],
+              "defaultShouldIncludeInContext": true,
+              "shouldIncludeInContext": true,
+              "genInfo": {
+                "indexedModelIdentifier": "google/gemma-3-4b",
+                "identifier": "google/gemma-3-4b",
+                "loadModelConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.load.llama.cpuThreadPoolSize",
+                      "value": 4
+                    },
+                    {
+                      "key": "llm.load.contextLength",
+                      "value": 4096
+                    },
+                    {
+                      "key": "llm.load.llama.flashAttention",
+                      "value": true
+                    },
+                    {
+                      "key": "llm.load.llama.tryDirectIO",
+                      "value": false
+                    },
+                    {
+                      "key": "llm.load.llama.acceleration.offloadRatio",
+                      "value": 1
+                    }
+                  ]
+                },
+                "predictionConfig": {
+                  "fields": [
+                    {
+                      "key": "llm.prediction.temperature",
+                      "value": 0.1
+                    },
+                    {
+                      "key": "llm.prediction.promptTemplate",
+                      "value": {
+                        "type": "jinja",
+                        "jinjaPromptTemplate": {
+                          "template": "{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n    {%- if messages[0]['content'] is string -%}\n        {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n    {%- else -%}\n        {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n    {%- endif -%}\n    {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n    {%- set first_user_prefix = \"\" -%}\n    {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n        {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n    {%- endif -%}\n    {%- if (message['role'] == 'assistant') -%}\n        {%- set role = \"model\" -%}\n    {%- else -%}\n        {%- set role = message['role'] -%}\n    {%- endif -%}\n    {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n    {%- if message['content'] is string -%}\n        {{ message['content'] | trim }}\n    {%- elif message['content'] is iterable -%}\n        {%- for item in message['content'] -%}\n            {%- if item['type'] == 'image' -%}\n                {{ '<start_of_image>' }}\n            {%- elif item['type'] == 'text' -%}\n                {{ item['text'] | trim }}\n            {%- endif -%}\n        {%- endfor -%}\n    {%- else -%}\n        {{ raise_exception(\"Invalid content type\") }}\n    {%- endif -%}\n    {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n    {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"
+                        },
+                        "stopStrings": []
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.llama.cpuThreads",
+                      "value": 4
+                    },
+                    {
+                      "key": "llm.prediction.vision.userMaxImageDimensionPixels",
+                      "value": {
+                        "checked": true,
+                        "value": 2048
+                      }
+                    },
+                    {
+                      "key": "llm.prediction.vision.ignoreModelPreferredMaxImageDimension",
+                      "value": false
+                    },
+                    {
+                      "key": "llm.prediction.contextPrefill",
+                      "value": []
+                    },
+                    {
+                      "key": "llm.prediction.tools",
+                      "value": {
+                        "type": "none"
+                      }
+                    }
+                  ]
+                },
+                "stats": {
+                  "stopReason": "eosFound",
+                  "tokensPerSecond": 8.797402171517337,
+                  "numGpuLayers": -1,
+                  "timeToFirstTokenSec": 39.029,
+                  "totalTimeSec": 76.511,
+                  "promptTokensCount": 1510,
+                  "predictedTokensCount": 674,
+                  "totalTokensCount": 2184
+                }
+              }
+            },
+            {
+              "type": "debugInfoBlock",
+              "stepIdentifier": "1774444683956-0.9862646409565731",
+              "debugInfo": "Conversation naming technique: 'hardcoded'"
+            }
+          ],
+          "senderInfo": {
+            "senderName": "google/gemma-3-4b"
+          }
+        }
+      ],
+      "currentlySelected": 0
+    }
+  ],
+  "usePerChatPredictionConfig": true,
+  "perChatPredictionConfig": {
+    "fields": []
+  },
+  "clientInput": "",
+  "clientInputFiles": [],
+  "userFilesSizeBytes": 0,
+  "lastUsedModel": {
+    "identifier": "google/gemma-3-4b",
+    "indexedModelIdentifier": "google/gemma-3-4b",
+    "instanceLoadTimeConfig": {
+      "fields": [
+        {
+          "key": "llm.load.llama.cpuThreadPoolSize",
+          "value": 4
+        },
+        {
+          "key": "llm.load.contextLength",
+          "value": 4096
+        },
+        {
+          "key": "llm.load.llama.flashAttention",
+          "value": true
+        },
+        {
+          "key": "llm.load.llama.tryDirectIO",
+          "value": false
+        },
+        {
+          "key": "llm.load.llama.acceleration.offloadRatio",
+          "value": 1
+        }
+      ]
+    },
+    "instanceOperationTimeConfig": {
+      "fields": []
+    }
+  },
+  "notes": [],
+  "plugins": [],
+  "pluginConfigs": {},
+  "disabledPluginTools": [],
+  "looseFiles": []
+}
