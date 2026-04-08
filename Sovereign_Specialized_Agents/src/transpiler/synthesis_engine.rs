@@ -23,18 +23,23 @@ impl SynthesisEngine {
     pub fn pair_fragments(&self, core_concept: &str) -> Result<Option<(LogicFragment, LogicFragment)>> {
         println!("[ SYNTHESIS ] Searching Lattice for Core Concept: {}...", core_concept);
         
+        // Phase 115: Polymath Scholarly Ingress
         let theories = self.vault.load_fragments("theory")?;
         let theory = theories.into_iter()
-            .find(|f| f.raw_logic.to_lowercase().contains(&core_concept.to_lowercase()));
+            .find(|f| {
+                f.raw_logic.to_lowercase().contains(&core_concept.to_lowercase()) ||
+                f.source.contains("arXiv") // Scholarly Preference
+            });
 
         let codes = self.vault.load_fragments("research")?;
         let code = codes.into_iter()
             .find(|f| f.raw_logic.to_lowercase().contains(&core_concept.to_lowercase()));
 
         if let (Some(t), Some(c)) = (theory, code) {
-            println!("[ SYNTHESIS ] Lattice Resonance Detected: {} | Theory paired with Code.", core_concept);
+            println!("[ SYNTHESIS ] Polymath Resonance Detected: {} | Scholarly Theory paired with Implementation.", core_concept);
             Ok(Some((t, c)))
         } else {
+            println!("[ SYNTHESIS ] Searching global lattice for theoretical anchors...");
             Ok(None)
         }
     }
