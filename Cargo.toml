@@ -14,7 +14,8 @@ members = [
     "lib-protocols",
     "lib-storage",
     "zhtp",
-    "tests/lib-identity/test-lib-identity-imports",
+    "Sovereign_Specialized_Agents",
+    "Sovereign_Suite_RS",
 ]
 
 [workspace.package]
