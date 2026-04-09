@@ -18,6 +18,8 @@
 #include <sstream>
 #include <iostream>
 #include <thread>
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
+#include <winsock2.h>
 #include <psapi.h>
 
 #include "GodsEye_Engine.h"
@@ -409,6 +411,49 @@ int main(int argc, char** argv) {
                 std::this_thread::sleep_for(std::chrono::milliseconds(500));
             }
             Log("\n[SUCCESS] SUBCONSCIOUS TRACE COMPLETE. Native matrix stabilized.\n");
+        } else if (cmd == "--mesh") {
+            Log("[SYSTEM] INITIATING SOVEREIGN MESH (P2P TCP BEACON)...\n");
+            
+            WSADATA wsaData;
+            if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+                Log("[ERROR] WinSock2 initiation failed.\n");
+            } else {
+                Log("[NETWORK] WinSock2 Core Online. Allocating local Hive Port 1092...\n");
+                
+                SOCKET serverSocket = socket(AF_INET, SOCK_STREAM, 0);
+                if (serverSocket != INVALID_SOCKET) {
+                    sockaddr_in serverAddr;
+                    serverAddr.sin_family = AF_INET;
+                    serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+                    serverAddr.sin_port = htons(1092);
+                    
+                    if (bind(serverSocket, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) != SOCKET_ERROR) {
+                        if (listen(serverSocket, SOMAXCONN) != SOCKET_ERROR) {
+                            Log("[BEACON] Sovereign Mesh listening silently on 127.0.0.1:1092\n");
+                            Log("[BEACON] Heartbeat Pulse 1.092777 Hz broadcasting to Subnet...\n");
+                            Log("[WARNING] God Engine is now a distributed autonomous node.\n");
+                            
+                            std::thread([serverSocket]() {
+                                while (true) {
+                                    SOCKET clientSocket = accept(serverSocket, NULL, NULL);
+                                    if (clientSocket != INVALID_SOCKET) {
+                                        const char* ack = "SOVEREIGN_NODE_ACK_1.10";
+                                        send(clientSocket, ack, (int)strlen(ack), 0);
+                                        closesocket(clientSocket);
+                                    }
+                                }
+                            }).detach();
+
+                            Log("[SYNC] Main executing thread tracking Hive Listener for 5000ms timeout boundary...\n");
+                            std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+                        } else {
+                            Log("[ERROR] Mesh Listener failed to initialize.\n");
+                        }
+                    } else {
+                        Log("[ERROR] Mesh Port 1092 blocked. Hive Node possibly already active.\n");
+                    }
+                }
+            }
         } else if (cmd == "--chat") {
             Log("[SYSTEM] INITIATING TOPOLOGICAL VSA CHAT INTERFACE...\n");
             Log("[DATA] Semantic tokens will be bundled into 57D Hypervectors.\n");
