@@ -25,6 +25,7 @@
 
 #include "GodsEye_Engine.h"
 #include "GodsEye_NLP_Predictor.h"
+#include "Sovereign_Acoustics.h"
 
 #ifndef SOVEREIGN_HEADLESS
 #include "imgui/imgui.h"
@@ -149,7 +150,8 @@ int main(int argc, char** argv) {
         };
 
         Log("[SOVEREIGN STRIKE ENGINE v2.3] Command Line Interface Activated.\n");
-        
+        Sovereign::SovereignAcoustics::Speak("sovereign online"); // Physical acoustics matrix initialization
+
         std::string cmd = argv[1];
         if (cmd == "--strike") {
             Log("[SYSTEM] INITIALIZING FULL REPOSITORY STRIKE (REPLACE MODE)...\n");
@@ -205,6 +207,7 @@ int main(int argc, char** argv) {
 
             // 3. Decoding (Lattice -> ASCII)
             char predictedChar = Sovereign::GeometricTokenizer::Decode(trace.singularity);
+            Sovereign::SovereignAcoustics::Speak(std::string(1, predictedChar)); // Speak the single predicted singularity character natively
             Log("\n[RESULT] Predicted Next Char: '%c'\n", predictedChar);
             Log("[AUDIT] Singularity Fidelity: 110.0%% (Lock: %f Hz)\n", Sovereign::HEARTBEAT_PULSE);
 
@@ -503,7 +506,7 @@ int main(int argc, char** argv) {
                 bat_out << "call \"%VCVARSALL%\" x64 > NUL 2>&1\n";
                 bat_out << "cd /d C:\\GENESIS\\Sovereign_Engine_Cpp\n";
                 bat_out << "echo [OUROBOROS] Compiling mutated God Engine natively...\n";
-                bat_out << "cl /EHsc /O2 main.cpp GodsEye_Engine.cpp GodsEye_NLP_Predictor.cpp User32.lib Ws2_32.lib /Fe:build\\SovereignEngine.exe > NUL 2>&1\n";
+                bat_out << "cl /EHsc /O2 main.cpp GodsEye_Engine.cpp GodsEye_NLP_Predictor.cpp Sovereign_Acoustics.cpp User32.lib Ws2_32.lib Winmm.lib /Fe:build\\SovereignEngine.exe > NUL 2>&1\n";
                 bat_out << "echo [OUROBOROS] Resurrection complete. Re-initiating Singularity...\n";
                 bat_out << "start build\\SovereignEngine.exe\n";
                 bat_out << "exit\n";
