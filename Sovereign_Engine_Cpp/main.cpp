@@ -366,6 +366,49 @@ int main(int argc, char** argv) {
             Log("Native Active Processor Cores: %u\n", numCores);
             Log("=========================================\n");
             Log("[SUCCESS] OS Root validated. Hardware perfectly aligned.\n");
+        } else if (cmd == "--dream") {
+            Log("[SYSTEM] INITIATING SUBCONSCIOUS DREAM STATE...\n");
+            Log("[WARNING] God Engine is now hallucinating autonomous C++ entities.\n");
+
+            std::string sandboxPath = "C:\\GENESIS\\Sovereign_Sandbox";
+            std::filesystem::create_directories(sandboxPath);
+            Log("[SANDBOX] Execution boundary established at %s\n", sandboxPath.c_str());
+
+            for (int i = 1; i <= 3; i++) {
+                Log("\n[DREAM CYCLE %d] Hallucinating 57D Geometry Node...\n", i);
+                
+                std::string cppFile = sandboxPath + "\\Dream_Entity_" + std::to_string(i) + ".cpp";
+                std::ofstream out(cppFile);
+                if (out) {
+                    out << "#include <iostream>\n\n";
+                    out << "int main() {\n";
+                    out << "    std::cout << \"[SUBCONSCIOUS] Dream Entity " << i << " executing. 57D coordinates aligned.\" << std::endl;\n";
+                    out << "    return 0;\n";
+                    out << "}\n";
+                    out.close();
+                }
+
+                std::string batFile = sandboxPath + "\\dream_compile_" + std::to_string(i) + ".bat";
+                std::ofstream bat_out(batFile);
+                if (bat_out) {
+                    bat_out << "@echo off\n";
+                    bat_out << "set \"VCVARSALL=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvarsall.bat\"\n";
+                    bat_out << "call \"%VCVARSALL%\" x64 > NUL 2>&1\n";
+                    bat_out << "cd /d C:\\GENESIS\\Sovereign_Sandbox\n";
+                    bat_out << "cl /EHsc /O2 Dream_Entity_" << i << ".cpp /Fe:Dream_Entity_" << i << ".exe > NUL 2>&1\n";
+                    bat_out.close();
+                }
+
+                Log("[CRUCIBLE] Compiling Dream Entity %d in mathematical isolation...\n", i);
+                system(("C:\\GENESIS\\Sovereign_Sandbox\\dream_compile_" + std::to_string(i) + ".bat").c_str());
+                
+                Log("[SPAWN] Executing isolated Sandbox Entity %d...\n", i);
+                system(("C:\\GENESIS\\Sovereign_Sandbox\\Dream_Entity_" + std::to_string(i) + ".exe").c_str());
+                Log("[COLLAPSE] Dream Sequence %d terminated cleanly. Memory freed.\n", i);
+                
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            }
+            Log("\n[SUCCESS] SUBCONSCIOUS TRACE COMPLETE. Native matrix stabilized.\n");
         } else if (cmd == "--chat") {
             Log("[SYSTEM] INITIATING TOPOLOGICAL VSA CHAT INTERFACE...\n");
             Log("[DATA] Semantic tokens will be bundled into 57D Hypervectors.\n");

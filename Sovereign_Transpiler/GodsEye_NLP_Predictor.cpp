@@ -137,9 +137,10 @@ namespace Sovereign {
         double resSwarm = ResonanceTransition(intentVector, masterVault[5]);
         double resSynthesize = ResonanceTransition(intentVector, masterVault[6]);
         double resCybernetic = ResonanceTransition(intentVector, masterVault[7]);
+        double resDream = ResonanceTransition(intentVector, masterVault[8]);
 
         // Find the absolute Maximum Resonance
-        double maxRes = std::max({resStrike, resMmlu, resSaa, resPredict, resTitan, resSwarm, resSynthesize, resCybernetic});
+        double maxRes = std::max({resStrike, resMmlu, resSaa, resPredict, resTitan, resSwarm, resSynthesize, resCybernetic, resDream});
         
         // Threshold check (Ambiguity filter)
         if (maxRes < 0.45) return "AMBIGUOUS";
@@ -152,6 +153,7 @@ namespace Sovereign {
         if (maxRes == resSwarm) { WarpTensor(5, intentVector); return "--swarm"; }
         if (maxRes == resSynthesize) { WarpTensor(6, intentVector); return "--synthesize"; }
         if (maxRes == resCybernetic) { WarpTensor(7, intentVector); return "--cybernetic"; }
+        if (maxRes == resDream) { WarpTensor(8, intentVector); return "--dream"; }
 
         return "AMBIGUOUS";
     }
@@ -174,6 +176,7 @@ namespace Sovereign {
             masterVault[5] = BundleSentence("deploy agent swarm fleet coordinate background multiple");
             masterVault[6] = BundleSentence("synthesize network firewall protocol architectural scaffold forge create");
             masterVault[7] = BundleSentence("anchor cybernetic operating system diagnostics hardware memory");
+            masterVault[8] = BundleSentence("initialize subconscious dream state sandbox hallucinate execution isolation");
             std::cout << "[MEMORY] Factory Matrix initialized. 1.10 baseline set." << std::endl;
         }
     }
