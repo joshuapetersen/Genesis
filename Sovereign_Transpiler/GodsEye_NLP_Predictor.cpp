@@ -136,9 +136,10 @@ namespace Sovereign {
         double resTitan = ResonanceTransition(intentVector, masterVault[4]);
         double resSwarm = ResonanceTransition(intentVector, masterVault[5]);
         double resSynthesize = ResonanceTransition(intentVector, masterVault[6]);
+        double resCybernetic = ResonanceTransition(intentVector, masterVault[7]);
 
         // Find the absolute Maximum Resonance
-        double maxRes = std::max({resStrike, resMmlu, resSaa, resPredict, resTitan, resSwarm, resSynthesize});
+        double maxRes = std::max({resStrike, resMmlu, resSaa, resPredict, resTitan, resSwarm, resSynthesize, resCybernetic});
         
         // Threshold check (Ambiguity filter)
         if (maxRes < 0.45) return "AMBIGUOUS";
@@ -150,6 +151,7 @@ namespace Sovereign {
         if (maxRes == resPredict) { WarpTensor(3, intentVector); return "--predict"; }
         if (maxRes == resSwarm) { WarpTensor(5, intentVector); return "--swarm"; }
         if (maxRes == resSynthesize) { WarpTensor(6, intentVector); return "--synthesize"; }
+        if (maxRes == resCybernetic) { WarpTensor(7, intentVector); return "--cybernetic"; }
 
         return "AMBIGUOUS";
     }
@@ -171,6 +173,7 @@ namespace Sovereign {
             masterVault[4] = BundleSentence("titan benchmark scorecard comparison battle");
             masterVault[5] = BundleSentence("deploy agent swarm fleet coordinate background multiple");
             masterVault[6] = BundleSentence("synthesize network firewall protocol architectural scaffold forge create");
+            masterVault[7] = BundleSentence("anchor cybernetic operating system diagnostics hardware memory");
             std::cout << "[MEMORY] Factory Matrix initialized. 1.10 baseline set." << std::endl;
         }
     }
