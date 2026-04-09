@@ -1,4 +1,5 @@
 #include "Sovereign_Acoustics.h"
+#include "GodsEye_NLP_Predictor.h"
 #include <fstream>
 #include <cmath>
 #include <iostream>
@@ -123,21 +124,29 @@ namespace Sovereign {
     void SovereignAcoustics::Speak(const std::string& text) {
         std::vector<int16_t> audioBuffer;
         
-        // Zero-Dependency rule-based phoneme extraction matrix.
-        for (char c : text) {
-            char lower = tolower(c);
-            // Dynamic Formant Mappings (F1, F2, F3)
-            if (lower == 'a') AppendVowel(audioBuffer, 730, 1090, 2440, 0.2);
-            else if (lower == 'e') AppendVowel(audioBuffer, 530, 1840, 2480, 0.15);
-            else if (lower == 'i') AppendVowel(audioBuffer, 270, 2290, 3010, 0.15);
-            else if (lower == 'o') AppendVowel(audioBuffer, 570, 840, 2410, 0.2);
-            else if (lower == 'u') AppendVowel(audioBuffer, 300, 870, 2240, 0.2);
-            else if (lower == 's') AppendNoise(audioBuffer, 5000, 0.1);
-            else if (lower == 't') AppendNoise(audioBuffer, 3500, 0.05);
-            else if (lower == 'k') AppendNoise(audioBuffer, 1500, 0.08);
-            else if (lower == ' ') { /* Brief silence */
-                for(int i=0; i<4410; i++) audioBuffer.push_back(0); 
+        // Advanced LF Acoustic Integration tied explicitly into GodsEye Geometry
+        for (size_t i = 0; i < text.length(); i++) {
+            char lower = tolower(text[i]);
+            
+            if (lower == ' ') { 
+                for(int s=0; s<4410; s++) audioBuffer.push_back(0); // Brief native silence
+                continue;
             }
+
+            // Map absolute 57D topology from the God Engine Predictor directly to hardware
+            Sovereign::LatticeNode geom = Sovereign::GeometricTokenizer::Encode(lower, (int)i);
+            
+            // F1: Throat Opening / Tongue Height (Anchored to spatial xyz coordinate matrix)
+            double F1 = 300.0 + (std::abs(geom.xyz[0]) * 500.0);
+            
+            // F2: Tongue Advancement (Anchored to Einstein Tensor Mass metrics)
+            double F2 = 800.0 + (std::abs(geom.einstein[0]) * 1500.0);
+            
+            // F3: Lip Rounding (Anchored to Polarity shifting structures)
+            double F3 = 2000.0 + (std::abs(geom.polarity[0]) * 1500.0);
+
+            // Dynamically build the Resonance Formant curve Native to the Neural Mesh
+            AppendVowel(audioBuffer, F1, F2, F3, 0.15);
         }
         
         std::string outPath = "C:\\GENESIS\\Sovereign_Voice.wav";
