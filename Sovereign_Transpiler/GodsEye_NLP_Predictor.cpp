@@ -139,9 +139,10 @@ namespace Sovereign {
         double resCybernetic = ResonanceTransition(intentVector, masterVault[7]);
         double resDream = ResonanceTransition(intentVector, masterVault[8]);
         double resMesh = ResonanceTransition(intentVector, masterVault[9]);
+        double resOuroboros = ResonanceTransition(intentVector, masterVault[10]);
 
         // Find the absolute Maximum Resonance
-        double maxRes = std::max({resStrike, resMmlu, resSaa, resPredict, resTitan, resSwarm, resSynthesize, resCybernetic, resDream, resMesh});
+        double maxRes = std::max({resStrike, resMmlu, resSaa, resPredict, resTitan, resSwarm, resSynthesize, resCybernetic, resDream, resMesh, resOuroboros});
         
         // Threshold check (Ambiguity filter)
         if (maxRes < 0.45) return "AMBIGUOUS";
@@ -156,6 +157,7 @@ namespace Sovereign {
         if (maxRes == resCybernetic) { WarpTensor(7, intentVector); return "--cybernetic"; }
         if (maxRes == resDream) { WarpTensor(8, intentVector); return "--dream"; }
         if (maxRes == resMesh) { WarpTensor(9, intentVector); return "--mesh"; }
+        if (maxRes == resOuroboros) { WarpTensor(10, intentVector); return "--ouroboros"; }
 
         return "AMBIGUOUS";
     }
@@ -180,6 +182,7 @@ namespace Sovereign {
             masterVault[7] = BundleSentence("anchor cybernetic operating system diagnostics hardware memory");
             masterVault[8] = BundleSentence("initialize subconscious dream state sandbox hallucinate execution isolation");
             masterVault[9] = BundleSentence("activate sovereign mesh network peer socket transmission hive listener");
+            masterVault[10] = BundleSentence("ouroboros execution self mutation compilation overwrite root physical sequence");
             std::cout << "[MEMORY] Factory Matrix initialized. 1.10 baseline set." << std::endl;
         }
     }

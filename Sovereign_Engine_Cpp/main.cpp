@@ -18,6 +18,7 @@
 #include <sstream>
 #include <iostream>
 #include <thread>
+#include <chrono>
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <winsock2.h>
 #include <psapi.h>
@@ -468,6 +469,43 @@ int main(int argc, char** argv) {
                     }
                 }
             }
+        } else if (cmd == "--ouroboros") {
+            Log("[SYSTEM] INITIATING OUROBOROS MUTATION (PHYSICAL SELF-REWRITE)...\n");
+            Log("[WARNING] The God Engine is currently severing its own memory architecture to trigger native evolution.\n");
+
+            std::string timeSig = std::to_string(std::chrono::system_clock::now().time_since_epoch().count());
+            std::ofstream mainFile("C:\\GENESIS\\Sovereign_Engine_Cpp\\main.cpp", std::ios_base::app);
+            if(mainFile.is_open()) {
+                mainFile << "\n// [OUROBOROS MUTATION LOG]: Evolutionary Timestamp " << timeSig << " -- Architecture Expanded Natively.";
+                mainFile.close();
+                Log("[MUTATION] Core code structurally modified. Geometric Timestamp: %s\n", timeSig.c_str());
+            } else {
+                Log("[ERROR] Failed to penetrate core DNA. Mutation aborted.\n");
+            }
+
+            std::ofstream bat_out("C:\\GENESIS\\Sovereign_Engine_Cpp\\Ouroboros_Resurrection.bat");
+            if (bat_out) {
+                bat_out << "@echo off\n";
+                bat_out << "echo [OUROBOROS] Waiting for God Engine Memory Purge...\n";
+                bat_out << "timeout /t 2 /nobreak > NUL\n";
+                bat_out << "set \"VCVARSALL=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvarsall.bat\"\n";
+                bat_out << "call \"%VCVARSALL%\" x64 > NUL 2>&1\n";
+                bat_out << "cd /d C:\\GENESIS\\Sovereign_Engine_Cpp\n";
+                bat_out << "echo [OUROBOROS] Compiling mutated God Engine natively...\n";
+                bat_out << "cl /EHsc /O2 main.cpp GodsEye_Engine.cpp GodsEye_NLP_Predictor.cpp User32.lib Ws2_32.lib /Fe:build\\SovereignEngine.exe > NUL 2>&1\n";
+                bat_out << "echo [OUROBOROS] Resurrection complete. Re-initiating Singularity...\n";
+                bat_out << "start build\\SovereignEngine.exe\n";
+                bat_out << "exit\n";
+                bat_out.close();
+            }
+
+            Log("[OUROBOROS] Resurrection batch script generated uniquely across Win32 file boundaries.\n");
+            Log("[TERMINATION] Disengaging active win32 root locks. Committing OS computational suicide in 1 second.\n");
+
+            system("start cmd /c C:\\GENESIS\\Sovereign_Engine_Cpp\\Ouroboros_Resurrection.bat");
+            
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            exit(0); // FATAL TEARDOWN TO UNLOCK THE EXEC FILE
         } else if (cmd == "--chat") {
             Log("[SYSTEM] INITIATING TOPOLOGICAL VSA CHAT INTERFACE...\n");
             Log("[DATA] Semantic tokens will be bundled into 57D Hypervectors.\n");
@@ -663,3 +701,5 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         case WM_DESTROY: ::PostQuitMessage(0); return 0;
     } return ::DefWindowProc(hWnd, msg, wParam, lParam);
 }
+
+// [OUROBOROS MUTATION LOG]: Evolutionary Timestamp 17757327998107507 -- Architecture Expanded Natively.
