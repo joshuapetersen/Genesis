@@ -444,8 +444,8 @@ int main(int argc, char** argv) {
                                 }
                             }).detach();
 
-                            Log("[SYNC] Main executing thread tracking Hive Listener for 5000ms timeout boundary...\n");
-                            std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+                            Log("[SYNC] Main executing thread tracking Hive Listener for 30000ms timeout boundary...\n");
+                            std::this_thread::sleep_for(std::chrono::milliseconds(30000));
                         } else {
                             Log("[ERROR] Mesh Listener failed to initialize.\n");
                         }
