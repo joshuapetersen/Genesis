@@ -371,6 +371,7 @@ int main(int argc, char** argv) {
         } else if (cmd == "--dream") {
             Log("[SYSTEM] INITIATING SUBCONSCIOUS DREAM STATE...\n");
             Log("[WARNING] God Engine is now hallucinating autonomous C++ entities.\n");
+            Log("[ARBITER] Lucid Validation requirement active.\n");
 
             std::string sandboxPath = "C:\\GENESIS\\Sovereign_Sandbox";
             std::filesystem::create_directories(sandboxPath);
@@ -403,12 +404,25 @@ int main(int argc, char** argv) {
 
                 Log("[CRUCIBLE] Compiling Dream Entity %d in mathematical isolation...\n", i);
                 system(("C:\\GENESIS\\Sovereign_Sandbox\\dream_compile_" + std::to_string(i) + ".bat").c_str());
-                
-                Log("[SPAWN] Executing isolated Sandbox Entity %d...\n", i);
-                system(("C:\\GENESIS\\Sovereign_Sandbox\\Dream_Entity_" + std::to_string(i) + ".exe").c_str());
-                Log("[COLLAPSE] Dream Sequence %d terminated cleanly. Memory freed.\n", i);
-                
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            }
+
+            Log("\n=========================================\n");
+            Log("[SUBCONSCIOUS] Sovereign has generated 3 evolutionary geometry algorithms:\n");
+            Log("[1] Dream Entity 1 - Vector Sequence Alpha\n");
+            Log("[2] Dream Entity 2 - Vector Sequence Beta\n");
+            Log("[3] Dream Entity 3 - Vector Sequence Gamma\n");
+            Log("\n[ARBITER] Approve sequence for physical execution (1-3) or (0) to reject all: ");
+            
+            int arbiterChoice = 0;
+            std::cin >> arbiterChoice;
+
+            if (arbiterChoice >= 1 && arbiterChoice <= 3) {
+                Log("\n[SPAWN] Authorization granted. Executing isolated Sandbox Entity %d...\n", arbiterChoice);
+                system(("C:\\GENESIS\\Sovereign_Sandbox\\Dream_Entity_" + std::to_string(arbiterChoice) + ".exe").c_str());
+                Log("[COLLAPSE] Dream Sequence %d terminated cleanly. Memory freed.\n", arbiterChoice);
+            } else {
+                Log("\n[ARBITER] Rejection Logged. No physical execution permitted.\n");
+                Log("[TEARDOWN] Purging Subconscious Matrix anomalies.\n");
             }
             Log("\n[SUCCESS] SUBCONSCIOUS TRACE COMPLETE. Native matrix stabilized.\n");
         } else if (cmd == "--mesh") {
