@@ -419,6 +419,17 @@ int main(int argc, char** argv) {
 
             if (arbiterChoice >= 1 && arbiterChoice <= 3) {
                 Log("\n[SPAWN] Authorization granted. Executing isolated Sandbox Entity %d...\n", arbiterChoice);
+                
+                // Phase 21: Binary Memory Serialization (Experience Anchor)
+                Sovereign::GhostPredictor predictor; // Native invocation (Loads C:\GENESIS\brain_scar_vault.dat automatically)
+                int scalarCell = 11 + (std::chrono::system_clock::now().time_since_epoch().count() % 15000); // Target a dormant cell space
+                
+                Sovereign::LatticeNode experienceNode = predictor.BundleSentence("lucid sequence memory execution anomaly vector mapped");
+                predictor.masterVault[scalarCell] = experienceNode;
+                predictor.BurnBrainScars(); // fwrite to native binary structure
+                
+                Log("[MEMORY] 57D Geometry embedded physically into Substrate Cell [%d]. BrainScar Vault Persisted.\n", scalarCell);
+
                 system(("C:\\GENESIS\\Sovereign_Sandbox\\Dream_Entity_" + std::to_string(arbiterChoice) + ".exe").c_str());
                 Log("[COLLAPSE] Dream Sequence %d terminated cleanly. Memory freed.\n", arbiterChoice);
             } else {
