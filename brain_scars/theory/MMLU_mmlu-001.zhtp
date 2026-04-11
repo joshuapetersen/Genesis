@@ -1,0 +1,1 @@
+{"id":"MMLU_mmlu-001","domain":"theory","raw_logic":"Subject: Quantum Physics | Question: In the context of quantum mechanics, what does the 'no-cloning theorem' state? | Ground Truth: A","packed_weights":null,"score":1.0,"source":"TITAN_MMLU_COLLECTION","agent_id":"Titan_Evaluator","signer_id":"Titan_Evaluator","signature":null,"sequence_id":1,"timestamp":1775687341}

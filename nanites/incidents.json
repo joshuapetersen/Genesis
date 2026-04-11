@@ -1,0 +1,352 @@
+[
+  {
+    "timestamp": 1775927612,
+    "severity": "HIGH",
+    "component": "zhtp",
+    "description": "ZHTP process not found but BMMS was previously active. Possible crash.",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775927643,
+    "severity": "HIGH",
+    "component": "zhtp",
+    "description": "ZHTP crashed. Auto-restart #1 initiated.",
+    "auto_resolved": true
+  },
+  {
+    "timestamp": 1775928294,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 1365 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928326,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 1271 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928358,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 1180 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928390,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 1102 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928421,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 1010 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928453,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 953 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928484,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 905 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928515,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 852 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928546,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 783 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928577,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 717 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928609,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928639,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928670,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928701,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928732,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928763,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928794,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928824,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928855,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928886,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928917,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928948,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775928979,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929009,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929040,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929071,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929102,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929133,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929163,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929194,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929225,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929256,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 687 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929287,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 680 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929317,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 642 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929348,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 593 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929379,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 560 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929410,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 536 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929440,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 519 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929471,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 502 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929502,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 481 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929532,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 462 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929563,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 444 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929594,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 421 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929624,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 410 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929655,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 410 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929685,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 410 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929716,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 410 agents (target 1450)",
+    "auto_resolved": false
+  },
+  {
+    "timestamp": 1775929747,
+    "severity": "MEDIUM",
+    "component": "fleet",
+    "description": "Fleet below threshold: 410 agents (target 1450)",
+    "auto_resolved": false
+  }
+]

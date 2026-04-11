@@ -23,8 +23,31 @@ use zhtp::{
     // api::{start_api_server, ApiConfig}, // TODO: Re-enable when API handlers are implemented
 };
 
-#[tokio::main]
-async fn main() -> Result<()> {
+// Stack size: did_startup::handle_startup_wallet_flow is deeply nested (68KB of code).
+// Post-quantum key generation (Dilithium/Kyber) during genesis overflows the OS-default
+// main-thread stack (1 MB on Windows in PE header, 8 MB on Linux).
+//
+// Fix: spawn a dedicated std::thread with 64 MB stack and DRIVE the Tokio runtime
+// from there. `block_on` drives the async future on the CALLING thread, so both
+// the driver thread AND all tokio worker threads get the enlarged stack.
+fn main() -> Result<()> {
+    std::thread::Builder::new()
+        .name("zhtp-main".to_string())
+        .stack_size(64 * 1024 * 1024) // 64 MB — generous headroom for genesis init
+        .spawn(|| {
+            let runtime = tokio::runtime::Builder::new_multi_thread()
+                .thread_stack_size(64 * 1024 * 1024) // Worker threads also get 64 MB
+                .enable_all()
+                .build()
+                .expect("Failed to build Tokio runtime");
+            runtime.block_on(async_main())
+        })
+        .expect("Failed to spawn zhtp-main thread")
+        .join()
+        .expect("zhtp-main thread panicked")
+}
+
+async fn async_main() -> Result<()> {
     // Install rustls crypto provider before any TLS/QUIC operations
     // This MUST be done before any rustls usage to avoid panic
     let _ = rustls::crypto::ring::default_provider().install_default();
@@ -55,9 +78,6 @@ async fn main() -> Result<()> {
     if args.len() > 1 && args[1] == "--server" {
         info!("ZHTP Orchestrator Server mode not yet implemented");
         info!("Falling back to CLI mode");
-        // TODO: Re-enable when API handlers are implemented
-        // let config = ApiConfig::default();
-        // start_api_server(config).await?;
         run_cli().await?;
     } else {
         // Default: Use the full CLI structure with all subcommands
@@ -68,6 +88,7 @@ async fn main() -> Result<()> {
     info!(" ZHTP Orchestrator shutdown complete");
     Ok(())
 }
+
 
 // Note: The legacy run_node function and local modules have been replaced
 // with the new zhtp::cli and zhtp::api architecture.

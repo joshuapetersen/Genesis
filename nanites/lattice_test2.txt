@@ -1,0 +1,46 @@
+
+[LATTICE] Query: how does the speech engine work
+[LATTICE] φ = 1.618034  Combined weight = 16.326
+[LATTICE] Activating 5 brain tiers...
+
+[LATTICE] FAST PATH — complexity=2
+
+╔══════════════════ φ-WEIGHTED SYNTHESIS ═══════════════════╗
+  Query: how does the speech engine work
+  Complexity: 2/5 | Intent: Speech | Time: 13ms
+
+  Brain activity:
+    α Sentinel [φ^0=1.000] conf=0.92 | 0ms
+    β Memory [φ^1=1.618] conf=0.87 | 1ms
+
+  Combined φ confidence: 0.1426
+
+  Answer (from β Memory, weight=1.618):
+  SESSION:
+## Build State
+- sovereign_agent.exe: unix:1775905369
+- zhtp.exe: unix:1775907300
+
+## Key Known Fixes
+- `Global\\SovereignCoreStream` -> Change SOVEREIGN_MEMORY_NAME from Global\\ to Local\\ in memory_stream.rs (SeCreateGlobalPrivilege required for Global\\)
+- `has overflowed its stack` -> Use std::thread::Builder::new().stack_size(64*1024*1024) to drive Tokio runtime. block_on runs on OS main thread (PE default 1MB).
+- `Ole32.lib` -> Add /LINK Ole32.lib to build_hud.bat linker flags. Required for COM/SAPI integration.
+- `cannot remove file` -> Binary is locked by running process. Kill $(Get-Process sovereign_agent) first, then rebuild.
+
+## Phase 3 Evolution (recent)
+  1775913315,1449,1,99.9
+  1775913014,1449,1,99.9
+  1775912713,1449,1,99.9
+  1775912412,1449,1,99.9
+  1775912111,1449,1,99.9
+
+─────
+
+EVOLUTION_LOG:
+1775913315,1449,1,99.9
+1775913014,1449,1,99.9
+1775912713,1449,1,99.9
+1775912412,1449,1,99.9
+1775912111,1449,1,99.9
+
+╚═══════════════════════════════════════════════════════════╝

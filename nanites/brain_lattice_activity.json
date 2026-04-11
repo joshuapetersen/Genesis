@@ -1,0 +1,9 @@
+{"ts":1775920546,"query":"Answer with ONLY the single letter A, B, C, or D.
+
+Q: Which layer of the Earth is liquid and generates Earth's magnetic field?
+A) Crust
+B) Outer core
+C) Inner core
+D) Mantle
+
+Answer:","brains":[{"brain":"α Sentinel","conf":0.550,"latency_ms":0,"phi_weight":1.000},{"brain":"β Memory","conf":0.871,"latency_ms":0,"phi_weight":1.618},{"brain":"γ Reason","conf":0.630,"latency_ms":2457,"phi_weight":2.618},{"brain":"δ Evolver","conf":0.843,"latency_ms":2358,"phi_weight":4.236},{"brain":"ε Synthesis","conf":0.900,"latency_ms":2539,"phi_weight":6.854}],"phi_sum":16.326,"output_entropy":5.1995}

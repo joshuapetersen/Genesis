@@ -26,11 +26,13 @@ cl /EHsc /MD /O2 /std:c++17 ^
     main.cpp ^
     "%TRANSPILER%\GodsEye_Engine.cpp" ^
     "%TRANSPILER%\GodsEye_NLP_Predictor.cpp" ^
+    Sovereign_Acoustics.cpp ^
+    Sovereign_ASR.cpp ^
     imgui.obj imgui_demo.obj imgui_draw.obj imgui_tables.obj imgui_widgets.obj imgui_impl_win32.obj imgui_impl_dx11.obj ^
     /I "%TRANSPILER%" /I . /I imgui /I imgui\backends ^
     /DLIBRARY_EXPORTS ^
     /Fe:SovereignHUD.exe ^
-    User32.lib Ws2_32.lib d3d11.lib d3dcompiler.lib dxgi.lib
+    User32.lib Ws2_32.lib d3d11.lib d3dcompiler.lib dxgi.lib winmm.lib Ole32.lib
 
 if %errorlevel% neq 0 (
     echo [BUILD FAILED] HUD Integrations Failed.

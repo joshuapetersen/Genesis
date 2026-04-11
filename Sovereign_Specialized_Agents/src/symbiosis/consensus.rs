@@ -10,16 +10,14 @@ use std::sync::atomic::Ordering;
 /// Goal: BFT-inspired logic aggregation for the 1,450+ agent fleet.
 pub struct NeuralConsensusEngine {
     hive: Arc<HiveComms>,
-    mesh_router: Arc<MeshRouter>,
-    identity_manager: Arc<RwLock<IdentityManager>>,
+    pub identity_manager: Arc<RwLock<IdentityManager>>,
     vote_bins: Arc<RwLock<HashMap<String, Vec<u64>>>>, // Logic Hash -> List of Agent ID Hashes
 }
 
 impl NeuralConsensusEngine {
-    pub fn new(hive: Arc<HiveComms>, mesh_router: Arc<MeshRouter>, identity_manager: Arc<RwLock<IdentityManager>>) -> Self {
+    pub fn new(hive: Arc<HiveComms>, _mesh_router: Arc<MeshRouter>, identity_manager: Arc<RwLock<IdentityManager>>) -> Self {
         Self {
             hive,
-            mesh_router,
             identity_manager,
             vote_bins: Arc::new(RwLock::new(HashMap::new())),
         }

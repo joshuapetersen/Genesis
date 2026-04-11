@@ -102,6 +102,10 @@ features = [
     "Networking_Proximity"
 ]
 
+[target.'cfg(target_os = "windows")'.dependencies.winapi]
+version = "0.3"
+features = ["winbase", "winnt", "handleapi", "memoryapi", "minwindef"]
+
 # Mobile dependencies removed - see archive/mobile-ffi-stubs branch when needed
 
 [dev-dependencies]

@@ -23,10 +23,16 @@ namespace Sovereign {
     }
 
     char GeometricTokenizer::Decode(const LatticeNode& node) {
-        // Simple 1D projection of the 56D node back to ASCII
+        // Full 56D projection → printable ASCII (0x20-0x7E range)
         double sum = 0;
-        for (int i = 0; i < 27; i++) sum += std::abs(node.xyz[i]);
-        return (char)((int)(sum * 10) % 127);
+        for (int i = 0; i < 27; i++) sum += node.xyz[i] * (i + 1);
+        for (int i = 0; i < 12; i++) sum += node.einstein[i] * (i + 28);
+        for (int i = 0; i < 12; i++) sum += node.polarity[i] * (i + 40) * -1.0;
+        for (int i = 0; i <  5; i++) sum += node.phi[i] * (i + 52);
+        sum += node.architect_anchor * 57;
+        // Fold into printable ASCII range [32, 126]
+        int raw = (int)std::abs(sum * 100.0);
+        return (char)(32 + (raw % 95));
     }
 
     // --- GHOST PREDICTOR (RESONANCE PRESSURE) ---
@@ -41,32 +47,74 @@ namespace Sovereign {
     ResonanceTrace GhostPredictor::PredictWithTrace(const std::vector<LatticeNode>& sequence) {
         if (sequence.empty()) return {};
 
-        const LatticeNode& current = sequence.back();
         ResonanceTrace trace = {};
 
-        // --- 1. THESIS: PRIMARY RESONANCE PRESSURE ---
-        for (int i = 0; i < 27; i++) trace.thesis.xyz[i] = current.xyz[i] * HEARTBEAT_PULSE;
-        for (int i = 0; i < 12; i++) trace.thesis.einstein[i] = current.einstein[i] / HEARTBEAT_PULSE;
-        for (int i = 0; i < 12; i++) trace.thesis.polarity[i] = current.polarity[i];
-        for (int i = 0; i < 5; i++)  trace.thesis.phi[i] = current.phi[i] * 1.618;
+        // --- 1. THESIS: Exponential-Weighted Context Accumulation (full sequence, not just last node) ---
+        // More recent nodes carry higher weight: w_i = HEARTBEAT_PULSE^(n-1-i)
+        // This preserves the causal chain — the past modulates the present.
+        double total_weight = 0.0;
+        int n = (int)sequence.size();
+        for (int si = 0; si < n; si++) {
+            double w = std::pow(HEARTBEAT_PULSE, n - 1 - si);
+            const LatticeNode& s = sequence[si];
+            for (int i = 0; i < 27; i++) trace.thesis.xyz[i]      += s.xyz[i] * w;
+            for (int i = 0; i < 12; i++) trace.thesis.einstein[i]  += s.einstein[i] * w;
+            for (int i = 0; i < 12; i++) trace.thesis.polarity[i]  += s.polarity[i] * w;
+            for (int i = 0; i <  5; i++) trace.thesis.phi[i]       += s.phi[i] * w;
+            trace.thesis.architect_anchor += s.architect_anchor * w;
+            total_weight += w;
+        }
+        if (total_weight > 0) {
+            for (int i = 0; i < 27; i++) trace.thesis.xyz[i]      /= total_weight;
+            for (int i = 0; i < 12; i++) trace.thesis.einstein[i]  /= total_weight;
+            for (int i = 0; i < 12; i++) trace.thesis.polarity[i]  /= total_weight;
+            for (int i = 0; i <  5; i++) trace.thesis.phi[i]       /= total_weight;
+            trace.thesis.architect_anchor                           /= total_weight;
+        }
 
-        // --- 2. ANTITHESIS: PHASE CONJUGATION ---
-        for (int i = 0; i < 27; i++) trace.antithesis.xyz[i] = -trace.thesis.xyz[i];
-        for (int i = 0; i < 12; i++) trace.antithesis.einstein[i] = 1.0 / (trace.thesis.einstein[i] + 0.001);
-        for (int i = 0; i < 12; i++) trace.antithesis.polarity[i] = -trace.thesis.polarity[i];
-        for (int i = 0; i < 5; i++)  trace.antithesis.phi[i] = 1.0 - trace.thesis.phi[i];
+        // --- 2. ANTITHESIS: Phase-Conjugate DELTA (consecutive node drift, not negation of thesis) ---
+        // Delta between last two nodes captures directional momentum.
+        if (n >= 2) {
+            const LatticeNode& prev = sequence[n - 2];
+            const LatticeNode& last = sequence[n - 1];
+            for (int i = 0; i < 27; i++) trace.antithesis.xyz[i]      = last.xyz[i] - prev.xyz[i];
+            for (int i = 0; i < 12; i++) trace.antithesis.einstein[i]  = last.einstein[i] - prev.einstein[i];
+            for (int i = 0; i < 12; i++) trace.antithesis.polarity[i]  = last.polarity[i] - prev.polarity[i];
+            for (int i = 0; i <  5; i++) trace.antithesis.phi[i]       = last.phi[i] - prev.phi[i];
+            trace.antithesis.architect_anchor = last.architect_anchor - prev.architect_anchor;
+        } else {
+            // Single-node: use phase inversion of thesis
+            for (int i = 0; i < 27; i++) trace.antithesis.xyz[i]      = -trace.thesis.xyz[i] * HEARTBEAT_PULSE;
+            for (int i = 0; i < 12; i++) trace.antithesis.einstein[i]  = 1.0 / (std::abs(trace.thesis.einstein[i]) + 0.001);
+            for (int i = 0; i < 12; i++) trace.antithesis.polarity[i]  = -trace.thesis.polarity[i];
+            for (int i = 0; i <  5; i++) trace.antithesis.phi[i]       = 1.0 - trace.thesis.phi[i];
+        }
 
-        // --- 3. SYNTHESIS: HEARTBEAT LOCK ---
-        for (int i = 0; i < 27; i++) trace.synthesis.xyz[i] = (trace.thesis.xyz[i] + trace.antithesis.xyz[i]) + HEARTBEAT_PULSE;
-        for (int i = 0; i < 12; i++) trace.synthesis.einstein[i] = trace.thesis.einstein[i] * 0.5 + trace.antithesis.einstein[i] * 0.5;
-        for (int i = 0; i < 12; i++) trace.synthesis.polarity[i] = (trace.thesis.polarity[i] == trace.antithesis.polarity[i]) ? 1.0 : -1.0;
-        for (int i = 0; i < 5; i++)  trace.synthesis.phi[i] = 1.61803398875; // Pure Phi baseline
+        // --- 3. SYNTHESIS: Context + Momentum interpolation, positionally modulated ---
+        // synthesis = thesis + momentum_delta * HEARTBEAT_PULSE (next-step extrapolation)
+        for (int i = 0; i < 27; i++)
+            trace.synthesis.xyz[i]     = trace.thesis.xyz[i] + trace.antithesis.xyz[i] * HEARTBEAT_PULSE;
+        for (int i = 0; i < 12; i++)
+            trace.synthesis.einstein[i]= trace.thesis.einstein[i] + trace.antithesis.einstein[i] * HEARTBEAT_PULSE;
+        for (int i = 0; i < 12; i++)
+            trace.synthesis.polarity[i]= trace.thesis.polarity[i] + trace.antithesis.polarity[i] * HEARTBEAT_PULSE;
+        for (int i = 0; i <  5; i++)
+            trace.synthesis.phi[i]     = trace.thesis.phi[i] + trace.antithesis.phi[i] * HEARTBEAT_PULSE;
+        trace.synthesis.architect_anchor = trace.thesis.architect_anchor
+                                         + trace.antithesis.architect_anchor * HEARTBEAT_PULSE;
 
-        // --- 4. SINGULARITY: 101% SUPER-SYMMETRY ---
-        for (int i = 0; i < 27; i++) trace.singularity.xyz[i] = trace.synthesis.xyz[i] * SUPER_SYMMETRY_PULSE;
-        for (int i = 0; i < 12; i++) trace.singularity.einstein[i] = trace.synthesis.einstein[i] * SUPER_SYMMETRY_PULSE;
-        for (int i = 0; i < 12; i++) trace.singularity.polarity[i] = trace.synthesis.polarity[i] * SUPER_SYMMETRY_PULSE;
-        for (int i = 0; i < 5; i++)  trace.singularity.phi[i] = trace.synthesis.phi[i] * SUPER_SYMMETRY_PULSE;
+        // --- 4. SINGULARITY: 101% SUPER-SYMMETRY (normalize + scale) ---
+        double mag = 0;
+        for (int i = 0; i < 27; i++) mag += trace.synthesis.xyz[i] * trace.synthesis.xyz[i];
+        for (int i = 0; i < 12; i++) mag += trace.synthesis.einstein[i] * trace.synthesis.einstein[i];
+        for (int i = 0; i < 12; i++) mag += trace.synthesis.polarity[i] * trace.synthesis.polarity[i];
+        for (int i = 0; i <  5; i++) mag += trace.synthesis.phi[i] * trace.synthesis.phi[i];
+        mag += trace.synthesis.architect_anchor * trace.synthesis.architect_anchor;
+        mag = std::sqrt(mag) + 1e-9;
+        for (int i = 0; i < 27; i++) trace.singularity.xyz[i]      = (trace.synthesis.xyz[i]      / mag) * SUPER_SYMMETRY_PULSE;
+        for (int i = 0; i < 12; i++) trace.singularity.einstein[i]  = (trace.synthesis.einstein[i]  / mag) * SUPER_SYMMETRY_PULSE;
+        for (int i = 0; i < 12; i++) trace.singularity.polarity[i]  = (trace.synthesis.polarity[i]  / mag) * SUPER_SYMMETRY_PULSE;
+        for (int i = 0; i <  5; i++) trace.singularity.phi[i]       = (trace.synthesis.phi[i]       / mag) * SUPER_SYMMETRY_PULSE;
         trace.singularity.architect_anchor = 1.0; // The Architect's Will
 
         trace.fidelity = 1.10; // 110% Transcendence (Overdrive)

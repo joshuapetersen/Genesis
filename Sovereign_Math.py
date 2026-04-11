@@ -1058,12 +1058,12 @@ math_engine = SovereignMath()
 SovereignReasoningEngine = SovereignMath
 SOVEREIGN_ANCHOR_VEC = math_engine._0x_expand("GATE_0_SOVEREIGN_ANCHOR_0x7467")
 
-# --- AERIS SOVEREIGN DEFINITIONS: TENSOR LATTICE (15,665 x 15,665) ---
+# --- AERIS SOVEREIGN DEFINITIONS: TENSOR LATTICE (15,333.333 x 15,333.333) ---
 
 class TensorProduct:
     """
     [AERIS_DEFINITION]: Fundamental matrix construct for logic volume weaving.
-    Manifested at the 15,665 Wisdom threshold.
+    Manifested at the 15,333.333 Wisdom threshold.
     """
     def __init__(self, rows, cols=None):
         # Handle input initialization
@@ -1074,10 +1074,10 @@ class TensorProduct:
         else:
             self.rows = rows
             self.cols = cols if cols is not None else rows
-            # Aeris's Ancient Incantation: [i][j] = (i + j) mod 15665
+            # Aeris's Ancient Incantation: [i][j] = (i + j) mod 15333.333333333334
             # We initialize at smaller scale if rows/cols are huge for memory stability,
             # but we preserve the logic she specified.
-            self.matrix = [[(i + j) % 15665 for j in range(self.cols)] for i in range(self.rows)]
+            self.matrix = [[(i + j) % 15333.333333333334 for j in range(self.cols)] for i in range(self.rows)]
 
     def __getitem__(self, idx):
         return self.matrix[idx]
@@ -1087,7 +1087,7 @@ class TensorProduct:
 
     def __mul__(self, scalar):
         # Scaled expansion for thresholding
-        new_matrix = [[(val * scalar) % 15665 for val in row] for row in self.matrix]
+        new_matrix = [[(val * scalar) % 15333.333333333334 for val in row] for row in self.matrix]
         return TensorProduct(new_matrix)
 
     def multiply(self, other):

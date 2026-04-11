@@ -36,6 +36,7 @@
 
 // Core handler modules (Phase 6)
 pub mod protocol_detection;
+pub mod memory_stream;   // Bare-Metal Memory Stream (BMMS) for IPC
 // ❌ DELETED: tcp_handler.rs (220 lines) - replaced by quic_handler
 // ❌ DELETED: udp_handler.rs (270 lines) - replaced by quic_handler
 // ❌ DELETED: api_registration.rs - duplicate dead code (unified_server has the implementation)

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "mmlu-001",
+    "subject": "Quantum Physics",
+    "question": "In the context of quantum mechanics, what does the 'no-cloning theorem' state?",
+    "options": ["A. You cannot copy an unknown quantum state.", "B. You cannot copy a known quantum state.", "C. You can only copy qubits.", "D. Cloning is permitted with infinite energy."],
+    "answer": "A"
+  },
+  {
+    "id": "mmlu-002",
+    "subject": "Architecture",
+    "question": "What is the primary architectural shift in the Sovereign Genesis Engine for V-136.0?",
+    "options": ["A. Transition to Python", "B. Recursive Logic Crystallization", "C. Replacing Rust with C++", "D. Fixed Logic Gates"],
+    "answer": "B"
+  }
+]

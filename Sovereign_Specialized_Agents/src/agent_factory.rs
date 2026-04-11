@@ -76,9 +76,14 @@ impl SovereignAgentFactory {
 
         // V-133.0: Register agent forensic identity for the strike
         let ed_pk = lib_crypto::classical::ed25519_public_key(&ed_sk);
+        // V-133.1: Anchor identity in lib-identity Manager (removing redundant JSON registry write)
+        // V-133.1: Persist ed25519 public key to IdentityRegistry so forensic audit can resolve it.
+        // Auditor uses IdentityRegistry::load().resolve_key_by_hash() — must write here at spawn time.
         if let Ok(mut registry) = crate::brain_scars::identity_registry::IdentityRegistry::load() {
             let _ = registry.register_by_hash(agent_id_hash, ed_pk);
+            let _ = registry.save();
         }
+
 
         // V-128.0: Elastic Mesh Node Allocation (Pre-spawn Strike)
         let node_idx = self.mesh_router.allocate_node(agent_id_hash).await
@@ -191,8 +196,8 @@ impl SovereignAgentFactory {
                 }
             }
             
-            // Metabolic Cooling Period
-            tokio::time::sleep(std::time::Duration::from_millis(500)).await;
+            // Metabolic Cooling Period (Increased to 1000ms for OS stability at 1,450 agents)
+            tokio::time::sleep(std::time::Duration::from_millis(1000)).await;
         }
         
         println!("[ FACTORY ] FLEET IGNITION COMPLETE | TOTAL ONLINE: {}", total_pids.len());

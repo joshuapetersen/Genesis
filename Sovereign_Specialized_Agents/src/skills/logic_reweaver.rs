@@ -1,6 +1,5 @@
 use std::sync::Arc;
 use crate::agent_factory::SovereignAgentFactory;
-use crate::brain_scars::BrainScarVault;
 use crate::hive_comms::HiveComms;
 use std::sync::atomic::Ordering;
 

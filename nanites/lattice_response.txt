@@ -1,0 +1,14 @@
+[ε-φ-synthesis] φ-synthesis for 'Answer with ONLY the single letter A, B, C, or D.
+
+Q: Which layer of the Earth is liquid and generates Earth's magnetic field?
+A) Crust
+B) Outer core
+C) Inner core
+D) Mantle
+
+Answer:' (total weight 16.33):
+  [φ^0] [δ-winner:EXTENDED] [γ-chain] ANALYSIS: answer single letter
+  [φ^1] Evidence: general knowledge
+  [φ^2] Conclusion derived from session context and system state
+  [φ^3] Supporting context: ## Forensic Purity (last purity_snapshot.exe run)
+  [φ^4] SUBSTRATE PRISTINE — 101% FORENSIC PURITY

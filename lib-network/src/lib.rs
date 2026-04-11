@@ -57,6 +57,9 @@ pub use crate::web4::{
     initialize_web4_system, initialize_web4_system_with_storage,
 };
 
+// QUIC mesh protocol (primary transport)
+pub use crate::protocols::quic_mesh::QuicMeshProtocol;
+
 // ZDNS (Zero-Knowledge Domain Name System) resolver with caching
 pub use crate::zdns::{ZdnsResolver, ZdnsConfig, ZdnsError, Web4Record};
 // ZDNS DNS transport layer (UDP/TCP server on port 53)

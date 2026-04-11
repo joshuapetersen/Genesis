@@ -18,7 +18,7 @@ serde_yaml = "0.9"
 memmap2 = "0.9"
 md5 = "0.7"
 tokio = { version = "1.35", features = ["fs", "full", "io-util", "macros", "rt-multi-thread", "sync"] }
-reqwest = { version = "0.11", features = ["json"] }
+reqwest = { version = "0.11", features = ["json", "blocking"] }
 sha2 = "0.10"
 sysinfo = "0.30"
 tokio-tungstenite = "0.29.0"
@@ -54,6 +54,10 @@ path = "src/main.rs"
 [[bin]]
 name = "agents_manifest"
 path = "src/bin/agents_manifest.rs"
+
+[[bin]]
+name = "sovereign_brain_lattice"
+path = "src/bin/sovereign_brain_lattice.rs"
 
 [[bin]]
 name = "sovereign_kernel"
@@ -194,9 +198,21 @@ path = "src/bin/fleet_monitor.rs"
 [[bin]]
 name = "universality_strike"
 path = "src/bin/universality_strike.rs"
+
+[[bin]]
+name = "sovereign_nanite"
+path = "src/bin/sovereign_nanite.rs"
+
+
+[[bin]]
+name = "sovereign_code_search"
+path = "src/bin/sovereign_code_search.rs"
+
 [profile.release]
 opt-level = "z"
 lto = true
 codegen-units = 1
 panic = "abort"
 strip = "symbols"
+
+

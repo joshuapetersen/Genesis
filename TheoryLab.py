@@ -106,42 +106,96 @@ class TheoryLab:
             except Exception as e:
                 print(f"[TheoryLab] Vault connection warning: {e}")
 
+    def _char_ngram_vector(self, text: str, vocab: dict, n: int = 3) -> 'list[float]':
+        """Build a character n-gram frequency vector for cosine similarity."""
+        vec = [0.0] * len(vocab)
+        text = text.lower()
+        for i in range(len(text) - n + 1):
+            gram = text[i:i + n]
+            if gram in vocab:
+                vec[vocab[gram]] += 1.0
+        # L2-normalize
+        import math
+        mag = math.sqrt(sum(v * v for v in vec)) or 1.0
+        return [v / mag for v in vec]
+
+    def _cosine(self, a: 'list[float]', b: 'list[float]') -> float:
+        """Dot product of two pre-normalized vectors."""
+        return sum(x * y for x, y in zip(a, b))
+
     def _search_vault(self, keywords: List[str], limit: int = VAR_10) -> List[Dict]:
-        """Search the Sovereign Vault for relevant patterns."""
+        """Search the Sovereign Vault using cosine similarity over character n-gram embeddings."""
         if not self.vault_db:
             return []
-        
+
         results = []
-        
+        query_text = " ".join(keywords)
+
         try:
-            if "coding_knowledge" in self.vault_db.table_names():
-                tbl = self.vault_db.open_table("coding_knowledge")
-                df = tbl.to_pandas()
-                
-                # Simple keyword matching (can be enhanced with vector search)
-                for _, row in df.iterrows():
-                    term = str(row.get("term", "")).lower()
-                    desc = str(row.get("description", "")).lower()
-                    combined = term + " " + desc
-                    
-                    score = sum(1 for kw in keywords if kw.lower() in combined)
-                    if score > 0:
+            if "coding_knowledge" not in self.vault_db.table_names():
+                return []
+
+            tbl = self.vault_db.open_table("coding_knowledge")
+
+            # --- Try LanceDB native vector search first ---
+            try:
+                schema_fields = [f.name for f in tbl.schema]
+                if "vector" in schema_fields:
+                    # Table has embeddings — use ANN search directly
+                    import numpy as np
+                    # Encode query as char-trigram vector matching table dimension
+                    rows = tbl.search(query_text).limit(limit).to_list()
+                    for row in rows:
                         results.append({
-                            "term": row.get("term"),
-                            "description": row.get("description"),
+                            "term": row.get("term", ""),
+                            "description": row.get("description", ""),
                             "complexity": row.get("complexity", "Unknown"),
                             "implementation": row.get("implementation", ""),
-                            "score": score
+                            "score": float(row.get("_distance", 0.5)),
                         })
-                
-                # Sort by score and limit
-                results.sort(key=lambda x: x["score"], reverse=True)
-                results = results[:limit]
-                
+                    return results
+            except Exception:
+                pass  # fall through to cosine similarity
+
+            # --- Cosine similarity over char-trigram embeddings ---
+            df = tbl.to_pandas()
+            if df.empty:
+                return []
+
+            # Build shared vocabulary from all documents
+            vocab: dict = {}
+            all_texts = []
+            for _, row in df.iterrows():
+                doc = (str(row.get("term", "")) + " " + str(row.get("description", ""))).lower()
+                all_texts.append(doc)
+                for i in range(len(doc) - 2):
+                    gram = doc[i:i + 3]
+                    if gram not in vocab:
+                        vocab[gram] = len(vocab)
+
+            # Encode query
+            q_vec = self._char_ngram_vector(query_text, vocab)
+
+            # Score each document
+            for idx, (_, row) in enumerate(df.iterrows()):
+                d_vec = self._char_ngram_vector(all_texts[idx], vocab)
+                sim = self._cosine(q_vec, d_vec)
+                if sim > 0.01:
+                    results.append({
+                        "term": row.get("term"),
+                        "description": row.get("description"),
+                        "complexity": row.get("complexity", "Unknown"),
+                        "implementation": row.get("implementation", ""),
+                        "score": sim,
+                    })
+
+            results.sort(key=lambda x: x["score"], reverse=True)
+
         except Exception as e:
             print(f"[TheoryLab] Vault search error: {e}")
-        
-        return results
+
+        return results[:limit]
+
 
     def _extract_keywords(self, problem: str) -> List[str]:
         """Extract relevant keywords from a problem description."""

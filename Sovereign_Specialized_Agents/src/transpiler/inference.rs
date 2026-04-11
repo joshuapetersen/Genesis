@@ -1,6 +1,5 @@
 use serde::{Serialize, Deserialize};
-use reqwest::{Client, Response};
-use std::time::SystemTime;
+use reqwest::Client;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct OllamaRequest {

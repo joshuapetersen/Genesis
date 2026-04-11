@@ -1,7 +1,5 @@
 use std::sync::Arc;
 use crate::hive_comms::HiveComms;
-use crate::symbiosis::lattice_core::LatticeMap;
-use crate::symbiosis::helix::HelixEngine;
 
 /// SKILL #301: CROSS-AGENT TELEMETRY SYNTHESIS (V-1.0)
 /// Goal: Synthesize metabolic health from the 32,768-node Lattice substrate.

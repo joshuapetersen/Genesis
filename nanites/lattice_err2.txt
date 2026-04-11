@@ -1,0 +1,2 @@
+[α Sentinel] [α] Intent: Speech | Complexity: 2/5 | Words: 6 | Routing: FAST (α+β only) | complexity=2 conf=0.92
+[β Memory] 957 bytes retrieved in 1ms, conf=0.87

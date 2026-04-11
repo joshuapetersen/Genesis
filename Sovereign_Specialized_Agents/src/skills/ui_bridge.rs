@@ -1,5 +1,4 @@
 use std::sync::Arc;
-use crate::symbiosis::lattice_core::LatticeMap;
 use crate::hive_comms::HiveComms;
 use serde::Serialize;
 use std::sync::atomic::Ordering;
@@ -28,14 +27,11 @@ impl TelemetrySynthesizer {
     pub fn synthesize_status(&self) -> HiveStatus {
         let lattice = self.comms.access_lattice();
         let mut active_count = 0;
-        let mut total_heartbeat = 0.0;
-        
         // Sample first 1024 nodes for high-velocity status synthesis
         for i in 0..1024 {
             let node = lattice.get_node(i);
             if node.agent_id_hash.load(Ordering::SeqCst) != 0 {
                 active_count += 1;
-                total_heartbeat += node.metabolic_heartbeat.load(Ordering::SeqCst) as f64 / 1_000_000.0;
             }
         }
 

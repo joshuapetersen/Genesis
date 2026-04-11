@@ -1,0 +1,14 @@
+[
+  {
+    "task_id": "Sovereign/1",
+    "prompt": "fn solve_entropy(input: &[u8]) -> f64 {",
+    "canonical_solution": "    let len = input.len() as f64;\n    input.iter().fold(0.0, |acc, &b| acc + (b as f64 / len).ln())",
+    "test": "assert_eq!(solve_entropy(&[1, 2, 3]), -3.295836866004329);"
+  },
+  {
+    "task_id": "Sovereign/2",
+    "prompt": "impl LogicGateway { pub fn verify_signature(&self) -> bool {",
+    "canonical_solution": "    self.signature.isValid() && self.timestamp < now()",
+    "test": "assert!(gateway.verify_signature());"
+  }
+]

@@ -8,14 +8,12 @@ use std::sync::Arc;
 /// MISSION: Bridging Academic Theory with High-Performance Implementation
 pub struct SynthesisEngine {
     vault: BrainScarVault,
-    hive: Arc<HiveComms>,
 }
 
 impl SynthesisEngine {
     pub fn new(hive: Arc<HiveComms>) -> Result<Self> {
         Ok(Self {
-            vault: BrainScarVault::new(hive.clone())?,
-            hive,
+            vault: BrainScarVault::new(hive)?,
         })
     }
 

@@ -31,21 +31,32 @@ impl ResonanceAuditor {
         let mut report = ResonanceReport::default();
         let lattice = self.hive.access_lattice();
         let id_registry = IdentityRegistry::load()?;
-        
+
         println!("[ AUDIT ] Initiating Lattice forensic scan (32,768 nodes)...");
 
         for i in 0..32768 {
             let node = lattice.get_node(i);
             let agent_id_hash = node.agent_id_hash.load(std::sync::atomic::Ordering::SeqCst);
-            
+
             if agent_id_hash == 0 { continue; }
-            
-            report.total_nodes_audited += 1;
-            
+
             // seqlock-safe read of the node state (V-132.8)
             let (payload, signature, sequence_id) = node.read_logic_safe();
 
-            if let Some(pk_bytes) = id_registry.resolve_key_by_hash(agent_id_hash) {
+            // V-133.2: Skip nodes that haven't completed subprocess init yet
+            // (agent_id_hash set by factory but process hasn't written signed logic)
+            if sequence_id == 0 {
+                report.unknown_agents += 1;
+                eprintln!(" [!] UNINITIALIZED NODE {}: Agent {:016X} awaiting init.", i, agent_id_hash);
+                continue;
+            }
+
+            report.total_nodes_audited += 1;
+
+            // Resolve the agent's public key from the registry (sync, [u8;32])
+            let pk_opt = id_registry.resolve_key_by_hash(agent_id_hash);
+
+            if let Some(pk_bytes) = pk_opt {
                 let mut message = Vec::new();
                 message.extend_from_slice(&payload);
                 message.extend_from_slice(&agent_id_hash.to_le_bytes());
@@ -59,15 +70,16 @@ impl ResonanceAuditor {
                 }
             } else {
                 report.unknown_agents += 1;
-                eprintln!(" [!] UNKNOWN AGENT AT NODE {}: Hash {:016X} not found in registry.", i, agent_id_hash);
+                eprintln!(" [!] UNKNOWN AGENT AT NODE {}: Hash {:016X} not in registry.", i, agent_id_hash);
             }
         }
 
-        println!("[ AUDIT ] Forensic Scan Complete. Valid: {} | Breach: {} | Unknown: {}", 
+        println!("[ AUDIT ] Forensic Scan Complete. Valid: {} | Breach: {} | Unknown: {}",
             report.valid_signatures, report.invalid_signatures, report.unknown_agents);
-            
+
         Ok(report)
     }
+
 
     /// Execute High-Fidelity Diagnostic Strike (Legacy Calibration)
     pub fn execute_fidelity_audit(original_ternary: &[i8], packed: &[u8]) -> f64 {

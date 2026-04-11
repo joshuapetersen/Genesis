@@ -3,7 +3,7 @@ use serde_json;
 use sha2::{Sha256, Digest};
 use std::fs::{OpenOptions, File};
 use std::io::{Write, BufRead, BufReader};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 use std::time::{SystemTime, UNIX_EPOCH};
 use tokio::sync::mpsc;
@@ -17,7 +17,6 @@ pub struct WormEntry {
 }
 
 pub struct SovereignWorm {
-    vault_path: PathBuf,
     chain_hash: Arc<Mutex<String>>,
     sender: mpsc::Sender<WormEntry>,
 }
@@ -61,7 +60,6 @@ impl SovereignWorm {
         });
 
         SovereignWorm {
-            vault_path: path,
             chain_hash,
             sender: tx,
         }

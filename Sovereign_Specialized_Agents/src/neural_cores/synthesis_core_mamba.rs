@@ -35,7 +35,7 @@ impl MambaCore {
         let mut state = vec![0.0f32; params.d_head];
         let delta = 0.1f32; // Discretization step
         
-        for head_idx in 0..batch_size {
+        for _head_idx in 0..batch_size {
             for t in 0..seq_len {
                 let offset = t * params.d_head;
                 let x_t = &input[offset..offset + params.d_head];

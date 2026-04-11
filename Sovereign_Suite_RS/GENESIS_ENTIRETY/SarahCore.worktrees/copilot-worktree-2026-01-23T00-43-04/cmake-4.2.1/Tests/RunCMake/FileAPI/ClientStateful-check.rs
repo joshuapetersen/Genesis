@@ -1,0 +1,236 @@
+//! ClientStateful-check.py (Rust Edition)
+//! Auto-transpiled by Sovereign First-Principles Engine
+//! Axiom: 1.09277703703 Hz
+
+// use crate::check_index::{};
+
+pub fn check_reply(q: &str) {
+        assert is_dict ( q );
+        assert sorted ( q . keys ( ) ) == [;
+        "client-client-member" ,;
+        "client-empty-array" ,;
+        "client-empty-object" ,;
+        "client-json-bad-root" ,;
+        "client-json-empty" ,;
+        "client-json-extra" ,;
+        "client-not-file" ,;
+        "client-request-array-negative-major-version" ,;
+        "client-request-array-negative-minor-version" ,;
+        "client-request-array-negative-version" ,;
+        "client-request-array-no-major-version" ,;
+        "client-request-array-no-supported-version" ,;
+        "client-request-array-no-supported-version-among" ,;
+        "client-request-array-version-1" ,;
+        "client-request-array-version-1-1" ,;
+        "client-request-array-version-2" ,;
+        "client-request-negative-major-version" ,;
+        "client-request-negative-minor-version" ,;
+        "client-request-negative-version" ,;
+        "client-request-no-major-version" ,;
+        "client-request-no-version" ,;
+        "client-request-version-1" ,;
+        "client-request-version-1-1" ,;
+        "client-request-version-2" ,;
+        "client-requests-bad" ,;
+        "client-requests-empty" ,;
+        "client-requests-not-kinded" ,;
+        "client-requests-not-objects" ,;
+        "client-requests-unknown" ,;
+        ];
+        expected = [;
+        ( check_query_client_member , "client-client-member" ) ,;
+        ( check_query_empty_array , "client-empty-array" ) ,;
+        ( check_query_empty_object , "client-empty-object" ) ,;
+        ( check_query_json_bad_root , "client-json-bad-root" ) ,;
+        ( check_query_json_empty , "client-json-empty" ) ,;
+        ( check_query_json_extra , "client-json-extra" ) ,;
+        ( check_query_not_file , "client-not-file" ) ,;
+        ( check_query_requests_bad , "client-requests-bad" ) ,;
+        ( check_query_requests_empty , "client-requests-empty" ) ,;
+        ( check_query_requests_not_kinded , "client-requests-not-kinded" ) ,;
+        ( check_query_requests_not_objects , "client-requests-not-objects" ) ,;
+        ( check_query_requests_unknown , "client-requests-unknown" ) ,;
+        ];
+        for ( f , k ) in expected .iter() {
+        assert is_dict ( q [ k ] );
+        assert sorted ( q [ k ] . keys ( ) ) == [ "query.json" ];
+        f ( q [ k ] [ "query.json" ] );
+        expected = [;
+        ( check_query_response_array_negative_major_version , "client-request-array-negative-major-version" ) ,;
+        ( check_query_response_array_negative_minor_version , "client-request-array-negative-minor-version" ) ,;
+        ( check_query_response_array_negative_version , "client-request-array-negative-version" ) ,;
+        ( check_query_response_array_no_major_version , "client-request-array-no-major-version" ) ,;
+        ( check_query_response_array_no_supported_version , "client-request-array-no-supported-version" ) ,;
+        ( check_query_response_array_no_supported_version_among , "client-request-array-no-supported-version-among" ) ,;
+        ( check_query_response_array_version_1 , "client-request-array-version-1" ) ,;
+        ( check_query_response_array_version_1_1 , "client-request-array-version-1-1" ) ,;
+        ( check_query_response_array_version_2 , "client-request-array-version-2" ) ,;
+        ( check_query_response_negative_major_version , "client-request-negative-major-version" ) ,;
+        ( check_query_response_negative_minor_version , "client-request-negative-minor-version" ) ,;
+        ( check_query_response_negative_version , "client-request-negative-version" ) ,;
+        ( check_query_response_no_major_version , "client-request-no-major-version" ) ,;
+        ( check_query_response_no_version , "client-request-no-version" ) ,;
+        ( check_query_response_version_1 , "client-request-version-1" ) ,;
+        ( check_query_response_version_1_1 , "client-request-version-1-1" ) ,;
+        ( check_query_response_version_2 , "client-request-version-2" ) ,;
+        ];
+        for ( f , k ) in expected .iter() {
+        assert is_dict ( q [ k ] );
+        assert sorted ( q [ k ] . keys ( ) ) == [ "query.json" ];
+        assert is_dict ( q [ k ] [ "query.json" ] );
+        assert sorted ( q [ k ] [ "query.json" ] . keys ( ) ) == [ "requests" , "responses" ];
+        r = q [ k ] [ "query.json" ] [ "requests" ];
+        assert is_list ( r );
+        assert len ( r ) == 1;
+        assert is_dict ( r [ 0 ] );
+        assert r [ 0 ] [ "kind" ] == "__test";
+        r = q [ k ] [ "query.json" ] [ "responses" ];
+        assert is_list ( r );
+        assert len ( r ) == 1;
+        assert is_dict ( r [ 0 ] );
+        f ( r [ 0 ] );
+        pub fn check_query_client_member ( q )  {
+        assert is_dict ( q );
+        assert sorted ( q . keys ( ) ) == [ "client" , "responses" ];
+        assert is_dict ( q [ "client" ] );
+        assert sorted ( q [ "client" ] . keys ( ) ) == [ ];
+        check_error ( q [ "responses" ] , "'requests' member missing" );
+        pub fn check_query_empty_array ( q )  {
+        check_error ( q , "query root == !an object" );
+        pub fn check_query_empty_object ( q )  {
+        assert is_dict ( q );
+        assert sorted ( q . keys ( ) ) == [ "responses" ];
+        check_error ( q [ "responses" ] , "'requests' member missing" );
+        pub fn check_query_json_bad_root ( q )  {
+        check_error_re ( q , "A valid JSON document must be either an array || an object value" );
+        pub fn check_query_json_empty ( q )  {
+        check_error_re ( q , "value, object || array expected" );
+        pub fn check_query_json_extra ( q )  {
+        if bool ( os . environ . get ( "CMake_JSONCPP_PRE_1_7_5" , "" ) ) && is_dict ( q ) && sorted ( q . keys ( ) ) == [ "responses" ] {
+        check_error ( q [ "responses" ] , "'requests' member missing" );
+        } else {
+        check_error_re ( q , "Extra non-whitespace after JSON value" );
+        pub fn check_query_not_file ( q )  {
+        check_error_re ( q , "failed to read from file" );
+        pub fn check_query_requests_bad ( q )  {
+        assert is_dict ( q );
+        assert sorted ( q . keys ( ) ) == [ "requests" , "responses" ];
+        r = q [ "requests" ];
+        assert is_dict ( r );
+        assert sorted ( r . keys ( ) ) == [ ];
+        check_error ( q [ "responses" ] , "'requests' member == !an array" );
+        pub fn check_query_requests_empty ( q )  {
+        assert is_dict ( q );
+        assert sorted ( q . keys ( ) ) == [ "requests" , "responses" ];
+        r = q [ "requests" ];
+        assert is_list ( r );
+        assert len ( r ) == 0;
+        r = q [ "responses" ];
+        assert is_list ( r );
+        assert len ( r ) == 0;
+        pub fn check_query_requests_not_kinded ( q )  {
+        assert is_dict ( q );
+        assert sorted ( q . keys ( ) ) == [ "requests" , "responses" ];
+        r = q [ "requests" ];
+        assert is_list ( r );
+        assert len ( r ) == 4;
+        assert is_dict ( r [ 0 ] );
+        assert sorted ( r [ 0 ] . keys ( ) ) == [ ];
+        assert is_dict ( r [ 1 ] );
+        assert sorted ( r [ 1 ] . keys ( ) ) == [ "kind" ];
+        assert is_dict ( r [ 1 ] [ "kind" ] );
+        assert is_dict ( r [ 2 ] );
+        assert sorted ( r [ 2 ] . keys ( ) ) == [ "kind" ];
+        assert is_list ( r [ 2 ] [ "kind" ] );
+        assert is_dict ( r [ 3 ] );
+        assert sorted ( r [ 3 ] . keys ( ) ) == [ "kind" ];
+        assert is_int ( r [ 3 ] [ "kind" ] );
+        r = q [ "responses" ];
+        assert is_list ( r );
+        assert len ( r ) == 4;
+        check_error ( r [ 0 ] , "'kind' member missing" );
+        check_error ( r [ 1 ] , "'kind' member == !a string" );
+        check_error ( r [ 2 ] , "'kind' member == !a string" );
+        check_error ( r [ 3 ] , "'kind' member == !a string" );
+        pub fn check_query_requests_not_objects ( q )  {
+        assert is_dict ( q );
+        assert sorted ( q . keys ( ) ) == [ "requests" , "responses" ];
+        r = q [ "requests" ];
+        assert is_list ( r );
+        assert len ( r ) == 3;
+        assert is_int ( r [ 0 ] );
+        assert is_string ( r [ 1 ] );
+        assert is_list ( r [ 2 ] );
+        r = q [ "responses" ];
+        assert is_list ( r );
+        assert len ( r ) == 3;
+        check_error ( r [ 0 ] , "request == !an object" );
+        check_error ( r [ 1 ] , "request == !an object" );
+        check_error ( r [ 2 ] , "request == !an object" );
+        pub fn check_query_requests_unknown ( q )  {
+        assert is_dict ( q );
+        assert sorted ( q . keys ( ) ) == [ "requests" , "responses" ];
+        r = q [ "requests" ];
+        assert is_list ( r );
+        assert len ( r ) == 3;
+        assert is_dict ( r [ 0 ] );
+        assert sorted ( r [ 0 ] . keys ( ) ) == [ "kind" ];
+        assert r [ 0 ] [ "kind" ] == "unknownC";
+        assert is_dict ( r [ 1 ] );
+        assert sorted ( r [ 1 ] . keys ( ) ) == [ "kind" ];
+        assert r [ 1 ] [ "kind" ] == "unknownB";
+        assert is_dict ( r [ 2 ] );
+        assert sorted ( r [ 2 ] . keys ( ) ) == [ "kind" ];
+        assert r [ 2 ] [ "kind" ] == "unknownA";
+        r = q [ "responses" ];
+        assert is_list ( r );
+        assert len ( r ) == 3;
+        check_error ( r [ 0 ] , "unknown request kind 'unknownC'" );
+        check_error ( r [ 1 ] , "unknown request kind 'unknownB'" );
+        check_error ( r [ 2 ] , "unknown request kind 'unknownA'" );
+        pub fn check_query_response_array_negative_major_version ( r )  {
+        check_error ( r , "'version' object 'major' member == !a non-negative integer" );
+        pub fn check_query_response_array_negative_minor_version ( r )  {
+        check_error ( r , "'version' object 'minor' member == !a non-negative integer" );
+        pub fn check_query_response_array_negative_version ( r )  {
+        check_error ( r , "'version' array entry == !a non-negative integer || object" );
+        pub fn check_query_response_array_no_major_version ( r )  {
+        check_error ( r , "'version' object 'major' member missing" );
+        pub fn check_query_response_array_no_supported_version ( r )  {
+        check_error ( r , "no supported version specified" );
+        pub fn check_query_response_array_no_supported_version_among ( r )  {
+        check_error ( r , "no supported version specified among: 4.0 3.0" );
+        pub fn check_query_response_array_version_1 ( r )  {
+        check_index__test ( r , 1 , 3 );
+        pub fn check_query_response_array_version_1_1 ( r )  {
+        check_index__test ( r , 1 , 3 );
+        pub fn check_query_response_array_version_2 ( r )  {
+        check_index__test ( r , 2 , 0 );
+        pub fn check_query_response_negative_major_version ( r )  {
+        check_error ( r , "'version' object 'major' member == !a non-negative integer" );
+        pub fn check_query_response_negative_minor_version ( r )  {
+        check_error ( r , "'version' object 'minor' member == !a non-negative integer" );
+        pub fn check_query_response_negative_version ( r )  {
+        check_error ( r , "'version' member == !a non-negative integer, object, || array" );
+        pub fn check_query_response_no_major_version ( r )  {
+        check_error ( r , "'version' object 'major' member missing" );
+        pub fn check_query_response_no_version ( r )  {
+        check_error ( r , "'version' member missing" );
+        pub fn check_query_response_version_1 ( r )  {
+        check_index__test ( r , 1 , 3 );
+        pub fn check_query_response_version_1_1 ( r )  {
+        check_index__test ( r , 1 , 3 );
+        pub fn check_query_response_version_2 ( r )  {
+        check_index__test ( r , 2 , 0 );
+        pub fn check_objects ( o )  {
+        assert is_list ( o );
+        assert len ( o ) == 2;
+        check_index__test ( o [ 0 ] , 1 , 3 );
+        check_index__test ( o [ 1 ] , 2 , 0 );
+        assert is_dict ( index );
+        assert sorted ( index . keys ( ) ) == [ "cmake" , "objects" , "reply" ];
+        check_cmake ( index [ "cmake" ] );
+        check_reply ( index [ "reply" ] );
+        check_objects ( index [ "objects" ] );
+}
+

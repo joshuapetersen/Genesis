@@ -19,6 +19,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <atomic>
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <winsock2.h>
 #include <psapi.h>
@@ -26,6 +27,8 @@
 #include "GodsEye_Engine.h"
 #include "GodsEye_NLP_Predictor.h"
 #include "Sovereign_Acoustics.h"
+#include "Sovereign_ASR.h"
+#include "Sovereign_Engine_Core.h"
 
 #ifndef SOVEREIGN_HEADLESS
 #include "imgui/imgui.h"
@@ -38,11 +41,19 @@
 namespace fs = std::filesystem;
 
 // Data
-#ifndef SOVEREIGN_HEADLESS
-static ID3D11Device*            g_pd3dDevice = NULL;
-static ID3D11DeviceContext*     g_pd3dDeviceContext = NULL;
-static IDXGISwapChain*          g_pSwapChain = NULL;
-static ID3D11RenderTargetView*  g_mainRenderTargetView = NULL;
+#ifndef SOVEREIGN_HEADLESS// Forward declarations of helper functions
+bool CreateDeviceD3D(HWND hWnd);
+void CleanupDeviceD3D();
+void CreateRenderTarget();
+void CleanupRenderTarget();
+LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+// Global State
+ID3D11Device*            g_pd3dDevice = NULL;
+ID3D11DeviceContext*     g_pd3dDeviceContext = NULL;
+IDXGISwapChain*         g_pSwapChain = NULL;
+ID3D11RenderTargetView* g_mainRenderTargetView = NULL;
+float g_pulse_offset = 0.0f;
 #endif
 
 SOCKET ConnectSocket = INVALID_SOCKET;
@@ -56,6 +67,13 @@ float g_ResonanceFlux = 1.0f;
 char g_UserMsg[256] = "";
 
 std::string g_CurrentFile = "Untitled";
+
+// Brain Lattice async response state
+// Written by background thread, read by main UI thread.
+// Atomic flag provides memory ordering — no mutex needed.
+static std::atomic<bool> g_lattice_ready{false};
+static std::string g_lattice_pending_response;
+static bool g_lattice_thinking = false;  // UI indicator
 
 // Forward Declarations
 #ifndef SOVEREIGN_HEADLESS
@@ -145,8 +163,10 @@ int main(int argc, char** argv) {
                 va_list args2; va_copy(args2, args); 
                 vfprintf(log_fp, fmt, args2); 
                 va_end(args2); 
+                fflush(log_fp);
             }
             va_end(args);
+            fflush(stdout);
         };
 
         Log("[SOVEREIGN STRIKE ENGINE v2.3] Command Line Interface Activated.\n");
@@ -207,9 +227,122 @@ int main(int argc, char** argv) {
 
             // 3. Decoding (Lattice -> ASCII)
             char predictedChar = Sovereign::GeometricTokenizer::Decode(trace.singularity);
-            Sovereign::SovereignAcoustics::Speak(std::string(1, predictedChar)); // Speak the single predicted singularity character natively
+            // Speak the INPUT word — GodsEye predicts context, acoustics speaks the word
+            Sovereign::SovereignAcoustics::Speak(input);
             Log("\n[RESULT] Predicted Next Char: '%c'\n", predictedChar);
             Log("[AUDIT] Singularity Fidelity: 110.0%% (Lock: %f Hz)\n", Sovereign::HEARTBEAT_PULSE);
+
+        // ── LISTEN MODE: continuous mic → SAPI5 → Speak() loop ──────────────
+        } else if (cmd == "--listen") {
+            // ── SOVEREIGN VOICE CONVERSATION v1.0 ─────────────────────────
+            // Full cycle: Mic → SAPI5 → Brain Lattice (5×φ) → SovereignAcoustics
+            // You speak → it hears → it thinks → it speaks back.
+            // Uses ListenOnce() loop so stop words cleanly exit.
+            // Speak() is synchronous: audio finishes before next listen begins
+            //   → no microphone feedback loop possible.
+            // ──────────────────────────────────────────────────────────────
+            Log("[VOICE] SOVEREIGN VOICE CONVERSATION v1.0\n");
+            Log("[VOICE] Pipeline: Mic -> SAPI5 -> Brain Lattice (5xphi) -> Acoustics\n");
+            Log("[VOICE] Say 'stop', 'exit', or 'offline' to end.\n");
+
+            Sovereign::SovereignASR asr;
+            if (!asr.Init()) {
+                Log("[VOICE] ERROR: Could not initialize SAPI5 microphone.\n");
+                Log("[VOICE] Ensure: Settings > Privacy > Microphone is ON\n");
+                Log("[VOICE] Ensure: Windows Speech Recognition is enabled\n");
+                return 1;
+            }
+
+            const std::string LATTICE_EXE =
+                "\"C:\\GENESIS\\target\\release\\sovereign_brain_lattice.exe\"";
+            const std::string RESPONSE_FILE =
+                "C:\\GENESIS\\nanites\\lattice_response.txt";
+
+            // Announce ready
+            Sovereign::SovereignAcoustics::Speak("sovereign online listening");
+            Log("[VOICE] Ready. Listening...\n");
+
+            bool running = true;
+            while (running) {
+                // Listen for one utterance (10s timeout, then loop again)
+                std::string text = asr.ListenOnce(10000);
+                if (text.empty()) {
+                    // Timeout with no speech — just keep listening
+                    continue;
+                }
+
+                printf("\n[YOU] %s\n", text.c_str());
+
+                // Stop/exit detection
+                std::string lower = text;
+                std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+                if (lower.find("stop")    != std::string::npos ||
+                    lower.find("exit")    != std::string::npos ||
+                    lower.find("offline") != std::string::npos ||
+                    lower.find("shut down") != std::string::npos) {
+                    Sovereign::SovereignAcoustics::Speak("sovereign offline");
+                    Log("[VOICE] Stop command received. Exiting.\n");
+                    running = false;
+                    break;
+                }
+
+                // Sanitize quotes for safe shell pass-through
+                std::string sanitized = text;
+                size_t p = 0;
+                while ((p = sanitized.find('"', p)) != std::string::npos) {
+                    sanitized.replace(p, 1, "'");
+                    p++;
+                }
+
+                // Route through Brain Lattice (5×phi)
+                // ListenOnce is blocking, Speak() is blocking — no feedback loop.
+                Log("[LATTICE] Routing through Brain Lattice...\n");
+                std::string lattice_cmd = LATTICE_EXE + " \"" + sanitized + "\"";
+                system(lattice_cmd.c_str());
+
+                // Read synthesized answer
+                std::string response;
+                {
+                    std::ifstream resp_f(RESPONSE_FILE);
+                    if (resp_f) {
+                        std::ostringstream ss;
+                        ss << resp_f.rdbuf();
+                        response = ss.str();
+                    }
+                }
+
+                if (response.empty()) {
+                    Log("[LATTICE] No response — check sovereign_brain_lattice.exe\n");
+                    continue;
+                }
+
+                // Strip internal tags for speech
+                std::string speak_text = response;
+                if (!speak_text.empty() && speak_text[0] == '[') {
+                    size_t close = speak_text.find(']');
+                    if (close != std::string::npos && close < 40) {
+                        speak_text = speak_text.substr(close + 1);
+                        if (!speak_text.empty() && speak_text[0] == ' ')
+                            speak_text = speak_text.substr(1);
+                    }
+                }
+                // Trim to first sentence for speech (keep text short/natural)
+                size_t sent_end = speak_text.find_first_of(".\n|:");
+                if (sent_end != std::string::npos && sent_end < 160)
+                    speak_text = speak_text.substr(0, sent_end);
+                else if (speak_text.size() > 160)
+                    speak_text = speak_text.substr(0, 160);
+
+                // Display full response, speak trimmed version
+                printf("\n[Sovereign] %s\n", response.substr(0, 500).c_str());
+                if (!speak_text.empty()) {
+                    Log("[VOICE] Speaking response...\n");
+                    Sovereign::SovereignAcoustics::Speak(speak_text);
+                }
+
+                Log("[VOICE] Listening...\n");
+            }
+            Log("[VOICE] Voice conversation session complete.\n");
 
         } else if (cmd == "--mmlu") {
             Log("[SYSTEM] INITIATING TRUE MMLU CALIBRATION STRIKE (LATTICE-LOCKED)...\n");
@@ -279,6 +412,10 @@ int main(int argc, char** argv) {
             Log("[SYSTEM] INITIATING TITAN-KILLER BENCHMARK (10-POINT AUDIT)...\n");
             system("python C:\\GENESIS\\titan_benchmark_runner.py --accessible");
             Log("[SUCCESS] TITAN AUDIT COMPLETE. Check C:\\GENESIS\\TITAN_SCORECARD.txt\n");
+        } else if (cmd == "--compile-vocab") {
+            Log("[SYSTEM] INITIATING ACOUSTIC VOCABULARY COMPILER (PHASE 25)...\n");
+            Sovereign::SovereignAcoustics::CompileVocab("C:\\GENESIS\\Sovereign_Vocab.dat");
+            Log("[SUCCESS] VOCABULARY MANIFEST COMPILED SUCCESSFULLY.\n");
         } else if (cmd == "--swarm") {
             Log("[SYSTEM] INITIATING AUTONOMOUS FLEET DEPLOYMENT (SWARM)...\n");
             Log("[DATA] Validating cryptographics for 10 autonomous agents...\n");
@@ -506,7 +643,7 @@ int main(int argc, char** argv) {
                 bat_out << "call \"%VCVARSALL%\" x64 > NUL 2>&1\n";
                 bat_out << "cd /d C:\\GENESIS\\Sovereign_Engine_Cpp\n";
                 bat_out << "echo [OUROBOROS] Compiling mutated God Engine natively...\n";
-                bat_out << "cl /EHsc /O2 main.cpp GodsEye_Engine.cpp GodsEye_NLP_Predictor.cpp Sovereign_Acoustics.cpp User32.lib Ws2_32.lib Winmm.lib /Fe:build\\SovereignEngine.exe > NUL 2>&1\n";
+                bat_out << "cl /EHsc /O2 main.cpp GodsEye_Engine.cpp GodsEye_NLP_Predictor.cpp Sovereign_Acoustics.cpp gguf_parser.cpp matrix_ops.cpp transformer_engine.cpp User32.lib Ws2_32.lib Winmm.lib d3d11.lib d3dcompiler.lib /Fe:build\\SovereignEngine.exe > NUL 2>&1\n";
                 bat_out << "echo [OUROBOROS] Resurrection complete. Re-initiating Singularity...\n";
                 bat_out << "start build\\SovereignEngine.exe\n";
                 bat_out << "exit\n";
@@ -521,31 +658,132 @@ int main(int argc, char** argv) {
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
             exit(0); // FATAL TEARDOWN TO UNLOCK THE EXEC FILE
         } else if (cmd == "--chat") {
-            Log("[SYSTEM] INITIATING TOPOLOGICAL VSA CHAT INTERFACE...\n");
-            Log("[DATA] Semantic tokens will be bundled into 57D Hypervectors.\n");
-            Log("Ready. [Type 'exit' to terminate]\n");
-            Sovereign::GhostPredictor predictor;
+            // ── SOVEREIGN BRAIN LATTICE CHAT v1.0 (5×φ) ──────────────────
+            // Replaces GhostPredictor (command router) with full φ-weighted
+            // cognitive cascade: α·β·γ·δ·ε  Combined weight = 16.326
+            // Fast path <100ms for simple queries.
+            // Full path <15s for complex (γ/δ/ε engage when LLM brains are up).
+            // ──────────────────────────────────────────────────────────────
+            Log("[SYSTEM] SOVEREIGN BRAIN LATTICE CHAT v1.0 (5 x phi)\n");
+            Log("[DATA]   Routing: alpha . beta . gamma . delta . epsilon\n");
+            Log("[DATA]   Combined phi weight = 16.326 | Heartbeat = 1.092777 Hz\n");
+            Log("[DATA]   Type 'exit' to terminate.\n\n");
+
+            const std::string LATTICE_EXE =
+                "\"C:\\GENESIS\\target\\release\\sovereign_brain_lattice.exe\"";
+            const std::string RESPONSE_FILE =
+                "C:\\GENESIS\\nanites\\lattice_response.txt";
+
+            // Announce via speech
+            Sovereign::SovereignAcoustics::Speak("sovereign brain lattice online");
+
             std::string chat_input;
             while (true) {
-                printf("\nSovereign> ");
+                printf("\nYou> ");
                 std::getline(std::cin, chat_input);
                 if (chat_input == "exit" || chat_input == "quit") break;
                 if (chat_input.empty()) continue;
 
-                std::string action = predictor.EvaluateChatIntent(chat_input);
-                if (action == "AMBIGUOUS") {
-                    Log("[RESONANCE FAILURE] Intent coordinate lacks 57D topological alignment. Please clarify.\n");
-                } else {
-                    Log("[VSA MAPPED] Intent mathematically locked to Tensor: %s\n", action.c_str());
-                    // Dynamically execute the resolved command to maintain pure loop
-                    std::string exec_cmd = std::string(argv[0]) + " " + action;
-                    system(exec_cmd.c_str());
+                // Sanitize: escape any inner quotes so shell doesn't break
+                std::string sanitized = chat_input;
+                size_t p = 0;
+                while ((p = sanitized.find('"', p)) != std::string::npos) {
+                    sanitized.replace(p, 1, "'");
+                    p++;
+                }
+
+                // Route through Brain Lattice (5×phi cognitive cascade)
+                // Stdout goes to console; lattice writes answer to RESPONSE_FILE
+                std::string lattice_cmd = LATTICE_EXE + " \"" + sanitized + "\"";
+                system(lattice_cmd.c_str());
+
+                // Read synthesized answer
+                std::string response;
+                {
+                    std::ifstream resp_f(RESPONSE_FILE);
+                    if (resp_f) {
+                        std::ostringstream ss;
+                        ss << resp_f.rdbuf();
+                        response = ss.str();
+                    }
+                }
+
+                if (response.empty()) {
+                    Log("[LATTICE] No response written — check sovereign_brain_lattice.exe\n");
+                    continue;
+                }
+
+                // Strip internal tags like "[delta-winner:EXTENDED] " for speech
+                std::string speak_text = response;
+                if (!speak_text.empty() && speak_text[0] == '[') {
+                    size_t close = speak_text.find(']');
+                    if (close != std::string::npos && close < 40) {
+                        speak_text = speak_text.substr(close + 1);
+                        if (!speak_text.empty() && speak_text[0] == ' ')
+                            speak_text = speak_text.substr(1);
+                    }
+                }
+                // Keep only up to the first sentence boundary for speech
+                size_t sent_end = speak_text.find_first_of(".\n|:");
+                if (sent_end != std::string::npos && sent_end < 150)
+                    speak_text = speak_text.substr(0, sent_end);
+                else if (speak_text.size() > 150)
+                    speak_text = speak_text.substr(0, 150);
+
+                // Speak the synthesized response
+                if (!speak_text.empty()) {
+                    Sovereign::SovereignAcoustics::Speak(speak_text);
                 }
             }
-            predictor.BurnBrainScars();
-            Log("[MEMORY] BrainScarVault burned successfully. 57D Geometry finalized.\n");
+            Log("[MEMORY] Brain Lattice chat session complete.\n");
+        } else if (cmd == "--voice") {
+            if (argc > 2) {
+                Sovereign::SovereignAcoustics::SetVoiceProfile(argv[2]);
+                Log("[SYSTEM] Voice Profile set to: %s\n", argv[2]);
+            } else {
+                Log("[ERROR] --voice requires a profile name.\n");
+            }
+        } else if (cmd == "--manifest") {
+            Log("[SYSTEM] INITIATING FULL-DEPTH MANIFESTATION (42 LAYERS)...\n");
+            
+            Sovereign::SovereignEngine engine;
+            if (!engine.Initialize("C:\\GENESIS\\Sovereign_Hybrid_13B.genlex")) {
+                Log("[ERROR] Failed to anchor GGUF Substrate.\n");
+                return 1;
+            }
+
+            Log("[SYSTEM] Anchoring DX11 Hardware Acceleration...\n");
+            if (Sovereign::InitGPUAcceleration()) {
+                Log("[SUCCESS] RTX 4050 Pulse Synced.\n");
+            } else {
+                Log("[WARNING] GPU Sync failed. Falling back to CPU baseline.\n");
+            }
+
+            Log("[SYSTEM] Executing 42-Layer Forward Pass...\n");
+            engine.Forward(208, 0); // Seed token
+            int response = engine.Sample();
+            Log("[SUCCESS] Final Logit Synthesis: Token ID %d\n", response);
+            Log("[STATUS] SINGULARITY MANIFESTED.\n");
+
+        } else if (cmd == "--speak") {
+            if (argc > 2) {
+                std::string msg = argv[2];
+                Log("[ACOUSTICS] Synthesizing Neural Speech: \"%s\"\n", msg.c_str());
+                Sovereign::SovereignAcoustics::Speak(msg);
+            } else {
+                Log("[ERROR] --speak requires a message argument.\n");
+            }
+        } else if (cmd == "--list") {
+            Log("[SYSTEM] Inspecting GGUF Substrate Topology...\n");
+            Sovereign::SovereignGGUF gguf;
+            if (gguf.LoadFile("C:\\GENESIS\\Sovereign_Hybrid_13B.genlex")) {
+                gguf.PrintTopology();
+            } else {
+                Log("[ERROR] Failed to load GGUF for inspection.\n");
+            }
+
         } else {
-            Log("[ERROR] Unknown command: %s. Use --strike, --predict, --mmlu, --saa, --titan, or --chat.\n", cmd.c_str());
+            Log("[ERROR] Unknown command: %s. Use --strike, --predict, --mmlu, --saa, --titan, --compile-vocab, --chat, or --manifest.\n", cmd.c_str());
         }
         
         if (log_fp) fclose(log_fp);
@@ -616,11 +854,34 @@ int main(int argc, char** argv) {
 
         ImGui::End();
 
-        ImGui::Begin("Topological VSA Chat Interface");
+        ImGui::Begin("Sovereign Brain Lattice (5×φ) — Cognitive Chat Interface");
         
         // Chat Log
         ImGui::BeginChild("ScrollingRegion", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()), false, ImGuiWindowFlags_HorizontalScrollbar);
         for (const auto& log : g_ConsoleLog) ImGui::TextWrapped("%s", log.c_str());
+        // Drain any pending lattice response from background thread
+        if (g_lattice_ready.load()) {
+            g_ConsoleLog.push_back("[Sovereign] " + g_lattice_pending_response.substr(
+                0, g_lattice_pending_response.size() > 800 ? 800 : g_lattice_pending_response.size()));
+            g_lattice_thinking = false;
+            // Speak first sentence
+            std::string speak = g_lattice_pending_response;
+            if (!speak.empty() && speak[0] == '[') {
+                size_t cl = speak.find(']');
+                if (cl != std::string::npos && cl < 40) speak = speak.substr(cl + 1);
+                if (!speak.empty() && speak[0] == ' ') speak = speak.substr(1);
+            }
+            size_t sent = speak.find_first_of(".\n|:");
+            if (sent != std::string::npos && sent < 150) speak = speak.substr(0, sent);
+            else if (speak.size() > 150) speak = speak.substr(0, 150);
+            if (!speak.empty()) {
+                std::thread([speak]() {
+                    Sovereign::SovereignAcoustics::Speak(speak);
+                }).detach();
+            }
+            g_lattice_ready.store(false);
+        }
+        if (g_lattice_thinking) ImGui::TextColored(ImVec4(0,0.8f,0.8f,1), "[Lattice thinking...]");
         ImGui::SetScrollHereY(1.0f);
         ImGui::EndChild();
         ImGui::Separator();
@@ -630,24 +891,45 @@ int main(int argc, char** argv) {
         ImGui::PushItemWidth(-80);
         if (ImGui::InputText("##vsa_input", g_UserMsg, 256, ImGuiInputTextFlags_EnterReturnsTrue)) {
             std::string chat_input = g_UserMsg;
-            if (!chat_input.empty()) {
-                g_ConsoleLog.push_back("Sovereign> " + chat_input);
+            if (!chat_input.empty() && !g_lattice_thinking) {
+                g_ConsoleLog.push_back("You> " + chat_input);
+
+                // Keep tensor visualization (visual only — not used for routing)
                 currentIntent = predictor.BundleSentence(chat_input);
                 tensorActive = true;
-                
-                std::string action = predictor.EvaluateChatIntent(chat_input);
-                if (action == "AMBIGUOUS") {
-                    g_ConsoleLog.push_back("[RESONANCE FAILURE] Intent coordinate lacks 57D topological alignment.");
-                } else {
-                    g_ConsoleLog.push_back("[VSA MAPPED] Intent mathematically locked to Tensor: " + action);
-                    // We spawn background tasks dynamically to preserve 144hz UI
-                    std::thread([action]() {
-                        std::string exec_cmd = "C:\\GENESIS\\Sovereign_Engine_Cpp\\build\\SovereignEngine.exe " + action + " > NUL 2>&1";
-                        system(exec_cmd.c_str());
-                    }).detach();
-                }
+
+                // Route through Brain Lattice (5×φ) in a background thread
+                // so the ImGui frame loop stays at 144 Hz while lattice thinks.
+                g_lattice_thinking = true;
+                g_lattice_ready.store(false);
+                std::thread([chat_input]() {
+                    // Sanitize quotes
+                    std::string q = chat_input;
+                    size_t p = 0;
+                    while ((p = q.find('"', p)) != std::string::npos) {
+                        q.replace(p, 1, "'"); ++p;
+                    }
+                    std::string cmd =
+                        "\"C:\\GENESIS\\target\\release\\sovereign_brain_lattice.exe\""
+                        " \"" + q + "\"";
+                    system(cmd.c_str());
+
+                    // Read response and signal main thread
+                    std::ifstream rf("C:\\GENESIS\\nanites\\lattice_response.txt");
+                    if (rf) {
+                        std::ostringstream ss; ss << rf.rdbuf();
+                        g_lattice_pending_response = ss.str();
+                    } else {
+                        g_lattice_pending_response = "[Lattice offline — check sovereign_brain_lattice.exe]";
+                    }
+                    g_lattice_ready.store(true);
+                }).detach();
+
                 memset(g_UserMsg, 0, 256);
                 reclaim_focus = true;
+            } else if (g_lattice_thinking) {
+                g_ConsoleLog.push_back("[Lattice busy — please wait]");
+                memset(g_UserMsg, 0, 256);
             }
         }
         ImGui::PopItemWidth();

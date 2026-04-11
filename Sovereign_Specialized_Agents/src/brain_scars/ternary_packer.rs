@@ -1,4 +1,3 @@
-use anyhow::Result;
 
 /// TERNARY PACKER (V-1.0)
 /// Packing 5 ternary values (-1, 0, 1) into a single 8-bit byte.

@@ -2,14 +2,11 @@ pub mod ternary_packer;
 pub mod crystallizer;
 pub mod identity_registry;
 
-use self::identity_registry::IdentityRegistry;
 
 use serde::{Serialize, Deserialize};
 use std::fs;
 use std::path::PathBuf;
 use crate::hive_comms::HiveComms;
-use crate::brain_scars::ternary_packer::TernaryPacker;
-use crate::neural_cores::resonance_audit::ResonanceAuditor;
 use std::sync::Arc;
 use anyhow::{Result, anyhow};
 
@@ -48,7 +45,7 @@ impl BrainScarVault {
         Ok(Self { base_path, hive })
     }
 
-    pub fn store_fragment(&self, mut fragment: LogicFragment) -> Result<()> {
+    pub fn store_fragment(&self, fragment: LogicFragment) -> Result<()> {
         let domain_path = self.base_path.join(&fragment.domain);
         if !domain_path.exists() {
             fs::create_dir_all(&domain_path)?;
@@ -57,7 +54,8 @@ impl BrainScarVault {
         // V-117: SUBSTRATE TRANSCENDENCE - ZHTP BINARY STREAMING
         // [ Logic for Ed25519 signature verification omitted for brevity, preserved in memory ]
         
-        let file_path = domain_path.join(format!("{}.zhtp", fragment.id));
+        let safe_id = fragment.id.replace("/", "_").replace("\\", "_");
+        let file_path = domain_path.join(format!("{}.zhtp", safe_id));
         
         // Use a binary-efficient format (e.g. bincode or native byte stream)
         // Here we simulate the binary manifest strike
@@ -78,9 +76,9 @@ impl BrainScarVault {
         for entry in fs::read_dir(domain_path)? {
             let entry = entry?;
             let path = entry.path();
-            if path.extension().map_or(false, |ext| ext == "json") {
-                let content = fs::read_to_string(path)?;
-                let fragment: LogicFragment = serde_json::from_str(&content)?;
+            if path.extension().map_or(false, |ext| ext == "zhtp") {
+                let content = fs::read(&path)?;
+                let fragment: LogicFragment = serde_json::from_slice(&content)?;
                 fragments.push(fragment);
             }
         }

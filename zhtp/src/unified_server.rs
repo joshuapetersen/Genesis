@@ -18,11 +18,19 @@ use tokio::sync::RwLock;
 // Import new QUIC handler for native ZHTP-over-QUIC
 use crate::server::QuicHandler;
 use lib_network::types::mesh_message::ZhtpMeshMessage;
+use lib_network::QuicMeshProtocol;
 use lib_blockchain::Blockchain;
 use lib_storage::UnifiedStorageSystem;
 use lib_identity::IdentityManager;
 use lib_economy::EconomicModel;
 use lib_crypto::PublicKey;
+use lib_protocols::zhtp::ZhtpRequestHandler;
+
+use uuid::Uuid;
+use anyhow::{Result, Context};
+use std::net::SocketAddr;
+use tracing::{info, warn, debug, error};
+
 
 // Import our comprehensive API handlers
 use crate::api::handlers::{
@@ -1125,7 +1133,7 @@ impl ZhtpUnifiedServer {
             // Parse the peer address - it might be "192.168.1.245:9333" (discovery port) or "zhtp://192.168.1.245:9334" (QUIC port)
             let addr_str = peer_str.trim_start_matches("zhtp://").trim_start_matches("http://");
             
-            match addr_str.parse::<SocketAddr>() {
+            match addr_str.parse::<std::net::SocketAddr>() {
                 Ok(mut peer_addr) => {
                     // Discovery announces port 9333, but QUIC mesh runs on port 9334
                     // If we see port 9333, adjust to 9334 for QUIC connection

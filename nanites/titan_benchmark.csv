@@ -1,0 +1,2 @@
+timestamp,mmlu_total,mmlu_correct,mmlu_pct,arc_total,arc_correct,arc_pct,overall_pct,lm_online
+1775920546,60,12,20.00,12,5,41.67,23.61,false

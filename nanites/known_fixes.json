@@ -1,0 +1,6 @@
+{
+  "Global\\\\SovereignCoreStream": "Change SOVEREIGN_MEMORY_NAME from Global\\\\ to Local\\\\ in memory_stream.rs (SeCreateGlobalPrivilege required for Global\\\\)",
+  "has overflowed its stack": "Use std::thread::Builder::new().stack_size(64*1024*1024) to drive Tokio runtime. block_on runs on OS main thread (PE default 1MB).",
+  "Ole32.lib": "Add /LINK Ole32.lib to build_hud.bat linker flags. Required for COM/SAPI integration.",
+  "cannot remove file": "Binary is locked by running process. Kill $(Get-Process sovereign_agent) first, then rebuild."
+}

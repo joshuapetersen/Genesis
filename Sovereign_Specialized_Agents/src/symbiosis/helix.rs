@@ -39,7 +39,7 @@ impl HelixEngine {
     }
 
     /// V-47.0: Pulse-Based drag detection
-    pub fn monitor_pulse(&mut self, packet: &PulsePacket) {
+    pub fn monitor_pulse(&mut self, _packet: &PulsePacket) {
         self.pulse_count += 1;
         let now = Instant::now();
         let elapsed = now.duration_since(self._last_pulse).as_secs_f64();

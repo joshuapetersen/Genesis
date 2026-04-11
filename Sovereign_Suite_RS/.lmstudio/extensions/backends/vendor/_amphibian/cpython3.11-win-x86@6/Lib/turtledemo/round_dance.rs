@@ -1,0 +1,63 @@
+//! round_dance.py (Rust Edition)
+//! Auto-transpiled by Sovereign First-Principles Engine
+//! Axiom: 1.09277703703 Hz
+
+// use crate::turtle::{};
+
+pub fn stop() {
+        global running;
+        running = false;
+        pub fn main ( )  {
+        global running;
+        clearscreen ( );
+        bgcolor ( "gray10" );
+        tracer ( false );
+        shape ( "triangle" );
+        f = 0.793402;
+        phi = 9.064678;
+        s = 5;
+        c = 1;
+        sh = Shape ( "compound" );
+        for i in range ( 10 ) .iter() {
+        shapesize ( s );
+        p = get_shapepoly ( );
+        s * = f;
+        c * = f;
+        tilt ( - phi );
+        sh . addcomponent ( p , ( c , 0.25 , 1 - c ) , "black" );
+        register_shape ( "multitri" , sh );
+        shapesize ( 1 );
+        shape ( "multitri" );
+        pu ( );
+        setpos ( 0 , -200 );
+        dancers = [ ];
+        for i in range ( 180 ) .iter() {
+        fd ( 7 );
+        tilt ( -4 );
+        lt ( 2 );
+        update ( );
+        if i % 12 == 0 {
+        dancers . append ( clone ( ) );
+        home ( );
+        running = true;
+        onkeypress ( stop );
+        listen ( );
+        cs = 1;
+        while running  {
+        ta = -4;
+        for dancer in dancers .iter() {
+        dancer . fd ( 7 );
+        dancer . lt ( 2 );
+        dancer . tilt ( ta );
+        ta = -4 if ta > 0 else 2;
+        if cs < 180 {
+        right ( 4 );
+        shapesize ( cs );
+        cs * = 1.005;
+        update ( );
+        return  "DONE!";
+        fn main() {
+        println!( main ( ) );
+        mainloop ( );
+}
+

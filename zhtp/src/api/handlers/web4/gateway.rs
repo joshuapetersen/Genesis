@@ -22,6 +22,13 @@ use std::sync::Arc;
 use tracing::{info, warn, debug, error};
 use serde::{Serialize, Deserialize};
 
+// lib-network types used in this module
+use lib_network::{DomainRegistry, Web4ContentService, ZdnsResolver};
+
+// lib-protocols types used in this module
+use lib_protocols::zhtp::{ZhtpRequestHandler, ZhtpResult};
+use lib_protocols::types::{ZhtpRequest, ZhtpResponse, ZhtpStatus};
+
 /// Configuration for the Web4 gateway
 #[derive(Debug, Clone)]
 pub struct GatewayConfig {
@@ -68,6 +75,7 @@ impl Web4GatewayHandler {
     /// Create with custom configuration
     pub fn with_config(registry: Arc<DomainRegistry>, config: GatewayConfig) -> Self {
         Self {
+            memory_stream: Arc::new(SovereignMemoryStream::create()),
             content_service: Arc::new(Web4ContentService::new(registry)),
             config,
         }
@@ -79,6 +87,7 @@ impl Web4GatewayHandler {
         config: GatewayConfig,
     ) -> Self {
         Self {
+            memory_stream: Arc::new(SovereignMemoryStream::create()),
             content_service,
             config,
         }
@@ -91,6 +100,7 @@ impl Web4GatewayHandler {
         config: GatewayConfig,
     ) -> Self {
         Self {
+            memory_stream: Arc::new(SovereignMemoryStream::create()),
             content_service: Arc::new(Web4ContentService::with_zdns(registry, zdns_resolver)),
             config,
         }

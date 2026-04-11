@@ -1,5 +1,5 @@
 use std::sync::Arc;
-use crate::brain_scars::{BrainScarVault, LogicFragment};
+use crate::brain_scars::BrainScarVault;
 use anyhow::Result;
 
 /// SKILL #302: NEURAL SCAR BROADCASTING (V-1.0)

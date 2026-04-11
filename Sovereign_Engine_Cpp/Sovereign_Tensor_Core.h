@@ -43,6 +43,22 @@ namespace Sovereign {
         void* data; // Pointer to mapped physical memory
     };
 
+    struct TransformerContext {
+        uint32_t dims = 2560;
+        uint32_t layers = 42;
+        std::vector<float> hidden_state;
+        std::vector<float> work_buffer;
+        std::vector<float> kv_cache_k;
+        std::vector<float> kv_cache_v;
+        
+        TransformerContext(uint32_t d, uint32_t l, uint32_t max_seq = 2048) : dims(d), layers(l) {
+            hidden_state.resize(dims, 0.0f);
+            work_buffer.resize(dims * 4, 0.0f); // Large buffer for FFN mid-states
+            kv_cache_k.resize(layers * max_seq * dims, 0.0f);
+            kv_cache_v.resize(layers * max_seq * dims, 0.0f);
+        }
+    };
+
     // The Memory Mapped GGUF Context
     class SovereignGGUF {
     public:
@@ -51,9 +67,11 @@ namespace Sovereign {
 
         bool LoadFile(const std::string& filepath);
         void PrintTopology();
+        TensorInfo* GetTensor(const std::string& name);
 
         // Native Mapped Weights
         std::vector<TensorInfo> tensors;
+        std::map<std::string, TensorInfo*> tensorMap;
         std::map<std::string, std::string> metadata;
 
     private:
@@ -66,7 +84,7 @@ namespace Sovereign {
 
         size_t ReadString(uint8_t* ptr, std::string& out);
         size_t ReadKV(uint8_t* ptr);
-        size_t ReadTensorMeta(uint8_t* ptr);
+        size_t ReadTensorMeta(uint8_t* ptr, TensorInfo& info);
     };
 
 } // namespace Sovereign

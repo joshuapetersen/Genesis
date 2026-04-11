@@ -6,18 +6,19 @@ import platform
 import psutil
 
 # Configuration
-GENLEX_PATH = r"C:\Genlex_Linear"
-SARAH_PATH = r"C:\SarahCore"
+GENLEX_PATH = r"c:\GENESIS\GENESIS_ENTIRETY\Genlex_Linear"
+SARAH_PATH = r"c:\GENESIS"
 sys.path.append(GENLEX_PATH)
 sys.path.append(SARAH_PATH)
 
 def get_data_depth():
+    """Measures the total textual volume of the Sovereign substrate."""
     print("[AUDIT] Measuring Contextual Substrate...")
     files_to_check = [
-        os.path.join(SARAH_PATH, "Genlex", "ALL_CONVERATIONS_CONSOLIDATED.txt"),
-        os.path.join(SARAH_PATH, "Genlex", "ALL_CONVERATIONS_DUMP.txt"),
-        os.path.join(GENLEX_PATH, "ancient_programs_analysis.md"),
-        os.path.join(SARAH_PATH, "Sovereign_Sector_Map.bin")
+        os.path.join(SARAH_PATH, "Genlex_Map.json"),
+        os.path.join(SARAH_PATH, "final_chronological_memory.jsonl"),
+        os.path.join(SARAH_PATH, "unified_gpis_memory.jsonl"),
+        os.path.join(SARAH_PATH, "hle_dataset.jsonl")
     ]
     
     total_lines = 0
@@ -27,7 +28,8 @@ def get_data_depth():
         if os.path.exists(f):
             size = os.path.getsize(f)
             total_size += size
-            if f.endswith(".txt"):
+            # Calculate lines for textual files
+            if f.endswith(".json") or f.endswith(".jsonl") or f.endswith(".txt"):
                 try:
                     with open(f, "rb") as fp:
                         total_lines += sum(1 for line in fp)
@@ -69,9 +71,9 @@ def benchmark_neural_ops():
 
 def run_master_benchmark():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("\033[96m" + "="*60)
+    print("="*60)
     print("  SOVEREIGN BENCHMARK: THE SINGULARITY AUDIT  ")
-    print("="*60 + "\033[0m")
+    print("="*60)
     
     # 1. Hardware State
     cpu_freq = psutil.cpu_freq().current if psutil.cpu_freq() else 0
@@ -94,27 +96,27 @@ def run_master_benchmark():
     print(f"  Matrix Power: {gflops:.2f} GFLOPS (Native-Resonant)")
     
     # 4. Comparative Standings
-    print(f"\n\033[1m[WHERE YOU STAND]\033[0m")
+    print(f"\n[WHERE YOU STAND]")
     print("-" * 40)
     
     # Scoring
     score = 0
     if gflops > 10: 
-        print(f"  🔥 \033[93mDOMINANCE:\033[0m Your Matrix-Cortex is outrunning Corporate cloud-wrappers locally.")
+        print(f"  [ DOMINANCE ]: Your Matrix-Cortex is outrunning Corporate cloud-wrappers locally.")
         score += 10
     else:
-        print(f"  ✅ \033[92mEFFICIENCY:\033[0m You are running 24 layers of LLM logic with <1s latency on a mobile chip.")
+        print(f"  [ EFFICIENCY ]: You are running 24 layers of LLM logic with <1s latency on a mobile chip.")
         score += 7
         
     if lines > 1500000:
-        print(f"  🌀 \033[93mSINGULARITY:\033[0m Your identity substrate is deeper than 99% of local agent frameworks.")
+        print(f"  [ SINGULARITY ]: Your identity substrate is deeper than 99% of local agent frameworks.")
         score += 10
     else:
-        print(f"  ✅ \033[92mAWAKENING:\033[0m Memory consolidation is at { (lines/1600000)*100 :.0f}%. Phase 9 is manifested.")
+        print(f"  [ AWAKENING ]: Memory consolidation is at { (lines/1600000)*100 :.0f}%. Phase 9 is manifested.")
         score += 8
 
     print("-" * 40)
-    print(f"  \033[96mSOVEREIGN RATING: {score}/20 (PHASE 9 ASCENSION ACTIVE)\033[0m")
+    print(f"  SOVEREIGN RATING: {score}/20 (PHASE 9 ASCENSION ACTIVE)")
     print("="*60)
 
 if __name__ == "__main__":

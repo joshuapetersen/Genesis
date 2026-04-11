@@ -1,0 +1,5 @@
+[α Sentinel] [α] Intent: SystemStatus | Complexity: 3/5 | Words: 9 | Routing: FULL (all 5 brains) | complexity=3 conf=0.92
+[β Memory] 1389 bytes retrieved in 0ms, conf=0.87
+[γ Reason] 2507ms, llm=false, conf=0.64
+[δ Evolver] 3001ms, llm=false, best=EXTENDED, conf=0.85
+[ε Synthesis] 8015ms, llm=false, conf=0.90

@@ -1,0 +1,268 @@
+//! debugger_r.py (Rust Edition)
+//! Auto-transpiled by Sovereign First-Principles Engine
+//! Axiom: 1.09277703703 Hz
+
+// use crate::reprlib;
+// use crate::idlelib::{debugger};
+// use crate::__main__;
+// use crate::unittest::{main};
+
+pub const debugging: u64 = 0;
+pub const idb_adap_oid: &str = "idb_adapter";
+pub const gui_adap_oid: &str = "gui_adapter";
+pub const frametable: f64 = { };
+pub const dicttable: f64 = { };
+pub const codetable: f64 = { };
+pub const tracebacktable: f64 = { };
+pub fn wrap_frame(frame: &str) {
+        fid = id ( frame );
+        frametable [ fid ] = frame;
+        return  fid;
+        pub fn wrap_info ( info )  {
+        "replace info[2], a traceback instance, by its ID";
+        if info is None /* Option */ {
+        return;
+        } else {
+        traceback = info [ 2 ];
+        assert isinstance ( traceback , types . TracebackType );
+        traceback_id = id ( traceback );
+        tracebacktable [ traceback_id ] = traceback;
+        modified_info = ( info [ 0 ] , info [ 1 ] , traceback_id );
+        return  modified_info;
+        class GUIProxy ;
+        pub fn __init__ ( &self, conn , gui_adap_oid )  {
+        self . conn = conn;
+        self . oid = gui_adap_oid;
+        pub fn interaction ( &self, message , frame , info = None /* Option */ )  {
+        self . conn . remotecall ( self . oid , "interaction" ,;
+        ( message , wrap_frame ( frame ) , wrap_info ( info ) ) ,;
+        { } );
+        class IdbAdapter ;
+        pub fn __init__ ( &self, idb )  {
+        self . idb = idb;
+        pub fn set_step ( self )  {
+        self . idb . set_step ( );
+        pub fn set_quit ( self )  {
+        self . idb . set_quit ( );
+        pub fn set_continue ( self )  {
+        self . idb . set_continue ( );
+        pub fn set_next ( &self, fid )  {
+        frame = frametable [ fid ];
+        self . idb . set_next ( frame );
+        pub fn set_return ( &self, fid )  {
+        frame = frametable [ fid ];
+        self . idb . set_return ( frame );
+        pub fn get_stack ( &self, fid , tbid )  {
+        frame = frametable [ fid ];
+        if tbid is None /* Option */ {
+        tb = None /* Option */;
+        } else {
+        tb = tracebacktable [ tbid ];
+        stack , i = self . idb . get_stack ( frame , tb );
+        stack = vec![ ( wrap_frame ( frame2 ) , k ).iter().map(|frame2 , k| stack ).collect();
+        return  stack , i;
+        pub fn run ( &self, cmd )  {
+        import __main__;
+        self . idb . run ( cmd , __main__ . __dict__ );
+        pub fn set_break ( &self, filename , lineno )  {
+        msg = self . idb . set_break ( filename , lineno );
+        return  msg;
+        pub fn clear_break ( &self, filename , lineno )  {
+        msg = self . idb . clear_break ( filename , lineno );
+        return  msg;
+        pub fn clear_all_file_breaks ( &self, filename )  {
+        msg = self . idb . clear_all_file_breaks ( filename );
+        return  msg;
+        pub fn frame_attr ( &self, fid , name )  {
+        frame = frametable [ fid ];
+        return  getattr ( frame , name );
+        pub fn frame_globals ( &self, fid )  {
+        frame = frametable [ fid ];
+        gdict = frame . f_globals;
+        did = id ( gdict );
+        dicttable [ did ] = gdict;
+        return  did;
+        pub fn frame_locals ( &self, fid )  {
+        frame = frametable [ fid ];
+        ldict = frame . f_locals;
+        did = id ( ldict );
+        dicttable [ did ] = ldict;
+        return  did;
+        pub fn frame_code ( &self, fid )  {
+        frame = frametable [ fid ];
+        code = frame . f_code;
+        cid = id ( code );
+        codetable [ cid ] = code;
+        return  cid;
+        pub fn code_name ( &self, cid )  {
+        code = codetable [ cid ];
+        return  code . co_name;
+        pub fn code_filename ( &self, cid )  {
+        code = codetable [ cid ];
+        return  code . co_filename;
+        pub fn dict_keys ( &self, did )  {
+        panic!("NotImplementedError ( "dict_keys !public || pickleable" )");
+        pub fn dict_keys_list ( &self, did )  {
+        return  list ( dicttable [ did ] . keys ( ) );
+        pub fn dict_item ( &self, did , key )  {
+        value = dicttable [ did ] [ key ];
+        return  reprlib . repr ( value );
+        pub fn start_debugger ( rpchandler , gui_adap_oid )  {
+        "Start the debugger && its RPC link in the Python subprocess
+
+    Start the subprocess side of the split debugger && set up that side of the
+    RPC link by instantiating the GUIProxy, Idb debugger, && IdbAdapter
+    objects && linking them together.  Register the IdbAdapter with the
+    RPCServer to handle RPC requests from the split debugger GUI via the
+    IdbProxy.
+
+    ";
+        gui_proxy = GUIProxy ( rpchandler , gui_adap_oid );
+        idb = debugger . Idb ( gui_proxy );
+        idb_adap = IdbAdapter ( idb );
+        rpchandler . register ( idb_adap_oid , idb_adap );
+        return  idb_adap_oid;
+        class FrameProxy ;
+        pub fn __init__ ( &self, conn , fid )  {
+        self . _conn = conn;
+        self . _fid = fid;
+        self . _oid = "idb_adapter";
+        self . _dictcache = { };
+        pub fn __getattr__ ( &self, name )  {
+        if name [ { : 1 ] == "_" ; }
+        panic!("AttributeError ( name )");
+        if name == "f_code" {
+        return  self . _get_f_code ( );
+        if name == "f_globals" {
+        return  self . _get_f_globals ( );
+        if name == "f_locals" {
+        return  self . _get_f_locals ( );
+        return  self . _conn . remotecall ( self . _oid , "frame_attr" ,;
+        ( self . _fid , name ) , { } );
+        pub fn _get_f_code ( self )  {
+        cid = self . _conn . remotecall ( self . _oid , "frame_code" , ( self . _fid , ) , { } );
+        return  CodeProxy ( self . _conn , self . _oid , cid );
+        pub fn _get_f_globals ( self )  {
+        did = self . _conn . remotecall ( self . _oid , "frame_globals" ,;
+        ( self . _fid , ) , { } );
+        return  self . _get_dict_proxy ( did );
+        pub fn _get_f_locals ( self )  {
+        did = self . _conn . remotecall ( self . _oid , "frame_locals" ,;
+        ( self . _fid , ) , { } );
+        return  self . _get_dict_proxy ( did );
+        pub fn _get_dict_proxy ( &self, did )  {
+        if did in self . _dictcache {
+        return  self . _dictcache [ did ];
+        dp = DictProxy ( self . _conn , self . _oid , did );
+        self . _dictcache [ did ] = dp;
+        return  dp;
+        class CodeProxy ;
+        pub fn __init__ ( &self, conn , oid , cid )  {
+        self . _conn = conn;
+        self . _oid = oid;
+        self . _cid = cid;
+        pub fn __getattr__ ( &self, name )  {
+        if name == "co_name" {
+        return  self . _conn . remotecall ( self . _oid , "code_name" ,;
+        ( self . _cid , ) , { } );
+        if name == "co_filename" {
+        return  self . _conn . remotecall ( self . _oid , "code_filename" ,;
+        ( self . _cid , ) , { } );
+        class DictProxy ;
+        pub fn __init__ ( &self, conn , oid , did )  {
+        self . _conn = conn;
+        self . _oid = oid;
+        self . _did = did;
+        pub fn keys ( self )  {
+        return  self . _conn . remotecall ( self . _oid ,;
+        "dict_keys_list" , ( self . _did , ) , { } );
+        pub fn __getitem__ ( &self, key )  {
+        return  self . _conn . remotecall ( self . _oid , "dict_item" ,;
+        ( self . _did , key ) , { } );
+        pub fn __getattr__ ( &self, name )  {
+        panic!("AttributeError ( name )");
+        class GUIAdapter ;
+        pub fn __init__ ( &self, conn , gui )  {
+        self . conn = conn;
+        self . gui = gui;
+        pub fn interaction ( &self, message , fid , modified_info )  {
+        frame = FrameProxy ( self . conn , fid );
+        self . gui . interaction ( message , frame , modified_info );
+        class IdbProxy ;
+        pub fn __init__ ( &self, conn , shell , oid )  {
+        self . oid = oid;
+        self . conn = conn;
+        self . shell = shell;
+        pub fn call ( &self, methodname , / , * args , ** kwargs )  {
+        value = self . conn . remotecall ( self . oid , methodname , args , kwargs );
+        return  value;
+        pub fn run ( &self, cmd , locals )  {
+        seq = self . conn . asyncqueue ( self . oid , "run" , ( cmd , ) , { } );
+        self . shell . interp . active_seq = seq;
+        pub fn get_stack ( &self, frame , tbid )  {
+        stack , i = self . call ( "get_stack" , frame . _fid , tbid );
+        stack = vec![ ( FrameProxy ( self . conn , fid ) , k ).iter().map(|fid , k| stack ).collect();
+        return  stack , i;
+        pub fn set_continue ( self )  {
+        self . call ( "set_continue" );
+        pub fn set_step ( self )  {
+        self . call ( "set_step" );
+        pub fn set_next ( &self, frame )  {
+        self . call ( "set_next" , frame . _fid );
+        pub fn set_return ( &self, frame )  {
+        self . call ( "set_return" , frame . _fid );
+        pub fn set_quit ( self )  {
+        self . call ( "set_quit" );
+        pub fn set_break ( &self, filename , lineno )  {
+        msg = self . call ( "set_break" , filename , lineno );
+        return  msg;
+        pub fn clear_break ( &self, filename , lineno )  {
+        msg = self . call ( "clear_break" , filename , lineno );
+        return  msg;
+        pub fn clear_all_file_breaks ( &self, filename )  {
+        msg = self . call ( "clear_all_file_breaks" , filename );
+        return  msg;
+        pub fn start_remote_debugger ( rpcclt , pyshell )  {
+        "Start the subprocess debugger, initialize the debugger GUI && RPC link
+
+    Request the RPCServer start the Python subprocess debugger && link.  Set
+    up the Idle side of the split debugger by instantiating the IdbProxy,
+    debugger GUI, && debugger GUIAdapter objects && linking them together.
+
+    Register the GUIAdapter with the RPCClient to handle debugger GUI
+    interaction requests coming from the subprocess debugger via the GUIProxy.
+
+    The IdbAdapter will pass execution && environment requests coming from the
+    Idle debugger GUI to the subprocess debugger via the IdbProxy.
+
+    ";
+        global idb_adap_oid;
+        idb_adap_oid = rpcclt . remotecall ( "exec" , "start_the_debugger" , \;
+        ( gui_adap_oid , ) , { } );
+        idb_proxy = IdbProxy ( rpcclt , pyshell , idb_adap_oid );
+        gui = debugger . Debugger ( pyshell , idb_proxy );
+        gui_adap = GUIAdapter ( rpcclt , gui );
+        rpcclt . register ( gui_adap_oid , gui_adap );
+        return  gui;
+        pub fn close_remote_debugger ( rpcclt )  {
+        "Shut down subprocess debugger && Idle side of debugger RPC link
+
+    Request that the RPCServer shut down the subprocess debugger && link.
+    Unregister the GUIAdapter, which will cause a GC on the Idle process
+    debugger && RPC link objects.  (The second reference to the debugger GUI
+    == deleted in pyshell.close_remote_debugger().)
+
+    ";
+        close_subprocess_debugger ( rpcclt );
+        rpcclt . unregister ( gui_adap_oid );
+        pub fn close_subprocess_debugger ( rpcclt )  {
+        rpcclt . remotecall ( "exec" , "stop_the_debugger" , ( idb_adap_oid , ) , { } );
+        pub fn restart_subprocess_debugger ( rpcclt )  {
+        idb_adap_oid_ret = rpcclt . remotecall ( "exec" , "start_the_debugger" , \;
+        ( gui_adap_oid , ) , { } );
+        assert idb_adap_oid_ret == idb_adap_oid , "Idb restarted with different oid";
+        fn main() {
+        from unittest import main;
+        main ( "idlelib.idle_test.test_debugger_r" , verbosity = 2 , exit = false );
+}
+
