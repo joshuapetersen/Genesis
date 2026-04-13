@@ -1,0 +1,15 @@
+[package]
+name = "sovereign_dissector"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sovereign_constants = { path = "../Sovereign_Constants" }
+sovereign_math = { path = "../Sovereign_Math" }
+tree-sitter = "0.20.10"
+tree-sitter-rust = "0.20.1"
+tree-sitter-c = "0.20.1"
+tree-sitter-cpp = "0.20.1"
+tree-sitter-javascript = "0.20.1"
+tree-sitter-python = "0.20.1"
+anyhow = "1.0"

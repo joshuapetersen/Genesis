@@ -1,0 +1,120 @@
+import hmac
+import hashlib
+import time
+import json
+import base64
+import os
+import secrets
+from ACE_Token_Nexus import ace_nexus
+
+VAR_1000 = 1000
+VAR_3 = 3
+VAR_32 = 32
+VAR_4 = 4
+VAR_86400 = 86400
+
+# --- ACE TOKEN PROTOCOL V2 ---
+# Objective: High-speed, stateless, cryptographic verification.
+# "Better": Self-contained, tamper-proof, scoped.
+# "Faster": Local validation (O(1)), no database lookups.
+
+class AceTokenManager:
+    """Class: AceTokenManager"""
+    def __init__(self, secret_key_path="ace_secret.key"):
+        # Store secret in the same directory as this script
+        self.secret_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), secret_key_path)
+        self.secret = self._load_or_create_secret()
+
+    def _load_or_create_secret(self):
+        """Loads the master key or generates a new one if missing."""
+        if os.path.exists(self.secret_path):
+            with open(self.secret_path, "rb") as f:
+                return f.read()
+        else:
+            # Generate a cryptographically strong 32-byte key
+            secret = secrets.token_bytes(VAR_32)
+            with open(self.secret_path, "wb") as f:
+                f.write(secret)
+            print(f"[ACE] New Master Key generated at {self.secret_path}")
+            return secret
+
+    def generate_token(self, scope="SOVEREIGN_ROOT", ttl=VAR_86400):
+        """
+        Generates a signed ACE Token.
+        Format: v1.payload_b64.signature
+        """
+        # Phase 18 fix for Gap 15: Unified Nexus (Context-Aware Bearer)
+        context_fingerprint = hex(ace_nexus.generate_unified_fingerprint(scope))
+        payload = {
+            "scope": scope,
+            "iat": int(time.time()),          # Issued At
+            "exp": int(time.time() + ttl),    # Expiration
+            "fingerprint": context_fingerprint,
+            "nonce": secrets.token_hex(VAR_4)     # Uniqueness
+        }
+        
+        # Serialize and Encode Payload
+        payload_bytes = json.dumps(payload, separators=(',', ':')).encode()
+        payload_b64 = base64.urlsafe_b64encode(payload_bytes).decode().strip('=')
+        
+        # Sign (HMAC-SHA256)
+        signature = hmac.new(self.secret, payload_bytes, hashlib.sha256).hexdigest()
+        
+        return f"v1.{payload_b64}.{signature}"
+
+    def validate_token(self, token):
+        """
+        Validates an ACE Token.
+        Returns: (is_valid, payload_dict_or_error)
+        """
+        try:
+            parts = token.split('.')
+            if len(parts) != VAR_3:
+                return False, "MALFORMED_TOKEN"
+            
+            version, payload_b64, signature = parts
+            
+            if version != "v1":
+                return False, "UNSUPPORTED_VERSION"
+            
+            # Decode Payload
+            # Phase 14 fix for Gap 12: Correct padding formula (mod 4 == 0 results in 0, not 4)
+            padding = '=' * ((VAR_4 - len(payload_b64) % VAR_4) % VAR_4)
+            payload_bytes = base64.urlsafe_b64decode(payload_b64 + padding)
+            
+            # Verify Signature (Timing-attack safe comparison)
+            expected_sig = hmac.new(self.secret, payload_bytes, hashlib.sha256).hexdigest()
+            if not hmac.compare_digest(signature, expected_sig):
+                return False, "INVALID_SIGNATURE"
+            
+            # Verify Expiration
+            payload = json.loads(payload_bytes)
+            if time.time() > payload['exp']:
+                return False, "TOKEN_EXPIRED"
+                
+            return True, payload
+            
+        except Exception as e:
+            return False, f"VALIDATION_ERROR: {str(e)}"
+
+# --- SELF-TEST ---
+if __name__ == "__main__":
+    manager = AceTokenManager()
+    
+    print("--- ACE TOKEN V2 SPEED TEST ---")
+    start_time = time.perf_counter()
+    
+    # Generate
+    token = manager.generate_token()
+    gen_time = (time.perf_counter() - start_time) * VAR_1000
+    
+    # Validate
+    start_val = time.perf_counter()
+    is_valid, data = manager.validate_token(token)
+    val_time = (time.perf_counter() - start_val) * VAR_1000
+    
+    print(f"Token: {token}")
+    print(f"Valid: {is_valid}")
+    print(f"Data:  {data}")
+    print(f"Gen Time: {gen_time:.4f} ms")
+    print(f"Val Time: {val_time:.4f} ms")

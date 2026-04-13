@@ -1,0 +1,10 @@
+[package]
+name = "saul"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+claurst_bridge = { path = "../claurst_bridge" }
+kv_cache_turbo = { path = "../kv_cache_turbo" }

@@ -1,0 +1,19 @@
+{
+  "name": "sovereign-hypervisor",
+  "version": "24.1.0",
+  "description": "Desktop Command Substrate for the 214-Crate Hive Swarm.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "Sovereign",
+    "GSK",
+    "Antigravity"
+  ],
+  "author": "Antigravity",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^41.2.0"
+  }
+}

@@ -1,0 +1,46 @@
+warning: unused import: `Context`
+ --> src\bmms_integration.rs:8:22
+  |
+8 | use anyhow::{Result, Context};
+  |                      ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: structure field `Sarah_1T_Core` should have a snake case name
+ --> src\sovereign_fleet.rs:9:9
+  |
+9 |     pub Sarah_1T_Core: String,
+  |         ^^^^^^^^^^^^^ help: convert the identifier to snake case: `sarah_1_t_core`
+  |
+  = note: `#[warn(non_snake_case)]` (part of `#[warn(nonstandard_style)]`) on by default
+
+warning: structure field `Gemma_3_4B_Transpiler` should have a snake case name
+  --> src\sovereign_fleet.rs:10:9
+   |
+10 |     pub Gemma_3_4B_Transpiler: String,
+   |         ^^^^^^^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `gemma_3_4_b_transpiler`
+
+warning: structure field `Llama_3_General` should have a snake case name
+  --> src\sovereign_fleet.rs:11:9
+   |
+11 |     pub Llama_3_General: String,
+   |         ^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `llama_3_general`
+
+warning: structure field `Qwen_Vision` should have a snake case name
+  --> src\sovereign_fleet.rs:12:9
+   |
+12 |     pub Qwen_Vision: String,
+   |         ^^^^^^^^^^^ help: convert the identifier to snake case: `qwen_vision`
+
+warning: `sovereign_suite_rs` (lib) generated 5 warnings (run `cargo fix --lib -p sovereign_suite_rs` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.43s
+     Running `target\debug\rtx_benchmark.exe`
+[96m============================================================[0m
+  SOVEREIGN RTX PERFORMANCE AUDIT: PHASE 9 SINGULARITY  
+[96m============================================================[0m
+[GPU] CUDA Initialization failed: the candle crate has not been built with cuda support. Falling back to CPU.
+
+--- AUDIT: Neural Memory Recall ---
+Testing recall across 5000 shards (Vectorized GPU Path)...
+Error: unexpected rank, expected: 1, got: 2 ([1, 1])
+error: process didn't exit successfully: `target\debug\rtx_benchmark.exe` (exit code: 1)

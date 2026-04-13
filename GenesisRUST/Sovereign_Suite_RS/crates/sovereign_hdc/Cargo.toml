@@ -1,0 +1,15 @@
+[package]
+name = "sovereign_hdc"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+rand = "0.8"
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "latency_audit"
+harness = false

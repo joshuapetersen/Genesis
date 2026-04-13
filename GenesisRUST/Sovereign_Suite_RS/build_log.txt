@@ -1,0 +1,53 @@
+   Compiling sovereign_suite_rs v0.1.0 (C:\GenesisOS_Core\rust\Sovereign_Suite_RS)
+warning: unused import: `Context`
+ --> src\bmms_integration.rs:8:22
+  |
+8 | use anyhow::{Result, Context};
+  |                      ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused imports: `RwLock` and `mpsc`
+ --> src\sovereign_fleet.rs:2:19
+  |
+2 | use tokio::sync::{RwLock, mpsc};
+  |                   ^^^^^^  ^^^^
+
+warning: unused import: `anyhow`
+ --> src\sovereign_fleet.rs:3:22
+  |
+3 | use anyhow::{Result, anyhow};
+  |                      ^^^^^^
+
+warning: unused import: `SovereignAgent`
+ --> src\sovereign_fleet.rs:5:47
+  |
+5 | use crate::sovereign_agent::{ResourceMonitor, SovereignAgent};
+  |                                               ^^^^^^^^^^^^^^
+
+error[E0599]: no method named `clone` found for struct `GpuAccelerator` in the current scope
+  --> src\bmms_integration.rs:31:79
+   |
+31 |         let parallel_engine = Arc::new(ParallelLearningEngine::new((*gpu_arc).clone()));
+   |                                                                               ^^^^^ method not found in `GpuAccelerator`
+   |
+  ::: src\gpu_accelerator.rs:4:1
+   |
+ 4 | pub struct GpuAccelerator {
+   | ------------------------- method `clone` not found for this struct
+   |
+   = help: items from traits can only be used if the trait is implemented and in scope
+   = note: the following trait defines an item `clone`, perhaps you need to implement it:
+           candidate #1: `Clone`
+
+warning: unused variable: `directive`
+  --> src\sovereign_fleet.rs:47:50
+   |
+47 |     pub async fn initiate_swarm_resonance(&self, directive: &str) -> Result<()> {
+   |                                                  ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_directive`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+For more information about this error, try `rustc --explain E0599`.
+warning: `sovereign_suite_rs` (lib) generated 5 warnings
+error: could not compile `sovereign_suite_rs` (lib) due to 1 previous error; 5 warnings emitted

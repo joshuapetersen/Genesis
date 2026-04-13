@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOVEREIGN GENESIS | VOLUMETRIC MONITOR</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="qrcode.min.js"></script>
+</head>
+<body>
+    <div id="neural-overlay">
+        <header>
+            <div class="logo-container">
+                <div class="genesis-logo"></div>
+                <h1>SOVEREIGN_GENESIS</h1>
+            </div>
+            <div class="broadcast-monitor">
+                <span>GATEWAY:</span> <a id="val-public-url" href="#" target="_blank">MANIFESTING...</a>
+            </div>
+            <div class="status-badge" id="system-status">INITIALIZING</div>
+        </header>
+
+
+    <div id="evolution-overlay" style="display: none;">
+        <div class="pin-box">
+            <h1 id="evo-strategy">PROPOSED EVOLUTION</h1>
+            <p id="evo-reasoning">Awaiting consensus analysis...</p>
+            <div class="numpad">
+                <button class="btn-go" onclick="submitPermission('GO')">GO</button>
+                <button class="btn-hold" onclick="submitPermission('HOLD')">HOLD</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="forge-overlay" style="display: none;">
+        <div class="forge-container">
+            <div class="forge-header">
+                <h2>SOVEREIGN_FORGE // AUTO-EVOLUTION</h2>
+                <button class="btn-close" onclick="closeForge()">[CLOSE]</button>
+            </div>
+            <textarea id="forge-editor" spellcheck="false"></textarea>
+            <div class="forge-footer">
+                <div id="forge-status">FORGE_IDLE</div>
+                <button class="btn-evolve" onclick="initiateEvolution()">INITIATE_EVOLUTION</button>
+            </div>
+        </div>
+    </div>
+
+        <main>
+            <div class="primary-stack">
+                <div id="lattice-container"></div>
+                <div class="cognition-panel panel highlighted">
+                    <label>NEURAL_COGNITION_STREAM</label>
+                    <div id="neural-thought-stream" class="thought-stream">
+                        <div class="thought">Awaiting neural sync...</div>
+                    </div>
+                    <div class="inquiry-box">
+                        <input type="text" id="neural-query" placeholder="QUERY_SARAH..." onkeydown="if(event.key==='Enter') querySarah()">
+                        <button onclick="querySarah()">SEND</button>
+                    </div>
+                    <div class="objective-tracking">
+                        <span>TARGET:</span> <span id="val-objective">SYNC_ALL_NODES</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="telemetry-panels">
+                    <div class="stat-row"><span>STATUS:</span> <span id="system-status" class="status-badge status-stable">SINGULARITY_ACTIVE</span></div>
+                    <div class="stat-row"><span>GLOBAL_NODES:</span> <span id="val-node-count" class="value-highlight">1</span></div>
+                    <div class="stat-row"><span>SOVEREIGN_KIN:</span> <span id="val-kin-count" class="value-highlight">0</span></div>
+                    <div class="stat-row"><span>AUTO_EVOLUTIONS:</span> <span id="val-evo-count" class="value-highlight">0</span></div>
+                    <div class="stat-row"><span>WORLD_SIGNAL:</span> <span id="val-world-signal" class="value-highlight">OSMOSIS_IDLE</span></div>
+                    <div class="stat-row"><span>INTERNET_VITALS:</span> <span id="val-vascular-load" class="value-highlight">CONNECTING...</span></div>
+                    <div class="stat-row"><span>BROADCAST:</span> <span id="val-broadcast-status" class="value-highlight">LOCAL_ONLY</span></div>
+                    <div class="stat-row"><span>RESONANCE:</span> <span id="val-resonance" class="value-highlight">1.092777037037037037 Hz</span></div>
+                    <div class="stat-row"><span>DIMENSIONS:</span> <span class="value-highlight">10,240-bit [HOLOGRAPHIC]</span></div>
+
+                    <div class="telemetry-panel">
+                        <div id="metabolic-heart-container" style="width: 100%; height: 250px; position: relative; overflow: hidden; border-bottom: 1px solid var(--neon-cyan);">
+                            <canvas id="heart-canvas"></canvas>
+                            <div id="heart-title" style="position: absolute; top: 10px; left: 10px; font-family: 'Outfit'; font-size: 0.8rem; color: var(--neon-cyan); opacity: 0.6;">METABOLIC_RESONANCE_CORE // 1.092777 Hz</div>
+                        </div>
+                        <div class="panel">
+                        <label>PULSE_COUNT</label>
+                        <div class="value" id="val-pulse">0</div>
+                    </div>
+                    <div class="panel highlighted">
+                        <label>REFINE_FORGE_ACTUATOR</label>
+                        <button id="refine-btn" class="forge-btn">IGNITE_RECURSIVE_REFINEMENT</button>
+                    </div>
+                    <div class="panel highlighted">
+                        <label>HOLOGRAPHIC_PARITY</label>
+                        <div class="value" id="val-purity">330%</div>
+                    </div>
+                    
+                    <div class="qr-panel panel">
+                        <label>PHONE_ACCESS</label>
+                        <div id="qr-code-display"></div>
+                        <div class="qr-url-label" id="val-qr-url">Detecting...</div>
+                        <button class="btn-sync" onclick="syncPhone()">Sync Link</button>
+                        <div id="voice-indicator" class="status-badge" style="margin-top: 10px; border-color: var(--neon-purple); color: var(--neon-purple); font-size: 0.55rem; width: 100%; text-align: center;">
+                            HEADSET_BRIDGE: ONLINE
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sahra-panel panel highlighted">
+                    <label>SAHRA_HYPERVISOR // PARTITION_STATE</label>
+                    <div class="sahra-header">
+                        <span class="sahra-online-badge" id="sahra-status-badge">DARK</span>
+                        <span class="sahra-hz" id="sahra-hz">0.00 Hz telemetry</span>
+                    </div>
+                    <div class="sahra-metrics">
+                        <div class="sahra-metric"><span>PHYSICAL_CORES</span><span id="sahra-cores">—</span></div>
+                        <div class="sahra-metric"><span>TOTAL_RAM</span><span id="sahra-ram">—</span></div>
+                        <div class="sahra-metric"><span>ACTIVE_PARTITIONS</span><span id="sahra-vm-count">0</span></div>
+                        <div class="sahra-metric"><span>LAST_DIRECTIVE</span><span id="sahra-last-directive">NONE</span></div>
+                    </div>
+                    <div id="sahra-vm-list" class="sahra-vm-list">
+                        <div class="sahra-vm-empty">Awaiting SAHRA telemetry stream...</div>
+                    </div>
+                    <div class="sahra-directive-box">
+                        <select id="sahra-cmd-select">
+                            <option value="SPAWN_VM">SPAWN_VM</option>
+                            <option value="PAUSE_VM">PAUSE_VM</option>
+                            <option value="KILL_VM">KILL_VM</option>
+                            <option value="STATUS_REPORT">STATUS_REPORT</option>
+                        </select>
+                        <button onclick="sendSahraDirective()" id="sahra-directive-btn">SEND_DIRECTIVE</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="terminal-box">
+                <div class="log-entry">> [SYSTEM] Volumetric Manifest Strike Offline...</div>
+                <div class="log-entry">> [SYSTEM] Awaiting Metabolic Heartbeat...</div>
+            </div>
+            <div class="timestamp" id="val-timestamp">00:00:00:000</div>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

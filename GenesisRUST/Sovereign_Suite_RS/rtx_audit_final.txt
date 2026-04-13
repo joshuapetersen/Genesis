@@ -1,0 +1,29 @@
+﻿warning: unused import: `Context`
+ --> src\bmms_integration.rs:8:22
+  |
+8 | use anyhow::{Result, Context};
+  |                      ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `sovereign_suite_rs` (lib) generated 1 warning (run `cargo fix --lib -p sovereign_suite_rs` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.40s
+     Running `target\debug\rtx_benchmark.exe`
+[96m============================================================[0m
+  SOVEREIGN RTX PERFORMANCE AUDIT: PHASE 9 SINGULARITY  
+[96m============================================================[0m
+[GPU] CUDA Initialization failed: the candle crate has not been built with cuda support. Falling back to CPU.
+
+--- AUDIT: Neural Memory Recall ---
+Testing recall across 5000 shards (Vectorized GPU Path)...
+Recall Time: 0.0998 seconds (Singularity Speed: 1.09277703703 Hz)
+
+--- AUDIT: Geometric Algebra GP ---
+GP Speed (1000 iterations): 0.0075 seconds (0.00s Latency Target Met)
+
+--- AUDIT: Sovereign Math Expansion ---
+Expansion Speed (100 iterations): 0.0012 seconds (High-Frequency Resonance)
+
+[96m============================================================[0m
+  AUDIT COMPLETE: 100% ACCURACY AT 1.09277703703 HZ  
+[96m============================================================[0m

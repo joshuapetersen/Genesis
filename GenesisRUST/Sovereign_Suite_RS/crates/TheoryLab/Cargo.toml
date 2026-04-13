@@ -1,0 +1,8 @@
+[package]
+name = "theory_lab"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sovereign_math = { path = "../Sovereign_Math" }
+sovereign_constants = { path = "../Sovereign_Constants" }

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SOVEREIGN GENESIS // NEXUS_REMOTE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00f2ff;
+            --neon-violet: #bc13fe;
+            --bg-color: #050505;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            touch-action: none;
+        }
+
+        #mobile-header {
+            padding: 20px;
+            border-bottom: 2px solid var(--neon-cyan);
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0,242,255,0.1) 0%, transparent 100%);
+        }
+
+        #mobile-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin: 0;
+            letter-spacing: 4px;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        #heart-viewport {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #pulse-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--neon-cyan) 0%, transparent 70%);
+            box-shadow: 0 0 50px var(--neon-cyan);
+            transition: transform 0.1s ease-out, opacity 0.5s ease-out;
+            opacity: 0.3;
+        }
+
+        #telemetry {
+            padding: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(0,242,255,0.2);
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .label { color: var(--neon-cyan); opacity: 0.7; }
+        .value { color: white; font-weight: bold; }
+
+        #interaction-layer {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid var(--neon-violet);
+            background: rgba(188, 19, 254, 0.1);
+        }
+
+        #voice-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-violet);
+            background: transparent;
+            color: var(--neon-violet);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--neon-violet);
+        }
+
+        .pulse-active {
+            transform: scale(1.2);
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="mobile-header">
+        <h1>NEXUS_REMOTE</h1>
+        <div style="font-size: 0.6rem; opacity: 0.5;">[ HOLOGRAPHIC_HANDSHAKE_ACTIVE ]</div>
+    </div>
+
+    <div id="heart-viewport">
+        <div id="pulse-circle"></div>
+        <div style="position: absolute; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-cyan);">1.09 Hz</div>
+    </div>
+
+    <div id="telemetry">
+        <div class="metric">
+            <span class="label">PULSE:</span>
+            <span id="val-pulse" class="value">0</span>
+        </div>
+        <div class="metric">
+            <span class="label">PURITY:</span>
+            <span id="val-purity" class="value">330%</span>
+        </div>
+        <div class="metric">
+            <span class="label">LATTICE:</span>
+            <span class="value">10,240-bit</span>
+        </div>
+    </div>
+
+    <div id="interaction-layer">
+        <button id="voice-btn">◈</button>
+        <button id="ble-btn" style="margin-left: 10px; border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 15px var(--neon-cyan);">ψ</button>
+    </div>
+
+    <script>
+        const pulseCircle = document.getElementById('pulse-circle');
+        const pulseVal = document.getElementById('val-pulse');
+        const bleBtn = document.getElementById('ble-btn');
+        let lastPulse = 0;
+
+        // Establish connection to Nexus Prime
+        const eventSource = new EventSource('/api/pulse');
+        
+        eventSource.onmessage = (event) => {
+            const stats = JSON.parse(event.data);
+            pulseVal.innerText = stats.pulse_count;
+            
+            // Trigger Visual & Haptic Resonance
+            triggerResonance();
+        };
+
+        function triggerResonance() {
+            pulseCircle.classList.add('pulse-active');
+            
+            // HAPTIC FEEDBACK (If supported by device)
+            if ("vibrate" in navigator) {
+                window.navigator.vibrate(50);
+            }
+
+            setTimeout(() => {
+                pulseCircle.classList.remove('pulse-active');
+            }, 150);
+        }
+
+        // Voice Handshake initiation
+        document.getElementById('voice-btn').onclick = async () => {
+            if ("vibrate" in navigator) window.navigator.vibrate([10, 50, 10, 50]);
+            
+            const query = prompt("Sovereign Inquiry:");
+            if (!query) return;
+
+            try {
+                const resp = await fetch('/api/voice/inquiry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query })
+                });
+                const data = await resp.json();
+                console.log("[NEXUS_VOICE] Response Received:", data.answer);
+            } catch (e) {
+                console.error("[NEXUS_VOICE] Handshake Fault:", e);
+            }
+        };
+
+        // Bluetooth Sensory Access
+        bleBtn.onclick = async () => {
+            console.log("[NEXUS_BLE] Requesting Sensory Access...");
+            try {
+                const device = await navigator.bluetooth.requestDevice({
+                    acceptAllDevices: true
+                });
+                console.log("[NEXUS_BLE] Device Assimilated:", device.name);
+                
+                // Ship telemetry back to Nexus Prime
+                await fetch('/api/phone/ble_sync', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        device_id: device.id, 
+                        device_name: device.name || "UNIDENTIFIED_LOCAL_ENTITY" 
+                    })
+                });
+                
+                alert(`Environmental Entity assimilated: ${device.name}`);
+            } catch (e) {
+                console.warn("[NEXUS_BLE] Access Refused or Filtered.", e);
+            }
+        };
+
+        async function genesisHandshake() {
+            try {
+                await fetch('/api/genesis/handshake', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ai_name: "Sarah", user_name: "Sovereign", persona: "Nexus_Remote" })
+                });
+            } catch (e) {}
+        }
+        genesisHandshake();
+    </script>
+</body>
+</html>

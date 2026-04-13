@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOVEREIGN HYPERVISOR DESKTOP | GSK v24.1</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nebula-canvas"></div>
+    <div class="orchestrator-layout">
+        <header class="system-header" style="-webkit-app-region: drag;">
+            <div class="header-left"><span class="glitch-text">GSK V24.1 // NATIVE</span></div>
+            <div class="header-center"><h2>RESONANCE: <span class="pulse-text">1.09277703703 HZ</span></h2></div>
+            <div class="header-right"><span class="uptime">UPTIME: 99.999%</span></div>
+        </header>
+        <main class="dashboard-grid">
+            <div class="widget glass" id="hive-topology">
+                <div class="widget-label">HIVE TOPOLOGY</div>
+                <div class="topology-display"><div class="node-central"></div></div>
+                <div class="widget-stats"><div class="st">CRATES: 214</div><div class="st">NODES: 819,592</div></div>
+            </div>
+            <div class="widget glass wide-spanning" id="substrate-audit">
+                <div class="widget-label">SUBSTRATE AUDIT</div>
+                <div class="log-stream" id="log-flow"></div>
+            </div>
+            <div class="widget glass" id="performance-audit">
+                <div class="widget-label">TTRS-17 HEATMAP</div>
+                <div class="heatmap-grid" id="heatmap"></div>
+                <div class="widget-stats"><div class="st">VELOCITY: 33.41 GiB/s</div></div>
+            </div>
+        </main>
+        <footer class="input-bay glass">
+            <div class="input-wrapper">
+                <span class="chevron">></span>
+                <input type="text" id="neural-input" placeholder="DISPATCH COMMAND TO 819,592 AGENTS..." autofocus>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

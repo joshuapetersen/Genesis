@@ -1,0 +1,13 @@
+[package]
+name = "sovereign_substrate_migrator"
+version = "10.0.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+fs_extra = "1.3"
+walkdir = "2.3"
+chrono = "0.4"
+regex = "1.5"
+futures = "0.3"

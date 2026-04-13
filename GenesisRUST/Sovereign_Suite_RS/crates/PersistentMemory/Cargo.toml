@@ -1,0 +1,8 @@
+[package]
+name = "PersistentMemory"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sovereign_constants = { path = "../Sovereign_Constants" }
+chrono = "0.4"
