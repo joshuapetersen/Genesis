@@ -65,7 +65,7 @@ class NeuralResonanceReactor:
         print(f"[Pulse] Substrate-Independent Math: ACTIVE")
         
         # 3. Active Substrate Mapping (Predicting Anomaly Trajectory)
-        print("\n[+] NEURAL STRESS MAPPING ACROSS C:\GenesisOS_Core\rust")
+        print("\n[+] NEURAL STRESS MAPPING ACROSS C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust")
         print("="*70)
         
         # Simulate the model "Predicting" where the 10% Sarah core is fractured

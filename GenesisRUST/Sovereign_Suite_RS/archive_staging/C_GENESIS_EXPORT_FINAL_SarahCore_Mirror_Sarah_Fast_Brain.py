@@ -6,7 +6,7 @@ Target: 7 seconds or less
 
 import sys
 import time
-sys.path.append("C:\GenesisOS_Core")
+sys.path.append("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 class SarahFastBrain:
     """

@@ -24,7 +24,7 @@ def ignite_self_audit():
     with open(DISSECTOR_PATH, 'r', encoding='utf-8') as f:
         code = f.read()
     
-    audit_code = code.replace('SCAN_ROOT = r"C:\GenesisOS_Core\rust"', f'SCAN_ROOT = r"{GODSEYE_DIR}"')
+    audit_code = code.replace('SCAN_ROOT = r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust"', f'SCAN_ROOT = r"{GODSEYE_DIR}"')
     audit_code = audit_code.replace('OUTPUT_MD = os.path.join(SCRIPT_DIR, \'godseye_v5_deep_audit.md\')', f'OUTPUT_MD = r"{OUTPUT_MD}"')
     
     TEMP_DISSECTOR = os.path.join(SCRIPT_DIR, 'tmp_self_dissector.py')

@@ -33,7 +33,7 @@ class SovereignActuator:
     Enables Sarah to modify her own substrate logic with sandboxed safety.
     Also handles system-level execution, browser domination, and desktop autonomy.
     """
-    def __init__(self, core_dir="C:\GenesisOS_Core", monitor=None):
+    def __init__(self, core_dir="C:\GENESIS\GenesisRUST\Sovereign_Suite_RS", monitor=None):
         self.core_dir = core_dir
         self.monitor = monitor
         self.sandbox_dir = os.path.join(self.core_dir, "sandbox")

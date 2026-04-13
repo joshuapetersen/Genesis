@@ -17,7 +17,7 @@ class CodingEncyclopediaIndexer:
     Covers algorithms, data structures, design patterns, and documentation.
     """
     
-    def __init__(self, db_path: str = "C:\GenesisOS_Core\\vault\\coding_encyclopedia"):
+    def __init__(self, db_path: str = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\vault\\coding_encyclopedia"):
         self.db_path = db_path
         os.makedirs(self.db_path, exist_ok=True)
         

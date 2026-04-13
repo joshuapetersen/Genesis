@@ -1,6 +1,6 @@
 import time
 import sys
-sys.path.append("C:\GenesisOS_Core")
+sys.path.append("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 from Sarah_Fast_Brain import SarahFastBrain
 
 print("=" * 80)

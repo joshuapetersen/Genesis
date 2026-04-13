@@ -199,6 +199,6 @@ if __name__ == "__main__":
     gemma = r"C:\Users\drago\.lmstudio\models\lmstudio-community\gemma-3-4b-it-GGUF\gemma-3-4b-it-Q4_K_M.gguf"
     qwen = r"C:\Users\drago\.lmstudio\models\lmstudio-community\Qwen3.5-9B-GGUF\Qwen3.5-9B-Q4_K_M.gguf"
     
-    fusion = GenlexFusionNode(gemma, qwen, "C:\GenesisOS_Core")
+    fusion = GenlexFusionNode(gemma, qwen, "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
     # Execute mapping first for stability
     fusion.execute_fusion(build_binary=False)

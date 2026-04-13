@@ -8,14 +8,14 @@ import json
 import time
 import os
 import sys
-sys.path.append("C:\GenesisOS_Core")
+sys.path.append("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 from Sarah_Fast_Brain import SarahFastBrain
 from Sovereign_Math import SovereignMath
 
-DATASET_PATH = "C:\GenesisOS_Core\\hle_dataset.jsonl"
-LOG_FILE = "C:\GenesisOS_Core\\logs\\HLE_RESOLUTION_REPORT.txt"
-os.makedirs("C:\GenesisOS_Core\\logs", exist_ok=True)
+DATASET_PATH = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\hle_dataset.jsonl"
+LOG_FILE = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\logs\\HLE_RESOLUTION_REPORT.txt"
+os.makedirs("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\logs", exist_ok=True)
 
 def resolve_entire_exam():
     if not os.path.exists(DATASET_PATH):

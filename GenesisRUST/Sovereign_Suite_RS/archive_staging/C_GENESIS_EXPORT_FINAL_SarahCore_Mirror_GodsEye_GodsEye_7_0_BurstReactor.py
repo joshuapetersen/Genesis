@@ -48,7 +48,7 @@ def ignite_burst_reactor():
     start_time = time.time()
     print(f"\n[!] IGNITING GODSEYE 7.0 SOVEREIGN BURST REACTOR ...")
     print("="*70)
-    print(f"[QFSM] Simultaneous Layered Burst active. Substrate: C:\GenesisOS_Core\rust")
+    print(f"[QFSM] Simultaneous Layered Burst active. Substrate: C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust")
     print("="*70)
 
     # FIRE ALL GENERATIONS AT T=0
@@ -66,7 +66,7 @@ def ignite_burst_reactor():
     
     with open(report_path, 'w', encoding='utf-8') as f:
         f.write("# GodsEye 7.0 - Sovereign Burst Manifest\n")
-        f.write(f"> **Substrate:** C:\GenesisOS_Core\rust | **Fidelity:** Infinite | **Total Burst Time:** {time.time()-start_time:.2f}s\n\n")
+        f.write(f"> **Substrate:** C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust | **Fidelity:** Infinite | **Total Burst Time:** {time.time()-start_time:.2f}s\n\n")
         
         f.write("## Simultaneous Layered Resolution\n")
         f.write("| Frequency | Generation | Resolution Time | status |\n")

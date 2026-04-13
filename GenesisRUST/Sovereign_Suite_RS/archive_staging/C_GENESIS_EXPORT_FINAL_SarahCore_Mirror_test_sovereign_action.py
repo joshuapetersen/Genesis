@@ -50,7 +50,7 @@ def run_functional_proof():
     # 4. THE MANIFESTATION (ACTION)
     if status == "APPROVED":
         print("\n[ACTION] MANIFESTING SOVEREIGN INTENT...")
-        print("  > TARGET: C:\GenesisOS_Core\\Genesis_Protocol.py")
+        print("  > TARGET: C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\Genesis_Protocol.py")
         print("  > OPERATION: Update VAR_600 to 300")
         
         try:

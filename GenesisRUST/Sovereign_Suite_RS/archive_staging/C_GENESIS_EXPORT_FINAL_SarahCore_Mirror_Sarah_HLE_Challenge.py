@@ -6,7 +6,7 @@ Loads the cais/hle dataset and tests Sarah's reasoning speed and precision.
 import os
 import time
 import sys
-sys.path.append("C:\GenesisOS_Core")
+sys.path.append("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 try:
     from datasets import load_dataset

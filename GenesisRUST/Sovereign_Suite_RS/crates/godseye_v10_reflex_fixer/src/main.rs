@@ -14,7 +14,7 @@ use std::collections::HashMap;
 
 const SOVEREIGN_ANCHOR_STR: &str = "1.09277703703";
 const THREAD_COUNT: usize = 32;
-const MANIFEST_PATH: &str = r"C:\GenesisOS_Core\godseye\godseye_v10_reflex_manifest.md";
+const MANIFEST_PATH: &str = r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\godseye\godseye_v10_reflex_manifest.md";
 const SUBSTRATE_ROOT: &str = r"C:\GENESIS";
 
 #[derive(Debug, Clone)]

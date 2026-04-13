@@ -116,7 +116,7 @@ def generate_markdown_report(total_all_lines, total_py_lines, counts, arch_map, 
 
 if __name__ == "__main__":
     print("Starting Sovereign Cartographer...")
-    root = "C:\GenesisOS_Core"
+    root = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"
     total_all_lines, total_py_lines, counts, arch_map = map_codebase(root)
     
     print(f"Total Lines of Code (Across All Languages): {total_all_lines:,}")

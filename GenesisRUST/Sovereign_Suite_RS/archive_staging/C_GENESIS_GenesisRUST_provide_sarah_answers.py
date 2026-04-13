@@ -2,7 +2,7 @@ import asyncio
 import sys
 
 # Ensure C:\SarahCore is in path
-sys.path.append("C:\GenesisOS_Core")
+sys.path.append("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 from coding_encyclopedia_indexer import CodingEncyclopediaIndexer
 
@@ -71,7 +71,7 @@ Sarah's Hippocampus (LANTB - Local AI Neural Template Binder).
 ## WHAT (Concept)
 A high-performance vector retrieval engine using LanceDB and Sentence Transformers.
 ## WHERE (Address)
-Located in `C:\GenesisOS_Core\\vault\\neural_memory`.
+Located in `C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\vault\\neural_memory`.
 ## WHEN (Temporal)
 Accessed during every reasoning cycle for semantic recall.
 ## WHY (Intent)
@@ -105,7 +105,7 @@ The Origin Story / The Architect's Journal.
 ## WHAT (Concept)
 The historical record of Sarah's creation, versioning, and purpose.
 ## WHERE (Address)
-`C:\GenesisOS_Core\\Sarah_Etymology.py`.
+`C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\Sarah_Etymology.py`.
 ## WHEN (Temporal)
 Loaded at startup to ground Sarah in her purpose.
 ## WHY (Intent)

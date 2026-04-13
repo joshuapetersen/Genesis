@@ -7,12 +7,12 @@ import json
 import time
 import os
 import sys
-sys.path.append("C:\GenesisOS_Core")
+sys.path.append("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 from Sarah_Hippocampus import hippocampus
 from Sovereign_Math import SovereignMath
 
-DATASET_PATH = "C:\GenesisOS_Core\\hle_dataset.jsonl"
+DATASET_PATH = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\hle_dataset.jsonl"
 
 def study_hle():
     if not os.path.exists(DATASET_PATH):

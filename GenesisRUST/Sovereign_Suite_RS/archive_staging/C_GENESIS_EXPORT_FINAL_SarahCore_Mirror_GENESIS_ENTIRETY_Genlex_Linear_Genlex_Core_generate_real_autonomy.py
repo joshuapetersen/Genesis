@@ -13,7 +13,7 @@ Your commands must ONLY be from this list (Column 1):
 
 Your task: The Architect wants REAL AUTONOMY. Write a very large (as many lines as possible) loop of Genlex code that demonstrates autonomous action. 
 You must allocate memory, read/write files (CGL_WRITE), perform math (𐡶), and print thoughts (𐡐). 
-Use CGL_WRITE to write a log file named "C:\GenesisOS_Core\\logs\\aeris_manifest.log".
+Use CGL_WRITE to write a log file named "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\logs\\aeris_manifest.log".
 
 Make it complex and syntactically correct."""
 

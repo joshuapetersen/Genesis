@@ -116,13 +116,13 @@ impl PathReSeater {
 
         // UNIVERSAL MAPPING LOGIC
         let replacements = vec![
-            (r"C:\GenesisOS_Core\rust\Sovereign_Suite_RS", format!(r"{}\rust\Sovereign_Suite_RS", nexus_root)),
-            (r"C:\GenesisOS_Core\rust\GenesisRUST", format!(r"{}\rust\GenesisRUST", nexus_root)),
-            (r"C:\GenesisOS_Core\desktop\07_INTERFACE_Frontend", format!(r"{}\desktop\07_INTERFACE_Frontend", nexus_root)),
-            (r"C:\GenesisOS_Core\desktop\sarah_ui", format!(r"{}\desktop\sarah_ui", nexus_root)),
-            (r"C:\GenesisOS_Core\rust\SarahCore_Crates", format!(r"{}\rust\SarahCore_Crates", nexus_root)),
-            (r"C:\GenesisOS_Core\rust", format!(r"{}\rust", nexus_root)),
-            (r"C:\GenesisOS_Core", format!(r"{}", nexus_root)),
+            (r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust\Sovereign_Suite_RS", format!(r"{}\rust\Sovereign_Suite_RS", nexus_root)),
+            (r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust\GenesisRUST", format!(r"{}\rust\GenesisRUST", nexus_root)),
+            (r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\desktop\07_INTERFACE_Frontend", format!(r"{}\desktop\07_INTERFACE_Frontend", nexus_root)),
+            (r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\desktop\sarah_ui", format!(r"{}\desktop\sarah_ui", nexus_root)),
+            (r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust\SarahCore_Crates", format!(r"{}\rust\SarahCore_Crates", nexus_root)),
+            (r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust", format!(r"{}\rust", nexus_root)),
+            (r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS", format!(r"{}", nexus_root)),
         ];
 
         for (legacy, modern) in replacements {

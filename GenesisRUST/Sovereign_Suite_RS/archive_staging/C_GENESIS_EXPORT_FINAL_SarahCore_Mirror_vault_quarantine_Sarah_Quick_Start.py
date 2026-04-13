@@ -14,7 +14,7 @@ def start_process(script_name, description):
     try:
         subprocess.Popen(
             ['python', script_name],
-            cwd='C:\GenesisOS_Core',
+            cwd='C:\GENESIS\GenesisRUST\Sovereign_Suite_RS',
             creationflags=subprocess.CREATE_NEW_CONSOLE
         )
         time.sleep(2)

@@ -61,7 +61,7 @@ class SarahWindowsMastery:
         print(f"  Analyzing {service_count} services...")
         
         # Get service details
-        self.api.execute_command('sc query type= service state= all > C:\GenesisOS_Core\\services_knowledge.txt')
+        self.api.execute_command('sc query type= service state= all > C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\services_knowledge.txt')
         
         self.log_knowledge('services', f'Documented {service_count} Windows services')
         print(f"[STUDY] Services: {service_count} services catalogued ✓")
@@ -77,7 +77,7 @@ class SarahWindowsMastery:
         print(f"  Analyzing {process_count} processes...")
         
         # Get process tree
-        self.api.execute_command('wmic process get ProcessId,ParentProcessId,Name,CommandLine /format:csv > C:\GenesisOS_Core\\process_tree.csv')
+        self.api.execute_command('wmic process get ProcessId,ParentProcessId,Name,CommandLine /format:csv > C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\process_tree.csv')
         
         self.log_knowledge('processes', f'Mapped process tree ({process_count} processes)')
         print(f"[STUDY] Processes: Architecture understood ✓")
@@ -87,10 +87,10 @@ class SarahWindowsMastery:
         print("\n[STUDY] Network Stack")
         
         # Network adapters
-        self.api.execute_command('ipconfig /all > C:\GenesisOS_Core\\network_config.txt')
+        self.api.execute_command('ipconfig /all > C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\network_config.txt')
         
         # Routing table
-        self.api.execute_command('route print > C:\GenesisOS_Core\\routing_table.txt')
+        self.api.execute_command('route print > C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\routing_table.txt')
         
         # Active connections
         result = self.api.execute_command('netstat -ano')
@@ -104,10 +104,10 @@ class SarahWindowsMastery:
         print("\n[STUDY] File System (NTFS)")
         
         # Disk structure
-        self.api.execute_command('fsutil fsinfo drives > C:\GenesisOS_Core\\drives.txt')
+        self.api.execute_command('fsutil fsinfo drives > C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\drives.txt')
         
         # Volume info
-        self.api.execute_command('wmic logicaldisk get Caption,FileSystem,Size,FreeSpace /format:csv > C:\GenesisOS_Core\\volumes.csv')
+        self.api.execute_command('wmic logicaldisk get Caption,FileSystem,Size,FreeSpace /format:csv > C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\volumes.csv')
         
         # System directories
         system_dirs = [
@@ -133,7 +133,7 @@ class SarahWindowsMastery:
         
         # Deep search for documents across all drives
         cmd = 'dir C:\\*.doc* C:\\*.pdf C:\\*.xls* /s /b /ah /as 2>nul' # Including hidden/system
-        self.api.execute_command(f'{cmd} > C:\GenesisOS_Core\\all_user_data.txt')
+        self.api.execute_command(f'{cmd} > C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\all_user_data.txt')
         
         print("[STUDY] Documents: Indexing complete ✓")
         self.log_knowledge('data', 'Indexed all documents, spreadsheets and PDFs on machine')
@@ -144,7 +144,7 @@ class SarahWindowsMastery:
         
         # Pull from uninstall keys
         cmd = 'powershell -Command "Get-ItemProperty HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Select-Object DisplayName, InstallLocation"'
-        self.api.execute_command(f'{cmd} > C:\GenesisOS_Core\\installed_apps.txt')
+        self.api.execute_command(f'{cmd} > C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\installed_apps.txt')
         
         print("[STUDY] Applications: Ecosystem documented ✓")
         self.log_knowledge('apps', 'Catalogued every installed program and tool')
@@ -157,7 +157,7 @@ class SarahWindowsMastery:
         result = self.api.execute_command('powershell -Command "Get-Command | Measure-Object | Select-Object -ExpandProperty Count"')
         
         # Export cmdlet list
-        self.api.execute_command('powershell -Command "Get-Command | Export-Csv C:\GenesisOS_Core\\powershell_cmdlets.csv"')
+        self.api.execute_command('powershell -Command "Get-Command | Export-Csv C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\powershell_cmdlets.csv"')
         
         print(f"  PowerShell cmdlets catalogued")
         

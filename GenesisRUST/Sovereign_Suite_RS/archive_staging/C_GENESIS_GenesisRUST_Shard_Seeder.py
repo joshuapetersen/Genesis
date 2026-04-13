@@ -8,7 +8,7 @@ import time
 # shards to the 'Sovereign Mirror' (LBA 2048+).
 # ============================================================
 
-SA_ROOT = "C:\GenesisOS_Core"
+SA_ROOT = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"
 
 class ShardSeeder:
     """

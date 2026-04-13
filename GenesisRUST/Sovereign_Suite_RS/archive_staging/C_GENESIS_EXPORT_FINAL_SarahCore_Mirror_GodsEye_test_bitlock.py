@@ -7,7 +7,7 @@ import sys
 import time
 
 # Import the BitLock engine
-sys.path.insert(0, "C:\GenesisOS_Core\rust\\GodsEye")
+sys.path.insert(0, "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust\\GodsEye")
 from GodsEye_12_0_BitLock import (
     ONES_MASK, ZEROS_MASK, MUST_BE_ONE, MUST_BE_ZERO,
     matches_fingerprint, generate_locked_nonces

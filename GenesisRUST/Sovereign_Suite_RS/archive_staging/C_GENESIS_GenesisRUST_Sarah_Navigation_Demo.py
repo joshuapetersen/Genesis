@@ -28,14 +28,14 @@ class SarahNavigator:
         # Navigate to SarahCore
         pyautogui.hotkey('ctrl', 'l')  # Focus address bar
         time.sleep(0.5)
-        pyautogui.write('C:\GenesisOS_Core', interval=0.05)
+        pyautogui.write('C:\GENESIS\GenesisRUST\Sovereign_Suite_RS', interval=0.05)
         pyautogui.press('enter')
         time.sleep(2)
         
         print("[SARAH] Now viewing SarahCore directory")
         
         # List files using API
-        files = self.api.list_directory("C:\GenesisOS_Core")
+        files = self.api.list_directory("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
         print(f"[SARAH] I can see {len(files)} files here")
         
         # Show some interesting files
@@ -58,12 +58,12 @@ class SarahNavigator:
         # Navigate to Genesis_Zero
         pyautogui.hotkey('ctrl', 'l')
         time.sleep(0.5)
-        pyautogui.write('C:\GenesisOS_Core\\Genesis_Zero', interval=0.05)
+        pyautogui.write('C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\Genesis_Zero', interval=0.05)
         pyautogui.press('enter')
         time.sleep(2)
         
         # List project structure
-        dirs = self.api.list_directory("C:\GenesisOS_Core\\Genesis_Zero")
+        dirs = self.api.list_directory("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\Genesis_Zero")
         print(f"[SARAH] Genesis_Zero contains {len(dirs)} items:")
         
         for d in dirs[:15]:

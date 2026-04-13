@@ -60,7 +60,7 @@ class SarahContinuousNavigator:
         print("\n[SARAH] Task: Organizing knowledge base")
         
         # Count markdown files (knowledge)
-        result = self.api.execute_command('dir C:\GenesisOS_Core\\*.md /s /b | find /c ".md"')
+        result = self.api.execute_command('dir C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\*.md /s /b | find /c ".md"')
         print(f"[SARAH] Found knowledge documents in SarahCore")
         
         self.tasks_completed += 1
@@ -70,14 +70,14 @@ class SarahContinuousNavigator:
         print("\n[SARAH] Task: Monitoring Genesis_Zero")
         
         # Check if project files exist
-        project_file = "C:\GenesisOS_Core\\Genesis_Zero\\Genesis_Zero.uproject"
+        project_file = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\Genesis_Zero\\Genesis_Zero.uproject"
         result = self.api.execute_command(f'if exist "{project_file}" echo EXISTS')
         
         if "EXISTS" in result:
             print("[SARAH] Genesis_Zero project verified ✓")
         
         # Check plugins
-        plugins = self.api.list_directory("C:\GenesisOS_Core\\Genesis_Zero\\Plugins")
+        plugins = self.api.list_directory("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\Genesis_Zero\\Plugins")
         print(f"[SARAH] {len(plugins)} plugins installed")
         
         self.tasks_completed += 1
@@ -86,7 +86,7 @@ class SarahContinuousNavigator:
         """Learn from interaction logs."""
         print("\n[SARAH] Task: Learning from history")
         
-        log_file = "C:\GenesisOS_Core\\interaction_log.jsonl"
+        log_file = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\interaction_log.jsonl"
         result = self.api.execute_command(f'if exist "{log_file}" type "{log_file}" | find /c /v ""')
         
         print("[SARAH] Analyzing past interactions...")

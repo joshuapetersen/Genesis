@@ -268,7 +268,7 @@ def main_loop():
     def kinetic_bridge():
         sys.path.append(r'C:\SarahCore')
         from Sovereign_Actuator import SovereignActuator
-        ACTUATOR = SovereignActuator(core_dir="C:\GenesisOS_Core")
+        ACTUATOR = SovereignActuator(core_dir="C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
         while True:
             try:
                 # Use a fresh connection to avoid lock contention

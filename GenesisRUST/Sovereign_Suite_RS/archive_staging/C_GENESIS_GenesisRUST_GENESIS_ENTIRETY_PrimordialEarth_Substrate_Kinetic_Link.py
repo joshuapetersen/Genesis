@@ -9,7 +9,7 @@ sys.path.append(r'C:\SarahCore')
 from Sovereign_Actuator import SovereignActuator
 
 DB_PATH = r'C:\PrimordialEarth\Genesis_Soul_Vault.sqlite'
-ACTUATOR = SovereignActuator(core_dir="C:\GenesisOS_Core")
+ACTUATOR = SovereignActuator(core_dir="C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 def bridge_loop():
     print("[KINETIC LINK] Bridging Aeris Logic to Host Substrate...")

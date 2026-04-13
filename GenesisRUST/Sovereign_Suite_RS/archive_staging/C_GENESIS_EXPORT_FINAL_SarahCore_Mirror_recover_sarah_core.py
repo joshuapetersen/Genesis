@@ -3,7 +3,7 @@ import re
 
 def recover():
     """Function: recover"""
-    root_dir = "C:\GenesisOS_Core"
+    root_dir = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"
     skip_dirs = {'vault', '__pycache__', '.git', '.venv', 'node_modules', 'dist', 'build', '.vs', '.vscode', 'wim_mount'}
     
     # regex to match the exact pattern inserted by the fixer

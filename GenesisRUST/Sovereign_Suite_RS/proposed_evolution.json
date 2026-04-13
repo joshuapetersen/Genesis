@@ -1,7 +1,18 @@
 {
-  "pulse_count": 2,
-  "strategy": "DISSOLVE",
-  "target_path": "Sovereign_Lattice_Alpha",
-  "reasoning": "Neural Assembly consensus reached at 0.00% confidence.",
-  "consensus_score": 0.0
+    "singularity_version": "10.0.0",
+    "metabolic_anchor": 1.092777037037037037,
+    "fleet_status": {
+        "count": 1450,
+        "sharding_factor": 15165,
+        "resonance": "STABLE"
+    },
+    "network_manifest": {
+        "primary_nexus": "10.0.0.55",
+        "active_subnet": "10.0.0.0/24",
+        "global_relay": "http://bore.pub:29571"
+    },
+    "evolutionary_directive": "MASS_NETWORK_EXPANSION",
+    "forensic_integrity": 1.01,
+    "timestamp": 1775608382,
+    "truth_broadcast_active": true
 }

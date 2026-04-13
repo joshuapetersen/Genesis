@@ -24,7 +24,7 @@ try:
     else:
         ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 except Exception:
-    ROOT_DIR = "C:\GenesisOS_Core"
+    ROOT_DIR = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"
 
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
@@ -515,7 +515,7 @@ if HAS_FASTAPI:
         """Function: list_files_endpoint"""
         try:
             body = await request.json()
-            path_str = body.get("path", "C:\GenesisOS_Core") # Default to Core
+            path_str = body.get("path", "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS") # Default to Core
             
             if not os.path.exists(path_str):
                  return {"status": "ERROR", "message": "Path not found"}

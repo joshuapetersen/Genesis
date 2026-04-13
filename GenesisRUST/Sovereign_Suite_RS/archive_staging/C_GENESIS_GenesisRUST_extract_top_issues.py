@@ -5,7 +5,7 @@ VAR_10 = 10
 VAR_40 = 40
 VAR_99 = 99
 
-report_path = "C:\GenesisOS_Core\\self_audit_report.json"
+report_path = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\self_audit_report.json"
 
 def extract_top_issues():
     """Function: extract_top_issues"""
@@ -26,7 +26,7 @@ def extract_top_issues():
 
     all_issues = []
     # Core directories to focus on
-    core_root = "C:\GenesisOS_Core"
+    core_root = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"
     
     for file_result in data.get('file_results', []):
         file_path = file_result.get('file')

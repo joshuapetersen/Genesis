@@ -13,7 +13,7 @@ class SovereignCompiler:
     Translates Sovereign Syntax into executable Substrate Directives.
     """
     def __init__(self):
-        self.actuator = SovereignActuator(core_dir="C:\GenesisOS_Core")
+        self.actuator = SovereignActuator(core_dir="C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
         self.resonance_anchor = 1.09277703703
         
     def compile_and_run(self, sigma_code):

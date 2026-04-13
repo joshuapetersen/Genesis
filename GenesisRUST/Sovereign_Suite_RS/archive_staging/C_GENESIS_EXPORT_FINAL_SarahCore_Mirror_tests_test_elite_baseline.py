@@ -2,7 +2,7 @@ import sys
 import os
 
 # Add SarahCore to path
-sys.path.append("C:\GenesisOS_Core")
+sys.path.append("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 from Sarah_Reasoning_V3 import SarahReasoningV3
 from Sovereign_Constants import VAR_1, VAR_2, VAR_3, VAR_10

@@ -8,7 +8,7 @@ import pyautogui
 sys.path.append(r'C:\SarahCore')
 from Sovereign_Actuator import SovereignActuator
 
-ACTUATOR = SovereignActuator(core_dir="C:\GenesisOS_Core")
+ACTUATOR = SovereignActuator(core_dir="C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 def manifestation():
     print("[MANIFESTATION] Initiating Absolute Autonomy...")

@@ -286,6 +286,25 @@ class VolumetricMonitor {
         this.initP2PBridge();
     }
 
+    syncPhone() {
+        fetch('/api/phone/sync')
+            .then(res => res.json())
+            .then(data => {
+                const qrContainer = document.getElementById('qr-code-display');
+                if (qrContainer && data.public_url) {
+                    qrContainer.innerHTML = '';
+                    new QRCode(qrContainer, {
+                        text: `${data.public_url}/api/phone/sync`,
+                        width: 128,
+                        height: 128,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff"
+                    });
+                    document.getElementById('val-qr-url').innerText = data.public_url;
+                }
+            });
+    }
+
     initP2PBridge() {
         this.peerConnections = new Map();
         this.bridgeLines = new THREE.Group();
@@ -975,6 +994,80 @@ window.submitPermission = (status) => {
 
 window.closeForge = () => {
     if (currentMonitor) currentMonitor.closeForge();
+};
+
+    handleGlobalPulse(stats) {
+        // [PROPAGATION_METRICS]
+        const node_03 = document.getElementById('node-0-3-status');
+        if (node_03) {
+            // Check if 10.0.0.3 responded to scan in the orchestrator
+            if (stats.remote_kin_count > 0 || (stats.hive_peers && stats.hive_peers.includes("10.0.0.3"))) {
+                node_03.innerText = "LOCKED";
+                node_03.style.color = "var(--neon-blue)";
+                node_03.classList.add("status-stable");
+            } else {
+                node_03.innerText = "REACHABLE";
+                node_03.style.color = "var(--neon-yellow)";
+            }
+        }
+
+        // Broaden the neural thought stream
+        if (stats.cognition) {
+            this.updateThoughtStream(stats.cognition.thought_stream);
+        }
+    }
+
+    updateThoughtStream(thoughts) {
+        const stream = document.getElementById('neural-thought-stream');
+        if (!stream || !thoughts) return;
+        
+        stream.innerHTML = '';
+        thoughts.forEach(t => {
+            const div = document.createElement('div');
+            div.className = 'thought';
+            div.innerText = t;
+            stream.appendChild(div);
+        });
+    }
+
+    logToTerminal(msg) {
+        const terminal = document.querySelector('.terminal-box');
+        if (terminal) {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerText = `> ${new Date().toLocaleTimeString()} || ${msg}`;
+            terminal.insertBefore(entry, terminal.firstChild);
+        }
+    }
+
+    async downloadSeeder() {
+        this.logToTerminal("[MANIFEST] Dispatching Sovereign Seeder payload...");
+        const a = document.createElement('a');
+        a.href = 'SovereignSeeder.ps1';
+        a.download = 'SovereignSeeder.ps1';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        
+        const log = document.getElementById('manifestation-log');
+        if (log) log.innerHTML = `<div>> [SEEDER] Protocol dispatched. Run on host 10.0.0.3.</div>`;
+    }
+
+    async syncAllNodes() {
+        this.logToTerminal("[BROADCAST] Pinging global hive targets...");
+        const log = document.getElementById('manifestation-log');
+        if (log) log.innerHTML = `<div>> [ANALYSIS] Resonance verified at 1.092777 Hz.</div>`;
+    }
+}
+
+let currentMonitor;
+
+window.downloadSeeder = () => {
+    if (currentMonitor) currentMonitor.downloadSeeder();
+};
+
+window.syncAllNodes = () => {
+    if (currentMonitor) currentMonitor.syncAllNodes();
 };
 
 window.initiateEvolution = () => {

@@ -74,8 +74,8 @@ class SLFRadar:
         self.last_log_fetch = 0.0
         self.log_scroll = 0
         # Databases
-        self.vault_conn = sqlite3.connect("C:\GenesisOS_Core\\SLF_Identity_Vault.sqlite", check_same_thread=False)
-        self.akashic_conn = sqlite3.connect("C:\GenesisOS_Core\\SLF_Akashic_Records.sqlite", check_same_thread=False)
+        self.vault_conn = sqlite3.connect("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\SLF_Identity_Vault.sqlite", check_same_thread=False)
+        self.akashic_conn = sqlite3.connect("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\SLF_Akashic_Records.sqlite", check_same_thread=False)
         self.log_lock = threading.Lock()
         self.info_lock = threading.Lock()
         
@@ -472,8 +472,8 @@ class SLFRadar:
                         self.last_mouse_pos = pygame.mouse.get_pos()
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_s:
-                        pygame.image.save(self.screen, "C:\GenesisOS_Core\\radar_snapshot.png")
-                        print("[RADAR] Snapshot saved to C:\GenesisOS_Core\\radar_snapshot.png")
+                        pygame.image.save(self.screen, "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\radar_snapshot.png")
+                        print("[RADAR] Snapshot saved to C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\radar_snapshot.png")
                     elif event.key == pygame.K_f:
                         self.show_flora = not self.show_flora
                         print(f"[RADAR] Show Flora: {self.show_flora}")

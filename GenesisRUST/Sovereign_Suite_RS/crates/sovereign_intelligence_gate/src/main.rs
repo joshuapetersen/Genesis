@@ -26,7 +26,7 @@ fn find_nexus_root() -> Option<PathBuf> {
         if !curr.pop() { break; }
     }
     // Fallback: GenesisOS_Core
-    let fallback = PathBuf::from(r"C:\GenesisOS_Core");
+    let fallback = PathBuf::from(r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS");
     if fallback.join("sovereign.nexus").exists() {
         return Some(fallback);
     }

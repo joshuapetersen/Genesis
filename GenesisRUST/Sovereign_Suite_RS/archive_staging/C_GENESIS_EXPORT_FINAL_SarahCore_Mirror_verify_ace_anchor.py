@@ -2,7 +2,7 @@
 import sys
 
 # Ensure SarahCore is in path
-sys.path.append("C:\GenesisOS_Core")
+sys.path.append("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
 
 try:
     from Audio_Core import AceToken

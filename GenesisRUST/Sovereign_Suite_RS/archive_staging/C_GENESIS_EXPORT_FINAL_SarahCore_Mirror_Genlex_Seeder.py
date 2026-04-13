@@ -4,7 +4,7 @@ import sys
 import hashlib
 
 # Sovereign Constants
-SA_ROOT = "C:\GenesisOS_Core"
+SA_ROOT = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"
 MAP_FILE = os.path.join(SA_ROOT, "Genlex_Map.json")
 
 def generate_resonance_signature(content):

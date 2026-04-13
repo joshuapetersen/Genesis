@@ -167,7 +167,7 @@ def parse_sarah_architecture(file_path):
         idx += 1
 
     # Save to JSON
-    out_path = "C:\GenesisOS_Core\\sarah_encyclopedia_topics.json"
+    out_path = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\sarah_encyclopedia_topics.json"
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(topics, f, indent=2)
         

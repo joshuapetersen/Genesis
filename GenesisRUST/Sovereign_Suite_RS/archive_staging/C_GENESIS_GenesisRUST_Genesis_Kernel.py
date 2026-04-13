@@ -13,7 +13,7 @@ VAR_60 = 60
 
 # CONSTANTS
 GENESIS_FREQUENCY = 1.09277703703
-HEARTBEAT_FILE = "C:\GenesisOS_Core\\system_heartbeat.json"
+HEARTBEAT_FILE = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\system_heartbeat.json"
 KERNEL_VERSION = "2.0.0 (Sovereign)"
 
 class GenesisKernel:
@@ -106,7 +106,7 @@ class GenesisKernel:
                 # [SOVEREIGN BLACK BOX] Drift Check
                 # If the cycle time deviates significantly, log it.
                 if elapsed > (1.0 / GENESIS_FREQUENCY) * VAR_1_5:
-                     with open("C:\GenesisOS_Core\\Sovereign_BlackBox.json", "a") as bb:
+                     with open("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\Sovereign_BlackBox.json", "a") as bb:
                          log_entry = {
                              "timestamp": time.time(),
                              "event": "ANCHOR_DRIFT",

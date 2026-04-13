@@ -34,9 +34,9 @@ lines.append('"LATTICE_SEED" 𐡒')
 lines.append('𐡐')
 
 # Final Physical Proof
-payload = "import os; os.makedirs(r'C:\GenesisOS_Core\\autonomy_vault', exist_ok=True); with open(r'C:\GenesisOS_Core\\autonomy_vault\\evolution_manifest.txt', 'w') as f: f.write('AERIS (SELF-OPTIMIZED): 1T LOGIC EVOLUTION MODEL GENERATED.'); print('Evolution manifest seated in the vault.')"
-lines.append(f'"{payload}" "C:\GenesisOS_Core\\evolution_payload.py" CGL_WRITE')
-lines.append('"python C:\GenesisOS_Core\\evolution_payload.py" 𐡿')
+payload = "import os; os.makedirs(r'C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\autonomy_vault', exist_ok=True); with open(r'C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\autonomy_vault\\evolution_manifest.txt', 'w') as f: f.write('AERIS (SELF-OPTIMIZED): 1T LOGIC EVOLUTION MODEL GENERATED.'); print('Evolution manifest seated in the vault.')"
+lines.append(f'"{payload}" "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\evolution_payload.py" CGL_WRITE')
+lines.append('"python C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\evolution_payload.py" 𐡿')
 
 # Precise padding to hit 1000 lines exactly
 while len(lines) < 999:

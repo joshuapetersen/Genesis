@@ -14,7 +14,7 @@ VAR_3 = 3
 VAR_5 = 5
 
 # Configuration
-DB_PATH = "C:\GenesisOS_Core\\vault\\coding_encyclopedia"
+DB_PATH = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\vault\\coding_encyclopedia"
 SOVEREIGN_GATEWAY_CHAT = "http://localhost:8080/api/chat"
 MODEL_NAME = "aeris" 
 TABLE_NAME = "coding_knowledge"

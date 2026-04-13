@@ -26,7 +26,7 @@ class GenesisAPI:
         # GEOFENCE OPTION: Set to True to restrict Sarah to the SarahCore directory.
         # Keeping this DISABLED by default for maximum system integration.
         self.geofence_enabled = False 
-        self.geofence_root = "C:\GenesisOS_Core"
+        self.geofence_root = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"
         
         info('api', f'Genesis API initialized | GEOFENCE_READY: True | ENABLED: {self.geofence_enabled}')
         print(f"[API] Genesis API initialized - System Access: {'RESTRICTED' if self.geofence_enabled else 'UNLIMITED'}")
@@ -132,11 +132,11 @@ if __name__ == "__main__":
     print("Sarah has direct system access...")
     
     # List SarahCore directory
-    files = api.list_directory("C:\GenesisOS_Core")
+    files = api.list_directory("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
     print(f"\nFound {len(files)} files in SarahCore")
     
     # Create a test file
-    api.create_file("C:\GenesisOS_Core\\sarah_was_here.txt", 
+    api.create_file("C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\\sarah_was_here.txt", 
                     "Sarah has full system control.\nDREAM MAKER operational.")
     
     print("\n[API] Sarah has proven system-level access.")

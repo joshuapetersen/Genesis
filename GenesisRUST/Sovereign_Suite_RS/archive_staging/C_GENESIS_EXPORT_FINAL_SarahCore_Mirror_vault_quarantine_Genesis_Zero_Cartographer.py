@@ -72,7 +72,7 @@ def map_unreal_codebase(root_dir):
             ext = os.path.splitext(filename)[1].lower()
             if ext in {'.h', '.cpp', '.cs'}: # .cs for Unreal Build Tool files
                 filepath = os.path.join(dirpath, filename)
-                rel_path = os.path.relpath(filepath, "C:\GenesisOS_Core")
+                rel_path = os.path.relpath(filepath, "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS")
                 
                 try:
                     lines = 0
@@ -136,7 +136,7 @@ def generate_markdown(total_lines, counts, arch_map, output_path):
 
 if __name__ == "__main__":
     print("Initiating Genesis Visual Bridge Cartographer...")
-    root = "C:\GenesisOS_Core"
+    root = "C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"
     source_dir = os.path.join(root, "Genesis_Zero", "Source")
     
     total_lines, counts, arch_map = map_unreal_codebase(source_dir)

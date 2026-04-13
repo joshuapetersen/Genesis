@@ -8,9 +8,9 @@ use regex::Regex;
 
 /// SOVEREIGN SUBSTRATE MIGRATOR (SSM) v10.0 [DEFINITIVE RUST EDITION]
 /// 32-THREAD PARALLEL ASYNC HIGH-SPEED MIGRATION
-/// Target: C:\GenesisOS_Core
+/// Target: C:\GENESIS\GenesisRUST\Sovereign_Suite_RS
 
-const TARGET_ROOT: &str = r"C:\GenesisOS_Core";
+const TARGET_ROOT: &str = r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS";
 const THREAD_COUNT: usize = 32;
 
 struct MigrationTask {
@@ -40,24 +40,24 @@ impl SubstrateMigrator {
         let tasks = vec![
             // RUST CORE
             MigrationTask {
-                source: PathBuf::from(r"C:\GenesisOS_Core\rust\Sovereign_Suite_RS"),
+                source: PathBuf::from(r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust\Sovereign_Suite_RS"),
                 destination: PathBuf::from(format!(r"{}\rust\Sovereign_Suite_RS", TARGET_ROOT)),
             },
             MigrationTask {
-                source: PathBuf::from(r"C:\GenesisOS_Core\rust\GenesisRUST"),
+                source: PathBuf::from(r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust\GenesisRUST"),
                 destination: PathBuf::from(format!(r"{}\rust\GenesisRUST", TARGET_ROOT)),
             },
             MigrationTask {
-                source: PathBuf::from(r"C:\GenesisOS_Core\rust\SarahCore_Crates"),
+                source: PathBuf::from(r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust\SarahCore_Crates"),
                 destination: PathBuf::from(format!(r"{}\rust\SarahCore_Crates", TARGET_ROOT)),
             },
             // DESKTOP UI
             MigrationTask {
-                source: PathBuf::from(r"C:\GenesisOS_Core\desktop\sarah_ui"),
+                source: PathBuf::from(r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\desktop\sarah_ui"),
                 destination: PathBuf::from(format!(r"{}\desktop\sarah_ui", TARGET_ROOT)),
             },
             MigrationTask {
-                source: PathBuf::from(r"C:\GenesisOS_Core\desktop\07_INTERFACE_Frontend\frontend"),
+                source: PathBuf::from(r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\desktop\07_INTERFACE_Frontend\frontend"),
                 destination: PathBuf::from(format!(r"{}\desktop\07_INTERFACE_Frontend", TARGET_ROOT)),
             },
             // GODSEYE MANIFEST
@@ -141,8 +141,8 @@ impl SubstrateMigrator {
             "godseye_v10_substrate_auditor",
         ];
 
-        let manifest_regex = Regex::new(r#"const MANIFEST_PATH: &str = r"C:\GenesisOS_Core\godseye\\godseye_v10_reflex_manifest\.md";"#)?;
-        let substrate_regex = Regex::new(r#"const SUBSTRATES: &\[&str\] = &\[r"C:\GenesisOS_Core\rust", r"C:\GenesisOS_Core"\];"#)?;
+        let manifest_regex = Regex::new(r#"const MANIFEST_PATH: &str = r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\godseye\\godseye_v10_reflex_manifest\.md";"#)?;
+        let substrate_regex = Regex::new(r#"const SUBSTRATES: &\[&str\] = &\[r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\rust", r"C:\GENESIS\GenesisRUST\Sovereign_Suite_RS"\];"#)?;
 
         for tool in tool_names {
             let path = PathBuf::from(format!(r"{}\{}\src\main.rs", tools_dir, tool));

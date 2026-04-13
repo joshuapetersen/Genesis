@@ -133,7 +133,7 @@ class SovereignMeshATS:
 
 if __name__ == "__main__":
     # Scan Common Sovereign Roots
-    sov_roots = ["C:\GenesisOS_Core", "C:\\DPM_Engine", "D:\\"]
+    sov_roots = ["C:\GENESIS\GenesisRUST\Sovereign_Suite_RS", "C:\\DPM_Engine", "D:\\"]
     active_roots = [r for r in sov_roots if os.path.exists(r)]
     auditor = SovereignMeshATS(active_roots)
     auditor.ignite_mesh_audit()
