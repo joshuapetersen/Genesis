@@ -1056,7 +1056,7 @@ window.closeForge = () => {
     async syncAllNodes() {
         this.logToTerminal("[BROADCAST] Pinging global hive targets...");
         const log = document.getElementById('manifestation-log');
-        if (log) log.innerHTML = `<div>> [ANALYSIS] Resonance verified at 1.092777 Hz.</div>`;
+        if (log) log.innerHTML = `<div>> [ANALYSIS] Resonance verified at 1.092777037037037 Hz.</div>`;
     }
 }
 

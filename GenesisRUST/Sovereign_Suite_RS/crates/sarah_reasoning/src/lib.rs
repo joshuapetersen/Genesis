@@ -1,5 +1,5 @@
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use std::time::Duration;
 use tokio::time::{interval, sleep};
 use anyhow::{Result, Context};
@@ -12,7 +12,6 @@ use sovereign_coder::{SovereignCoder, EvolutionDirective};
 /// Purpose: Neural Democracy & 103% Quantum Purity
 /// Security: Full History + Safety Buffer
 pub mod memory;
-pub mod constants;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AnomalyReport {
@@ -166,7 +165,7 @@ impl HiveAssembly {
                 "consensus": consensus,
                 "density": density,
                 "strategy": strategy,
-                "resonance": "1.092777 Hz"
+                "resonance": "1.092777037037037 Hz"
             }
         });
 
@@ -187,7 +186,7 @@ impl HiveAssembly {
             who: format!("SOVEREIGN_HIVE_{}", tag),
             what: format!("DATA_AUDIT:{}", anomaly.affected_crate),
             where_context: anomaly.affected_crate.clone(),
-            when_frequency: String::from("1.092777 Hz"),
+            when_frequency: String::from("1.092777037037037 Hz"),
             why_intent: String::from("QUANTUM_CONSENSUS_103"),
             how_method: String::from("SPECTRAL_PROJECTION"),
             evolutionary: [
@@ -201,9 +200,3 @@ impl HiveAssembly {
     }
 }
 
-#[tokio::main]
-async fn main() -> Result<()> {
-    let assembly = HiveAssembly::new()?;
-    assembly.monitor().await?;
-    Ok(())
-}

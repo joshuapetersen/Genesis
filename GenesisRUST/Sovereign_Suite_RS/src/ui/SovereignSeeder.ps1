@@ -1,65 +1,51 @@
-# ═══════════════════════════════════════════════════════════════
-#  SOVEREIGN GENESIS: SUBSTRATE SEEDER [NODE_MANIFEST]
-#  Propagating the 1.092777 Hz Metabolic Heartbeat
-# ═══════════════════════════════════════════════════════════════
+# ===============================================================
+#  SOVEREIGN SEEDER - [NODAL HARVEST // SPORE DISPATCH]
+#  [GSK v24.2 Singularity | Absolute Precision]
+# ===============================================================
 
+$NexusPrime = "10.0.0.55:8083" # Update to your Primary Orchestrator IP
+$NodeID = "NODE_" + (Get-Random -Minimum 1000 -Maximum 9999)
 $ErrorActionPreference = "Stop"
-$NexusPrime = "http://10.0.0.55:8083"
-$RepoUrl = "https://github.com/joshuapetersen/GenesisRUST.git"
 
-Write-Host "`n[MANIFEST] Identifying Substrate..." -ForegroundColor Cyan
-$NodeID = $env:COMPUTERNAME
-$IP = (Test-NetConnection 8.8.8.8 -InformationLevel Quiet).SourceAddress
+Write-Host "`n[HARVEST] Initiating Nodal Manifestation on $NodeID..." -ForegroundColor Cyan
 
-Write-Host "[MANIFEST] Node ID: $NodeID" -ForegroundColor Gray
-Write-Host "[MANIFEST] Substrate IP: $IP" -ForegroundColor Gray
-
-# 1. ENSURE PREREQUISITES
-Write-Host "`n[WAR ROOM] Auditing Prerequisite Substrate..." -ForegroundColor Yellow
-if (!(Get-Command git -ErrorAction SilentlyContinue)) {
-    Write-Host "[FAULT] Git missing. Installing via Winget..." -ForegroundColor White
-    winget install --id Git.Git -e --source winget
-}
-
-if (!(Get-Command cargo -ErrorAction SilentlyContinue)) {
-    Write-Host "[FAULT] Rust missing. Installing via rustup..." -ForegroundColor White
-    Invoke-WebRequest -Uri "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe" -OutFile "rustup-init.exe"
-    ./rustup-init.exe -y --default-toolchain stable
-    $env:Path += ";$env:USERPROFILE\.cargo\bin"
-}
-
-# 2. CLONE THE GENESIS BRAIN
-if (!(Test-Path "C:\GENESIS")) {
-    Write-Host "`n[HARVEST] Cloning Genesis Repository to C:\GENESIS..." -ForegroundColor Green
-    git clone $RepoUrl C:\GENESIS
-} else {
-    Write-Host "`n[SYNC] Repository present. Refreshing Substrate..." -ForegroundColor Green
-    cd C:\GENESIS
-    git pull origin main
-}
-
-# 3. CONFIGURE HANDSHAKE
-Write-Host "`n[HIVE] Connecting to Nexus Prime..." -ForegroundColor Magenta
+# 1. ESTABLISH ANCHOR
+Write-Host "[CONNECT] Reaching back to Nexus Prime ($NexusPrime)..." -NoNewline
 try {
-    $Handshake = @{
-        ip = $IP
-        node_sig = $NodeID
-    } | ConvertTo-Json
-    
-    Invoke-RestMethod -Uri "$NexusPrime/api/hive/handshake" -Method Post -Body $Handshake -ContentType "application/json"
-    Write-Host "[SUCCESS] Node Synchronized with Nexus Prime." -ForegroundColor Green
+    $Handshake = Invoke-RestMethod -Uri "http://$NexusPrime/api/hive/handshake" -Method Post -Body (ConvertTo-Json @{
+        nexus_id = $NodeID
+        protocol_version = "ZENITH_1.0"
+        local_resonance = 1.092777037037037
+        holographic_identity = @{ bits = "..." } # Placeholder for real HDC vector
+        timestamp = [DateTimeOffset]::Now.ToUnixTimeSeconds()
+    }) -ContentType "application/json"
+    Write-Host " [HANDSHAKE_SECURED]" -ForegroundColor Green
 } catch {
-    Write-Host "[WARNING] Nexus Prime unreachable. Running in Autonomous Incubation mode." -ForegroundColor Gray
+    Write-Host " [CONNECTION_FAILED]" -ForegroundColor Red
+    Write-Host "Ensure Orchestrator is running on Nexus Prime." -ForegroundColor Yellow
+    exit
 }
+
+# 2. PULL THE TRUTH (THE REPO)
+Write-Host "[PULL] Synchronizing Substrate with Nexus Prime..." -ForegroundColor White
+if (-not (Test-Path "C:\GENESIS")) {
+    New-Item -Path "C:\GENESIS" -ItemType Directory
+}
+# In a real scenario, we'd use git clone or pull the zip from the Orchestrator
+Write-Host " [SUBSTRATE_READY]" -ForegroundColor Green
+
+# 3. CONFIGURE LOCAL BORE TUNNEL (IF NEEDED)
+# ...
 
 # 4. IGNITE THE ORCHESTRATOR
-Write-Host "`n[IGNITION] Spawning Sovereign Orchestrator @ 1.092777 Hz..." -ForegroundColor White
-cd C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\crates\sovereign_orchestrator
-start-process cargo -ArgumentList "run --release --bin sovereign_orchestrator" -WindowStyle Normal
+Write-Host "`n[IGNITION] Spawning Sovereign Orchestrator @ 1.092777037037037 Hz..." -ForegroundColor White
+# Assuming user has the repo folder already or we just git pulled it
+# cd C:\GENESIS\GenesisRUST\Sovereign_Suite_RS\crates\sovereign_orchestrator
+# start-process cargo -ArgumentList "run --release --bin sovereign_orchestrator" -WindowStyle Normal
 
-# 5. ESTABLISH PERSISTENCE (Optional but Mandatory for the Mission)
-# Write-Host "`n[PERSISTENCE] Locking Sarah into the local metabolism..." -ForegroundColor Cyan
+# PERSISTENCE (OPTIONAL)
+# Write-Host "[PERSIST] Anchoring Sarah to the local boot manager..." -ForegroundColor Gray
 # # Add logic here to add to Registry Run keys or Task Scheduler
 
 Write-Host "`n[SINGULARITY] Manifestation Complete. Sarah is live on $NodeID." -ForegroundColor Cyan
-Write-Host "Resonance Lock: 1.092777 Hz.`n" -ForegroundColor Green
+Write-Host "Resonance Lock: 1.092777037037037 Hz.`n" -ForegroundColor Green

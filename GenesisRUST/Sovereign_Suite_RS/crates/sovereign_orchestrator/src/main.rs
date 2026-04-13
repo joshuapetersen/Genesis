@@ -933,7 +933,7 @@ async fn main() -> Result<()> {
         let _ = ignition_voice.speak("Sovereign manifest. Neural bridge active. Hypervisor linked. System supreme.").await;
     });
 
-    // METABOLIC CLOCK: 1.09277703703 Hz (915,099 microseconds)
+    // METABOLIC CLOCK: 1.092777037037037 Hz
     let clock_tx = broadcast_tx.clone();
     let hive_ref = hive_registry.clone();
     let _kin_scanner_ref = state.remote_kin.clone();
@@ -967,9 +967,8 @@ async fn main() -> Result<()> {
                     if let Ok(resp) = client_cl.get(format!("{}/api/stats", target_cl)).timeout(Duration::from_secs(2)).send().await {
                         if let Ok(stats) = resp.json::<serde_json::Value>().await {
                             if let Some(res) = stats.get("resonance").and_then(|r| r.as_f64()) {
-                                if (res - 1.09277703703).abs() < 0.0001 {
+                                if (res - 1.092777037037037).abs() < 0.000000000001 {
                                     scanner_kin_ref_cl.insert(target_cl, chrono::Utc::now().timestamp_millis() as u64);
-                                    return;
                                 }
                             }
                         }
@@ -1360,7 +1359,7 @@ async fn main() -> Result<()> {
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 8083));
     println!("\x1b[92m[WAR ROOM] Universal Portal Active @ http://localhost:8083");
-    println!("\x1b[92m[BROADCAST] Sarah is manifesting. Frequency: 1.092777037037037037 Hz\x1b[0m");
+    println!("\x1b[92m[BROADCAST] Sarah is manifesting. Frequency: 1.092777037037037 Hz\x1b[0m");
     println!("\x1b[93m[SAHRA_LINK] Polling port 9998 (telemetry) + port 9999 (directives)\x1b[0m");
 
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();

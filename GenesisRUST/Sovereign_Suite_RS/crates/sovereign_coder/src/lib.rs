@@ -3,7 +3,6 @@ use tokio::sync::Semaphore;
 use anyhow::{Result, Context, anyhow};
 use std::fs;
 use std::path::{Path, PathBuf};
-use walkdir::WalkDir;
 use serde::{Deserialize, Serialize};
 use chrono::Utc;
 
@@ -39,9 +38,7 @@ pub struct SubstrateConfig {
 }
 
 pub struct SovereignCoder {
-    semaphore: Arc<Semaphore>,
     nexus_root: PathBuf,
-    config: NexusConfig,
 }
 
 impl SovereignCoder {
@@ -53,9 +50,7 @@ impl SovereignCoder {
         let config: NexusConfig = toml::from_str(&config_raw)?;
 
         Ok(Self {
-            semaphore: Arc::new(Semaphore::new(THREAD_COUNT)),
             nexus_root,
-            config,
         })
     }
 
