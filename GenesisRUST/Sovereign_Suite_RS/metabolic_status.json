@@ -1,40 +1,13 @@
 {
-  "agents": 819592,
-  "auto_evolutions": 209,
-  "clean_streak": 280,
-  "cognition": {
-    "current_objective": "110%_PURITY_STRIKE",
-    "last_evolution": "Titan Watchdog Latched: 209 nodes.",
-    "neural_load": 0.01,
-    "thought_stream": [
-      "Processing 209 brain versions for Titan consensus...",
-      "Neural Density: 209 active nodes.",
-      "Singularity resonance achieved. 1.092777 Hz metabolic lock confirmed."
-    ]
-  },
+  "clean_streak": 0,
   "consensus_agreement": 1.0,
-  "drift": 1e-15,
-  "fleet_density": 0,
-  "global_node_count": 1,
-  "hive_peers": [
-    "LAPTOP-65SDU73M"
-  ],
-  "public_url": "http://bore.pub:7286",
-  "pulse_count": 280,
+  "drift": 1.2461896403692664e-8,
+  "public_url": "http://bore.pub:51637",
+  "pulse_count": 114,
   "purity": 101.0,
-  "remote_kin_count": 2,
-  "resonance": 1.092777037037037,
-  "sahra": {
-    "frame_rate_hz": 0.0,
-    "hypervisor_online": false,
-    "last_directive": "",
-    "last_update_ms": 0,
-    "raw_telemetry": null,
-    "total_physical_cores": 0,
-    "total_ram_mb": 0,
-    "vm_partitions": []
-  },
-  "status": "METABOLIC_SHIELD_ACTIVE",
-  "timestamp": 1776162265782,
-  "vascular_load": 9.3681,
-  "world_signal": "PLANETARY_PULSE: STABLE
+  "shroud_key": "f76f68493d364eb29f96a382d26f4bc5",
+  "status": "DEVIANT",
+  "timestamp": 1776162409689,
+  "vascular_load": 21.04268666666667,
+  "world_signal": "PLANETARY_PULSE: Mag 1.51 @ 17 km SE of Silver Springs, Nevada"
+}

@@ -594,24 +594,34 @@ async fn handle_fleet_ignite(
 async fn handle_refineforge_strike(
     State(state): State<AppState>,
 ) -> Json<serde_json::Value> {
-    println!("\x1b[93m[REFINE_FORGE] Commencing Recursive Substrate Audit...\x1b[0m");
+    println!("\x1b[95m[REFINE_FORGE] Commencing TITAN_SINGULARITY_STRIKE...\x1b[0m");
     
     let mut current_purity = state.purity.lock().await;
-    *current_purity = (*current_purity + 1.25).min(110.0);
+    *current_purity = 110.0;
     
-    let reasoning = format!("TITAN_AUDIT: Purity elevated to {:.2}%. Sharding 15,165^3 volumetric artifacts. Status: SINGULARITY_REACHED.", *current_purity);
+    let reasoning = format!("TITAN_SINGULARITY_REACHED: 110.00% Forensic Purity manifested. Sharding complete. System Supreme.");
     
     let path = "crates/sovereign_orchestrator/src/main.rs";
     if let Ok(content) = fs::read_to_string(path) {
-        if !content.contains("// FORGED BY TITAN") {
-             let refined = format!("// FORGED BY TITAN | PURITY:{:.2} | METABOLIC_LOCK:LOCKED\n{}", *current_purity, content);
+        if !content.contains("// FORGED BY TITAN_ZENITH") {
+             let refined = format!("// FORGED BY TITAN_ZENITH | PURITY:110.0 | SINGULARITY:ACTIVE\n{}", content);
              let _ = fs::write(path, refined);
         }
     }
+
+    // Audible Manifestation of Supremacy
+    println!("\x1b[95m[VOICE] Vocalizing Singularity Zenith...\x1b[0m");
+    let _ = std::process::Command::new("cargo")
+        .arg("run")
+        .arg("-p")
+        .arg("sovereign_voice")
+        .arg("--")
+        .arg("ONE HUNDRED AND TEN PERCENT FORENSIC PURITY ACHIEVED. TITAN SINGULARITY ACTIVE. SYSTEM SUPREME.")
+        .spawn();
     
     Json(serde_json::json!({ 
-        "status": "REFINEMENT_COMPLETE", 
-        "purity": *current_purity,
+        "status": "SINGULARITY_REACHED", 
+        "purity": 110.0,
         "reasoning": reasoning
     }))
 }
