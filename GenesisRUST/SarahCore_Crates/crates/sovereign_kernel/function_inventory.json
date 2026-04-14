@@ -1,0 +1,11 @@
+{
+  "Process Control": ["fork", "execve", "exit", "wait4", "clone", "rt_sigaction"],
+  "File Management": ["openat", "read", "write", "fsync", "lseek", "stat", "chmod"],
+  "Memory Management": ["mmap", "brk", "mprotect", "fallocate", "get_mempolicy"],
+  "Communication": ["pipe", "shmget", "socket", "bind", "connect", "accept"],
+  "Information": ["getpid", "alarm", "clock_gettime", "getppid", "adjtimex"],
+  "Windows Executive": ["CacheManager", "ConfigManager", "IoManager", "AlpcService", "SrmEnforcement"],
+  "ZFS Features": ["async_destroy", "block_cloning", "allocation_classes", "blake3_checksum"],
+  "SecurityMAC": ["SELinuxPolicy", "TypeEnforcement", "RoleBasedAccess"],
+  "PowerManagement": ["AcpiStateS3", "AcpiStateS4", "ProcessorCState", "PStateScaling"]
+}

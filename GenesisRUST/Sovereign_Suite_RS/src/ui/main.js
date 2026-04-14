@@ -944,7 +944,7 @@ class VolumetricMonitor {
         input.placeholder = "THINKING...";
 
         try {
-            const response = await fetch('/api/cognition', {
+            const response = await fetch('/api/inquiry', {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({ query })
@@ -962,7 +962,8 @@ class VolumetricMonitor {
                         streamEl.appendChild(div);
                     });
                 }
-                this.speak(data.thought_stream[data.thought_stream.length - 1]);
+                this.speak(data.answer);
+                this.log(`SARAH: ${data.answer}`);
             }
             if (data.current_objective) {
                 const objEl = document.getElementById('val-objective');

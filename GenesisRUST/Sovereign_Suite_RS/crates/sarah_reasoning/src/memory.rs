@@ -1,4 +1,4 @@
-use crate::constants::SOVEREIGN_ANCHOR;
+use crate::SOVEREIGN_ANCHOR;
 use sovereign_math::{SovereignMath};
 use sovereign_hdc::Hypervector;
 use chrono::Utc;

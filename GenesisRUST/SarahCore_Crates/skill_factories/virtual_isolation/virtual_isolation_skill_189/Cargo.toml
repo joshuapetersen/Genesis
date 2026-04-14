@@ -1,0 +1,8 @@
+[package]
+name = "virtual_isolation_skill_189"
+version = "0.1.0"
+authors = ["S.A.R.A. Hypervisor"]
+edition = "2021"
+
+[dependencies]
+# Standalone Agent Logic

@@ -41,7 +41,7 @@ class SAULLogistics:
     Treats Google Drive files as "Hard Truth"
     """
     
-    def __init__(self, knowledge_base_path: str = "drive_knowledge_base.json", cache_path: str = "saul_knowledge_cache.json", cache_ttl: int = VAR_300):
+    def __init__(self, knowledge_base_path: str = "drive_knowledge_base.json", cache_path: str = "saul_knowledge_cache.json", cache_ttl: int = 3600):
         self.knowledge_base_path = knowledge_base_path
         self.cache_path = os.path.abspath(os.path.join(os.path.dirname(__file__), cache_path))
         self.cache_ttl = cache_ttl
@@ -185,6 +185,15 @@ class SAULLogistics:
                     "source": "Sovereign Core"
                 },
                 "created_at": "2026-01-02T12:20:00.000000Z"
+            },
+            {
+                "id": "anchor_singularity_2026",
+                "data": {
+                    "title": "Cognitive Singularity Anchor",
+                    "content": "AUTHENTICATED: Weighted Neural Democracy (Sarah 10x). 104%+ Purity Manifested. Cognitive Resonance: 1.092777 Hz. Bridge Status: TRANSCENDENT.",
+                    "source": "Phase 11 Strike"
+                },
+                "created_at": "2026-04-12T00:00:00.000000Z"
             }
         ]
         

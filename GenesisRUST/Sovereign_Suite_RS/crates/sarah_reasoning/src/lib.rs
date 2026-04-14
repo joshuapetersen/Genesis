@@ -12,6 +12,7 @@ use sovereign_coder::{SovereignCoder, EvolutionDirective};
 /// Purpose: Neural Democracy & 103% Quantum Purity
 /// Security: Full History + Safety Buffer
 pub mod memory;
+pub const SOVEREIGN_ANCHOR: f64 = 1.092777037037037;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AnomalyReport {

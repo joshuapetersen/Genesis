@@ -1,0 +1,124 @@
+:root {
+    --cyan: #00f3ff;
+    --obsidian: rgba(5, 5, 7, 0.95);
+    --glass-blur: blur(30px);
+}
+
+body.petersen-substrate {
+    margin: 0;
+    padding: 0;
+    background: #030305;
+    color: white;
+    font-family: 'Fira Code', 'IBM Plex Mono', monospace;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#title-bar {
+    height: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    -webkit-app-region: drag;
+    font-size: 0.6rem;
+    letter-spacing: 0.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.window-controls {
+    display: flex;
+    gap: 15px;
+    -webkit-app-region: no-drag;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#sovereign-viewport {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+}
+
+#console-window {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    background: var(--obsidian);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 1), inset 0 0 20px rgba(0, 243, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.console-header {
+    background: rgba(0, 243, 255, 0.1);
+    padding: 10px 20px;
+    font-size: 0.7rem;
+    color: var(--cyan);
+    letter-spacing: 0.1rem;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+#message-stream {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.message.system { color: var(--cyan); text-shadow: 0 0 5px var(--cyan); }
+.message.user { color: white; opacity: 0.8; }
+.message.sara { color: #8b5cf6; }
+
+.input-area {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.prompt { color: var(--cyan); font-weight: bold; }
+
+#sovereign-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+#sensory-feed {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+}
+
+.feed-item {
+    font-size: 0.55rem;
+    opacity: 0.3;
+    letter-spacing: 0.1rem;
+}

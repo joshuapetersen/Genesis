@@ -1,1 +1,41 @@
-{"pulse_count":1133,"drift":1.2461896403692663e-8,"purity":101.0,"clean_streak":0,"consensus_agreement":1.0,"status":"DEVIANT","timestamp":1776122654150}
+{
+  "pulse_count": 2210,
+  "drift": 1e-15,
+  "purity": 330.0,
+  "clean_streak": 2210,
+  "consensus_agreement": 1.0,
+  "status": "METABOLIC_SHIELD_ACTIVE",
+  "timestamp": 1776135687335,
+  "resonance": 1.092777037037037,
+  "agents": 819592,
+  "global_node_count": 1,
+  "remote_kin_count": 2,
+  "auto_evolutions": 0,
+  "world_signal": null,
+  "public_url": "http://bore.pub:15247",
+  "vascular_load": 0.0,
+  "fleet_density": 0,
+  "hive_peers": [
+    "LAPTOP-65SDU73M"
+  ],
+  "cognition": {
+    "current_objective": "Holographic Singularity Manifestation",
+    "neural_load": 0.01,
+    "last_evolution": "Metabolic Shield Active (Core-Pinned)",
+    "thought_stream": [
+      "Absolute metabolic lock engaged...",
+      "REALTIME_PRIORITY manifested.",
+      "OS interference mitigated. Resonance pure."
+    ]
+  },
+  "sahra": {
+    "hypervisor_online": false,
+    "total_physical_cores": 0,
+    "total_ram_mb": 0,
+    "vm_partitions": [],
+    "last_directive": "",
+    "last_update_ms": 0,
+    "frame_rate_hz": 0.0,
+    "raw_telemetry": null
+  }
+}

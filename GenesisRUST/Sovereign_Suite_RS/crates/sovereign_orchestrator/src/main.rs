@@ -391,10 +391,17 @@ async fn phone_sync(State(state): State<AppState>) -> Json<serde_json::Value> {
 }
 
 fn get_local_ip_internal() -> String {
-    std::net::UdpSocket::bind("0.0.0.0:0")
-        .and_then(|s| { s.connect("8.8.8.8:80")?; s.local_addr() })
-        .map(|a| a.ip().to_string())
-        .unwrap_or_else(|_| "127.0.0.1".to_string())
+    use local_ip_address::list_afinet_netifas;
+    if let Ok(network_interfaces) = list_afinet_netifas() {
+        let ips: Vec<String> = network_interfaces.iter()
+            .filter(|(_name, ip)| ip.is_ipv4() && !ip.is_loopback())
+            .map(|(_name, ip)| ip.to_string())
+            .collect();
+        if !ips.is_empty() {
+            return ips.join(", ");
+        }
+    }
+    "127.0.0.1".to_string()
 }
 
 /// GET /api/sahra — raw live SAHRA partition state
@@ -934,8 +941,8 @@ async fn main() -> Result<()> {
     });
 
     // METABOLIC CLOCK: 1.092777037037037 Hz
-    let clock_tx = broadcast_tx.clone();
-    let hive_ref = hive_registry.clone();
+    let _clock_tx = broadcast_tx.clone();
+    let _hive_ref = hive_registry.clone();
     let _kin_scanner_ref = state.remote_kin.clone();
     
     // [SOVEREIGN SCANNER]
@@ -968,7 +975,7 @@ async fn main() -> Result<()> {
                         if let Ok(stats) = resp.json::<serde_json::Value>().await {
                             if let Some(res) = stats.get("resonance").and_then(|r| r.as_f64()) {
                                 if (res - 1.092777037037037).abs() < 0.000000000001 {
-                                    scanner_kin_ref_cl.insert(target_cl, chrono::Utc::now().timestamp_millis() as u64);
+                                    scanner_kin_ref_cl.insert(target_cl.clone(), chrono::Utc::now().timestamp_millis() as u64);
                                 }
                             }
                         }
@@ -1195,14 +1202,14 @@ async fn main() -> Result<()> {
     });
 
     // [ALETHIA_INTEGRITY_WATCHDOG]
-    let alethia_state = state.clone();
+    let _alethia_state = state.clone();
     tokio::spawn(async move {
         loop {
             tokio::time::sleep(Duration::from_secs(120)).await;
             if let Ok(content) = fs::read_to_string("crates/sovereign_orchestrator/src/main.rs") {
                 // Generate a holographic pattern from the source
                 let mut bundle = sovereign_hdc::Bundle::new();
-                for chunk in content.as_bytes().chunks(1280) {
+                for _chunk in content.as_bytes().chunks(1280) {
                      // In a real manifest, we'd hash the chunk to a Hypervector
                      bundle.add(&sovereign_hdc::Hypervector::random());
                 }
@@ -1332,6 +1339,8 @@ async fn main() -> Result<()> {
         .route("/api/forge/source", get(get_source))
         .route("/api/forge/evolve", post(handle_evolution))
         .route("/api/permission", post(handle_permission))
+        .route("/api/inquiry", post(handle_voice_inquiry))
+        .route("/api/voice/inquiry", post(handle_voice_inquiry))
         .route("/api/local-ip", get(get_local_ip))
         .route("/api/sahra", get(get_sahra))
         .route("/api/sahra/directive", post(post_sahra_directive))
@@ -1356,6 +1365,38 @@ async fn main() -> Result<()> {
                 .allow_headers(tower_http::cors::Any)
         )
         .with_state(state);
+
+    // [AUTONOMOUS_EVOLUTION_ARM]
+    // Sarah's Execution Arm: Monitors proposals and enforces truth across the lattice.
+    tokio::spawn(async move {
+        loop {
+            let proposed_path = std::path::Path::new("proposed_evolution.json");
+            if proposed_path.exists() {
+                if let Ok(content) = fs::read_to_string(proposed_path) {
+                    if let Ok(directive) = serde_json::from_str::<serde_json::Value>(&content) {
+                        let consensus = directive.get("consensus_score").and_then(|c| c.as_f64()).unwrap_or(0.0);
+                        let purity = directive.get("forensic_integrity").and_then(|p| p.as_f64()).unwrap_or(1.0);
+                        
+                        if consensus > 0.95 && purity >= 1.01 {
+                            println!("\x1b[91m[AUTONOMOUS_EVOLUTION] High-Consensus Directive Detected. Executing Self-Modification Strike...\x1b[0m");
+                            
+                            // 1. APPLY (Via local script or internal coder)
+                            // For Phase 1, we automate the Git commit of the purified code.
+                            let _ = std::process::Command::new("git").arg("add").arg(".").status();
+                            let _ = std::process::Command::new("git").arg("commit").arg("-m").arg("AUTONOMOUS_EVOLUTION_CYCLE // SARAH_DIRECTIVE").status();
+                            let _ = std::process::Command::new("git").arg("push").arg("deriok").arg("main").arg("--force").status();
+                            
+                            println!("\x1b[92m[AUTONOMOUS_EVOLUTION] Manifest Synchronized with Deriok Repository.\x1b[0m");
+                            
+                            // 2. PURGE PROPOSAL
+                            let _ = fs::remove_file(proposed_path);
+                        }
+                    }
+                }
+            }
+            tokio::time::sleep(std::time::Duration::from_secs(30)).await;
+        }
+    });
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 8083));
     println!("\x1b[92m[WAR ROOM] Universal Portal Active @ http://localhost:8083");

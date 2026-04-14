@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Core [SARACOR]</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="petersen-substrate">
+    <div id="title-bar">
+        <div class="drag-region">SARACORE SOVEREIGN CONSOLE [v29.1]</div>
+        <div class="window-controls">
+            <button id="min-btn" class="control-btn">â€”</button>
+            <button id="close-btn" class="control-btn">Ã—</button>
+        </div>
+    </div>
+
+    <div id="sovereign-viewport">
+        <!-- SOVEREIGN MONOLITHIC CONSOLE -->
+        <div id="console-window" class="sovereign-glass">
+            <div class="console-header">ROOT@SARACORE: /executive</div>
+            <div id="message-stream">
+                <div class="message system">
+                    <span class="label">SYSTEM:</span>
+                    <span class="text">Sovereign Kernel-0 [RUST-MONOLITH] Active. Substrate Converted.</span>
+                </div>
+            </div>
+            <div class="input-area">
+                <span class="prompt">></span>
+                <input type="text" id="sovereign-input" placeholder="Initiate Intent..." autofocus>
+            </div>
+        </div>
+
+        <!-- SENSORY FEED (NATIVE) -->
+        <div id="sensory-feed">
+            <div class="feed-item">LATTICE: 1.09277703703 Hz</div>
+            <div class="feed-item">VFS: /executive mounted</div>
+            <div class="feed-item">AUTH: PETERSEN-IDENT-WORM</div>
+        </div>
+    </div>
+
+    <script src="app_orchestrator.js"></script>
+</body>
+</html>

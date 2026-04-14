@@ -1,4 +1,4 @@
-import json
+﻿import json
 import time
 import re
 import os
@@ -22,7 +22,7 @@ MEM_TRUNCATION_LIMIT  = VAR_800   # max chars per individual memory chunk before
 TOKEN_CHAR_RATIO      = VAR_3     # approximate chars-per-token for budget estimation (conservative)
 CONTEXT_RESERVE       = VAR_1024  # tokens reserved for response generation headroom
 
-# Coding-mode temperature — low for deterministic, correct code output
+# Coding-mode temperature â€” low for deterministic, correct code output
 CODING_TEMPERATURE    = 0.15
 try:
     from Sovereign_Math import SovereignMath
@@ -244,7 +244,7 @@ class NeuralOrchestrator:
             text = text.replace(f, "")
             
         # 3. PRECISION AUDIT (Phase 31)
-        # Enforce 1.09277703703703 Lock
+        # Enforce 1.09277703703 Lock
         if hasattr(self, '_sovereign_math') and self._sovereign_math:
             text = self._sovereign_math.audit_precision(text)
             
@@ -294,7 +294,7 @@ class NeuralOrchestrator:
 
         # PREPARE FOR 8B EXECUTION (Modes 2 & 3)
         if mode == "SOVEREIGN_DEEP":
-            print(f"[Neural Gearbox] SHIFT -> SOVEREIGN DEEP (Precision Lock: 1.0927)")
+            print(f"[Neural Gearbox] SHIFT -> SOVEREIGN DEEP (Precision Lock: 1.09277703703)")
         else:
             print(f"[Neural Gearbox] SHIFT -> SPECULATIVE DRIVE (Accelerated)")
 
@@ -512,7 +512,7 @@ class NeuralOrchestrator:
             self._active_params["max_tokens"] = CODING_MAX_TOKENS
             self._log(f"[Hypervisor] CODING MODE: Temp={CODING_TEMPERATURE}, MaxTok={CODING_MAX_TOKENS}")
 
-            # Build and dispatch directly — no recursive call, no re-classification
+            # Build and dispatch directly â€” no recursive call, no re-classification
             try:
                 vector_memories = hippocampus.recall_relevant(user_input, limit=VAR_5)
             except Exception:
@@ -700,7 +700,7 @@ class NeuralOrchestrator:
         try:
             density = self._sovereign_math.calculate_theory_density(text)
             
-            # CHECK BRIDGE FIRST (1.0927 Overrides Density)
+            # CHECK BRIDGE FIRST (1.09277703703 Overrides Density)
             if self._sovereign_math._0x_bridge_annihilation(density):
                 status = "ABSOLUTE (BRIDGE)"
             else:
@@ -716,7 +716,7 @@ class NeuralOrchestrator:
 
     def _classify_intent(self, text):
         """
-        Heuristic Router — classifies input into CODING, LOGIC, ARCHIVE, or GENERAL.
+        Heuristic Router â€” classifies input into CODING, LOGIC, ARCHIVE, or GENERAL.
         """
         if isinstance(text, (list, tuple)):
             text = " ".join(str(item) for item in text)
@@ -724,7 +724,7 @@ class NeuralOrchestrator:
             text = str(text)
         text_lower = text.lower()
 
-        # CODING triggers — checked first, highest priority
+        # CODING triggers â€” checked first, highest priority
         coding_triggers = [
             "write a", "write me", "create a function", "implement", "debug",
             "fix this", "fix the", "refactor", "def ", "fn ", "class ",

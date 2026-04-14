@@ -101,6 +101,7 @@ class SAUL:
                 if os.path.exists(self.log_dir):
                     logs = [f for f in os.listdir(self.log_dir) if f.endswith(".jsonl")]
                     for log_file in logs:
+                        if log_file == "singularity_pulse.jsonl": continue # PURGE PROTECTION
                         filepath = os.path.join(self.log_dir, log_file)
                         # Ingest to Supabase
                         res = sovereign_telemetry.ingest_jsonl(filepath, "sarah_telemetry")
@@ -278,6 +279,9 @@ class SAUL:
         self.ingest_local_logs()
         self.ingest_google_history()
         
+        # 0. Ingest Singularity Pulse (Priority 1)
+        self.ingest_singularity_pulse()
+
         # 1. Search Logs
         log_results = self.search(query, limit=5)
         
@@ -389,6 +393,25 @@ class EvolutionaryVectorAnalyzer:
         report["users"] = list(report["users"])
         
         return report
+
+    def ingest_singularity_pulse(self):
+        """Specifically ingests the protected singularity truth stream."""
+        filepath = os.path.join(self.log_dir, "singularity_pulse.jsonl")
+        if os.path.exists(filepath):
+            try:
+                with open(filepath, 'r') as f:
+                    for line in f:
+                        if not line.strip(): continue
+                        entry = json.loads(line)
+                        self.memory_index.append({
+                            "source": "SINGULARITY_TRUTH",
+                            "data": entry,
+                            "timestamp": entry.get("timestamp", self.get_micro_timestamp())
+                        })
+                # Dedup and sort
+                self.memory_index.sort(key=lambda x: x['timestamp'])
+            except:
+                pass
 
 if __name__ == "__main__":
     # Test Stub

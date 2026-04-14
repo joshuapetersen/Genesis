@@ -1,0 +1,8 @@
+[package]
+name = "future_research_skill_002"
+version = "0.1.0"
+authors = ["S.A.R.A. Hypervisor"]
+edition = "2021"
+
+[dependencies]
+# Standalone Agent Logic
