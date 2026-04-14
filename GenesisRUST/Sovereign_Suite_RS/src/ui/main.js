@@ -571,12 +571,13 @@ class VolumetricMonitor {
         // Auto Evolutions Count
         const evoCountEl = document.getElementById('val-evo-count');
         if (evoCountEl) {
-            const oldCount = parseInt(evoCountEl.innerText) || 0;
-            const newCount = stats.auto_evolutions || 0;
-            if (newCount > oldCount) {
-                this.drawRecursiveSpark();
-            }
-            evoCountEl.innerText = newCount;
+            evoCountEl.innerText = stats.auto_evolutions || 0;
+        }
+
+        // Titan Nodes Count
+        const titanNodesEl = document.getElementById('val-titan-nodes');
+        if (titanNodesEl) {
+            titanNodesEl.innerText = stats.titan_nodes || 0;
         }
 
         // Internet Vascular Load
@@ -593,11 +594,31 @@ class VolumetricMonitor {
         // Global Broadcast Gateway
         const publicUrlEl = document.getElementById('val-public-url');
         const broadcastStatusEl = document.getElementById('val-broadcast-status');
-        if (stats.public_url && stats.public_url.includes('trycloudflare.com')) {
-            const cleanUrl = stats.public_url.replace('https://', '').split(' ')[0].trim();
+        if (stats.public_url && (stats.public_url.includes('trycloudflare.com') || stats.public_url.includes('bore.pub') || stats.public_url.includes('localtunnel.me'))) {
+            const cleanUrl = stats.public_url.replace('https://', '').replace('http://', '').trim();
             if (publicUrlEl) {
                 publicUrlEl.innerText = cleanUrl;
                 publicUrlEl.href = stats.public_url.trim();
+            }
+            
+            // Manifest QR Code for mobile sync
+            if (!this.qrGenerated && window.QRCode) {
+                const qrContainer = document.getElementById('qr-code-display');
+                if (qrContainer) {
+                    qrContainer.innerHTML = '';
+                    new QRCode(qrContainer, {
+                        text: stats.public_url.trim() + "/phone",
+                        width: 128,
+                        height: 128,
+                        colorDark : "#00f2ff",
+                        colorLight : "#000000",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+                    this.qrGenerated = true;
+                    if (document.getElementById('val-qr-url')) {
+                        document.getElementById('val-qr-url').innerText = cleanUrl + "/phone";
+                    }
+                }
             }
             if (broadcastStatusEl) {
                 broadcastStatusEl.innerText = "GLOBAL_MESH_ACTIVE";

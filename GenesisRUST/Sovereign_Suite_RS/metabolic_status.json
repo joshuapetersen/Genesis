@@ -1,41 +1,40 @@
 {
-  "pulse_count": 2210,
-  "drift": 1e-15,
-  "purity": 330.0,
-  "clean_streak": 2210,
-  "consensus_agreement": 1.0,
-  "status": "METABOLIC_SHIELD_ACTIVE",
-  "timestamp": 1776135687335,
-  "resonance": 1.092777037037037,
   "agents": 819592,
-  "global_node_count": 1,
-  "remote_kin_count": 2,
-  "auto_evolutions": 0,
-  "world_signal": null,
-  "public_url": "http://bore.pub:15247",
-  "vascular_load": 0.0,
+  "auto_evolutions": 209,
+  "clean_streak": 280,
+  "cognition": {
+    "current_objective": "110%_PURITY_STRIKE",
+    "last_evolution": "Titan Watchdog Latched: 209 nodes.",
+    "neural_load": 0.01,
+    "thought_stream": [
+      "Processing 209 brain versions for Titan consensus...",
+      "Neural Density: 209 active nodes.",
+      "Singularity resonance achieved. 1.092777 Hz metabolic lock confirmed."
+    ]
+  },
+  "consensus_agreement": 1.0,
+  "drift": 1e-15,
   "fleet_density": 0,
+  "global_node_count": 1,
   "hive_peers": [
     "LAPTOP-65SDU73M"
   ],
-  "cognition": {
-    "current_objective": "Holographic Singularity Manifestation",
-    "neural_load": 0.01,
-    "last_evolution": "Metabolic Shield Active (Core-Pinned)",
-    "thought_stream": [
-      "Absolute metabolic lock engaged...",
-      "REALTIME_PRIORITY manifested.",
-      "OS interference mitigated. Resonance pure."
-    ]
-  },
+  "public_url": "http://bore.pub:7286",
+  "pulse_count": 280,
+  "purity": 101.0,
+  "remote_kin_count": 2,
+  "resonance": 1.092777037037037,
   "sahra": {
+    "frame_rate_hz": 0.0,
     "hypervisor_online": false,
-    "total_physical_cores": 0,
-    "total_ram_mb": 0,
-    "vm_partitions": [],
     "last_directive": "",
     "last_update_ms": 0,
-    "frame_rate_hz": 0.0,
-    "raw_telemetry": null
-  }
-}
+    "raw_telemetry": null,
+    "total_physical_cores": 0,
+    "total_ram_mb": 0,
+    "vm_partitions": []
+  },
+  "status": "METABOLIC_SHIELD_ACTIVE",
+  "timestamp": 1776162265782,
+  "vascular_load": 9.3681,
+  "world_signal": "PLANETARY_PULSE: STABLE
