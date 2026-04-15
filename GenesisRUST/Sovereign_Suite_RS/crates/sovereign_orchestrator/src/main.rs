@@ -581,33 +581,78 @@ async fn query_godseye_local(query: &str) -> Option<String> {
         .map(|s| s.trim().to_string())
 }
 
+/// Levenshtein edit distance — O(m×n), suitable for short strings (≤50 chars).
+fn edit_distance(a: &str, b: &str) -> usize {
+    let a: Vec<char> = a.chars().collect();
+    let b: Vec<char> = b.chars().collect();
+    let m = a.len(); let n = b.len();
+    let mut dp = vec![vec![0usize; n + 1]; m + 1];
+    for i in 0..=m { dp[i][0] = i; }
+    for j in 0..=n { dp[0][j] = j; }
+    for i in 1..=m {
+        for j in 1..=n {
+            dp[i][j] = if a[i-1] == b[j-1] {
+                dp[i-1][j-1]
+            } else {
+                1 + dp[i-1][j].min(dp[i][j-1]).min(dp[i-1][j-1])
+            };
+        }
+    }
+    dp[m][n]
+}
+
+/// Phonetic skeleton — strips vowels, lowercases. "cadence" → "cdnc".
+/// Two words match phonetically if their skeletons are close in edit distance.
+fn consonant_skeleton(s: &str) -> String {
+    s.chars()
+        .filter(|c| !"aeiou".contains(*c))
+        .collect::<String>()
+        .to_lowercase()
+}
+
+/// Phonetic similarity [0.0–1.0]. 1.0 = identical skeleton.
+fn phonetic_score(query_word: &str, keyword: &str) -> f64 {
+    let qa = consonant_skeleton(query_word);
+    let kb = consonant_skeleton(keyword);
+    if qa.is_empty() || kb.is_empty() { return 0.0; }
+    let dist = edit_distance(&qa, &kb);
+    let max_len = qa.len().max(kb.len());
+    1.0 - (dist as f64 / max_len as f64)
+}
+
 /// First-principles deterministic vault search — reads sovereign state, no external calls.
+/// Phonetic similarity matching: queries like "barz" or "cadanse" still route correctly.
 fn deterministic_vault_search(query: &str) -> String {
     let q = query.to_lowercase();
 
     // ── D.A.B. INDUSTRIES LYRIC-DOMAIN BRANCH ──────────────────────────────
-    // If the query touches bars, rhymes, cadence, phonetics, or model names,
-    // route through the DAB lyric logic engine directly.
     let dab_keywords = [
         "bar", "bars", "rhyme", "lyric", "cadence", "phonetic", "percussion",
         "verse", "chorus", "slant", "boom", "flow", "dab", "derik", "dylan",
         "josh", "baritone", "d-lineage", "beat", "staccato",
     ];
-    if dab_keywords.iter().any(|kw| q.contains(kw)) {
+
+    // Phonetic match: any query word scores > 0.65 against any DAB keyword → route to DAB
+    let phonetic_hit = q.split_whitespace().any(|qw| {
+        dab_keywords.iter().any(|kw| phonetic_score(qw, kw) > 0.65)
+    });
+
+    if phonetic_hit || dab_keywords.iter().any(|kw| q.contains(kw)) {
         let dab = DABIndustries::new();
-        // Use the query itself as a test bar in observation phase.
         let bar = Bar { text: query.to_string(), phase: LyricPhase::Observation };
-        let score = dab.validate_bar(&bar);
+        let score   = dab.validate_bar(&bar);
         let density = dab.protocols.percussion_density(query);
+        let depth   = dab_industries::scheduler::query_depth_from_density(density);
         return format!(
             "D.A.B. Industries | Owner: {} | Models: {} | \
              Protocol: {} | Cadence: {} | \
-             Percussion hits in query: {} | Bar score: {}/100.",
+             Percussion hits: {} | Depth: {} | Bar score: {}/100.",
             dab.owner,
             dab.models.iter().map(|m| m.tag()).collect::<Vec<_>>().join(", "),
             dab.protocols.phonetic_rule,
             dab.protocols.cadence,
             density,
+            depth.label(),
             score,
         );
     }
@@ -651,8 +696,15 @@ fn deterministic_vault_search(query: &str) -> String {
         }
     }
 
-    format!("Sovereign lattice active. Metabolic lock: 1.092777037037037037 Hz. Query '{}' logged to the vault.", &query[..query.len().min(30)])
+    format!(
+        "Sovereign lattice active | φ={:.6} | 5φ={:.4} | Golden angle: 137.508° | \
+         Memory decay: φ_inv^age_days | Query '{}' logged.",
+        dab_industries::phi::PHI,
+        dab_industries::phi::PHI_5,
+        &query[..query.len().min(30)]
+    )
 }
+
 
 // ─── D.A.B. INDUSTRIES API ──────────────────────────────────────────────────
 
@@ -1133,7 +1185,8 @@ async fn main() -> Result<()> {
     }));
 
     let nexus_id = std::env::var("COMPUTERNAME").unwrap_or_else(|_| "NEXUS_PRIME".to_string());
-    let memory = Arc::new(tokio::sync::RwLock::new(PersistentMemory::new()));
+    let memory_path = nexus_root.join("monitor_logs").join("memory_store.json");
+    let memory = Arc::new(tokio::sync::RwLock::new(PersistentMemory::load(&memory_path)));
     let hive = Arc::new(tokio::sync::RwLock::new(SovereignHive::new(&nexus_id)));
 
     let genesis_tag = Arc::new(RwLock::new("Sarah_Sovereign_Nexus_Gemini-Genesis".to_string()));
@@ -1173,6 +1226,7 @@ async fn main() -> Result<()> {
     
     // [SOVEREIGN SCANNER]
     let scanner_kin_ref = state.remote_kin.clone();
+    let sahra_state_scan = state.sahra_state.clone();
     tokio::spawn(async move {
         let client = reqwest::Client::new();
         let mut targets = vec![
@@ -1219,6 +1273,28 @@ async fn main() -> Result<()> {
                     }
                 });
             }
+            // [SAHRA FEEDBACK LOOP] - live kin count
+            {
+                let nodes = scanner_kin_ref.len() as u32;
+                if nodes > 1 {
+                    let label = if nodes > 100 { "DENSE" } else if nodes < 10 { "SPARSE" } else { "NOMINAL" };
+                    println!("\x1b[93m[SAHRA] {} kin | lattice: {}\x1b[0m", nodes, label);
+                }
+            }
+            // end feedback
+
+
+
+
+
+
+
+
+
+
+
+
+
             tokio::time::sleep(Duration::from_secs(INTERVAL_SUBNET_SCANNER_SECS)).await; // [DAB_7-12] 11s prime
         }
     });
@@ -1273,7 +1349,22 @@ async fn main() -> Result<()> {
                     }
                 }
             }
-            tokio::time::sleep(Duration::from_secs(INTERVAL_OSMOSIS_SECS)).await; // [DAB_7-12] 307s prime
+            tokio::time::sleep(Duration::from_secs(INTERVAL_OSMOSIS_SECS)).await; // [DAB_7-12] 211s phi-prime
+        }
+    });
+
+    // [φ-MEMORY PERSISTENCE] — save and prune on hive_sync cycle (47s)
+    let mem_persist = state.memory.clone();
+    let mem_path = state.nexus_root.join("monitor_logs").join("memory_store.json");
+    tokio::spawn(async move {
+        loop {
+            tokio::time::sleep(Duration::from_secs(INTERVAL_HIVE_SYNC_SECS)).await;
+            let mut mem = mem_persist.write().await;
+            mem.prune_faded();
+            if let Err(e) = mem.save(&mem_path) {
+                eprintln!("[Memory] Save error: {:?}", e);
+            }
+            drop(mem);
         }
     });
 
@@ -1700,3 +1791,5 @@ async fn handle_subnet_ignition() -> Json<serde_json::Value> {
     
     Json(serde_json::json!({ "status": "INITIALIZED", "target": "SUBNET_10.0.0.0/24" }))
 }
+
+

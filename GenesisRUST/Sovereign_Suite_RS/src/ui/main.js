@@ -126,6 +126,7 @@ class VolumetricMonitor {
         this.syncTelemetry();
         this.initPhoneLink();
         this.initSahraMonitor();
+        this.initDabBenchmark();
         this.heart = new MetabolicHeart('heart-canvas');
         this.genesisHandshake();
     }
@@ -696,6 +697,89 @@ class VolumetricMonitor {
 
     initSahraMonitor() {
         this.pollSahra();
+    }
+
+    // ─── D.A.B. BENCHMARK TELEMETRY PANEL ─────────────────────────
+
+    initDabBenchmark() {
+        // Create panel if not already in HTML
+        if (!document.getElementById('dab-benchmark-panel')) {
+            const panel = document.createElement('div');
+            panel.id = 'dab-benchmark-panel';
+            panel.style.cssText = [
+                'position:fixed', 'bottom:16px', 'left:16px',
+                'background:rgba(0,5,15,0.88)', 'border:1px solid rgba(0,242,255,0.22)',
+                'border-radius:8px', 'padding:12px 16px', 'font-family:monospace',
+                'font-size:11px', 'color:#00f2ff', 'z-index:9999', 'min-width:260px',
+                'backdrop-filter:blur(8px)', 'box-shadow:0 0 18px rgba(0,242,255,0.12)'
+            ].join(';');
+            panel.innerHTML = `
+                <div style="color:#bc13fe;font-size:12px;font-weight:700;margin-bottom:8px;letter-spacing:1px">
+                    &#966;-GEOMETRY TELEMETRY
+                </div>
+                <div id="dbp-phi" style="margin-bottom:4px">Loading...</div>
+                <div id="dbp-motor" style="margin-bottom:4px"></div>
+                <div id="dbp-depth" style="margin-bottom:4px"></div>
+                <div id="dbp-titan" style="margin-bottom:4px"></div>
+                <div id="dbp-ns" style="color:rgba(0,242,255,0.55);font-size:10px"></div>
+            `;
+            document.body.appendChild(panel);
+        }
+        this.pollDabBenchmark();
+    }
+
+    async pollDabBenchmark() {
+        try {
+            const res = await fetch('/api/dab/benchmark');
+            if (res.ok) {
+                const d = await res.json();
+                const phi = d.phi || {};
+                const motor = d.motor_712 || {};
+                const titan = d.titan_lattice || {};
+                const ns = d.benchmark_ns || {};
+
+                const phiEl = document.getElementById('dbp-phi');
+                const motorEl = document.getElementById('dbp-motor');
+                const depthEl = document.getElementById('dbp-depth');
+                const titanEl = document.getElementById('dbp-titan');
+                const nsEl   = document.getElementById('dbp-ns');
+
+                if (phiEl) phiEl.innerHTML = [
+                    `<span style="color:rgba(0,242,255,0.6)">&#966;</span> ${(phi.PHI||0).toFixed(10)}`,
+                    `<span style="color:rgba(0,242,255,0.6)">5&#966;</span> ${(phi.PHI_5||0).toFixed(6)}`,
+                    `<span style="color:rgba(0,242,255,0.6)">&#8736;</span> 137.508&deg; golden`,
+                    `<span style="color:rgba(0,242,255,0.6)">&#963;</span> ${phi.sovereign_density || 8}+ hits &#8594; SOVEREIGN`
+                ].join(' &nbsp;|&nbsp; ');
+
+                if (motorEl) motorEl.innerHTML = [
+                    `<span style="color:#bc13fe">712</span> ratio: ${(motor.ratio||0).toFixed(6)}`,
+                    `&#966;-prox: ${(motor.phi_proximity||0).toFixed(4)}`,
+                    `${(motor.electrical_freq_3500rpm_hz||0).toFixed(1)} Hz @ 3500rpm`
+                ].join(' &nbsp;|&nbsp; ');
+
+                if (depthEl) {
+                    const dt = d.query_depth_thresholds || {};
+                    depthEl.innerHTML = [
+                        `<span style="color:#0f0">&#9632;</span> ${dt.shallow||''}`,
+                        `<span style="color:#ff0">&#9632;</span> ${dt.standard||''}`,
+                        `<span style="color:#f80">&#9632;</span> ${dt.deep||''}`,
+                        `<span style="color:#f0f">&#9632;</span> ${dt.sovereign||''}`
+                    ].join('<br/>');
+                }
+
+                if (titanEl) titanEl.innerHTML =
+                    `TITAN: ${titan.observer_count||209} observers | ` +
+                    `Sarah weight: &#215;${titan.sarah_weight||10} | ` +
+                    `Consensus: ${((titan.consensus_threshold||0.95)*100).toFixed(0)}% | ` +
+                    `${(titan.frequency_hz||1.092777).toFixed(6)} Hz`;
+
+                if (nsEl) nsEl.innerHTML =
+                    `percussion O(1): ~${ns.phi_density_score_table||1}ns &nbsp;` +
+                    `&#124; sovereign 209obs: ~${ns.titan_209_sovereign_us||22}&mu;s &nbsp;` +
+                    `&#124; classify: ~${ns.query_depth_classify||1}ns`;
+            }
+        } catch(e) {}
+        setTimeout(() => this.pollDabBenchmark(), 30000);
     }
 
     async pollSahra() {

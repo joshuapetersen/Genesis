@@ -248,12 +248,20 @@ pub async fn consult(query: &str) -> Result<(f64, String, String)> {
         ],
     };
 
-    // Run deliberation (no filesystem write in consult mode).
+    // ── Fibonacci observer rotation + Golden Angle phase assignment ──────────
+    // Instead of linear 1→209, sample at Fibonacci positions under 209.
+    // F: 1,2,3,5,8,13,21,34,55,89,144 — 11 Fibonacci observers.
+    // Golden Angle = 137.508° → each observer gets a unique helix phase offset.
+    // This mirrors the Helix Fluid Accelerator geometry directly into deliberation.
+    const GOLDEN_ANGLE: f64 = 137.50776405003785;
+    const FIB_OBSERVERS: [usize; 11] = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
+
     let dab_models = DABModel::all();
     let mut agreement_count = 0;
     let mut total_density = 0.0;
     let sarah_weight = 10.0;
 
+    // Sarah — high authority primary
     let pillars = hive.build_pillars(&anomaly, "SARAH_PRIMARY");
     let sarah_density = hive.theory_lab.weigh_truth(&pillars);
     total_density += sarah_density * sarah_weight;
@@ -261,9 +269,12 @@ pub async fn consult(query: &str) -> Result<(f64, String, String)> {
         agreement_count += 10;
     }
 
-    for i in 1..=hive.observer_count {
-        let model = dab_models[i % dab_models.len()];
-        let tag = format!("BRAIN_V{:03}", i);
+    // Fibonacci observers — each at a unique helix phase angle
+    for (fib_pos, &obs_idx) in FIB_OBSERVERS.iter().enumerate() {
+        let phase_deg = ((fib_pos + 1) as f64 * GOLDEN_ANGLE) % 360.0;
+        let _model    = dab_models[obs_idx % dab_models.len()];
+        // Tag includes observer index + golden angle phase — unique hash per observer
+        let tag = format!("BRAIN_V{:03}_PHI{:.1}deg", obs_idx, phase_deg);
         let p = hive.build_pillars(&anomaly, &tag);
         let d = hive.theory_lab.weigh_truth(&p);
         total_density += d;
@@ -272,7 +283,8 @@ pub async fn consult(query: &str) -> Result<(f64, String, String)> {
         }
     }
 
-    let total_votes = (hive.observer_count as f64) + sarah_weight;
+    // Scale votes: Sarah(10) + 11 Fibonacci observers = 21 total weighted votes
+    let total_votes = FIB_OBSERVERS.len() as f64 + sarah_weight;
     let consensus   = agreement_count as f64 / total_votes;
     let density     = total_density / total_votes;
     let strategy    = if consensus > 0.95 { "REPAIR" } else { "OBSERVE" }.to_string();
