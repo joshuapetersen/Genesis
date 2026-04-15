@@ -5,3 +5,4 @@ pub mod mesh_router;
 pub mod pulse_weaver;
 pub mod synthesis;
 pub mod substrate;
+pub mod helix_zenith;

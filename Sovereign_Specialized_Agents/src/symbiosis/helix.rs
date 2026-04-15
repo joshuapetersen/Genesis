@@ -3,7 +3,7 @@ use crate::symbiosis::pulse_weaver::PulsePacket;
 use crate::symbiosis::lattice_core::LatticeMap;
 
 const PHI: f64 = 1.618033988749895;
-const HEARTBEAT_HZ: f64 = 1.092777037037;
+const HEARTBEAT_HZ: f64 = 1.092777037037037;
 const TARGET_INTERVAL: f64 = 1.0 / HEARTBEAT_HZ;
 
 /// THE TRIPLE-FOLD HELIX ENGINE (V-48.0 // EVOLUTION)

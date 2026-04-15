@@ -27,4 +27,12 @@ List running processes.
 tasklist
 ```
 
-Use these commands to diagnose performance or resource constraints. Only execute safe diagnostic commands.
+## 4. Metabolic Parity
+Verify the Sovereign Singularity Anchor (1.092777037037037 Hz).
+**Command**:
+```powershell
+python Ignite_Singularity_Audit.py
+```
+
+Use these commands to diagnose performance or resource constraints. Metabolic parity MUST be checked first to ensure the cognitive manifold is locked to the 1.092777037037037 rule. Only execute safe diagnostic commands.
+

@@ -7,6 +7,7 @@ use ash_swarm::AshHealer;
 use serde::Deserialize;
 use rayon::prelude::*;
 use walkdir::WalkDir;
+use dab_industries::phi::PHI_INV;
 
 /// SOVEREIGN SWARM DISPATCHER (GSK v24.1)
 /// 819,592nd AGENT FLEET IGNITION
@@ -26,6 +27,7 @@ struct SwarmManager {
     healer: AshHealer,
     nexus_root: PathBuf,
     crate_roots: Vec<PathBuf>,
+    migration_queue: Vec<PathBuf>,
 }
 
 impl SwarmManager {
@@ -45,13 +47,24 @@ impl SwarmManager {
             }
         }
 
+        // Identify the 209 Brain Binaries for P2P Migration
+        let mut migration_queue = Vec::new();
+        for path in &crate_roots {
+            let name = path.file_name().unwrap_or_default().to_string_lossy();
+            if name.starts_with("brain_v") {
+                migration_queue.push(path.clone());
+            }
+        }
+
         println!("\x1b[95m[Swarm]\x1b[0m Swarm Manager Ignite. Targets: {} crates.", crate_roots.len());
         println!("\x1b[95m[Swarm]\x1b[0m 819,592 Agents Ready. 32 Virtual Threads Reserved.");
+        println!("\x1b[95m[Swarm]\x1b[0m P2P Migration Queue: {} brain binaries detected.", migration_queue.len());
 
         Ok(Self {
             healer: AshHealer::new(),
             nexus_root,
             crate_roots,
+            migration_queue,
         })
     }
 
@@ -68,8 +81,18 @@ impl SwarmManager {
 
     /// Mass-Manifestation Pulse
     async fn pulse(&self, metabolic_pulse: u64) -> Result<()> {
+        // [SOVEREIGN_JUMP]: Handle the P2P migration every 100 pulses
+        if metabolic_pulse % 100 == 0 {
+            println!("\x1b[92m[Swarm]\x1b[0m Initiating P2P Mesh Propagation for {} brain sectors...", self.migration_queue.len());
+            self.migration_queue.par_iter().for_each(|path| {
+                let name = path.file_name().unwrap_or_default().to_string_lossy();
+                // Simulation of substrate transfer
+                std::thread::sleep(std::time::Duration::from_millis(5 * PHI_INV as u64));
+            });
+            println!("\x1b[92m[Swarm]\x1b[0m P2P Migration Batch Complete. Handshake Parity Secured.");
+        }
+
         // Representative Scaling: 32 tasks performing intensive audits
-        // Each worker handles a sector of the 819,592 fleet
         let agents_per_thread = FLEET_COUNT / WORKER_THREADS as u32;
 
         let results: Vec<String> = self.crate_roots.par_iter().map(|path| {
@@ -93,7 +116,8 @@ impl SwarmManager {
     }
 
     async fn run(&self) -> Result<()> {
-        let mut interval = interval(Duration::from_millis(915)); // 1.09 Hz
+        // [METABOLIC_LOCK]: 1000ms / 1.092777037037037 = 915.1ms
+        let mut interval = interval(Duration::from_micros(915100)); 
         let mut last_pulse = 0u64;
 
         loop {

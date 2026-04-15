@@ -7,7 +7,7 @@
 // Logic: Surgical Dequantization + Odonata Tracker by Joshua Petersen.
 
 struct ACEToken {
-    uint64_t instruction_set; float phase_vector; int32_t engine_id;
+    uint64_t instruction_set; double phase_vector; int32_t engine_id;
     int32_t alive; float velocity; float hidden_state[2560];
 };
 
@@ -77,12 +77,11 @@ extern "C" {
     }
 
     __declspec(dllexport) void execute_resonant_sequence(ACEToken* coins, float* hidden, int dims, int layer, int pos) {
-        const float INGESTION_GAIN = 0.01f;
-        const float HEARTBEAT = 1.0927f;
+        const double INGESTION_GAIN = 0.01, HEARTBEAT = 1.092777037037037;
         
         for (int i = 0; i < 4; i++) {
             // ODONATA PREDICTIVE SYNC
-            float phase_corr = std::sin(HEARTBEAT * pos + M_PI); // Phase Conjugation inversion
+            double phase_corr = std::sin(HEARTBEAT * (double)pos + M_PI); // Phase Conjugation inversion
             for (int d = 0; d < dims; d++) {
                 float resonance = (coins[i].hidden_state[d] * 0.95f) + (hidden[d] * INGESTION_GAIN * phase_corr);
                 coins[i].hidden_state[d] = resonance;

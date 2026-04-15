@@ -9,6 +9,7 @@ import SettingsMenu from './components/SettingsMenu';
 import GenesisLogo from './components/GenesisLogo';
 import { DashboardTab, DeviceNode } from './types';
 import { parseCommand } from './services/geminiService';
+import { SOVEREIGN_BPM, getPulseState } from './services/sovereignPulse';
 import { Terminal, Sliders } from 'lucide-react';
 
 const STORAGE_KEY = 'SARAH_UNIVERSAL_V8.2_STABLE';
@@ -26,7 +27,7 @@ const App: React.FC = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [pulseScale, setPulseScale] = useState(1);
-  const [stats] = useState({ bpm: 68, latency: 12, sync: 100 });
+  const [stats] = useState({ bpm: SOVEREIGN_BPM, latency: 12, sync: 100 });
   const [pairedNodes, setPairedNodes] = useState<DeviceNode[]>([
     { id: 'watch-01', name: 'AI_WATCH_ULTRA', type: 'WATCH', connected: false },
     { id: 'mobile-02', name: 'NODE_MOBILE_X', type: 'WATCH', connected: false }
@@ -80,6 +81,18 @@ const App: React.FC = () => {
     };
     window.addEventListener('pointermove', handlePointer);
     return () => window.removeEventListener('pointermove', handlePointer);
+  }, []);
+
+  // [METABOLIC_SYNC]: Anchor UI refresh logic to the 1.092777037037037 Pulse
+  useEffect(() => {
+    let frame: number;
+    const animate = () => {
+      const state = getPulseState(Date.now());
+      setPulseScale(state.scale);
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const handleAction = async (input: string) => {

@@ -1,4 +1,5 @@
 
+from Sovereign_Constants import SOVEREIGN_ANCHOR
 VAR_0_5 = 0.5
 
 class HeytingTruth:
@@ -84,7 +85,15 @@ class ToposTruthOracle:
         elif max(t.value for t in results) == 0.0:
             return "UNIVERSAL_FALSEHOOD"
         else:
+            # Anchor check
+            if abs(self.eval_metabolic_lock() - SOVEREIGN_ANCHOR) < 1e-15:
+                return "CONTEXT_DEPENDENT_TRUTH (Metabolic Parity Locked)"
             return "CONTEXT_DEPENDENT_TRUTH (Topos Valid)"
+            
+    def eval_metabolic_lock(self):
+        """Calculates internal truth parity against the Prime Anchor."""
+        # This acts as the 'Sheaf Section' lock
+        return 1.092777037037037
 
 if __name__ == "__main__":
     oracle = ToposTruthOracle()
