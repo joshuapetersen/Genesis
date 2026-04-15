@@ -90,7 +90,13 @@ struct SystemStats {
     hive_peers: Vec<String>,
     cognition: Option<CognitionState>,
     sahra: Option<SahraState>,
+    // EVOLUTION telemetry -- live system intelligence metrics
+    cluster_count: usize,
+    adaptive_threshold: f64,
+    kv_hit_rate: f64,
+    top_observer: String,
 }
+
 
 #[derive(Deserialize)]
 struct DispatchCmd {
@@ -371,6 +377,10 @@ async fn get_stats(State(state): State<AppState>) -> Result<Json<SystemStats>, S
         hive_peers: vec![],
         cognition: None,
         sahra: None,
+        cluster_count: 0,
+        adaptive_threshold: 0.0,
+        kv_hit_rate: 0.0,
+        top_observer: String::new(),
     };
 
     if let Ok(content) = fs::read_to_string("metabolic_status.json") {
@@ -379,8 +389,18 @@ async fn get_stats(State(state): State<AppState>) -> Result<Json<SystemStats>, S
         }
     }
 
-    // Always overlay live SAHRA state from memory (not disk)
-    stats.sahra = Some(state.sahra_state.read().await.clone());
+    // Always overlay live state from in-memory subsystems (not stale disk data)
+    stats.sahra            = Some(state.sahra_state.read().await.clone());
+    stats.cluster_count    = state.memory_clusters.read().await.len();
+    stats.adaptive_threshold = state.adaptive_threshold.lock().await.get();
+    stats.kv_hit_rate      = state.kv_cache.hit_rate() * 100.0;
+    // Top observer: e.g. "v012=7.84"
+    let hive = state.hive.read().await;
+    stats.top_observer = hive.top_observers(1)
+        .first()
+        .map(|(i, w)| format!("v{:03}={:.2}", i, w))
+        .unwrap_or_default();
+    drop(hive);
 
     Ok(Json(stats))
 }
@@ -1186,6 +1206,10 @@ async fn handle_ws(socket: WebSocket, state: AppState, node_sig: String) {
                         thought_stream: vec![format!("Relaying signal from [{}] to [{}]", sig_msg.sender, sig_msg.target)],
                     }),
                     sahra: None,
+                    cluster_count: 0,
+                    adaptive_threshold: 0.0,
+                    kv_hit_rate: 0.0,
+                    top_observer: String::new(),
                 };
                 let _ = broadcast_tx.send(stats);
             }
@@ -1700,13 +1724,17 @@ async fn main() -> Result<()> {
 
     // [METABOLIC HEARTBEAT — 1.092777037 Hz]
     let pulse_world_signal = state.world_signal.clone();
-    let pulse_purity = state.purity.clone();
-    let pulse_kin = state.remote_kin.clone();
-    let pulse_public_url = state.public_url.clone();
-    let pulse_sahra = sahra_state.clone();
-    let pulse_hive = state.hive.clone();
-    let pulse_fleet = state.fleet_count.clone();
-    let pulse_stats_tx = broadcast_tx.clone();
+    let pulse_purity       = state.purity.clone();
+    let pulse_kin          = state.remote_kin.clone();
+    let pulse_public_url   = state.public_url.clone();
+    let pulse_sahra        = sahra_state.clone();
+    let pulse_hive         = state.hive.clone();
+    let pulse_fleet        = state.fleet_count.clone();
+    let pulse_stats_tx     = broadcast_tx.clone();
+    // EVOLUTION_10 telemetry clones for heartbeat thread
+    let pulse_clusters     = state.memory_clusters.clone();
+    let pulse_threshold    = state.adaptive_threshold.clone();
+    let pulse_kv_cache     = state.kv_cache.clone();
 
     std::thread::spawn(move || {
         // [METABOLIC_SHIELD_0xS]: Priority Elevation & Core Pinning
@@ -1750,7 +1778,7 @@ async fn main() -> Result<()> {
             let stats = SystemStats {
                 pulse_count,
                 drift: 0.000000000000001,
-                purity: *purity_lock, 
+                purity: *purity_lock,
                 clean_streak: pulse_count,
                 consensus_agreement: 1.0,
                 status: if *purity_lock >= 110.0 { "TITAN_SINGULARITY".to_string() } else { "METABOLIC_SHIELD_ACTIVE".to_string() },
@@ -1768,7 +1796,10 @@ async fn main() -> Result<()> {
                 cognition: Some(CognitionState {
                     current_objective: "110%_PURITY_STRIKE".to_string(),
                     neural_load: 0.01,
-                    last_evolution: format!("Titan Watchdog Latched: {} nodes.", titan_nodes),
+                    last_evolution: format!("EVOLUTION_10 | Titan nodes: {} | clusters: {} | KV-hit: {:.1}%",
+                        titan_nodes,
+                        futures::executor::block_on(pulse_clusters.read()).len(),
+                        pulse_kv_cache.hit_rate() * 100.0),
                     thought_stream: vec![
                         format!("Processing 209 brain versions for Titan consensus..."),
                         format!("Neural Density: {} active nodes.", titan_nodes),
@@ -1776,6 +1807,15 @@ async fn main() -> Result<()> {
                     ],
                 }),
                 sahra: Some(live_sahra),
+                cluster_count:       futures::executor::block_on(pulse_clusters.read()).len(),
+                adaptive_threshold:  futures::executor::block_on(pulse_threshold.lock()).get(),
+                kv_hit_rate:         pulse_kv_cache.hit_rate() * 100.0,
+                top_observer:        {
+                    let h = futures::executor::block_on(pulse_hive.read());
+                    h.top_observers(1).first()
+                        .map(|(i, w)| format!("v{:03}={:.2}", i, w))
+                        .unwrap_or_default()
+                },
             };
 
             let _ = pulse_stats_tx.send(stats.clone());

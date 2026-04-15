@@ -528,6 +528,16 @@ class VolumetricMonitor {
         if (this.consensusEl) this.consensusEl.innerText = (stats.consensus_agreement * 100).toFixed(2) + '%';
         if (this.timestampEl) this.timestampEl.innerText = new Date(stats.timestamp).toLocaleTimeString();
         if (this.pulseEl) this.pulseEl.innerText = stats.pulse_count.toLocaleString();
+
+        // [EVOLUTION telemetry] -- live intelligence subsystem metrics
+        const clusterEl   = document.getElementById('val-cluster-count');
+        const thresholdEl = document.getElementById('val-adaptive-threshold');
+        const kvHitEl     = document.getElementById('val-kv-hit-rate');
+        const topObsEl    = document.getElementById('val-top-observer');
+        if (clusterEl   && stats.cluster_count   !== undefined) clusterEl.innerText   = stats.cluster_count + ' clusters';
+        if (thresholdEl && stats.adaptive_threshold !== undefined) thresholdEl.innerText = stats.adaptive_threshold.toFixed(4);
+        if (kvHitEl     && stats.kv_hit_rate     !== undefined) kvHitEl.innerText     = stats.kv_hit_rate.toFixed(1) + '%';
+        if (topObsEl    && stats.top_observer    !== undefined) topObsEl.innerText    = stats.top_observer || '—';
         
         // [NEURAL_COGNITION]
         if (stats.cognition) {

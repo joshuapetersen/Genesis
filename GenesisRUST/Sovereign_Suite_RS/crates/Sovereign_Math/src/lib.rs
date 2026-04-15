@@ -30,22 +30,23 @@ impl SovereignMath {
         }
     }
 
-    /// [HOLOGRAPHIC_EXPAND_0x0X]: Projects intent into the 10,240-bit manifold.
+    /// [HOLOGRAPHIC_EXPAND_0x0X]: Projects intent into the 102,400-bit manifold (1600×u64).
+    /// Matches HDC Hypervector dimension exactly — was 160 (10,240-bit), now corrected.
     pub fn holographic_expand(&self, intent: &str) -> Hypervector {
         let ctx = self.expand(intent);
-        let mut data = [0u64; 160];
-        
-        // Project XYZ + Spectral Resonance into 160 u64 blocks
+        let mut data = Vec::with_capacity(1600);
+
+        // Project XYZ + Spectral Resonance into 1600 u64 blocks (phi-seeded)
         let mut seed = self.hash_to_u64(intent);
-        for i in 0..160 {
+        for i in 0..1600 {
             let phi_n = PHI.powi((i % 7) as i32 + 1);
-            let val = (seed as f64 * phi_n * ctx.spectral_resonance[i % 7]).abs();
-            // XOR-Mix the hash with the spectral density
-            data[i] = seed ^ (val as u64).wrapping_mul(self.anchor as u64);
-            seed = seed.wrapping_mul(31).wrapping_add(data[i]);
+            let val   = (seed as f64 * phi_n * ctx.spectral_resonance[i % 7]).abs();
+            let word  = seed ^ (val as u64).wrapping_mul(self.anchor as u64);
+            data.push(word);
+            seed = seed.wrapping_mul(31).wrapping_add(word);
         }
-        
-        Hypervector { data: data.to_vec() }
+
+        Hypervector { data }
     }
 
     /// [LATTICE_EXPAND_0x0E]: Projects intent into the 15,330³ manifold.
