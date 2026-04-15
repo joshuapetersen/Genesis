@@ -3890,6 +3890,7 @@ name = "sovereign_hive"
 version = "0.1.0"
 dependencies = [
  "serde",
+ "serde_json",
  "sovereign_hdc",
 ]
 

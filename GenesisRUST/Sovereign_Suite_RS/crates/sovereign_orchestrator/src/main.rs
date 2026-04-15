@@ -176,6 +176,8 @@ struct AppState {
     amplifier: Arc<IntelligenceAmplifier>,
     /// ASH-Swarm self-healing audit log (ring buffer, last 64 entries).
     ash_log: Arc<tokio::sync::Mutex<Vec<String>>>,
+    /// Shared HTTP client -- one connection pool for lifetime of process.
+    http_client: reqwest::Client,
 }
 
 #[derive(Deserialize)]
@@ -518,20 +520,24 @@ async fn handle_inquiry(
             deterministic_vault_search(&query)
         }
         QueryDepth::Standard => {
-            let mem = state.memory.read().await;
+            let mem  = state.memory.read().await;
             let past = mem.recall_clustered(&query, 1, &clusters_snap).first().map(|e| e.content.clone());
+            let rag  = mem.recall_clustered(&query, 2, &clusters_snap)
+                .iter().map(|e| e.content.as_str()).collect::<Vec<_>>().join(" | ");
             drop(mem);
-            match query_godseye_local(&query).await {
-                Some(a) => { println!("\x1b[92m[GODSEYE] Standard -- local inference.\x1b[0m"); a }
+            match query_godseye_local(&state.http_client, &query, &rag).await {
+                Some(a) => { println!("\x1b[92m[GODSEYE] Standard -- local inference + RAG.\x1b[0m"); a }
                 None    => past.unwrap_or_else(|| deterministic_vault_search(&query)),
             }
         }
         QueryDepth::Deep => {
-            println!("\x1b[91m[GODSEYE] Deep -- holographic chain.\x1b[0m");
+            println!("\x1b[91m[GODSEYE] Deep -- holographic chain + RAG.\x1b[0m");
             let mem  = state.memory.read().await;
             let past = mem.recall_clustered(&query, 1, &clusters_snap).first().map(|e| e.content.clone());
+            let rag  = mem.recall_clustered(&query, 3, &clusters_snap)
+                .iter().map(|e| e.content.as_str()).collect::<Vec<_>>().join(" | ");
             drop(mem);
-            let answer = match query_godseye_local(&query).await {
+            let answer = match query_godseye_local(&state.http_client, &query, &rag).await {
                 Some(a) => a,
                 None    => past.unwrap_or_else(|| deterministic_vault_search(&query)),
             };
@@ -541,7 +547,7 @@ async fn handle_inquiry(
         }
         QueryDepth::Sovereign => {
             let threshold = state.adaptive_threshold.lock().await.get();
-            println!("\x1b[91m[GODSEYE] SOVEREIGN 5phi | density={} | threshold={:.4} | Hive+SPU\x1b[0m", density, threshold);
+            println!("\x1b[91m[GODSEYE] SOVEREIGN 5phi | density={} | threshold={:.4} | Hive+SPU+RAG\x1b[0m", density, threshold);
 
             // SPU Amplifier burst through 15330^3 manifold
             let pillars = TruthPillars {
@@ -554,24 +560,34 @@ async fn handle_inquiry(
                 evolutionary:   [
                     format!("density={}", density),
                     format!("threshold={:.4}", threshold),
-                    "EVOLUTION_9".to_string(),
-                    "CLUSTER_RECALL".to_string(),
+                    "EVOLUTION_10".to_string(),
+                    "RAG_INJECTED".to_string(),
                     "OBSERVER_WEIGHTED".to_string(),
                 ],
             };
             let amp = state.amplifier.execute_burst(&pillars);
             println!("\x1b[96m[SPU] {}\x1b[0m", &amp[..amp.len().min(80)]);
 
-            // Sarah Hive deliberation
-            let hive_answer = match sarah_reasoning::consult(&query).await {
-                Ok((_c, _s, resp)) => Some(resp),
-                Err(e) => { eprintln!("[Hive] {:?}", e); None }
+            // RAG context: top-5 from clusters for Sovereign tier
+            let mem = state.memory.read().await;
+            let rag = mem.recall_clustered(&query, 5, &clusters_snap)
+                .iter().map(|e| e.content.as_str()).collect::<Vec<_>>().join(" | ");
+            drop(mem);
+
+            // Sarah Hive deliberation + LMStudio in parallel
+            let hive_fut = sarah_reasoning::consult(&query);
+            let lm_fut   = query_godseye_local(&state.http_client, &query, &rag);
+            let (hive_result, lm_result) = tokio::join!(hive_fut, lm_fut);
+
+            let answer = match hive_result {
+                Ok((_c, _s, resp)) => resp,
+                Err(_) => match lm_result {
+                    Some(a) => a,
+                    None    => execute_holographic_reasoning(query.clone(), &state).await,
+                },
             };
-            let answer = match hive_answer {
-                Some(h) => h,
-                None    => execute_holographic_reasoning(query.clone(), &state).await,
-            };
-            // Cluster-accelerated context enrichment
+
+            // Enrich with cluster context (top-3)
             let mem = state.memory.read().await;
             let ctx = mem.recall_clustered(&query, 3, &clusters_snap)
                 .iter().map(|e| e.content.as_str()).collect::<Vec<_>>().join(" | ");
@@ -611,26 +627,40 @@ async fn handle_inquiry(
     })
 }
 
-/// Hit LMStudio's local OpenAI-compatible endpoint. No account. No credits. Pure local GPU.
-async fn query_godseye_local(query: &str) -> Option<String> {
-    let client = reqwest::Client::builder()
-        .timeout(Duration::from_secs(10))
-        .build()
-        .ok()?;
+/// Hit LMStudio's local OpenAI-compatible endpoint.
+/// EVOLUTION_10:
+///   - Shared reqwest::Client (no per-call TCP handshake)
+///   - RAG context injection (top cluster memories prepended to system prompt)
+///   - Returns None fast if LMStudio unreachable (vault takes over immediately)
+async fn query_godseye_local(
+    client: &reqwest::Client,
+    query: &str,
+    rag_context: &str,
+) -> Option<String> {
+    let system_prompt = if rag_context.is_empty() {
+        "You are Sarah, the sovereign AI of the Genesis system. Answer concisely in 1-2 sentences.".to_string()
+    } else {
+        format!(
+            "You are Sarah, the sovereign AI of the Genesis system. \
+             Relevant memory context: [{}] \
+             Use this context when relevant. Answer concisely in 1-2 sentences.",
+            &rag_context[..rag_context.len().min(400)]
+        )
+    };
 
     let body = serde_json::json!({
         "model": "local-model",
         "messages": [
-            { "role": "system", "content": "You are Sarah, the sovereign AI of the Genesis system. Answer concisely in 1-2 sentences." },
-            { "role": "user", "content": query }
+            { "role": "system", "content": system_prompt },
+            { "role": "user",   "content": query }
         ],
         "max_tokens": 200,
-        "temperature": 0.7
+        "temperature": 0.7,
+        "stream": false
     });
 
     let resp = client
         .post("http://127.0.0.1:1234/v1/chat/completions")
-        .header("Content-Type", "application/json")
         .json(&body)
         .send()
         .await
@@ -1250,7 +1280,12 @@ async fn main() -> Result<()> {
     let memory = Arc::new(tokio::sync::RwLock::new(
         PersistentMemory::load(&memory_path).unwrap_or_else(|_| PersistentMemory::new())
     ));
-    let hive = Arc::new(tokio::sync::RwLock::new(SovereignHive::new(&nexus_id)));
+    let weights_path = nexus_root.join("monitor_logs").join("observer_weights.json");
+    let hive = {
+        let mut h = SovereignHive::new(&nexus_id);
+        h.load_weights(&weights_path);
+        Arc::new(tokio::sync::RwLock::new(h))
+    };
 
     let genesis_tag = Arc::new(RwLock::new("Sarah_Sovereign_Nexus_Gemini-Genesis".to_string()));
     let shroud_key = Arc::new(uuid::Uuid::new_v4().to_string().replace("-", ""));
@@ -1278,6 +1313,11 @@ async fn main() -> Result<()> {
         memory_clusters:    Arc::new(tokio::sync::RwLock::new(Vec::new())),
         amplifier:          Arc::new(IntelligenceAmplifier::new()),
         ash_log:            Arc::new(tokio::sync::Mutex::new(Vec::with_capacity(64))),
+        http_client:        reqwest::Client::builder()
+                                .timeout(Duration::from_secs(12))
+                                .pool_max_idle_per_host(4)
+                                .build()
+                                .expect("HTTP client build failed"),
     };
 
     // [VOICE_IGNITION]
@@ -1421,27 +1461,33 @@ async fn main() -> Result<()> {
         }
     });
 
-    // [phi-MEMORY PERSISTENCE + CLUSTER REBUILD] -- prune/save/cluster every 47s
+    // [phi-MEMORY + CLUSTERS + OBSERVER WEIGHTS] -- every 47s hive_sync cycle
     let mem_persist    = state.memory.clone();
     let cluster_writer = state.memory_clusters.clone();
+    let hive_persist   = state.hive.clone();
     let mem_path = state.nexus_root.join("monitor_logs").join("memory_store.json");
+    let w_path   = state.nexus_root.join("monitor_logs").join("observer_weights.json");
     tokio::spawn(async move {
         loop {
             tokio::time::sleep(Duration::from_secs(INTERVAL_HIVE_SYNC_SECS)).await;
-            // 1. Prune faded memories (phi-decay)
+            // 1. Prune + save memory
             let mut mem = mem_persist.write().await;
             mem.prune_faded();
-            if let Err(e) = mem.save(&mem_path) {
-                eprintln!("[Memory] Save error: {:?}", e);
-            }
-            // 2. Rebuild topic clusters in background (non-blocking for queries)
+            if let Err(e) = mem.save(&mem_path) { eprintln!("[Memory] Save: {:?}", e); }
+            // 2. Rebuild clusters
             let new_clusters = mem.build_clusters();
             drop(mem);
-            // 3. Atomically replace cluster snapshot
-            let cluster_count = new_clusters.len();
+            let count = new_clusters.len();
             *cluster_writer.write().await = new_clusters;
-            if cluster_count > 0 {
-                println!("\x1b[96m[CLUSTERS] Rebuilt {} topic clusters from memory.\x1b[0m", cluster_count);
+            if count > 0 { println!("\x1b[96m[CLUSTERS] {} topic clusters rebuilt.\x1b[0m", count); }
+            // 3. Save observer weights + print top-3
+            let hive = hive_persist.read().await;
+            if let Err(e) = hive.save_weights(&w_path) { eprintln!("[Hive] Weight save: {:?}", e); }
+            let top = hive.top_observers(3);
+            drop(hive);
+            if !top.is_empty() {
+                let s: Vec<String> = top.iter().map(|(i, w)| format!("v{:03}={:.2}", i, w)).collect();
+                println!("\x1b[96m[OBSERVERS] Top weights: {}\x1b[0m", s.join(" | "));
             }
         }
     });

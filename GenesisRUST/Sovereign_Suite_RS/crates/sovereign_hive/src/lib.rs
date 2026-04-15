@@ -95,6 +95,28 @@ impl SovereignHive {
         pairs
     }
 
+    /// [PERSIST] Save observer weights to disk (JSON). Call after each deliberation cycle.
+    pub fn save_weights(&self, path: impl AsRef<std::path::Path>) -> std::io::Result<()> {
+        // Serialize as Vec<(usize, f64)> — stable across serde versions
+        let pairs: Vec<(usize, f64)> = self.observer_weights.iter()
+            .map(|(&k, &v)| (k, v))
+            .collect();
+        let data = serde_json::to_string_pretty(&pairs)
+            .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e))?;
+        std::fs::write(path, data)
+    }
+
+    /// [PERSIST] Load observer weights from disk. Missing file → empty weights (fresh start).
+    pub fn load_weights(&mut self, path: impl AsRef<std::path::Path>) {
+        if let Ok(data) = std::fs::read_to_string(&path) {
+            if let Ok(pairs) = serde_json::from_str::<Vec<(usize, f64)>>(&data) {
+                let loaded = pairs.len();
+                self.observer_weights = pairs.into_iter().collect();
+                println!("\x1b[96m[Hive] Loaded {} observer weights from disk.\x1b[0m", loaded);
+            }
+        }
+    }
+
     // ── EXISTING METHODS ───────────────────────────────────────────────────
 
     /// [MANIFEST_HANDSHAKE]: Prepares the holographic greeting for external kin.
