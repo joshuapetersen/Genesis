@@ -8,6 +8,7 @@ use theory_lab::{TheoryLab, TruthPillars};
 use sovereign_constants::RECOVERY_DENSITY_THRESHOLD;
 use sovereign_coder::{SovereignCoder, EvolutionDirective};
 use dab_industries::DABModel;
+use rayon::prelude::*;
 
 /// SARAH REASONING ENGINE (GSK v24.2) - QUANTUM CONSENSUS SUBSTRATE
 /// Purpose: Neural Democracy & 103% Quantum Purity
@@ -269,18 +270,39 @@ pub async fn consult(query: &str) -> Result<(f64, String, String)> {
         agreement_count += 10;
     }
 
-    // Fibonacci observers — each at a unique helix phase angle
-    for (fib_pos, &obs_idx) in FIB_OBSERVERS.iter().enumerate() {
-        let phase_deg = ((fib_pos + 1) as f64 * GOLDEN_ANGLE) % 360.0;
-        let _model    = dab_models[obs_idx % dab_models.len()];
-        // Tag includes observer index + golden angle phase — unique hash per observer
-        let tag = format!("BRAIN_V{:03}_PHI{:.1}deg", obs_idx, phase_deg);
-        let p = hive.build_pillars(&anomaly, &tag);
-        let d = hive.theory_lab.weigh_truth(&p);
+    // ── Rayon parallel Fibonacci observers ──────────────────────────────────
+    // weigh_truth(&self, ...) is pure/stateless — safe to run concurrently.
+    // Each observer gets its unique golden-angle phase via the tag hash.
+    // Rayon distributes across all available cores.
+    let obs_results: Vec<(f64, bool)> = FIB_OBSERVERS.par_iter()
+        .enumerate()
+        .map(|(fib_pos, &obs_idx)| {
+            let phase_deg = ((fib_pos + 1) as f64 * GOLDEN_ANGLE) % 360.0;
+            let tag = format!("BRAIN_V{:03}_PHI{:.1}deg", obs_idx, phase_deg);
+            // Build pillars inline — no shared mutable state
+            let p = TruthPillars {
+                who:            format!("SOVEREIGN_HIVE_{}", tag),
+                what:           format!("DATA_AUDIT:{}", anomaly.affected_crate),
+                where_context:  anomaly.affected_crate.clone(),
+                when_frequency: String::from("1.092777037037037 Hz"),
+                why_intent:     String::from("QUANTUM_CONSENSUS_103"),
+                how_method:     String::from("SPECTRAL_PROJECTION"),
+                evolutionary:   [
+                    anomaly.drift.to_string(),
+                    tag.clone(),
+                    String::from("NEURAL_DEMOCRACY"),
+                    format!("PHASE_{:.2}deg", phase_deg),
+                    String::from("QUANTUM_READY"),
+                ],
+            };
+            let d = hive.theory_lab.weigh_truth(&p);
+            (d, d > RECOVERY_DENSITY_THRESHOLD)
+        })
+        .collect();
+
+    for (d, agrees) in obs_results {
         total_density += d;
-        if d > sovereign_constants::RECOVERY_DENSITY_THRESHOLD {
-            agreement_count += 1;
-        }
+        if agrees { agreement_count += 1; }
     }
 
     // Scale votes: Sarah(10) + 11 Fibonacci observers = 21 total weighted votes

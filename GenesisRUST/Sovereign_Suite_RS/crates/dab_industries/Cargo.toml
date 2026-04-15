@@ -10,7 +10,17 @@ authors = ["Derik | Josh | Dylan | Sarah"]
 
 [dev-dependencies]
 criterion = { version = "0.5", features = ["html_reports"] }
+kv_cache_turbo  = { path = "../kv_cache_turbo" }
+sovereign_math  = { path = "../Sovereign_Math" }
+theory_lab      = { path = "../TheoryLab" }
+sovereign_hdc   = { path = "../sovereign_hdc" }
+sovereign_constants = { path = "../Sovereign_Constants" }
+rayon           = "1.8"
 
 [[bench]]
 name = "dab_benchmark"
+harness = false
+
+[[bench]]
+name = "sovereign_vs_titans"
 harness = false

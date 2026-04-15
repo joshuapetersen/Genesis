@@ -31,6 +31,7 @@ use dab_industries::scheduler::{
 };
 use dab_industries::phi::PHI_INV as PHI_MEMORY_CONFIDENCE;
 use dab_industries::phi::SOVEREIGN_MEMORY_CONFIDENCE;
+use kv_cache_turbo::TurboQuantCache;
 
 // ═══════════════════════════════════════════════════════════════
 //  SAHRA HYPERVISOR STATE — live partition telemetry from port 9998
@@ -159,6 +160,8 @@ struct AppState {
     hive: Arc<tokio::sync::RwLock<SovereignHive>>,
     purity: Arc<tokio::sync::Mutex<f64>>,
     world_signal: Arc<tokio::sync::RwLock<Option<String>>>,
+    /// KV-cache: repeated queries return in nanoseconds, skipping the full chain.
+    kv_cache: Arc<tokio::sync::Mutex<TurboQuantCache>>,
 }
 
 #[derive(Deserialize)]
@@ -456,9 +459,29 @@ async fn handle_inquiry(
 ) -> Json<CognitionState> {
     let query = payload.query.clone();
 
+    // [KV-CACHE] Check for repeated query before ANY chain work.
+    // Cache hit = nanosecond response, zero vault/LMStudio/hive cost.
+    {
+        let mut cache = state.kv_cache.lock().await;
+        if let Some(cached) = cache.get(&query) {
+            println!("\x1b[92m[KV-CACHE] HIT | hit_rate={:.1}% | size={}\x1b[0m",
+                     cache.hit_rate() * 100.0, cache.size());
+            drop(cache);
+            return Json(CognitionState {
+                current_objective: format!("CACHE_HIT: {}", &query[..query.len().min(36)]),
+                neural_load: 0.01, // near-zero load on cache hit
+                last_evolution: "KV_CACHE_TURBO".to_string(),
+                thought_stream: vec![
+                    format!("[KV-CACHE] Query matched. Response served from cache."),
+                    format!("[GODSEYE] Zero chain cost. φ-decay intact."),
+                    cached,
+                ],
+            });
+        }
+        drop(cache);
+    }
+
     // [DAB_VARIABLE_PITCH] Measure percussion density → select processing depth.
-    // Mirrors HelixFluidAccelerator: low-velocity fluid = shallow pitch (fast);
-    // high-velocity = deep pitch (full chain). No wasted energy on simple queries.
     let dab = DABIndustries::new();
     let density = dab.protocols.percussion_density(&query);
     let depth   = query_depth_from_density(density);
@@ -532,6 +555,18 @@ async fn handle_inquiry(
             answer
         }
     };
+
+    // [KV-CACHE STORE] — cache this response for nanosecond retrieval on repeat queries.
+    let importance = match depth {
+        QueryDepth::Shallow   => 0.3,
+        QueryDepth::Standard  => 0.5,
+        QueryDepth::Deep      => 0.7,
+        QueryDepth::Sovereign => 0.95,
+    };
+    {
+        let mut cache = state.kv_cache.lock().await;
+        cache.insert(&query, response.clone(), importance);
+    }
 
     Json(CognitionState {
         current_objective: format!("INQUIRY[{}]: {}", depth.label(), query.chars().take(36).collect::<String>()),
@@ -1210,6 +1245,7 @@ async fn main() -> Result<()> {
         hive,
         purity: Arc::new(tokio::sync::Mutex::new(101.0)),
         world_signal: Arc::new(tokio::sync::RwLock::new(Some("PLANETARY_PULSE: STABLE".to_string()))),
+        kv_cache: Arc::new(tokio::sync::Mutex::new(TurboQuantCache::new())),
     };
 
     // [VOICE_IGNITION]
