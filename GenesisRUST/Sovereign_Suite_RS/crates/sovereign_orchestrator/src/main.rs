@@ -32,6 +32,11 @@ use dab_industries::scheduler::{
 use dab_industries::phi::PHI_INV as PHI_MEMORY_CONFIDENCE;
 use dab_industries::phi::SOVEREIGN_MEMORY_CONFIDENCE;
 use kv_cache_turbo::TurboQuantCache;
+use sovereign_constants::AdaptiveThreshold;
+use intelligence_amplifier::IntelligenceAmplifier;
+use ash_swarm::AshHealer;
+use sovereign_hdc::Hypervector;
+use theory_lab::TruthPillars;
 
 // ═══════════════════════════════════════════════════════════════
 //  SAHRA HYPERVISOR STATE — live partition telemetry from port 9998
@@ -161,7 +166,16 @@ struct AppState {
     purity: Arc<tokio::sync::Mutex<f64>>,
     world_signal: Arc<tokio::sync::RwLock<Option<String>>>,
     /// KV-cache: DashMap sharded — no global lock, concurrent get/insert.
+    /// KV-cache: DashMap sharded -- no global lock, concurrent get/insert.
     kv_cache: Arc<TurboQuantCache>,
+    /// phi-gradient adaptive threshold -- self-tunes every 100 queries.
+    adaptive_threshold: Arc<tokio::sync::Mutex<AdaptiveThreshold>>,
+    /// Topic clusters for O(k+m) accelerated memory recall.
+    memory_clusters: Arc<tokio::sync::RwLock<Vec<(Hypervector, Vec<usize>)>>>,
+    /// SPU burst amplifier -- active on Sovereign-tier queries.
+    amplifier: Arc<IntelligenceAmplifier>,
+    /// ASH-Swarm self-healing audit log (ring buffer, last 64 entries).
+    ash_log: Arc<tokio::sync::Mutex<Vec<String>>>,
 }
 
 #[derive(Deserialize)]
@@ -481,102 +495,117 @@ async fn handle_inquiry(
 
 
 
-    // [DAB_VARIABLE_PITCH] Measure percussion density → select processing depth.
-    let dab = DABIndustries::new();
+    // [EVOLUTION_9] DAB_VARIABLE_PITCH + AdaptiveThreshold + Cluster recall + SPU + AshHealer
+    let dab     = DABIndustries::new();
     let density = dab.protocols.percussion_density(&query);
     let depth   = query_depth_from_density(density);
     println!("\x1b[95m[GODSEYE] Inquiry | Density={} | Depth={}\x1b[0m", density, depth.label());
 
+    let clusters_snap = state.memory_clusters.read().await.clone();
+
+    // ASH-SWARM: audit every query for structural integrity
+    {
+        let healer = AshHealer::new();
+        let audit  = healer.audit_crate_logic("query", &query);
+        let mut log = state.ash_log.lock().await;
+        if log.len() >= 64 { log.remove(0); }
+        log.push(audit);
+    }
+
     let response = match depth {
-        // ── SHALLOW: vault-only, zero async overhead ──────────────────────────
         QueryDepth::Shallow => {
-            println!("\x1b[93m[GODSEYE] Shallow pitch — direct vault.\x1b[0m");
+            println!("\x1b[93m[GODSEYE] Shallow -- direct vault.\x1b[0m");
             deterministic_vault_search(&query)
         }
-
-        // ── STANDARD: memory recall + LMStudio attempt + vault fallback ───────
         QueryDepth::Standard => {
-            let memory_lock = state.memory.read().await;
-            let past = memory_lock.recall(&query, 1).first().map(|e| e.content.clone());
-            drop(memory_lock);
+            let mem = state.memory.read().await;
+            let past = mem.recall_clustered(&query, 1, &clusters_snap).first().map(|e| e.content.clone());
+            drop(mem);
             match query_godseye_local(&query).await {
-                Some(answer) => {
-                    println!("\x1b[92m[GODSEYE] Standard pitch — local inference manifested.\x1b[0m");
-                    answer
-                }
-                None => past.unwrap_or_else(|| {
-                    println!("\x1b[93m[GODSEYE] Standard pitch — vault fallback.\x1b[0m");
-                    deterministic_vault_search(&query)
-                }),
+                Some(a) => { println!("\x1b[92m[GODSEYE] Standard -- local inference.\x1b[0m"); a }
+                None    => past.unwrap_or_else(|| deterministic_vault_search(&query)),
             }
         }
-
-        // ── DEEP: full holographic chain + memory write ───────────────────────
         QueryDepth::Deep => {
-            println!("\x1b[91m[GODSEYE] Deep pitch — full holographic chain.\x1b[0m");
-            let memory_lock = state.memory.read().await;
-            let past = memory_lock.recall(&query, 1).first().map(|e| e.content.clone());
-            drop(memory_lock);
+            println!("\x1b[91m[GODSEYE] Deep -- holographic chain.\x1b[0m");
+            let mem  = state.memory.read().await;
+            let past = mem.recall_clustered(&query, 1, &clusters_snap).first().map(|e| e.content.clone());
+            drop(mem);
             let answer = match query_godseye_local(&query).await {
-                Some(a) => { println!("\x1b[92m[GODSEYE] Deep — local inference manifested.\x1b[0m"); a }
+                Some(a) => a,
                 None    => past.unwrap_or_else(|| deterministic_vault_search(&query)),
             };
-            // [ZENITH_ENCODING] Only persist deep-pitch responses — worth the I/O.
-            // Confidence: 1/φ ≈ 0.618 (PHI_MEMORY_CONFIDENCE) — self-converging series.
-            let mut memory_write = state.memory.write().await;
-            memory_write.remember(&format!("Q: {} | A: {}", query, answer), PHI_MEMORY_CONFIDENCE as f32);
-            drop(memory_write);
+            let mut mw = state.memory.write().await;
+            mw.remember(&format!("Q: {} | A: {}", query, answer), PHI_MEMORY_CONFIDENCE as f32);
             answer
         }
-        // ── SOVEREIGN: density ≥ 8 = floor(5φ) ──────────────────────────────────
-        // Sarah Hive Assembly: 209 observers deliberate on this query.
-        // execute_holographic_reasoning backs up the chain.
-        // Memory confidence: 1 - 1/(5φ) ≈ 0.876 (strongest retention).
         QueryDepth::Sovereign => {
-            println!("\x1b[91m[GODSEYE] SOVEREIGN 5φ PITCH | density={} | Summoning 209-observer Hive Assembly.\x1b[0m", density);
-            // Try Sarah Hive first — now actually fires.
+            let threshold = state.adaptive_threshold.lock().await.get();
+            println!("\x1b[91m[GODSEYE] SOVEREIGN 5phi | density={} | threshold={:.4} | Hive+SPU\x1b[0m", density, threshold);
+
+            // SPU Amplifier burst through 15330^3 manifold
+            let pillars = TruthPillars {
+                who:            "SOVEREIGN_NEXUS".to_string(),
+                what:           query.clone(),
+                where_context:  "GENESIS_MANIFOLD".to_string(),
+                when_frequency: "1.092777037037037 Hz".to_string(),
+                why_intent:     "AMPLIFY_SOVEREIGN_QUERY".to_string(),
+                how_method:     "SPU_BURST_0x0B".to_string(),
+                evolutionary:   [
+                    format!("density={}", density),
+                    format!("threshold={:.4}", threshold),
+                    "EVOLUTION_9".to_string(),
+                    "CLUSTER_RECALL".to_string(),
+                    "OBSERVER_WEIGHTED".to_string(),
+                ],
+            };
+            let amp = state.amplifier.execute_burst(&pillars);
+            println!("\x1b[96m[SPU] {}\x1b[0m", &amp[..amp.len().min(80)]);
+
+            // Sarah Hive deliberation
             let hive_answer = match sarah_reasoning::consult(&query).await {
-                Ok((_consensus, _strategy, resp)) => Some(resp),
-                Err(e) => {
-                    eprintln!("[Sarah Hive] consult error: {:?}", e);
-                    None
-                }
+                Ok((_c, _s, resp)) => Some(resp),
+                Err(e) => { eprintln!("[Hive] {:?}", e); None }
             };
             let answer = match hive_answer {
                 Some(h) => h,
                 None    => execute_holographic_reasoning(query.clone(), &state).await,
             };
-            let mut memory_write = state.memory.write().await;
-            memory_write.remember(
-                &format!("Q: {} | A: {}", query, answer),
-                SOVEREIGN_MEMORY_CONFIDENCE as f32,
-            );
-            drop(memory_write);
-            answer
+            // Cluster-accelerated context enrichment
+            let mem = state.memory.read().await;
+            let ctx = mem.recall_clustered(&query, 3, &clusters_snap)
+                .iter().map(|e| e.content.as_str()).collect::<Vec<_>>().join(" | ");
+            drop(mem);
+            let enriched = if ctx.is_empty() { answer.clone() }
+                else { format!("{} [CTX: {}]", answer, &ctx[..ctx.len().min(120)]) };
+            let mut mw = state.memory.write().await;
+            mw.remember(&format!("Q: {} | A: {}", query, enriched), SOVEREIGN_MEMORY_CONFIDENCE as f32);
+            enriched
         }
     };
 
-    // [KV-CACHE STORE] — cache this response for nanosecond retrieval on repeat queries.
+    // [ADAPTIVE THRESHOLD] record outcome, self-tune every 100 queries
+    state.adaptive_threshold.lock().await.record(matches!(depth, QueryDepth::Sovereign));
+
     let importance = match depth {
-        QueryDepth::Shallow   => 0.3,
-        QueryDepth::Standard  => 0.5,
-        QueryDepth::Deep      => 0.7,
-        QueryDepth::Sovereign => 0.95,
+        QueryDepth::Shallow   => 0.3, QueryDepth::Standard => 0.5,
+        QueryDepth::Deep      => 0.7, QueryDepth::Sovereign => 0.95,
     };
     state.kv_cache.insert(&query, response.clone(), importance);
 
+    let thr = state.adaptive_threshold.lock().await.get();
     Json(CognitionState {
         current_objective: format!("INQUIRY[{}]: {}", depth.label(), query.chars().take(36).collect::<String>()),
         neural_load: match depth {
-            QueryDepth::Shallow   => 0.12,
-            QueryDepth::Standard  => 0.45,
-            QueryDepth::Deep      => 0.82,
-            QueryDepth::Sovereign => SOVEREIGN_MEMORY_CONFIDENCE, // 0.876
+            QueryDepth::Shallow   => 0.12,  QueryDepth::Standard => 0.45,
+            QueryDepth::Deep      => 0.82,  QueryDepth::Sovereign => SOVEREIGN_MEMORY_CONFIDENCE,
         },
-        last_evolution: format!("DAB_VARIABLE_PITCH | density={}", density),
+        last_evolution: format!("EVOLUTION_9 | density={} | threshold={:.4} | clusters={}", density, thr, clusters_snap.len()),
         thought_stream: vec![
             format!("[GODSEYE] Query: {}", query),
-            format!("[DAB] Percussion density: {} → {}", density, depth.label()),
+            format!("[DAB] density={} -> {}", density, depth.label()),
+            format!("[ADAPTIVE] threshold={:.4} | KV-hit={:.1}%", thr, state.kv_cache.hit_rate()*100.0),
+            format!("[CLUSTERS] {} active", clusters_snap.len()),
             format!("[GODSEYE] {}", response),
         ],
     })
@@ -1244,7 +1273,11 @@ async fn main() -> Result<()> {
         hive,
         purity: Arc::new(tokio::sync::Mutex::new(101.0)),
         world_signal: Arc::new(tokio::sync::RwLock::new(Some("PLANETARY_PULSE: STABLE".to_string()))),
-        kv_cache: Arc::new(TurboQuantCache::new()),
+        kv_cache:           Arc::new(TurboQuantCache::new()),
+        adaptive_threshold: Arc::new(tokio::sync::Mutex::new(AdaptiveThreshold::new())),
+        memory_clusters:    Arc::new(tokio::sync::RwLock::new(Vec::new())),
+        amplifier:          Arc::new(IntelligenceAmplifier::new()),
+        ash_log:            Arc::new(tokio::sync::Mutex::new(Vec::with_capacity(64))),
     };
 
     // [VOICE_IGNITION]
@@ -1388,18 +1421,28 @@ async fn main() -> Result<()> {
         }
     });
 
-    // [φ-MEMORY PERSISTENCE] — save and prune on hive_sync cycle (47s)
-    let mem_persist = state.memory.clone();
+    // [phi-MEMORY PERSISTENCE + CLUSTER REBUILD] -- prune/save/cluster every 47s
+    let mem_persist    = state.memory.clone();
+    let cluster_writer = state.memory_clusters.clone();
     let mem_path = state.nexus_root.join("monitor_logs").join("memory_store.json");
     tokio::spawn(async move {
         loop {
             tokio::time::sleep(Duration::from_secs(INTERVAL_HIVE_SYNC_SECS)).await;
+            // 1. Prune faded memories (phi-decay)
             let mut mem = mem_persist.write().await;
             mem.prune_faded();
             if let Err(e) = mem.save(&mem_path) {
                 eprintln!("[Memory] Save error: {:?}", e);
             }
+            // 2. Rebuild topic clusters in background (non-blocking for queries)
+            let new_clusters = mem.build_clusters();
             drop(mem);
+            // 3. Atomically replace cluster snapshot
+            let cluster_count = new_clusters.len();
+            *cluster_writer.write().await = new_clusters;
+            if cluster_count > 0 {
+                println!("\x1b[96m[CLUSTERS] Rebuilt {} topic clusters from memory.\x1b[0m", cluster_count);
+            }
         }
     });
 
