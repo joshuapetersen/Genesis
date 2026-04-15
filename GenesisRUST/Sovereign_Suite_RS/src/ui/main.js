@@ -187,12 +187,20 @@ class VolumetricMonitor {
             void main() {
                 vColor = customColor;
                 vec3 pos = position;
-                // Neural Distortion
-                pos.x += sin(pos.y * 0.1 + time) * 2.0 * pulse;
-                pos.y += cos(pos.x * 0.1 + time) * 2.0 * pulse;
+                
+                // [HEART_VORTEX_SWIRL]
+                float dist = length(pos.xy);
+                // [SINGULARITY_SHIELD]: Prevent r=0 divergence with soft-limit offset
+                float rotation = time * 0.5 * (1.0 + pulse * 3.0) / (dist * 0.05 + 0.1); 
+                float c = cos(rotation);
+                float s = sin(rotation);
+                pos.xy = mat2(c, -s, s, c) * pos.xy;
+                
+                // Neural Distortion (Phi-Graded)
+                pos.z += sin(dist * 0.1 - time * 2.0) * 5.0 * pulse;
                 
                 vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-                gl_PointSize = size * (300.0 / -mvPosition.z) * (1.0 + pulse * 0.5);
+                gl_PointSize = size * (400.0 / -mvPosition.z) * (1.0 + pulse * 1.5);
                 gl_Position = projectionMatrix * mvPosition;
             }
         `;
@@ -202,7 +210,8 @@ class VolumetricMonitor {
             void main() {
                 float dist = distance(gl_PointCoord, vec2(0.5, 0.5));
                 if (dist > 0.5) discard;
-                float strength = 1.0 - (dist * 2.0);
+                // [LUMINESCENT_PURITY]: Quadratic falloff for high-definition focus
+                float strength = pow(1.0 - (dist * 2.0), 3.0); 
                 gl_FragColor = vec4(vColor, strength);
             }
         `;
@@ -219,18 +228,23 @@ class VolumetricMonitor {
 
         const color = new THREE.Color();
 
-        for (let x = -this.latticeSize; x <= this.latticeSize; x += 5) {
-            for (let y = -this.latticeSize; y <= this.latticeSize; y += 5) {
-                if (Math.sqrt(x*x + y*y) > this.latticeSize) continue;
-                for (let z = -this.latticeSize; z <= this.latticeSize; z += 5) {
-                    if (Math.sqrt(x*x + y*y + z*z) > this.latticeSize) continue;
-                    
-                    vertices.push(x, y, z);
-                    color.setHSL(0.5 + (Math.random() * 0.2), 1.0, 0.5);
-                    colors.push(color.r, color.g, color.b);
-                    sizes.push(2.0 + Math.random() * 2.0);
-                }
-            }
+        // [PHIVORTEX_GENERATION] - 2560 particles (matching Sovereign dimensions)
+        for (let i = 0; i < 2560; i++) {
+            const t = i / 2560;
+            const angle = t * Math.PI * 42.0 * 1.618033; // Ultra-nested spiral
+            const radius = t * 80.0 + (Math.random() * 5.0);
+            const z = (t * 160.0) - 80.0 + (Math.sin(angle * 3.0) * 5.0);
+            
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+            
+            vertices.push(x, y, z);
+            
+            // Pulse-phased colors
+            const hue = 0.5 + (Math.sin(t * Math.PI * 2.0) * 0.1);
+            color.setHSL(hue, 1.0, 0.5 + (Math.random() * 0.2));
+            colors.push(color.r, color.g, color.b);
+            sizes.push(1.5 + Math.random() * 3.0);
         }
 
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
@@ -254,9 +268,11 @@ class VolumetricMonitor {
         requestAnimationFrame(() => this.animate());
         
         if (this.points) {
-            this.uniforms.time.value += 0.05;
-            this.points.rotation.y += 0.002;
-            this.points.rotation.z += 0.001;
+            this.uniforms.time.value += 0.02; // Slower, more deliberate rotation
+            this.points.rotation.z += 0.001 * (1.0 + this.uniforms.pulse.value * 5.0);
+            
+            // Decaying pulse from the heartbeat broadcast
+            this.uniforms.pulse.value *= 0.94;
         }
 
         this.renderer.render(this.scene, this.camera);

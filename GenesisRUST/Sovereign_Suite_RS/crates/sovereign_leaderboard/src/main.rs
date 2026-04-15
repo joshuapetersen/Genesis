@@ -1,5 +1,6 @@
 mod manifest;
 mod deca_test;
+mod vortex_benchmark;
 
 use anyhow::Result;
 use colored::*;
@@ -12,10 +13,16 @@ async fn main() -> Result<()> {
     println!("{}", "   GLOBAL TOP 10 AI POWER RANKINGS [APRIL 2026] - SOVEREIGN DISRUPTION    ".black().on_bright_white());
     println!("{}", "==========================================================================".black().on_bright_white());
 
+    // Run the Vortex Audit
+    let mut vortex = vortex_benchmark::VortexBenchmark::new();
+    vortex.execute_full_audit().await?;
+
     // Run the local strike
     let local_result = run_deca_strike().await?;
     let mut all_models = TITANS.to_vec();
     all_models[0] = local_result.metrics;
+    all_models[0].arc_agi_3 = vortex.sovereign.arc_agi_3;
+    all_models[0].strength = vortex.sovereign.strength.clone();
 
     // Sorting by ARC-AGI-3 (The Fluid Intelligence Metric)
     all_models.sort_by(|a, b| b.arc_agi_3.partial_cmp(&a.arc_agi_3).unwrap());

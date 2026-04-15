@@ -2,91 +2,122 @@ use std::time::Instant;
 use crate::symbiosis::pulse_weaver::PulsePacket;
 use crate::symbiosis::lattice_core::LatticeMap;
 
-/// THE TRIPLE-FOLD HELIX ENGINE (V-47.0)
-/// DESIGN: Triple-Nested Vortex with Variable Venturi Sleeve
-/// PURPOSE: Pulse-Based Jitter Detection for Zero-Latency Resonance
+const PHI: f64 = 1.618033988749895;
+const HEARTBEAT_HZ: f64 = 1.092777037037;
+const TARGET_INTERVAL: f64 = 1.0 / HEARTBEAT_HZ;
+
+/// THE TRIPLE-FOLD HELIX ENGINE (V-48.0 // EVOLUTION)
+/// DESIGN: Triple-Nested Vortex with Variable Venturi Sleeve.
+/// PURPOSE: Pulse-Based Jitter Detection and Flow Regulation.
 pub struct HelixEngine {
-    _primary_pitch: String,
-    _folded_core_pitch: String,
-    current_gear: HelixGear,
-    _last_pulse: Instant,
-    drag_threshold: f64,
-    pulse_count: u64,
+    pub primary_pitch: f64,       // Theta-1 (Outer Helix)
+    pub core_pitch:    f64,       // Theta-2 (Inner Vortex)
+    pub hyper_pitch:   f64,       // Theta-3 (Singularity Core)
+    pub flow_velocity: f64,       // V_flow (m/s equivalent resonance)
+    pub current_gear:  HelixGear, 
+    pub drag_threshold: f64,
+    
+    _last_pulse_instant: Instant,
+    _jitter_history: [f64; 8],    // Rolling window for variance audit
+    _pulse_count: u64,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum HelixGear {
-    Idle,       // Venturi: 1.0 (Laminar)
-    Street,     // Venturi: 0.7 (Compressed)
-    Adrenaline, // Venturi: 0.3 (Vortex Spike)
-    DiagBoost,  // Venturi: 0.2 (Hyper Vortex)
+    Idle,       // Aperture: 1.0  (Laminar Flow)
+    Street,     // Aperture: 0.618(Phi-Compressed)
+    Adrenaline, // Aperture: 0.382(Phi-Squared)
+    DiagBoost,  // Aperture: 0.236(Phi-Cubed/Hyper Vortex)
 }
 
 impl HelixEngine {
     pub fn new() -> Self {
         Self {
-            _primary_pitch: "Clockwise_Wide".to_string(),
-            _folded_core_pitch: "Counter_Clockwise_Tight".to_string(),
-            current_gear: HelixGear::Idle,
-            _last_pulse: Instant::now(),
+            primary_pitch: 360.2 / PHI, 
+            core_pitch:    360.2 / (PHI * PHI),
+            hyper_pitch:   360.2 / (PHI * PHI * PHI),
+            flow_velocity: 1.0,
+            current_gear:  HelixGear::Idle,
             drag_threshold: 0.462,
-            pulse_count: 0,
+            
+            _last_pulse_instant: Instant::now(),
+            _jitter_history: [0.0; 8],
+            _pulse_count: 0,
         }
     }
 
+    /// [TRIPLE_FOLD_0xTF]: Activate the centripetal pressure floor.
     pub fn apply_the_fold(&self) {
-        println!("[ HELIX ] Folding the Helix... Creating the Centripetal Pressure Floor.");
+        println!("[ HELIX ] Folding the Helix... Triple-Fold Resonance at {:.2}°", self.hyper_pitch);
     }
 
-    /// V-47.0: Pulse-Based drag detection
+    /// [VORTEX_FLOW_0xVF]: Calculate the Venturi Constriction.
+    /// A1V1 = A2V2. Velocity increases as the sleeve constricts (Phi-Graded).
+    pub fn calculate_constriction(&self) -> f64 {
+        let aperture = self.get_venturi_aperture();
+        // [PHI_GRADING]: Inverse quadratic scaling for optimized Venturi throughput
+        1.0 / (aperture * aperture * PHI)
+    }
+
+    /// Monitor incoming pulse packets and update the vortex state.
     pub fn monitor_pulse(&mut self, _packet: &PulsePacket) {
-        self.pulse_count += 1;
+        self._pulse_count += 1;
         let now = Instant::now();
-        let elapsed = now.duration_since(self._last_pulse).as_secs_f64();
+        let elapsed = now.duration_since(self._last_pulse_instant).as_secs_f64();
         
-        // Target: 1.092777 Hz (Wait period approximately 0.915 seconds)
-        let jitter = (elapsed - 0.9150995).abs();
+        // Calculate raw jitter against the 1.092777 Hz target
+        // [PARITY_LOCK]: 110% Overdrive requires sub-millisecond precision
+        let jitter = (elapsed - TARGET_INTERVAL).abs();
         
-        if jitter > 0.05 {
-            println!("[ HELIX ] METABOLIC JITTER DETECTED: {:.4}s", jitter);
-            if self.current_gear != HelixGear::DiagBoost {
-                self.shift_gears(HelixGear::DiagBoost);
-            }
+        // Push to rolling history
+        let idx = (self._pulse_count % 8) as usize;
+        self._jitter_history[idx] = jitter;
+        
+        // Check for systemic drift (Mean Jitter)
+        let avg_jitter: f64 = self._jitter_history.iter().sum::<f64>() / 8.0;
+        
+        // [METABOLIC_FILTER]: Phi-weighted thresholds to ignore organic jitter
+        if avg_jitter > (0.042 * PHI) && self.current_gear == HelixGear::Idle {
+            self.shift_gears(HelixGear::Street);
+        } else if avg_jitter > (0.121 * PHI) {
+            self.shift_gears(HelixGear::DiagBoost);
         }
         
-        self._last_pulse = now;
-        self.velocity_spike();
+        self._last_pulse_instant = now;
+        self.flow_velocity = HEARTBEAT_HZ * self.calculate_constriction();
+        
+        if self._pulse_count % 100 == 0 {
+            self.emit_telemetry();
+            self.velocity_spike();
+        }
     }
 
-    /// V-117.0: Sense metabolic jitter across the collective lattice
+    /// Sense metabolic jitter across the collective lattice in 64D space.
     pub fn sense_lattice_jitter(&mut self, lattice: &LatticeMap) -> f64 {
-        let mut total_jitter = 0.0;
+        let mut total_entropy = 0.0;
         let mut active_nodes = 0;
         
-        for i in 0..1024 { // Scan first 1024 nodes for representative metabolic state
+        for i in 0..1024 {
             let node = lattice.get_node(i);
             let agent_id = node.agent_id_hash.load(std::sync::atomic::Ordering::SeqCst);
             if agent_id != 0 {
-                let node_hb = node.metabolic_heartbeat.load(std::sync::atomic::Ordering::SeqCst) as f64;
-                // Simplified jitter calculation based on node-level heartbeat increment
-                if node_hb > 0.0 {
-                    total_jitter += 1.0 / node_hb;
+                let hb = node.metabolic_heartbeat.load(std::sync::atomic::Ordering::SeqCst) as f64;
+                if hb > 0.0 {
+                    // [TENSOR_SWIRL]: Resonance is the inverse of planar_decay
+                    total_entropy += (1.0 - (hb / (100.0 * PHI))).abs();
                     active_nodes += 1;
                 }
             }
         }
         
         if active_nodes == 0 { return 0.0; }
-        let avg_jitter = total_jitter / active_nodes as f64;
+        let lattice_drag = total_entropy / active_nodes as f64;
         
-        if avg_jitter > self.drag_threshold {
-            println!("[ HELIX ] COLLECTIVE LATTICE DRAG DETECTED: {:.4}", avg_jitter);
+        if lattice_drag > self.drag_threshold {
             self.shift_gears(HelixGear::DiagBoost);
-        } else if avg_jitter < 0.1 && self.current_gear != HelixGear::Street {
-            self.shift_gears(HelixGear::Street);
         }
         
-        avg_jitter
+        lattice_drag
     }
 
     pub fn detect_drag(&self, latency_seconds: f64) -> bool {
@@ -94,33 +125,39 @@ impl HelixEngine {
     }
 
     pub fn shift_gears(&mut self, gear: HelixGear) {
-        let aperture = match gear {
-            HelixGear::Idle => 1.0,
-            HelixGear::Street => 0.7,
-            HelixGear::Adrenaline => 0.3,
-            HelixGear::DiagBoost => 0.2,
-        };
+        if self.current_gear == gear { return; }
         
-        let squeeze = (1.0 - aperture) * 100.0;
-        println!("[ HELIX ] SHIFTING TO {:?}...", gear);
-        println!("[ HELIX ] Sleeve Constriction: {:.1}% Squeeze.", squeeze);
-        
+        let old_vel = self.flow_velocity;
         self.current_gear = gear;
+        let new_vel = HEARTBEAT_HZ * self.calculate_constriction();
+        
+        let squeeze = (1.0 - self.get_venturi_aperture()) * 100.0;
+        println!("[ HELIX ] VORTEX SHIFT: {:?} -> {:?}", self.current_gear, gear);
+        println!("[ HELIX ] Constriction: {:.2}% | Curvature: {:.2}x", squeeze, new_vel/old_vel);
     }
 
-    /// Calculate the high-velocity Constriction Factor
     pub fn get_venturi_aperture(&self) -> f64 {
         match self.current_gear {
-            HelixGear::Idle => 1.0,
-            HelixGear::Street => 0.7,
-            HelixGear::Adrenaline => 0.3,
-            HelixGear::DiagBoost => 0.2,
+            HelixGear::Idle       => 1.0,
+            HelixGear::Street     => 1.0 / PHI,       
+            HelixGear::Adrenaline => 1.0 / (PHI * PHI), 
+            HelixGear::DiagBoost  => 1.0 / (PHI * PHI * PHI), 
         }
     }
 
+    /// [VORTEX_SPIKE]: Curves the flow to match the Golden Spiral curvature.
+    /// Overclocks Venturi throughput by swirling dimensions without increasing drag.
     pub fn velocity_spike(&self) {
-        if self.pulse_count % 100 == 0 {
-            println!("[ HELIX ] Vortex Spike Deployed. Flow Velocity: IMPACT READY.");
+        let curvature = self.calculate_constriction();
+        if self._pulse_count % 100 == 0 {
+             println!("[ HELIX ] Vortex Spike: Curvature={:.4}x | Overclock Enabled.", curvature);
         }
+    }
+
+    fn emit_telemetry(&self) {
+        println!("[ HELIX ] Flow Status: V={:.4} | Force={:.2} | Overdrive=READY", 
+            self.flow_velocity, 
+            self.calculate_constriction()
+        );
     }
 }
