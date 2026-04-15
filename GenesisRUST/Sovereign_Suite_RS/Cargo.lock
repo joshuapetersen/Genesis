@@ -2949,8 +2949,7 @@ dependencies = [
 name = "kv_cache_turbo"
 version = "0.1.0"
 dependencies = [
- "anyhow",
- "tokio",
+ "dashmap",
 ]
 
 [[package]]

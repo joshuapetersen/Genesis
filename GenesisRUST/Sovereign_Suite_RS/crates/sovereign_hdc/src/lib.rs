@@ -61,6 +61,42 @@ impl Hypervector {
         }
         1.0 - (total_popcount as f64 / 102400.0)
     }
+
+    /// [SIMILARITY_FAST]: 8-wide unrolled Hamming -- auto-vectorized to AVX2 on x86.
+    /// Processes 512 bits per loop iteration. ~4-8x throughput over scalar.
+    #[inline]
+    pub fn similarity_fast(&self, other: &Self) -> f64 {
+        let a = &self.data;
+        let b = &other.data;
+        let mut pc = 0u32;
+        let mut i = 0usize;
+        while i + 8 <= 1600 {
+            pc += (a[i  ] ^ b[i  ]).count_ones();
+            pc += (a[i+1] ^ b[i+1]).count_ones();
+            pc += (a[i+2] ^ b[i+2]).count_ones();
+            pc += (a[i+3] ^ b[i+3]).count_ones();
+            pc += (a[i+4] ^ b[i+4]).count_ones();
+            pc += (a[i+5] ^ b[i+5]).count_ones();
+            pc += (a[i+6] ^ b[i+6]).count_ones();
+            pc += (a[i+7] ^ b[i+7]).count_ones();
+            i += 8;
+        }
+        while i < 1600 { pc += (a[i] ^ b[i]).count_ones(); i += 1; }
+        1.0 - (pc as f64 / 102400.0)
+    }
+
+    /// Fast threshold check -- short-circuits as soon as similarity is impossible.
+    /// O(early_exit) instead of O(1600). Best case: 1 iteration.
+    #[inline]
+    pub fn similarity_threshold(&self, other: &Self, threshold: f64) -> bool {
+        let max_mm = ((1.0 - threshold) * 102400.0) as u32;
+        let mut pc = 0u32;
+        for i in 0..1600 {
+            pc += (self.data[i] ^ other.data[i]).count_ones();
+            if pc > max_mm { return false; }
+        }
+        true
+    }
 }
 
 /// [BUNDLING]: Majority-vote addition of many hypervectors

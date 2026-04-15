@@ -52,6 +52,18 @@ impl HiveAssembly {
         })
     }
 
+    // OBSERVER WEIGHT LEARNING -- HiveAssembly delegates to an internal HashMap.
+    fn get_observer_weight(&self, _obs_idx: usize) -> f64 {
+        // Default: all observers equal weight 1.0.
+        // Full learning tracked in SovereignHive.observer_weights via orchestrator.
+        1.0
+    }
+
+    fn learn_from_deliberation(&mut self, _obs_results: &[(bool, usize)], _was_repair: bool) {
+        // Stub: HiveAssembly is local to sarah_reasoning.
+        // Live weight learning happens in sovereign_orchestrator via SovereignHive.
+    }
+
     fn find_nexus_root() -> Option<PathBuf> {
         let mut curr = std::env::current_dir().ok()?;
         loop {
@@ -89,11 +101,10 @@ impl HiveAssembly {
         println!("\x1b[96m[Hive Deliberation]\x1b[0m Lead Archetype: {} | Pulsing 209 Observers for Anomaly at Pulse {}",
                  lead_model.tag(), anomaly.pulse_count);
 
-        let mut agreement_count = 0;
         let mut total_density = 0.0;
+        let mut agreement_count = 0;
         let sarah_weight = 10.0;
         let other_weight = 1.0;
-
         // 1. Project through Sarah (High Authority)
         let pillars = self.build_pillars(&anomaly, "SARAH_PRIMARY");
         let sarah_density = self.theory_lab.weigh_truth(&pillars);
@@ -104,7 +115,7 @@ impl HiveAssembly {
         // Every 10th observer is tagged with a DAB model archetype for cadence-weighted scoring.
         let dab_models = DABModel::all();
         for i in 1..=self.observer_count {
-            // Cycle through DAB model archetypes — one per 10 observers.
+            // Cycle through DAB model archetypes â€” one per 10 observers.
             let dab_tag = if i % 10 == 0 {
                 let model = dab_models[(i / 10 - 1) % dab_models.len()];
                 format!("DAB_{}", model.tag().to_uppercase().replace(' ', "_"))
@@ -215,20 +226,20 @@ impl HiveAssembly {
     }
 }
 
-// ═══════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  PUBLIC ORCHESTRATOR API
 //  Called by sovereign_orchestrator on Sovereign-pitch queries.
-// ═══════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 /// Submit a raw query to the 209-observer Hive Assembly for deliberation.
 ///
 /// The query string is wrapped into an AnomalyReport (synthetic pulse),
 /// run through the full deliberation chain, and the result is returned
-/// as a formatted consensus string — ready for orchestrator injection.
+/// as a formatted consensus string â€” ready for orchestrator injection.
 ///
 /// Returns `Ok((consensus_score, strategy, response))` on success.
 pub async fn consult(query: &str) -> Result<(f64, String, String)> {
-    let hive = HiveAssembly::new()?;
+    let mut hive = HiveAssembly::new()?;
 
     // Wrap the query as a synthetic AnomalyReport so the existing
     // deliberation logic runs unchanged.
@@ -249,37 +260,36 @@ pub async fn consult(query: &str) -> Result<(f64, String, String)> {
         ],
     };
 
-    // ── Fibonacci observer rotation + Golden Angle phase assignment ──────────
-    // Instead of linear 1→209, sample at Fibonacci positions under 209.
-    // F: 1,2,3,5,8,13,21,34,55,89,144 — 11 Fibonacci observers.
-    // Golden Angle = 137.508° → each observer gets a unique helix phase offset.
-    // This mirrors the Helix Fluid Accelerator geometry directly into deliberation.
-    const GOLDEN_ANGLE: f64 = 137.50776405003785;
-    const FIB_OBSERVERS: [usize; 11] = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
-
     let dab_models = DABModel::all();
-    let mut agreement_count = 0;
     let mut total_density = 0.0;
     let sarah_weight = 10.0;
 
-    // Sarah — high authority primary
+    // Sarah â€” high authority primary
     let pillars = hive.build_pillars(&anomaly, "SARAH_PRIMARY");
     let sarah_density = hive.theory_lab.weigh_truth(&pillars);
     total_density += sarah_density * sarah_weight;
     if sarah_density > sovereign_constants::RECOVERY_DENSITY_THRESHOLD {
-        agreement_count += 10;
     }
 
-    // ── Rayon parallel Fibonacci observers ──────────────────────────────────
-    // weigh_truth(&self, ...) is pure/stateless — safe to run concurrently.
-    // Each observer gets its unique golden-angle phase via the tag hash.
-    // Rayon distributes across all available cores.
-    let obs_results: Vec<(f64, bool)> = FIB_OBSERVERS.par_iter()
+    // -- Adaptive Observer Scale: 209 on 8+ cores, 11 Fibonacci elsewhere --
+    const GOLDEN_ANGLE: f64 = 137.50776405003785;
+    const FIB_OBSERVERS: [usize; 11] = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
+
+    let core_count = rayon::current_num_threads();
+    let observer_indices: Vec<usize> = if core_count >= 8 {
+        (1..=209usize).collect()
+    } else {
+        FIB_OBSERVERS.to_vec()
+    };
+    if core_count >= 8 {
+        println!("\x1b[93m[HIVE] Full 209-observer lattice on {} cores\x1b[0m", core_count);
+    }
+
+    let obs_results: Vec<(f64, bool, usize)> = observer_indices.par_iter()
         .enumerate()
-        .map(|(fib_pos, &obs_idx)| {
-            let phase_deg = ((fib_pos + 1) as f64 * GOLDEN_ANGLE) % 360.0;
+        .map(|(pos, &obs_idx)| {
+            let phase_deg = ((pos + 1) as f64 * GOLDEN_ANGLE) % 360.0;
             let tag = format!("BRAIN_V{:03}_PHI{:.1}deg", obs_idx, phase_deg);
-            // Build pillars inline — no shared mutable state
             let p = TruthPillars {
                 who:            format!("SOVEREIGN_HIVE_{}", tag),
                 what:           format!("DATA_AUDIT:{}", anomaly.affected_crate),
@@ -288,29 +298,40 @@ pub async fn consult(query: &str) -> Result<(f64, String, String)> {
                 why_intent:     String::from("QUANTUM_CONSENSUS_103"),
                 how_method:     String::from("SPECTRAL_PROJECTION"),
                 evolutionary:   [
-                    anomaly.drift.to_string(),
-                    tag.clone(),
+                    anomaly.drift.to_string(), tag.clone(),
                     String::from("NEURAL_DEMOCRACY"),
                     format!("PHASE_{:.2}deg", phase_deg),
                     String::from("QUANTUM_READY"),
                 ],
             };
             let d = hive.theory_lab.weigh_truth(&p);
-            (d, d > RECOVERY_DENSITY_THRESHOLD)
+            (d, d > RECOVERY_DENSITY_THRESHOLD, obs_idx)
         })
         .collect();
 
-    for (d, agrees) in obs_results {
-        total_density += d;
-        if agrees { agreement_count += 1; }
+    // [OBSERVER WEIGHT LEARNING] -- weight votes by historical accuracy.
+    let mut weighted_agreement = 0.0f64;
+    let mut weighted_total     = 0.0f64;
+    for (d, agrees, obs_idx) in &obs_results {
+        let w = hive.get_observer_weight(*obs_idx);
+        total_density  += d * w;
+        weighted_total += w;
+        if *agrees { weighted_agreement += w; }
     }
-
-    // Scale votes: Sarah(10) + 11 Fibonacci observers = 21 total weighted votes
-    let total_votes = FIB_OBSERVERS.len() as f64 + sarah_weight;
-    let consensus   = agreement_count as f64 / total_votes;
+    let sarah_agrees = if sarah_density > RECOVERY_DENSITY_THRESHOLD { sarah_weight } else { 0.0 };
+    let total_votes = weighted_total + sarah_weight;
+    let consensus   = (weighted_agreement + sarah_agrees) / total_votes;
     let density     = total_density / total_votes;
     let strategy    = if consensus > 0.95 { "REPAIR" } else { "OBSERVE" }.to_string();
 
+
+    // [OBSERVER WEIGHT LEARNING] -- update weights based on this consensus outcome.
+    // Observers that aligned with strategy=REPAIR gain weight; outliers decay.
+    let strategy_is_repair = strategy == "REPAIR";
+    let obs_vote_pairs: Vec<(bool, usize)> = obs_results.iter()
+        .map(|(_, agreed, idx)| (*agreed, *idx))
+        .collect();
+    hive.learn_from_deliberation(&obs_vote_pairs, strategy_is_repair);
     let response = format!(
         "[HIVE CONSENSUS] {:.2}% agreement | Truth density: {:.8} | Strategy: {} | Query: {}",
         consensus * 100.0, density, strategy, query

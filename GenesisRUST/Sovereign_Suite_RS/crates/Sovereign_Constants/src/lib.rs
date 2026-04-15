@@ -138,3 +138,72 @@ pub const ACE_HEX_RADIX_BIT_MASK: u64 = 0xFFFF;
 pub const ACE_16_BIT_MASK: u64 = 0xFFFF;
 pub const ACE_32_BIT_MASK: u64 = 0xFFFFFFFF;
 pub const ACE_64_BIT_MASK_LARGE: u64 = 18446744073709551615;
+
+// -- PHI-GRADIENT ADAPTIVE THRESHOLD ----------------------------------------
+// RECOVERY_DENSITY_THRESHOLD is the base constant (0.98).
+// AdaptiveThreshold self-tunes using phi-gradient descent:
+//   * Too many SOVEREIGN hits -> threshold too low -> raise by PHI_INV * STEP
+//   * Too few SOVEREIGN hits  -> threshold too high -> lower by PHI_INV * STEP
+// This prevents threshold drift while keeping the system in resonance.
+
+pub const ADAPTIVE_THRESHOLD_STEP: f64 = 0.001;   // base step size
+pub const ADAPTIVE_THRESHOLD_MIN:  f64 = 0.85;    // floor -- never below this
+pub const ADAPTIVE_THRESHOLD_MAX:  f64 = 0.999;   // ceiling -- never above this
+pub const PHI_INV: f64 = 0.6180339887498949;
+
+/// Self-tuning consensus threshold using phi-gradient descent.
+/// Shared via Arc<Mutex<AdaptiveThreshold>> in AppState.
+#[derive(Clone)]
+pub struct AdaptiveThreshold {
+    pub value:        f64, // current threshold
+    pub hit_count:    u64, // sovereign-tier hits this window
+    pub total_count:  u64, // total queries this window
+    pub window_size:  u64, // recalibrate every N queries
+}
+
+impl AdaptiveThreshold {
+    pub fn new() -> Self {
+        Self {
+            value:       RECOVERY_DENSITY_THRESHOLD,
+            hit_count:   0,
+            total_count: 0,
+            window_size: 100,
+        }
+    }
+
+    /// Record a query outcome. Call after each deliberation.
+    /// `was_sovereign` = true if consensus >= current threshold.
+    pub fn record(&mut self, was_sovereign: bool) {
+        if was_sovereign { self.hit_count += 1; }
+        self.total_count += 1;
+
+        if self.total_count >= self.window_size {
+            self.tune();
+            self.hit_count   = 0;
+            self.total_count = 0;
+        }
+    }
+
+    /// phi-gradient step: move threshold toward the natural resonance ratio.
+    /// Target: ~38.2% sovereign rate (phi_inv in [0,1] maps to 38.2%).
+    fn tune(&mut self) {
+        let rate = self.hit_count as f64 / self.window_size as f64;
+        let target = PHI_INV * 0.618; // ~0.382 -- the phi-squared ratio
+        let step   = ADAPTIVE_THRESHOLD_STEP * PHI_INV;
+
+        if rate > target + 0.05 {
+            // Too many sovereign hits -- threshold too permissive, raise it
+            self.value = (self.value + step).min(ADAPTIVE_THRESHOLD_MAX);
+        } else if rate < target - 0.05 {
+            // Too few sovereign hits -- threshold too strict, lower it
+            self.value = (self.value - step).max(ADAPTIVE_THRESHOLD_MIN);
+        }
+        // else: within tolerance, no change needed
+    }
+
+    pub fn get(&self) -> f64 { self.value }
+}
+
+impl Default for AdaptiveThreshold {
+    fn default() -> Self { Self::new() }
+}

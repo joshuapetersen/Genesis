@@ -160,8 +160,8 @@ struct AppState {
     hive: Arc<tokio::sync::RwLock<SovereignHive>>,
     purity: Arc<tokio::sync::Mutex<f64>>,
     world_signal: Arc<tokio::sync::RwLock<Option<String>>>,
-    /// KV-cache: repeated queries return in nanoseconds, skipping the full chain.
-    kv_cache: Arc<tokio::sync::Mutex<TurboQuantCache>>,
+    /// KV-cache: DashMap sharded — no global lock, concurrent get/insert.
+    kv_cache: Arc<TurboQuantCache>,
 }
 
 #[derive(Deserialize)]
@@ -459,27 +459,27 @@ async fn handle_inquiry(
 ) -> Json<CognitionState> {
     let query = payload.query.clone();
 
-    // [KV-CACHE] Check for repeated query before ANY chain work.
+    // [KV-CACHE] DashMap sharded -- no global lock, concurrent access.
     // Cache hit = nanosecond response, zero vault/LMStudio/hive cost.
     {
-        let mut cache = state.kv_cache.lock().await;
-        if let Some(cached) = cache.get(&query) {
+        if let Some(cached) = state.kv_cache.get(&query) {
             println!("\x1b[92m[KV-CACHE] HIT | hit_rate={:.1}% | size={}\x1b[0m",
-                     cache.hit_rate() * 100.0, cache.size());
-            drop(cache);
+                     state.kv_cache.hit_rate() * 100.0, state.kv_cache.size());
             return Json(CognitionState {
                 current_objective: format!("CACHE_HIT: {}", &query[..query.len().min(36)]),
-                neural_load: 0.01, // near-zero load on cache hit
-                last_evolution: "KV_CACHE_TURBO".to_string(),
+                neural_load: 0.01,
+                last_evolution: "KV_CACHE_DASHMAP".to_string(),
                 thought_stream: vec![
-                    format!("[KV-CACHE] Query matched. Response served from cache."),
-                    format!("[GODSEYE] Zero chain cost. φ-decay intact."),
+                    "[KV-CACHE] DashMap hit. Zero chain cost.".to_string(),
+                    "[GODSEYE] phi-decay intact.".to_string(),
                     cached,
                 ],
             });
         }
-        drop(cache);
     }
+
+
+
 
     // [DAB_VARIABLE_PITCH] Measure percussion density → select processing depth.
     let dab = DABIndustries::new();
@@ -563,10 +563,7 @@ async fn handle_inquiry(
         QueryDepth::Deep      => 0.7,
         QueryDepth::Sovereign => 0.95,
     };
-    {
-        let mut cache = state.kv_cache.lock().await;
-        cache.insert(&query, response.clone(), importance);
-    }
+    state.kv_cache.insert(&query, response.clone(), importance);
 
     Json(CognitionState {
         current_objective: format!("INQUIRY[{}]: {}", depth.label(), query.chars().take(36).collect::<String>()),
@@ -1221,7 +1218,9 @@ async fn main() -> Result<()> {
 
     let nexus_id = std::env::var("COMPUTERNAME").unwrap_or_else(|_| "NEXUS_PRIME".to_string());
     let memory_path = nexus_root.join("monitor_logs").join("memory_store.json");
-    let memory = Arc::new(tokio::sync::RwLock::new(PersistentMemory::load(&memory_path)));
+    let memory = Arc::new(tokio::sync::RwLock::new(
+        PersistentMemory::load(&memory_path).unwrap_or_else(|_| PersistentMemory::new())
+    ));
     let hive = Arc::new(tokio::sync::RwLock::new(SovereignHive::new(&nexus_id)));
 
     let genesis_tag = Arc::new(RwLock::new("Sarah_Sovereign_Nexus_Gemini-Genesis".to_string()));
@@ -1245,7 +1244,7 @@ async fn main() -> Result<()> {
         hive,
         purity: Arc::new(tokio::sync::Mutex::new(101.0)),
         world_signal: Arc::new(tokio::sync::RwLock::new(Some("PLANETARY_PULSE: STABLE".to_string()))),
-        kv_cache: Arc::new(tokio::sync::Mutex::new(TurboQuantCache::new())),
+        kv_cache: Arc::new(TurboQuantCache::new()),
     };
 
     // [VOICE_IGNITION]
