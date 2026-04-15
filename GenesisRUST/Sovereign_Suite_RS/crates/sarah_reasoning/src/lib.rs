@@ -7,6 +7,7 @@ use serde::{Deserialize, Serialize};
 use theory_lab::{TheoryLab, TruthPillars};
 use sovereign_constants::RECOVERY_DENSITY_THRESHOLD;
 use sovereign_coder::{SovereignCoder, EvolutionDirective};
+use dab_industries::DABModel;
 
 /// SARAH REASONING ENGINE (GSK v24.2) - QUANTUM CONSENSUS SUBSTRATE
 /// Purpose: Neural Democracy & 103% Quantum Purity
@@ -81,7 +82,11 @@ impl HiveAssembly {
     }
 
     async fn deliberate(&self, anomaly: AnomalyReport) -> Result<()> {
-        println!("\x1b[96m[Hive Deliberation]\x1b[0m Pulsing 209 Observers for Anomaly at Pulse {}", anomaly.pulse_count);
+        // Identify lead DAB archetype for this deliberation round.
+        let pulse_mod = anomaly.pulse_count % DABModel::all().len() as u64;
+        let lead_model = DABModel::all()[pulse_mod as usize];
+        println!("\x1b[96m[Hive Deliberation]\x1b[0m Lead Archetype: {} | Pulsing 209 Observers for Anomaly at Pulse {}",
+                 lead_model.tag(), anomaly.pulse_count);
 
         let mut agreement_count = 0;
         let mut total_density = 0.0;
@@ -95,9 +100,17 @@ impl HiveAssembly {
         if sarah_density > RECOVERY_DENSITY_THRESHOLD { agreement_count += 10; }
 
         // 2. Project through the 209 Latent Observers (v001-v209)
+        // Every 10th observer is tagged with a DAB model archetype for cadence-weighted scoring.
+        let dab_models = DABModel::all();
         for i in 1..=self.observer_count {
-            let context_tag = format!("BRAIN_V{:03}", i);
-            let p = self.build_pillars(&anomaly, &context_tag);
+            // Cycle through DAB model archetypes — one per 10 observers.
+            let dab_tag = if i % 10 == 0 {
+                let model = dab_models[(i / 10 - 1) % dab_models.len()];
+                format!("DAB_{}", model.tag().to_uppercase().replace(' ', "_"))
+            } else {
+                format!("BRAIN_V{:03}", i)
+            };
+            let p = self.build_pillars(&anomaly, &dab_tag);
             let d = self.theory_lab.weigh_truth(&p);
             total_density += d * other_weight;
             if d > RECOVERY_DENSITY_THRESHOLD { agreement_count += 1; }

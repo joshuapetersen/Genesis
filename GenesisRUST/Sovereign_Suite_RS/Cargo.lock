@@ -2113,6 +2113,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "dab_industries"
+version = "0.1.0"
+
+[[package]]
 name = "dashmap"
 version = "5.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3601,6 +3605,7 @@ dependencies = [
  "PersistentMemory",
  "anyhow",
  "chrono",
+ "dab_industries",
  "hex",
  "rayon",
  "serde",
@@ -3927,6 +3932,7 @@ dependencies = [
  "chrono",
  "colored",
  "core_affinity",
+ "dab_industries",
  "dashmap",
  "futures",
  "futures-util",

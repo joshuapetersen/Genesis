@@ -72,6 +72,7 @@ members = [
     "crates/sovereign_leaderboard",
     "crates/sovereign_voice",
     "crates/sovereign_swarm_dispatcher", "crates/sovereign_hdc", "crates/sovereign_hive",
+    "crates/dab_industries",
 ]
 
 resolver = "2"

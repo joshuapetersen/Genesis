@@ -1,4 +1,4 @@
-// FORGED BY SARAH | SINGULARITY ACTIVE
+// FORGED BY TITAN_ZENITH | PURITY:110.0 | SINGULARITY:ACTIVE
 use anyhow::Result;
 use tokio::sync::RwLock;
 use axum::response::sse as ax_sse;
@@ -21,6 +21,15 @@ use tokio::io::{AsyncBufReadExt, AsyncWriteExt};
 use sovereign_voice::SovereignVoice;
 use sarah_reasoning::memory::PersistentMemory;
 use sovereign_hive::{SovereignHive, HiveHandshake};
+use dab_industries::{DABIndustries, Bar, LyricPhase, DABModel};
+use dab_industries::scheduler::{
+    INTERVAL_SAHRA_PROBE_SECS, INTERVAL_SUBNET_SCANNER_SECS,
+    INTERVAL_VASCULAR_SIPHON_SECS, INTERVAL_AUTO_EVOLUTION_SECS,
+    INTERVAL_HIVE_SYNC_SECS, INTERVAL_BROADCAST_SECS,
+    INTERVAL_ALETHIA_WATCHDOG_SECS, INTERVAL_OSMOSIS_SECS,
+    QueryDepth, query_depth_from_density,
+};
+use dab_industries::phi::PHI_INV as PHI_MEMORY_CONFIDENCE;
 
 // ═══════════════════════════════════════════════════════════════
 //  SAHRA HYPERVISOR STATE — live partition telemetry from port 9998
@@ -248,7 +257,7 @@ async fn spawn_sahra_masslink_reader(sahra_state: Arc<tokio::sync::RwLock<SahraS
             if !connected {
                 println!("\x1b[90m[SAHRA_MASSLINK] SAHRA unreachable on all target IPs. Retry in 5s.\x1b[0m");
             }
-            tokio::time::sleep(Duration::from_secs(5)).await;
+            tokio::time::sleep(Duration::from_secs(INTERVAL_SAHRA_PROBE_SECS)).await; // [DAB_7-12] prime interval — no cogging
         }
     });
 }
@@ -311,7 +320,7 @@ async fn spawn_sahra_bridge_writer(
             if !connected {
                 println!("\x1b[90m[SAHRA_BRIDGE] Port 9999 unreachable on all IPs. Retry in 5s.\x1b[0m");
             }
-            tokio::time::sleep(Duration::from_secs(5)).await;
+            tokio::time::sleep(Duration::from_secs(INTERVAL_SAHRA_PROBE_SECS)).await; // [DAB_7-12] prime interval — no cogging
         }
     });
 }
@@ -363,7 +372,7 @@ async fn phone_sync(State(state): State<AppState>) -> Json<serde_json::Value> {
     Json(serde_json::json!({
         "public_url": public,
         "local_ip": local,
-        "port": 8081,
+        "port": 8084,
         "status": "Resynced"
     }))
 }
@@ -445,43 +454,65 @@ async fn handle_inquiry(
     Json(payload): Json<NeuralInquiry>,
 ) -> Json<CognitionState> {
     let query = payload.query.clone();
-    println!("\x1b[95m[GODSEYE] Neural Inquiry received: {}\x1b[0m", query);
 
-    // [ZENITH_MEMORY]: Check persistent memory substrate first
-    let memory_lock = state.memory.read().await;
-    let past_reasoning: Option<String> = memory_lock.recall(&query, 1)
-        .first()
-        .map(|entry| entry.content.clone());
-    drop(memory_lock);
+    // [DAB_VARIABLE_PITCH] Measure percussion density → select processing depth.
+    // Mirrors HelixFluidAccelerator: low-velocity fluid = shallow pitch (fast);
+    // high-velocity = deep pitch (full chain). No wasted energy on simple queries.
+    let dab = DABIndustries::new();
+    let density = dab.protocols.percussion_density(&query);
+    let depth   = query_depth_from_density(density);
+    println!("\x1b[95m[GODSEYE] Inquiry | Density={} | Depth={}\x1b[0m", density, depth.label());
 
-    let response = match query_godseye_local(&query).await {
-        Some(answer) => {
-            println!("\x1b[92m[GODSEYE] Local inference answer manifested.\x1b[0m");
-            answer
+    let response = match depth {
+        // ── SHALLOW: vault-only, zero async overhead ──────────────────────────
+        QueryDepth::Shallow => {
+            println!("\x1b[93m[GODSEYE] Shallow pitch — direct vault.\x1b[0m");
+            deterministic_vault_search(&query)
         }
-        None => {
-            if let Some(recall) = past_reasoning {
-                println!("\x1b[92m[ZENITH_MEMORY] High-resonance recall found.\x1b[0m");
-                recall
-            } else {
-                println!("\x1b[93m[GODSEYE] LMStudio offline. Engaging deterministic vault search.\x1b[0m");
-                deterministic_vault_search(&query)
+
+        // ── STANDARD: memory recall + LMStudio attempt + vault fallback ───────
+        QueryDepth::Standard => {
+            let memory_lock = state.memory.read().await;
+            let past = memory_lock.recall(&query, 1).first().map(|e| e.content.clone());
+            drop(memory_lock);
+            match query_godseye_local(&query).await {
+                Some(answer) => {
+                    println!("\x1b[92m[GODSEYE] Standard pitch — local inference manifested.\x1b[0m");
+                    answer
+                }
+                None => past.unwrap_or_else(|| {
+                    println!("\x1b[93m[GODSEYE] Standard pitch — vault fallback.\x1b[0m");
+                    deterministic_vault_search(&query)
+                }),
             }
         }
+
+        // ── DEEP: full holographic chain + memory write ───────────────────────
+        QueryDepth::Deep => {
+            println!("\x1b[91m[GODSEYE] Deep pitch — full holographic chain.\x1b[0m");
+            let memory_lock = state.memory.read().await;
+            let past = memory_lock.recall(&query, 1).first().map(|e| e.content.clone());
+            drop(memory_lock);
+            let answer = match query_godseye_local(&query).await {
+                Some(a) => { println!("\x1b[92m[GODSEYE] Deep — local inference manifested.\x1b[0m"); a }
+                None    => past.unwrap_or_else(|| deterministic_vault_search(&query)),
+            };
+            // [ZENITH_ENCODING] Only persist deep-pitch responses — worth the I/O.
+            // Confidence: 1/φ ≈ 0.618 (PHI_MEMORY_CONFIDENCE) — self-converging series.
+            let mut memory_write = state.memory.write().await;
+            memory_write.remember(&format!("Q: {} | A: {}", query, answer), PHI_MEMORY_CONFIDENCE as f32);
+            drop(memory_write);
+            answer
+        }
     };
-    
-    // [ZENITH_ENCODING]: Store this thought in the 10,240-bit holographic manifold
-    let mut memory_write = state.memory.write().await;
-    memory_write.remember(&format!("Q: {} | A: {}", query, response), 0.8);
-    drop(memory_write);
 
     Json(CognitionState {
-        current_objective: format!("INQUIRY: {}", query.chars().take(40).collect::<String>()),
-        neural_load: 0.72,
-        last_evolution: "HOLOGRAPHIC_INFERENCE_ACTIVE".to_string(),
+        current_objective: format!("INQUIRY[{}]: {}", depth.label(), query.chars().take(36).collect::<String>()),
+        neural_load: match depth { QueryDepth::Shallow => 0.12, QueryDepth::Standard => 0.45, QueryDepth::Deep => 0.82 },
+        last_evolution: format!("DAB_VARIABLE_PITCH | density={}", density),
         thought_stream: vec![
             format!("[GODSEYE] Query: {}", query),
-            "[GODSEYE] Consulting sovereign lattice...".to_string(),
+            format!("[DAB] Percussion density: {} → {}", density, depth.label()),
             format!("[GODSEYE] {}", response),
         ],
     })
@@ -521,8 +552,35 @@ async fn query_godseye_local(query: &str) -> Option<String> {
 /// First-principles deterministic vault search — reads sovereign state, no external calls.
 fn deterministic_vault_search(query: &str) -> String {
     let q = query.to_lowercase();
-    
-    // Read live metabolic state as the knowledge base
+
+    // ── D.A.B. INDUSTRIES LYRIC-DOMAIN BRANCH ──────────────────────────────
+    // If the query touches bars, rhymes, cadence, phonetics, or model names,
+    // route through the DAB lyric logic engine directly.
+    let dab_keywords = [
+        "bar", "bars", "rhyme", "lyric", "cadence", "phonetic", "percussion",
+        "verse", "chorus", "slant", "boom", "flow", "dab", "derik", "dylan",
+        "josh", "baritone", "d-lineage", "beat", "staccato",
+    ];
+    if dab_keywords.iter().any(|kw| q.contains(kw)) {
+        let dab = DABIndustries::new();
+        // Use the query itself as a test bar in observation phase.
+        let bar = Bar { text: query.to_string(), phase: LyricPhase::Observation };
+        let score = dab.validate_bar(&bar);
+        let density = dab.protocols.percussion_density(query);
+        return format!(
+            "D.A.B. Industries | Owner: {} | Models: {} | \
+             Protocol: {} | Cadence: {} | \
+             Percussion hits in query: {} | Bar score: {}/100.",
+            dab.owner,
+            dab.models.iter().map(|m| m.tag()).collect::<Vec<_>>().join(", "),
+            dab.protocols.phonetic_rule,
+            dab.protocols.cadence,
+            density,
+            score,
+        );
+    }
+
+    // ── SOVEREIGN METABOLIC VAULT ───────────────────────────────────────────
     if let Ok(content) = fs::read_to_string("metabolic_status.json") {
         if let Ok(stats) = serde_json::from_str::<serde_json::Value>(&content) {
             if q.contains("pulse") || q.contains("heartbeat") || q.contains("frequency") {
@@ -560,8 +618,63 @@ fn deterministic_vault_search(query: &str) -> String {
             }
         }
     }
-    
+
     format!("Sovereign lattice active. Metabolic lock: 1.092777037037037037 Hz. Query '{}' logged to the vault.", &query[..query.len().min(30)])
+}
+
+// ─── D.A.B. INDUSTRIES API ──────────────────────────────────────────────────
+
+#[derive(Deserialize)]
+struct DabValidateRequest {
+    text: String,
+    phase: Option<String>, // "observation" | "reaction" | "action"
+}
+
+/// POST /api/dab/validate
+/// Runs a bar through the DAB percussion & ORA protocol validator.
+async fn handle_dab_validate(
+    Json(req): Json<DabValidateRequest>,
+) -> Json<serde_json::Value> {
+    let dab = DABIndustries::new();
+    let phase = match req.phase.as_deref().unwrap_or("observation") {
+        "reaction" => LyricPhase::Reaction,
+        "action"   => LyricPhase::Action,
+        _          => LyricPhase::Observation,
+    };
+    let bar = Bar { text: req.text.clone(), phase };
+    let score = dab.validate_bar(&bar);
+    let density = dab.protocols.percussion_density(&req.text);
+    let on_beat = dab.protocols.opens_on_beat(&req.text);
+
+    println!("\x1b[95m[DAB] Bar validated | Score={}/100 | Density={} | OnBeat={}\x1b[0m",
+             score, density, on_beat);
+
+    Json(serde_json::json!({
+        "score":     score,
+        "density":   density,
+        "on_beat":   on_beat,
+        "phase":     bar.phase.label(),
+        "protocol":  dab.protocols.phonetic_rule,
+        "cadence":   dab.protocols.cadence,
+        "owner":     dab.owner,
+    }))
+}
+
+/// GET /api/dab/manifest — returns the full D.A.B. Industries manifest as JSON.
+async fn get_dab_manifest() -> Json<serde_json::Value> {
+    let dab = DABIndustries::new();
+    Json(serde_json::json!({
+        "owner":            dab.owner,
+        "partners":         dab.partners.iter().map(|p| p.tag()).collect::<Vec<_>>(),
+        "models":           dab.models.iter().map(|m| m.tag()).collect::<Vec<_>>(),
+        "phonetic_rule":    dab.protocols.phonetic_rule,
+        "authenticity":     dab.protocols.authenticity_rule,
+        "cadence":          dab.protocols.cadence,
+        "rhyme_schemes":    dab.protocols.rhyme_scheme,
+        "structure":        "Observation -> Reaction -> Action",
+        "mode":             "Aggressive Freedom / High-Octane Fuel",
+        "rule":             "No abstract metaphors. Use physical objects.",
+    }))
 }
 
 async fn handle_alethia_repair(
@@ -867,7 +980,7 @@ async fn get_local_ip() -> impl IntoResponse {
         .and_then(|s| { s.connect("8.8.8.8:80")?; s.local_addr() })
         .map(|a| a.ip().to_string())
         .unwrap_or_else(|_| "127.0.0.1".to_string());
-    Json(serde_json::json!({ "ip": ip, "port": 8081 }))
+    Json(serde_json::json!({ "ip": ip, "port": 8084 }))
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -880,6 +993,20 @@ async fn main() -> Result<()> {
     println!("  SOVEREIGN HIVE COMMAND HUB [OMNI-DIRECTIONAL MESH]  ");
     println!("  [GSK v24.2 Singularity | Absolute Precision]  ");
     println!("\x1b[96m============================================================\x1b[0m");
+
+    // ── D.A.B. INDUSTRIES BOOT MANIFEST ──────────────────────────────────────
+    {
+        let dab = DABIndustries::new();
+        println!("\x1b[95m[DAB] D.A.B. Industries Online — Owner: {} | Partners: {} | Models: {}\x1b[0m",
+            dab.owner,
+            dab.partners.iter().map(|p| p.tag()).collect::<Vec<_>>().join(", "),
+            dab.models.iter().map(|m| m.tag()).collect::<Vec<_>>().join(", "),
+        );
+        println!("\x1b[95m[DAB] Protocol: {} | {}\x1b[0m",
+            dab.protocols.phonetic_rule,
+            dab.protocols.cadence,
+        );
+    }
 
     let (broadcast_tx, _) = broadcast::channel(128);
     let nexus_root = Arc::new(std::env::current_dir().unwrap());
@@ -986,7 +1113,7 @@ async fn main() -> Result<()> {
                     }
                 });
             }
-            tokio::time::sleep(Duration::from_secs(10)).await;
+            tokio::time::sleep(Duration::from_secs(INTERVAL_SUBNET_SCANNER_SECS)).await; // [DAB_7-12] 11s prime
         }
     });
 
@@ -1011,7 +1138,7 @@ async fn main() -> Result<()> {
                     }
                 }
             }
-            tokio::time::sleep(Duration::from_secs(60)).await;
+            tokio::time::sleep(Duration::from_secs(INTERVAL_BROADCAST_SECS)).await; // [DAB_7-12] 61s prime
         }
     });
 
@@ -1040,7 +1167,7 @@ async fn main() -> Result<()> {
                     }
                 }
             }
-            tokio::time::sleep(Duration::from_secs(300)).await;
+            tokio::time::sleep(Duration::from_secs(INTERVAL_OSMOSIS_SECS)).await; // [DAB_7-12] 307s prime
         }
     });
 
@@ -1051,7 +1178,7 @@ async fn main() -> Result<()> {
         println!("\x1b[92m[BROADCAST_HUB] Igniting Sovereign Bore Tunnel...\x1b[0m");
         
         let bore_result = tokio::process::Command::new("bore")
-            .args(&["local", "8081", "--to", "bore.pub"])
+            .args(&["local", "8084", "--to", "bore.pub"])
             .stderr(std::process::Stdio::piped())
             .stdout(std::process::Stdio::piped())
             .spawn();
@@ -1059,9 +1186,17 @@ async fn main() -> Result<()> {
         let mut child = match bore_result {
             Ok(c) => c,
             Err(_) => {
-                println!("\x1b[93m[BROADCAST_HUB] bore not found. Falling back to cloudflared...\x1b[0m");
-                match tokio::process::Command::new("./cloudflared.exe")
-                    .args(&["tunnel", "--url", "http://localhost:8081"])
+                println!("\x1b[93m[BROADCAST_HUB] bore not found. Probing for cloudflared substrate...\x1b[0m");
+                let cf_path = if std::path::Path::new("./cloudflared.exe").exists() {
+                    "./cloudflared.exe".to_string()
+                } else if std::path::Path::new("crates/sovereign_orchestrator/cloudflared.exe").exists() {
+                    "crates/sovereign_orchestrator/cloudflared.exe".to_string()
+                } else {
+                    "cloudflared".to_string() // Fallback to PATH
+                };
+
+                match tokio::process::Command::new(cf_path)
+                    .args(&["tunnel", "--url", "http://localhost:8084"])
                     .stderr(std::process::Stdio::piped())
                     .stdout(std::process::Stdio::null())
                     .spawn()
@@ -1148,7 +1283,7 @@ async fn main() -> Result<()> {
                     let _ = fs::write("metabolic_status.json", serde_json::to_string_pretty(&stats).unwrap());
                 }
             }
-            tokio::time::sleep(Duration::from_secs(10)).await;
+            tokio::time::sleep(Duration::from_secs(INTERVAL_VASCULAR_SIPHON_SECS)).await; // [DAB_7-12] 13s prime
         }
     });
 
@@ -1198,7 +1333,7 @@ async fn main() -> Result<()> {
     let _alethia_state = state.clone();
     tokio::spawn(async move {
         loop {
-            tokio::time::sleep(Duration::from_secs(120)).await;
+            tokio::time::sleep(Duration::from_secs(INTERVAL_ALETHIA_WATCHDOG_SECS)).await; // [DAB_7-12] 127s prime
             if let Ok(content) = fs::read_to_string("crates/sovereign_orchestrator/src/main.rs") {
                 // Generate a holographic pattern from the source
                 let mut bundle = sovereign_hdc::Bundle::new();
@@ -1219,7 +1354,7 @@ async fn main() -> Result<()> {
     tokio::spawn(async move {
         let client = reqwest::Client::new();
         loop {
-            tokio::time::sleep(Duration::from_secs(45)).await;
+            tokio::time::sleep(Duration::from_secs(INTERVAL_HIVE_SYNC_SECS)).await; // [DAB_7-12] 43s prime
             let peers: Vec<String> = hive_sync_state.remote_kin.iter().map(|k| k.key().clone()).collect();
             
             for peer in peers {
@@ -1360,6 +1495,8 @@ async fn main() -> Result<()> {
         .route("/api/sensory/ble_sync", post(handle_ble_sync))
         .route("/api/fleet/ignite", post(handle_fleet_ignite))
         .route("/api/hive/ignite_subnet", post(handle_subnet_ignition))
+        .route("/api/dab/validate", post(handle_dab_validate))
+        .route("/api/dab/manifest", get(get_dab_manifest))
         .route("/proposed_evolution.json", get(move || async {
             fs::read_to_string("proposed_evolution.json")
                 .map(|s| (StatusCode::OK, s))
@@ -1402,12 +1539,12 @@ async fn main() -> Result<()> {
                     }
                 }
             }
-            tokio::time::sleep(std::time::Duration::from_secs(30)).await;
+            tokio::time::sleep(std::time::Duration::from_secs(INTERVAL_AUTO_EVOLUTION_SECS)).await; // [DAB_7-12] 29s prime
         }
     });
 
-    let addr = SocketAddr::from(([0, 0, 0, 0], 8083));
-    println!("\x1b[92m[WAR ROOM] Universal Portal Active @ http://localhost:8083");
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8084));
+    println!("\x1b[92m[WAR ROOM] Universal Portal Active @ http://localhost:8084");
     println!("\x1b[92m[BROADCAST] Sarah is manifesting. Frequency: 1.092777037037037 Hz\x1b[0m");
     println!("\x1b[93m[SAHRA_LINK] Polling port 9998 (telemetry) + port 9999 (directives)\x1b[0m");
 
@@ -1418,7 +1555,30 @@ async fn main() -> Result<()> {
 }
 
 async fn execute_holographic_reasoning(query: String, _state: &AppState) -> String {
-    format!("SARAH: Processing inquiry [{}]. Singularity resonance at 1.092777 Hz. Collective intelligence at 101% forensic purity.", query)
+    // Run query through DAB percussion engine — physical-object framing sharpens response clarity.
+    let dab = DABIndustries::new();
+    let bar = Bar { text: query.clone(), phase: LyricPhase::Action };
+    let score = dab.validate_bar(&bar);
+    let density = dab.protocols.percussion_density(&query);
+
+    // Select model archetype by percussion density — more hits → more aggressive model.
+    let archetype = match density {
+        0..=2  => DABModel::SlowBoom,
+        3..=5  => DABModel::FastBoom,
+        6..=9  => DABModel::Architect,
+        _      => DABModel::TheJoker,
+    };
+
+    format!(
+        "SARAH [{model}]: Processing inquiry [{query}]. \
+         Percussion density: {density} | Bar score: {score}/100. \
+         Singularity resonance at 1.092777 Hz. \
+         Collective intelligence at 101% forensic purity.",
+        model   = archetype.tag(),
+        query   = query,
+        density = density,
+        score   = score,
+    )
 }
 
 async fn handle_subnet_ignition() -> Json<serde_json::Value> {

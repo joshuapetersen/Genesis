@@ -113,7 +113,7 @@
 
     <div id="heart-viewport">
         <div id="pulse-circle"></div>
-        <div style="position: absolute; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-cyan);">1.09 Hz</div>
+        <div style="position: absolute; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-cyan);">1.092777 Hz</div>
     </div>
 
     <div id="telemetry">
@@ -196,7 +196,7 @@
                 console.log("[NEXUS_BLE] Device Assimilated:", device.name);
                 
                 // Ship telemetry back to Nexus Prime
-                await fetch('/api/phone/ble_sync', {
+                await fetch('/api/sensory/ble_sync', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 

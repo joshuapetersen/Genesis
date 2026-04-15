@@ -28,3 +28,4 @@ chrono = "0.4"
 winapi = { version = "0.3", features = ["processthreadsapi", "winbase"] }
 core_affinity = "0.8"
 uuid = { version = "1.0", features = ["v4"] }
+dab_industries = { path = "../dab_industries" }

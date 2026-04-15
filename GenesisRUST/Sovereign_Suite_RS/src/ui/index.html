@@ -96,11 +96,11 @@
                         <div class="value" id="val-purity">330%</div>
                     </div>
                     
-                    <div class="qr-panel panel">
+                    <div class="qr-panel panel highlighted">
                         <label>PHONE_ACCESS</label>
+                        <button class="btn-sync forge-btn" onclick="syncPhone()" style="margin-bottom: 10px;">GENERATION_SYNC_CONDUIT</button>
                         <div id="qr-code-display"></div>
                         <div class="qr-url-label" id="val-qr-url">Detecting...</div>
-                        <button class="btn-sync" onclick="syncPhone()">Sync Link</button>
                         <div id="voice-indicator" class="status-badge" style="margin-top: 10px; border-color: var(--neon-purple); color: var(--neon-purple); font-size: 0.55rem; width: 100%; text-align: center;">
                             HEADSET_BRIDGE: ONLINE
                         </div>
@@ -146,6 +146,35 @@
                             <option value="STATUS_REPORT">STATUS_REPORT</option>
                         </select>
                         <button onclick="sendSahraDirective()" id="sahra-directive-btn">SEND_DIRECTIVE</button>
+                    </div>
+                </div>
+                </div>
+                <div class="dab-panel panel highlighted" id="dab-panel">
+                    <label>D.A.B. INDUSTRIES // BAR_VALIDATOR</label>
+                    <div class="dab-meta" id="dab-owner-line">Owner: — | Models: —</div>
+                    <div class="dab-phase-selector">
+                        <button class="dab-phase-btn active" data-phase="observation" onclick="dabSetPhase('observation')">OBS</button>
+                        <button class="dab-phase-btn" data-phase="reaction" onclick="dabSetPhase('reaction')">REACT</button>
+                        <button class="dab-phase-btn" data-phase="action" onclick="dabSetPhase('action')">ACTION</button>
+                    </div>
+                    <textarea id="dab-bar-input" class="dab-input" rows="3" placeholder="Drop a bar..."></textarea>
+                    <button class="forge-btn" onclick="dabValidate()">VALIDATE_BAR</button>
+                    <div class="dab-result" id="dab-result">
+                        <div class="dab-score-row">
+                            <span>SCORE</span><span id="dab-score" class="value-highlight">—</span>
+                        </div>
+                        <div class="dab-score-row">
+                            <span>PERCUSSION</span><span id="dab-density" class="value-highlight">—</span>
+                        </div>
+                        <div class="dab-score-row">
+                            <span>ON_BEAT</span><span id="dab-onbeat" class="value-highlight">—</span>
+                        </div>
+                        <div class="dab-score-row">
+                            <span>PHASE</span><span id="dab-phase-out" class="value-highlight">—</span>
+                        </div>
+                    </div>
+                    <div id="dab-score-bar-wrap" style="margin-top:6px;height:6px;background:rgba(0,255,255,0.1);border-radius:3px;">
+                        <div id="dab-score-bar" style="height:6px;width:0%;background:var(--neon-cyan);border-radius:3px;transition:width 0.4s ease;"></div>
                     </div>
                 </div>
             </div>

@@ -602,9 +602,9 @@ class VolumetricMonitor {
             }
             
             // Manifest QR Code for mobile sync
-            if (!this.qrGenerated && window.QRCode) {
+            if ((!this.qrGenerated || this.lastPublicUrl !== stats.public_url) && window.QRCode) {
                 const qrContainer = document.getElementById('qr-code-display');
-                if (qrContainer) {
+                if (qrContainer && stats.public_url) {
                     qrContainer.innerHTML = '';
                     new QRCode(qrContainer, {
                         text: stats.public_url.trim() + "/phone",
@@ -629,15 +629,17 @@ class VolumetricMonitor {
                 this.log(`[BROADCAST] Sovereign Gateway Manifested: ${cleanUrl}`);
                 this.speak(`Universal broadcast is live. Global mesh active.`);
                 this.lastPublicUrl = stats.public_url;
+                // [CONDUIT_SYNC] Force refresh of the QR to the new global path
+                this.generateQR(stats.public_url);
             }
         } else if (broadcastStatusEl) {
             broadcastStatusEl.innerText = "LOCAL_MESH_ONLY";
             broadcastStatusEl.className = "value-highlight status-local";
         }
 
-        if (stats.purity >= 101 && this.statusEl) {
+        if (stats.purity >= 110 && this.statusEl) {
             this.statusEl.style.color = '#ff00ff';
-            this.statusEl.style.textShadow = '0 0 10px #ff00ff';
+            this.statusEl.style.textShadow = '0 0 15px #ff00ff, 0 0 30px rgba(255, 0, 255, 0.4)';
         }
 
         // World Signal
@@ -672,16 +674,21 @@ class VolumetricMonitor {
     }
 
     initPhoneLink() {
-        // Fetch LAN IP from the server — no data leaves your network
+        // Fetch LAN IP from the server
         fetch('/api/local-ip')
             .then(r => r.json())
             .then(data => {
                 const url = `http://${data.ip}:${data.port}`;
-                this.generateQR(url);
+                // Only generate local QR if global is not yet manifested
+                if (!this.lastPublicUrl) {
+                    this.generateQR(url);
+                    this.log(`[CONDUIT] Local Bridge Manifested: ${data.ip}`);
+                }
             })
             .catch(() => {
-                // Fallback: use current hostname if fetch fails
-                this.generateQR(`http://${window.location.hostname}:8081`);
+                if (!this.lastPublicUrl) {
+                    this.generateQR(`http://${window.location.hostname}:8084`);
+                }
             });
     }
 
@@ -1005,18 +1012,6 @@ class VolumetricMonitor {
             this.renderer.setSize(container.clientWidth, container.clientHeight);
         }
     }
-}
-
-// Global UI Functions
-let currentMonitor = null;
-
-window.submitPermission = (status) => {
-    if (currentMonitor) currentMonitor.submitPermission(status);
-};
-
-window.closeForge = () => {
-    if (currentMonitor) currentMonitor.closeForge();
-};
 
     handleGlobalPulse(stats) {
         // [PROPAGATION_METRICS]
@@ -1082,7 +1077,16 @@ window.closeForge = () => {
     }
 }
 
-let currentMonitor;
+// Global UI Functions
+let currentMonitor = null;
+
+window.submitPermission = (status) => {
+    if (currentMonitor) currentMonitor.submitPermission(status);
+};
+
+window.closeForge = () => {
+    if (currentMonitor) currentMonitor.closeForge();
+};
 
 window.downloadSeeder = () => {
     if (currentMonitor) currentMonitor.downloadSeeder();
@@ -1122,4 +1126,83 @@ window.addEventListener('load', () => {
             }
         }
     });
+
+    // Load DAB manifest on boot
+    dabLoadManifest();
 });
+
+// ═══════════════════════════════════════════════════════════════
+//  D.A.B. INDUSTRIES // BAR VALIDATOR
+// ═══════════════════════════════════════════════════════════════
+
+let _dabPhase = 'observation';
+
+function dabSetPhase(phase) {
+    _dabPhase = phase;
+    document.querySelectorAll('.dab-phase-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.phase === phase);
+    });
+}
+
+async function dabLoadManifest() {
+    try {
+        const res = await fetch('/api/dab/manifest');
+        if (!res.ok) return;
+        const m = await res.json();
+        const el = document.getElementById('dab-owner-line');
+        if (el) {
+            el.textContent = `${m.owner} | ${(m.partners || []).join(' · ')} | ${(m.models || []).join(', ')}`;
+        }
+    } catch (e) {}
+}
+
+async function dabValidate() {
+    const input = document.getElementById('dab-bar-input');
+    const text = (input && input.value) ? input.value.trim() : '';
+    if (!text) return;
+
+    // Optimistic UI
+    document.getElementById('dab-score').textContent    = '…';
+    document.getElementById('dab-density').textContent  = '…';
+    document.getElementById('dab-onbeat').textContent   = '…';
+    document.getElementById('dab-phase-out').textContent = _dabPhase.toUpperCase();
+
+    try {
+        const res = await fetch('/api/dab/validate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text, phase: _dabPhase })
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+
+        const scoreEl   = document.getElementById('dab-score');
+        const densityEl = document.getElementById('dab-density');
+        const onbeatEl  = document.getElementById('dab-onbeat');
+        const phaseEl   = document.getElementById('dab-phase-out');
+        const barEl     = document.getElementById('dab-score-bar');
+
+        if (scoreEl)   scoreEl.textContent   = `${data.score}/100`;
+        if (densityEl) densityEl.textContent = `${data.density} hits`;
+        if (onbeatEl)  onbeatEl.textContent  = data.on_beat ? '✓ YES' : '✗ NO';
+        if (phaseEl)   phaseEl.textContent   = data.phase || _dabPhase.toUpperCase();
+        if (barEl)     barEl.style.width     = `${data.score}%`;
+
+        // Color the bar by score tier
+        if (barEl) {
+            if (data.score >= 80)      barEl.style.background = '#bc13fe'; // purple — elite
+            else if (data.score >= 50) barEl.style.background = '#00f2ff'; // cyan — solid
+            else                       barEl.style.background = '#ffd600'; // yellow — weak
+        }
+
+        if (currentMonitor) {
+            currentMonitor.log(`[DAB] Score=${data.score}/100 | Density=${data.density} | OnBeat=${data.on_beat}`);
+        }
+    } catch (e) {
+        if (currentMonitor) currentMonitor.log('[DAB] Validator fault — orchestrator offline?');
+    }
+}
+
+window.dabValidate   = dabValidate;
+window.dabSetPhase   = dabSetPhase;
+window.dabLoadManifest = dabLoadManifest;

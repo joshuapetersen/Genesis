@@ -1,0 +1,9 @@
+[package]
+name = "dab_industries"
+version = "0.1.0"
+edition = "2021"
+description = "D.A.B. Industries Core Framework — Lyric Logic Engine"
+authors = ["Derik | Josh | Dylan | Sarah"]
+
+[dependencies]
+# No external deps — pure first-principles Rust

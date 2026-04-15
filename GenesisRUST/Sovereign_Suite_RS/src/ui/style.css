@@ -38,8 +38,9 @@ body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: 'Space Grotesk', sans-serif;
-    overflow: hidden;
-    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
     width: 100vw;
 }
 
@@ -51,6 +52,7 @@ body {
     z-index: 10;
     padding: 1rem;
     pointer-events: none;
+    overflow-y: auto;
 }
 
 header {
@@ -132,7 +134,7 @@ main {
     position: relative;
     display: flex;
     gap: 1rem;
-    overflow: hidden;
+    min-height: 0;
 }
 
 .primary-stack {
@@ -148,7 +150,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    overflow-y: auto;
     padding-right: 0.5rem;
 }
 
@@ -605,36 +606,78 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 16px;
+    gap: 12px;
+    padding: 20px;
     margin-top: 10px;
-    border: 1px solid rgba(0, 242, 255, 0.3);
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 242, 255, 0.25);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(4, 12, 30, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+    backdrop-filter: blur(25px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 242, 255, 0.05);
+    position: relative;
+    overflow: hidden;
 }
+
 .qr-panel label {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: var(--cyan);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: var(--neon-blue);
     text-transform: uppercase;
-    opacity: 0.8;
+    opacity: 0.9;
+    text-shadow: 0 0 8px rgba(0, 242, 255, 0.4);
 }
+
 #qr-code-display {
-    padding: 8px;
+    padding: 12px;
     background: #000;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 242, 255, 0.5);
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+    border-radius: 12px;
+    border: 2px solid rgba(0, 242, 255, 0.4);
+    box-shadow: 0 0 35px rgba(0, 242, 255, 0.25);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
-#qr-code-display canvas, #qr-code-display img { display: block; }
+
+#qr-code-display:hover {
+    transform: scale(1.08) rotate(1deg);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 50px rgba(0, 242, 255, 0.5);
+}
+
+#qr-code-display::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue);
+    animation: qr-scan 3s infinite ease-in-out;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+@keyframes qr-scan {
+    0%, 100% { top: 5%; opacity: 0; }
+    50% { top: 95%; opacity: 0.8; }
+}
+
+#qr-code-display canvas, #qr-code-display img { 
+    display: block; 
+    border-radius: 4px;
+}
+
 .qr-url-label {
-    font-size: 0.55rem;
-    color: rgba(0, 242, 255, 0.6);
-    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    color: var(--accent-color);
+    font-family: 'JetBrains Mono', monospace;
     text-align: center;
     word-break: break-all;
-    max-width: 180px;
+    max-width: 220px;
+    margin-top: 5px;
+    opacity: 0.7;
+    background: rgba(0, 242, 255, 0.08);
+    padding: 4px 10px;
+    border-radius: 4px;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -879,4 +922,88 @@ footer {
     background: var(--neon-blue);
     color: #000;
     box-shadow: 0 0 15px var(--neon-blue);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   D.A.B. INDUSTRIES // BAR VALIDATOR PANEL
+══════════════════════════════════════════════════════════════ */
+.dab-panel {
+    border-color: rgba(188, 19, 254, 0.5) !important;
+    box-shadow: 0 0 24px rgba(188, 19, 254, 0.15);
+}
+
+.dab-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.dab-phase-selector {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.dab-phase-btn {
+    flex: 1;
+    background: rgba(188, 19, 254, 0.08);
+    border: 1px solid rgba(188, 19, 254, 0.3);
+    color: rgba(188, 19, 254, 0.6);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dab-phase-btn.active,
+.dab-phase-btn:hover {
+    background: rgba(188, 19, 254, 0.25);
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+    box-shadow: 0 0 10px rgba(188, 19, 254, 0.3);
+}
+
+.dab-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(188, 19, 254, 0.25);
+    border-radius: 0.35rem;
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.7rem;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.dab-input:focus {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 12px rgba(188, 19, 254, 0.25);
+}
+
+.dab-result {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-top: 1px solid rgba(188, 19, 254, 0.2);
+    padding-top: 0.5rem;
+}
+
+.dab-score-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+}
+
+.dab-score-row span:first-child {
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.1em;
 }

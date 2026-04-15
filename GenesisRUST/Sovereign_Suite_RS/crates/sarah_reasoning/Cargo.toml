@@ -10,6 +10,7 @@ theory_lab = { path = "../TheoryLab" }
 PersistentMemory = { path = "../PersistentMemory" }
 sovereign_constants = { path = "../Sovereign_Constants" }
 sovereign_coder = { path = "../sovereign_coder" }
+dab_industries = { path = "../dab_industries" }
 
 tokio = { version = "1.0", features = ["full"] }
 chrono = "0.4"
