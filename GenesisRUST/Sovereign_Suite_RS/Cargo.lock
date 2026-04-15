@@ -2115,6 +2115,9 @@ dependencies = [
 [[package]]
 name = "dab_industries"
 version = "0.1.0"
+dependencies = [
+ "criterion",
+]
 
 [[package]]
 name = "dashmap"

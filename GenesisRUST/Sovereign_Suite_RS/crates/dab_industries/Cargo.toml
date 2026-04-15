@@ -7,3 +7,10 @@ authors = ["Derik | Josh | Dylan | Sarah"]
 
 [dependencies]
 # No external deps — pure first-principles Rust
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "dab_benchmark"
+harness = false

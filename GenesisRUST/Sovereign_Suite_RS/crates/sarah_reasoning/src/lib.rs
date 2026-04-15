@@ -214,3 +214,74 @@ impl HiveAssembly {
     }
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  PUBLIC ORCHESTRATOR API
+//  Called by sovereign_orchestrator on Sovereign-pitch queries.
+// ═══════════════════════════════════════════════════════════════
+
+/// Submit a raw query to the 209-observer Hive Assembly for deliberation.
+///
+/// The query string is wrapped into an AnomalyReport (synthetic pulse),
+/// run through the full deliberation chain, and the result is returned
+/// as a formatted consensus string — ready for orchestrator injection.
+///
+/// Returns `Ok((consensus_score, strategy, response))` on success.
+pub async fn consult(query: &str) -> Result<(f64, String, String)> {
+    let hive = HiveAssembly::new()?;
+
+    // Wrap the query as a synthetic AnomalyReport so the existing
+    // deliberation logic runs unchanged.
+    use std::time::{SystemTime, UNIX_EPOCH};
+    let pulse = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_secs();
+
+    let anomaly = AnomalyReport {
+        pulse_count: pulse,
+        drift: 0.0,
+        affected_crate: query.to_string(),
+        symptoms: vec![
+            format!("SOVEREIGN_QUERY: {}", query),
+            String::from("SOURCE: handle_inquiry"),
+            String::from("PITCH: Sovereign (density >= 8)"),
+        ],
+    };
+
+    // Run deliberation (no filesystem write in consult mode).
+    let dab_models = DABModel::all();
+    let mut agreement_count = 0;
+    let mut total_density = 0.0;
+    let sarah_weight = 10.0;
+
+    let pillars = hive.build_pillars(&anomaly, "SARAH_PRIMARY");
+    let sarah_density = hive.theory_lab.weigh_truth(&pillars);
+    total_density += sarah_density * sarah_weight;
+    if sarah_density > sovereign_constants::RECOVERY_DENSITY_THRESHOLD {
+        agreement_count += 10;
+    }
+
+    for i in 1..=hive.observer_count {
+        let model = dab_models[i % dab_models.len()];
+        let tag = format!("BRAIN_V{:03}", i);
+        let p = hive.build_pillars(&anomaly, &tag);
+        let d = hive.theory_lab.weigh_truth(&p);
+        total_density += d;
+        if d > sovereign_constants::RECOVERY_DENSITY_THRESHOLD {
+            agreement_count += 1;
+        }
+    }
+
+    let total_votes = (hive.observer_count as f64) + sarah_weight;
+    let consensus   = agreement_count as f64 / total_votes;
+    let density     = total_density / total_votes;
+    let strategy    = if consensus > 0.95 { "REPAIR" } else { "OBSERVE" }.to_string();
+
+    let response = format!(
+        "[HIVE CONSENSUS] {:.2}% agreement | Truth density: {:.8} | Strategy: {} | Query: {}",
+        consensus * 100.0, density, strategy, query
+    );
+
+    println!("\x1b[95m[Sarah Hive]\x1b[0m {}", response);
+    Ok((consensus, strategy, response))
+}
