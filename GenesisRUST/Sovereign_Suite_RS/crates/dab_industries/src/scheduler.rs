@@ -86,28 +86,36 @@ pub enum QueryDepth {
     /// Current standard behaviour.
     Standard,
 
-    /// Density 6+: full holographic reasoning chain.
-    /// LMStudio → memory recall → vault → memory write.
+    /// Density 6–7: full holographic reasoning chain.
+    /// LMStudio → memory recall → vault → memory write (1/φ confidence).
     Deep,
+
+    /// Density 8+ = floor(5φ): Sovereign Resonance tier.
+    /// Calls execute_holographic_reasoning directly (full DAB percussion chain).
+    /// Memory write confidence: 1 - 1/(5φ) ≈ 0.876 — strongest retention.
+    Sovereign,
 }
 
 impl QueryDepth {
     pub fn label(self) -> &'static str {
         match self {
-            Self::Shallow  => "SHALLOW (vault-only)",
-            Self::Standard => "STANDARD (vault + LMStudio)",
-            Self::Deep     => "DEEP (full holographic chain)",
+            Self::Shallow   => "SHALLOW (vault-only)",
+            Self::Standard  => "STANDARD (vault + LMStudio)",
+            Self::Deep      => "DEEP (full holographic chain)",
+            Self::Sovereign => "SOVEREIGN (5φ resonance — execute_holographic_reasoning)",
         }
     }
 }
 
 /// Map a percussion density value to the appropriate processing depth.
 /// Mirrors `HelixFluidAccelerator::helix_pitch = Variable`.
+/// Sovereign tier threshold = floor(5φ) = 8 (from phi::SOVEREIGN_DENSITY_THRESHOLD).
 pub fn query_depth_from_density(density: usize) -> QueryDepth {
     match density {
         0..=2 => QueryDepth::Shallow,
         3..=5 => QueryDepth::Standard,
-        _     => QueryDepth::Deep,
+        6..=7 => QueryDepth::Deep,
+        _     => QueryDepth::Sovereign, // ≥ 8 = floor(5φ) = Fibonacci(6)
     }
 }
 
@@ -213,8 +221,15 @@ mod tests {
     }
 
     #[test]
-    fn deep_for_high_density() {
+    fn deep_for_mid_high_density() {
         assert_eq!(query_depth_from_density(6), QueryDepth::Deep);
-        assert_eq!(query_depth_from_density(20), QueryDepth::Deep);
+        assert_eq!(query_depth_from_density(7), QueryDepth::Deep);
+    }
+
+    #[test]
+    fn sovereign_for_density_8_plus() {
+        // floor(5φ) = 8 — sovereign threshold
+        assert_eq!(query_depth_from_density(8),  QueryDepth::Sovereign);
+        assert_eq!(query_depth_from_density(20), QueryDepth::Sovereign);
     }
 }

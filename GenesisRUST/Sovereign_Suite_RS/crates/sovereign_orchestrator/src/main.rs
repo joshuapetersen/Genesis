@@ -30,6 +30,7 @@ use dab_industries::scheduler::{
     QueryDepth, query_depth_from_density,
 };
 use dab_industries::phi::PHI_INV as PHI_MEMORY_CONFIDENCE;
+use dab_industries::phi::SOVEREIGN_MEMORY_CONFIDENCE;
 
 // ═══════════════════════════════════════════════════════════════
 //  SAHRA HYPERVISOR STATE — live partition telemetry from port 9998
@@ -504,11 +505,30 @@ async fn handle_inquiry(
             drop(memory_write);
             answer
         }
+        // ── SOVEREIGN: density ≥ 8 = floor(5φ) ──────────────────────────────────
+        // Calls execute_holographic_reasoning — the full DAB percussion chain.
+        // Memory confidence: 1 - 1/(5φ) ≈ 0.876 (strongest retention).
+        QueryDepth::Sovereign => {
+            println!("\x1b[91m[GODSEYE] SOVEREIGN 5φ PITCH | density={} | Full holographic chain.\x1b[0m", density);
+            let answer = execute_holographic_reasoning(query.clone(), &state).await;
+            let mut memory_write = state.memory.write().await;
+            memory_write.remember(
+                &format!("Q: {} | A: {}", query, answer),
+                SOVEREIGN_MEMORY_CONFIDENCE as f32,
+            );
+            drop(memory_write);
+            answer
+        }
     };
 
     Json(CognitionState {
         current_objective: format!("INQUIRY[{}]: {}", depth.label(), query.chars().take(36).collect::<String>()),
-        neural_load: match depth { QueryDepth::Shallow => 0.12, QueryDepth::Standard => 0.45, QueryDepth::Deep => 0.82 },
+        neural_load: match depth {
+            QueryDepth::Shallow   => 0.12,
+            QueryDepth::Standard  => 0.45,
+            QueryDepth::Deep      => 0.82,
+            QueryDepth::Sovereign => SOVEREIGN_MEMORY_CONFIDENCE, // 0.876
+        },
         last_evolution: format!("DAB_VARIABLE_PITCH | density={}", density),
         thought_stream: vec![
             format!("[GODSEYE] Query: {}", query),

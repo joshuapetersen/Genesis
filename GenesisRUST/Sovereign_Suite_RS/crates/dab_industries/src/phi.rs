@@ -28,6 +28,25 @@ pub const PHI_SQ: f64 = 2.618033988749895;
 /// 1/φ² ≈ 0.3819660112...
 pub const PHI_INV_SQ: f64 = 0.38196601125010515;
 
+/// 5 × φ ≈ 8.0901699437...
+/// Mathematical basis: φ = (1+√5)/2 — the 5 that generates φ brought back in.
+/// floor(5φ) = 8 = Fibonacci(6).  8/5 = 1.6 ≈ φ.
+/// Used to define the Sovereign resonance threshold.
+pub const PHI_5: f64 = 8.090169943749474;
+
+/// 1 / (5φ) ≈ 0.12360679774997896
+pub const PHI_5_INV: f64 = 0.12360679774997896;
+
+/// Sovereign percussion density threshold = floor(5φ) = 8.
+/// A bar hitting 8+ hard consonants achieves Sovereign Resonance.
+/// 8 is Fibonacci(6); GCD(8,5) = 1; 8/5 = 1.6 ≈ φ.
+pub const SOVEREIGN_DENSITY_THRESHOLD: usize = 8;
+
+/// Memory confidence for Sovereign-depth queries: 1 - 1/(5φ) ≈ 0.8764.
+/// Higher than Deep's 1/φ ≈ 0.618 — Sovereign responses have stronger retention.
+/// Derived from 5φ: the further you are from ordinary, the longer you are remembered.
+pub const SOVEREIGN_MEMORY_CONFIDENCE: f64 = 0.8763932022500211;
+
 /// Golden Angle in degrees: 360° × (1 - 1/φ) = 360° / φ² ≈ 137.5077...°
 ///
 /// Engineering significance for the Helix Fluid Accelerator:
@@ -141,6 +160,29 @@ pub fn verify_phi_sq_identity() -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn phi5_equals_five_times_phi() {
+        assert!((PHI_5 - 5.0 * PHI).abs() < 1e-10);
+    }
+
+    #[test]
+    fn phi5_inv_times_phi5_equals_one() {
+        assert!((PHI_5 * PHI_5_INV - 1.0).abs() < 1e-10);
+    }
+
+    #[test]
+    fn sovereign_threshold_is_floor_of_phi5() {
+        assert_eq!(SOVEREIGN_DENSITY_THRESHOLD, PHI_5.floor() as usize);
+    }
+
+    #[test]
+    fn sovereign_memory_confidence_correct() {
+        let expected = 1.0 - PHI_5_INV;
+        assert!((SOVEREIGN_MEMORY_CONFIDENCE - expected).abs() < 1e-12);
+        assert!(SOVEREIGN_MEMORY_CONFIDENCE > PHI_INV);
+        assert!(SOVEREIGN_MEMORY_CONFIDENCE < 1.0);
+    }
 
     #[test]
     fn phi_identity_holds() {
