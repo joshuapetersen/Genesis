@@ -34,3 +34,4 @@ intelligence_amplifier  = { path = "../IntelligenceAmplifier" }
 ash_swarm               = { path = "../ash_swarm" }
 sovereign_constants     = { path = "../Sovereign_Constants" }
 theory_lab              = { path = "../TheoryLab" }
+sovereign_coder         = { path = "../sovereign_coder" }

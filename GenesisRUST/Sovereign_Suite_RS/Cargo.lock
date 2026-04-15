@@ -3953,6 +3953,7 @@ dependencies = [
  "sarah_reasoning",
  "serde",
  "serde_json",
+ "sovereign_coder",
  "sovereign_constants",
  "sovereign_hdc",
  "sovereign_hive",

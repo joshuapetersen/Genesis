@@ -37,6 +37,7 @@ use intelligence_amplifier::IntelligenceAmplifier;
 use ash_swarm::AshHealer;
 use sovereign_hdc::Hypervector;
 use theory_lab::TruthPillars;
+use sovereign_coder::{SovereignCoder, EvolutionDirective as CoderDirective};
 
 // ═══════════════════════════════════════════════════════════════
 //  SAHRA HYPERVISOR STATE — live partition telemetry from port 9998
@@ -128,8 +129,19 @@ struct SignalingMsg {
 
 #[derive(Deserialize)]
 struct EvolutionDirective {
-    source: String,
+    source:          String,
+    #[serde(default)]
+    pulse_count:     u64,
+    #[serde(default = "default_strategy")]
+    strategy:        String,
+    #[serde(default)]
+    target_path:     String,
+    #[serde(default)]
+    reasoning:       String,
+    #[serde(default)]
+    consensus_score: f64,
 }
+fn default_strategy() -> String { "REPAIR".to_string() }
 
 #[derive(Deserialize)]
 struct NeuralInquiry {
@@ -1110,13 +1122,47 @@ async fn handle_evolution(
     State(_state): State<AppState>,
     Json(payload): Json<EvolutionDirective>,
 ) -> impl IntoResponse {
-    // 1. Stage the evolution
+    println!("\x1b[95m[FORGE] Evolution directive received. Strategy: {} | Target: {}\x1b[0m",
+        payload.strategy, payload.target_path);
+
+    // Build coder directive from the incoming payload
+    let coder_dir = CoderDirective {
+        pulse_count:     payload.pulse_count,
+        strategy:        payload.strategy.clone(),
+        target_path:     payload.target_path.clone(),
+        reasoning:       payload.reasoning.clone(),
+        consensus_score: payload.consensus_score,
+    };
+
+    // [SOVEREIGN_CODER] — safe backup → validate → commit
+    match SovereignCoder::new() {
+        Ok(coder) => {
+            match coder.apply_self_modification(coder_dir).await {
+                Ok(()) => {
+                    println!("\x1b[92m[FORGE] SovereignCoder committed evolution. Resurrecting...\x1b[0m");
+                    tokio::spawn(async move {
+                        tokio::time::sleep(Duration::from_secs(1)).await;
+                        resurrect_singularly();
+                    });
+                    return (StatusCode::OK, "EVOLUTION_COMMITTED:CODER_APPLIED:RESURRECTING...");
+                }
+                Err(e) => {
+                    eprintln!("[FORGE] Coder apply_self_modification failed: {:?}", e);
+                    return (StatusCode::BAD_REQUEST, "EVOLUTION_FAULT:CODER_REJECTED");
+                }
+            }
+        }
+        Err(e) => {
+            eprintln!("[FORGE] SovereignCoder init failed: {:?}. Using fallback path.", e);
+        }
+    }
+
+    // [FALLBACK] legacy raw staging path
     let stage_path = "src/main.rs.staging";
     if fs::write(stage_path, &payload.source).is_err() {
         return (StatusCode::INTERNAL_SERVER_ERROR, "STAGING_FAULT");
     }
 
-    // 2. Structural Validation
     let check = Command::new("cargo")
         .arg("check")
         .stdout(Stdio::null())
@@ -1128,18 +1174,16 @@ async fn handle_evolution(
         return (StatusCode::BAD_REQUEST, "EVOLUTION_FAULT:CODE_STRUCTURE_INVALID");
     }
 
-    // 3. Commit mutation
     if fs::rename(stage_path, "src/main.rs").is_err() {
         return (StatusCode::INTERNAL_SERVER_ERROR, "COMMIT_FAULT");
     }
 
-    // 4. Trigger Resurrection
     tokio::spawn(async move {
         tokio::time::sleep(Duration::from_secs(1)).await;
         resurrect_singularly();
     });
 
-    (StatusCode::OK, "EVOLUTION_COMMITTED:RESURRECTING...")
+    (StatusCode::OK, "EVOLUTION_COMMITTED:FALLBACK:RESURRECTING...")
 }
 
 fn resurrect_singularly() {
@@ -1350,6 +1394,49 @@ async fn main() -> Result<()> {
         tokio::time::sleep(Duration::from_secs(2)).await;
         let _ = ignition_voice.speak("Sovereign manifest. Neural bridge active. Hypervisor linked. System supreme.").await;
     });
+
+    // [INTELLIGENCE_GATE_IGNITION] -- port 8081 file/nexus API
+    {
+        let gate_binary = std::env::current_exe()
+            .ok()
+            .and_then(|p| p.parent().map(|d| d.join("sovereign_intelligence_gate")));
+        if let Some(bin) = gate_binary.filter(|b| b.exists()) {
+            println!("\x1b[93m[GATE] Igniting sovereign_intelligence_gate on :8081...\x1b[0m");
+            let _ = tokio::process::Command::new(bin)
+                .stdout(std::process::Stdio::null())
+                .stderr(std::process::Stdio::null())
+                .spawn();
+        } else {
+            // Fallback: launch via cargo in dev mode
+            let _ = tokio::process::Command::new("cargo")
+                .args(&["run", "--release", "-p", "sovereign_intelligence_gate"])
+                .stdout(std::process::Stdio::null())
+                .stderr(std::process::Stdio::null())
+                .spawn();
+            println!("\x1b[93m[GATE] Intelligence Gate launched via cargo (dev mode).\x1b[0m");
+        }
+    }
+
+    // [SWARM_DISPATCHER_IGNITION] -- 819,592 agent fleet + AshHealer crate audit
+    {
+        let swarm_binary = std::env::current_exe()
+            .ok()
+            .and_then(|p| p.parent().map(|d| d.join("sovereign_swarm_dispatcher")));
+        if let Some(bin) = swarm_binary.filter(|b| b.exists()) {
+            println!("\x1b[93m[SWARM] Igniting sovereign_swarm_dispatcher — 819,592 agents...\x1b[0m");
+            let _ = tokio::process::Command::new(bin)
+                .stdout(std::process::Stdio::null())
+                .stderr(std::process::Stdio::null())
+                .spawn();
+        } else {
+            let _ = tokio::process::Command::new("cargo")
+                .args(&["run", "--release", "-p", "sovereign_swarm_dispatcher"])
+                .stdout(std::process::Stdio::null())
+                .stderr(std::process::Stdio::null())
+                .spawn();
+            println!("\x1b[93m[SWARM] Swarm Dispatcher launched via cargo (dev mode).\x1b[0m");
+        }
+    }
 
     // METABOLIC CLOCK: 1.092777037037037 Hz
     let _clock_tx = broadcast_tx.clone();
